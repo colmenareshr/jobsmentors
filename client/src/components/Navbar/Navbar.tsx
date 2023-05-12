@@ -1,6 +1,6 @@
 import React from 'react'
 
-// modificación luego de eliminar branch jjose en gh
+// modificación luego de eliminar branch jjose en gh y local
 
 function Navbar() {
   return (
