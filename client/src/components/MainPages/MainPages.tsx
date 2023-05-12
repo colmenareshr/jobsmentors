@@ -14,7 +14,7 @@ function MainPages() {
         <Header />
       </div>
       <div className="main">
-        <Chindren />
+        <Main />
       </div>
       <div className="footer">
         <Footer />
