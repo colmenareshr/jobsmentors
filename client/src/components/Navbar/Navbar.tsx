@@ -1,5 +1,7 @@
 import React from 'react'
 
+// modificación luego de eliminar branch jjose en gh
+
 function Navbar() {
   return (
     <nav className="bg-slate-500 border-gray-200 dark:bg-gray-900">
