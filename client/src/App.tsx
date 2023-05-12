@@ -3,7 +3,7 @@ function App() {
 
   return (
     <>
-      <h1>JobsMentors</h1>
+      <h1 className="text-4xl font-bold underline">JobsMentors</h1>
     </>
   )
 }
