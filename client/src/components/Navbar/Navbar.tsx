@@ -1,7 +1,5 @@
-import React from 'react'
-
-// modificación luego de eliminar branch jjose en gh
-// elimnada branch 2 jose
+import Login from 'components/Login/Login'
+import Sign from 'components/SignLogin/Sign'
 
 function Navbar() {
   return (
@@ -55,7 +53,7 @@ function Navbar() {
                 href="#"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
-                About
+                Freelancer
               </a>
             </li>
             <li>
@@ -63,7 +61,7 @@ function Navbar() {
                 href="#"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
-                Services
+                Company
               </a>
             </li>
             <li>
@@ -71,7 +69,7 @@ function Navbar() {
                 href="#"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
-                Pricing
+                About Us
               </a>
             </li>
             <li>
@@ -81,6 +79,12 @@ function Navbar() {
               >
                 Contact
               </a>
+            </li>
+            <li>
+              <Sign />
+            </li>
+            <li>
+              <Login />
             </li>
           </ul>
         </div>
