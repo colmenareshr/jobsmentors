@@ -2,8 +2,10 @@ import React from 'react'
 import { createContext } from 'react'
 
 export interface AppContextProps {
-  isOpen: boolean
-  setIsOpen: (isOpen: boolean) => void
+  isOpenModalLogin: boolean
+  setIsOpenModalLogin: (isOpenModalLogin: boolean) => void
+  isOpenModalSign: boolean
+  setIsOpenModalSign: (isOpenModalSign: boolean) => void
 }
 
-export const AppContext = React.createContext<AppContextProps | null>(null)
+export const AppContext = createContext<AppContextProps | null>(null)

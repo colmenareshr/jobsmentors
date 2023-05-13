@@ -1,16 +1,16 @@
 import React, { Fragment, useState } from 'react'
 import { useContext } from 'react'
 import { AppContext } from '../../context/appContext'
-import ModalLogin from './ModalLogin'
 import { AppContextProps } from '../../context/appContext'
+import ModalSign from './ModalSign'
 
-function Login() {
-  const { isOpenModalLogin, setIsOpenModalLogin } = useContext(
+function Register() {
+  const { isOpenModalSign, setIsOpenModalSign } = useContext(
     AppContext
   ) as AppContextProps
 
   const handleOpen = () => {
-    setIsOpenModalLogin(true)
+    setIsOpenModalSign(true)
   }
 
   return (
@@ -20,12 +20,12 @@ function Login() {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 px-4 rounded"
           onClick={() => handleOpen()}
         >
-          Login
+          Sign
         </button>
-        {isOpenModalLogin && (
+        {isOpenModalSign && (
           <div className="modal">
             <div className="modal-content">
-              <ModalLogin />
+              <ModalSign />
             </div>
           </div>
         )}
@@ -34,4 +34,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register

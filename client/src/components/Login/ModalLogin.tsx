@@ -4,34 +4,44 @@ import { AppContext } from '../../context/appContext'
 import { AppContextProps } from '../../context/appContext'
 
 function ModalLogin() {
-  const { isOpen, setIsOpen } = useContext(AppContext) as AppContextProps
+  const { isOpenModalLogin, setIsOpenModalLogin } = useContext(
+    AppContext
+  ) as AppContextProps
+  const [activeTabIndex, setActiveTabIndex] = useState(0)
 
   const handleClose = () => {
-    setIsOpen(false)
+    setIsOpenModalLogin(false)
   }
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm
-                    flex justify-center items-center flex-col"
+      className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-md
+                  flex justify-center items-center flex-col
+                "
     >
-      <div className="w-[600px] flex flex-col">
+      <div className="w-[600px] flex flex-col bg-white rounded p-2 opacity-60">
         <button
-          className="text-white text-xl place-self-end"
+          className="text-black text-xl place-self-end"
           onClick={handleClose}
         >
           X
         </button>
-        <div className="bg-slate-400 rounded p-2">ESTAS LOGUEADO</div>
+        <div>
+          <label>Email</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label>Clave</label>
+          <input type="text" />
+        </div>
+        <button
+          className="bg-[#171542] hover:bg-[#322e8d] text-white font-bold p-1 px-4 rounded"
+          onClick={handleClose}
+        >
+          Close
+        </button>
       </div>
-      <button
-        className="bg-purple-500 hover:bg-purple-700 text-white font-bold p-1 px-4 rounded"
-        onClick={handleClose}
-      >
-        Close
-      </button>
     </div>
   )
 }
-
 export default ModalLogin

@@ -1,5 +1,5 @@
 import Login from 'components/Login/Login'
-import Sign from 'components/SignLogin/Sign'
+import Sign from 'components/Sign/Sign'
 
 function Navbar() {
   return (

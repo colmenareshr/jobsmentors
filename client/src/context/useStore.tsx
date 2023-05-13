@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 
 export const useStore = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpenModalLogin, setIsOpenModalLogin] = useState(false)
+  const [isOpenModalSign, setIsOpenModalSign] = useState(false)
 
   return {
-    isOpen,
-    setIsOpen
+    isOpenModalLogin,
+    setIsOpenModalLogin,
+    isOpenModalSign,
+    setIsOpenModalSign
   }
 }
