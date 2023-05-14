@@ -7,7 +7,12 @@ module.exports = (sequelize, DataTypes) => {
   class JobsCandidate extends Model {
     
     static associate(models) {
-     
+      JobsCandidate.belongsTo(models.Company,{
+        foreignKey:'company_id'
+      })
+      JobsCandidate.belongsTo(models.Candidate,{
+        foreignKey:'candidate_id'
+      })
     }
     
   }
