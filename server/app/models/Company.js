@@ -28,15 +28,12 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     },
     name: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     bio: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     site: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     email: {
