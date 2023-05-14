@@ -6,7 +6,15 @@ module.exports = (sequelize, DataTypes) => {
   class Candidate extends Model {
     
     static associate(models) {
-      
+      Candidate.hasOne(models.Information, {
+        foreignKey:'candidate_id'
+      })
+      Candidate.hasOne(models.Network, {
+        foreignKey:'candidate_id'
+      })
+      Candidate.belongsTo(models.User,{
+        foreignKey:'user_id'
+      })
     }
   }
   Candidate.init({

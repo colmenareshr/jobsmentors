@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   class Network extends Model {
     
     static associate(models) {
-    
+      Network.belongsTo(models.Candidate,{
+        foreignKey:'candidate_id'
+      })
     }
   }
   Network.init({

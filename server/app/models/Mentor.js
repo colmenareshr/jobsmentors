@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   class Mentor extends Model {
     
     static associate(models) {
-     
+      Mentor.belongsTo(models.User,{
+        foreignKey:'user_id'
+      })
     }
   }
   Mentor.init({

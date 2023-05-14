@@ -6,7 +6,15 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     
     static associate(models) {
-      
+      User.hasMany(models.Candidate, {
+        foreignKey:'user_id'
+      })
+      User.hasMany(models.Company, {
+        foreignKey:'user_id'
+      })
+      User.hasMany(models.Mentor, {
+        foreignKey:'user_id'
+      })
     }
   }
   User.init({
