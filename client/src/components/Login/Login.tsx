@@ -14,23 +14,21 @@ function Login() {
   }
 
   return (
-    <Fragment>
-      <div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 px-4 rounded"
-          onClick={() => handleOpen()}
-        >
-          Login
-        </button>
-        {isOpenModalLogin && (
-          <div className="modal">
-            <div className="modal-content">
-              <ModalLogin />
-            </div>
+    <div>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 px-4 rounded"
+        onClick={() => handleOpen()}
+      >
+        Login
+      </button>
+      {isOpenModalLogin && (
+        <div className="modal fixed top-0 left-0 w-full h-full flex items-center justify-center">
+          <div className="modal-content">
+            <ModalLogin />
           </div>
-        )}
-      </div>
-    </Fragment>
+        </div>
+      )}
+    </div>
   )
 }
 
