@@ -42,8 +42,12 @@ function Navbar() {
           </ul>
           <ul className="flex flex-col gap-3 pt-3">
             <li>Sé un Mentor</li>
-            <li>Regístrate</li>
-            <li>Log In</li>
+            <li>
+              <Sign />
+            </li>
+            <li>
+              <Login />
+            </li>
           </ul>
         </div>
       </div>
