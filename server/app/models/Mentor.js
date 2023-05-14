@@ -3,18 +3,15 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Company extends Model {
+  class Mentor extends Model {
     
     static associate(models) {
-      Company.hasMany(models.JobsCandidate, {
-        foreignKey:'company_id'
-      })
-      Company.belongsTo(models.User,{
+      Mentor.belongsTo(models.User,{
         foreignKey:'user_id'
       })
     }
   }
-  Company.init({
+  Mentor.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -22,33 +19,43 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     user_id: {
-      allowNull: false,
+      allowNull:false,
       type: DataTypes.INTEGER,
       references: {
          model: 'User',
           key: 'id',
-          role: 'company'
+          role: 'mentor'
         },
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     },
-    name: {
+    first_name: {
       type: DataTypes.STRING
     },
-    bio: {
+    last_name: {
       type: DataTypes.STRING
     },
-    site: {
+    img: {
       type: DataTypes.STRING
+    },
+    phone: {
+      type: DataTypes.STRING
+    },
+    birth: {
+      type: DataTypes.DATE
     },
     email: {
-      allowNull: false,
+      allowNull:false,
+      unique: true,
+      type: DataTypes.STRING
+    },
+    address: {
       type: DataTypes.STRING
     },
   }, {
     sequelize,
-    modelName: 'Company',
+    modelName: 'Mentor',
     freezeTableName: true
   });
-  return Company;
+  return Mentor;
 };

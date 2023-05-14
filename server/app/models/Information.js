@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   class Information extends Model {
    
     static associate(models) {
-      
+      Information.belongsTo(models.Candidate,{
+        foreignKey:'candidate_id'
+      })
     }
   }
   Information.init({
@@ -36,21 +38,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    contract: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    race: {
+    soft_skills: {
       allowNull: false,
       type: DataTypes.STRING
     },
     disability: {
       allowNull: false,
       type: DataTypes.BOOLEAN
-    },
-    orientation: {
-      allowNull: false,
-      type:DataTypes.STRING
     },
   }, {
     sequelize,
