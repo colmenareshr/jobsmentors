@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-.footer {
-  bottom: 0;
+@layer base {
+  html,
+  body {
+    @apply bg-white;
+  }
+
+  h1 {
+    @apply text-3xl font-bold text-black;
+  }
+
+  h2 {
+    @apply text-2xl font-bold text-black;
+  }
+
+  h3 {
+    @apply text-xl font-semibold text-black;
+  }
+
+  p {
+    @apply text-base font-normal text-black;
+  }
+}
+
+@layer components {
+  .button {
+    @apply rounded-md border border-orange px-4 py-2 font-bold transition-all hover:bg-black hover:text-white;
+  }
 }
