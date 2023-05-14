@@ -26,7 +26,7 @@ function Navbar() {
           <Login />
         </li>
       </ul>
-      <div onClick={handleNav} className="block md:hidden">
+      <div onClick={handleNav} className="block px-3 md:hidden">
         {!nav ? <AiOutlineMenu size={20} /> : <AiOutlineClose size={20} />}
         <div
           className={
