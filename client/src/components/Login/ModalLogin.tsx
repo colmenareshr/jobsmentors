@@ -12,11 +12,17 @@ function ModalLogin() {
     setIsOpenModalLogin(false)
   }
 
+  const handleSubmit = () => {
+    alert('Se ha enviado el formulario')
+    setIsOpenModalLogin(false)
+  }
+
   return (
-    <main
+    <form
       className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-md
                 flex justify-center items-center flex-col
                 border-4 border-yellow-300"
+      onSubmit={handleSubmit}
     >
       <div
         className="absolute bg-white bg-opacity-50
@@ -45,13 +51,24 @@ function ModalLogin() {
           >
             X
           </button>
+
+          <div
+            id="tooltip-X-button"
+            role="tooltip"
+            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium 
+                        text-white transition-opacity duration-300 bg-gray-900 rounded-lg 
+                          shadow-sm opacity-0 tooltip dark:bg-gray-700
+                          "
+          >
+            Cerrar
+          </div>
         </div>
 
         <div
           className="bg-[#615E88] flex align-items-center justify-center
                           p-3 pt-1 text-xl rounded-md"
         >
-          <form className="flex flex-col w-full">
+          <div className="flex flex-col w-full">
             <label
               className="label-ModalLogin font-semibold
                         pr-2 pb-1  flex ml-2
@@ -64,6 +81,7 @@ function ModalLogin() {
                           focus:ring-4 focus:ring-purple-600 focus:ring-opacity-40
                           focus:shadow-lg rounded p-2 w-full outline-none"
               type="email"
+              name="email"
               placeholder="ejemplo@email.com"
             />
             <div className="w-full">
@@ -78,10 +96,11 @@ function ModalLogin() {
                           focus:ring-4 focus:ring-purple-600 focus:ring-opacity-40
                           focus:shadow-lg rounded p-2 w-full outline-none"
                 type="password"
+                name="password"
                 placeholder="*********"
               />
             </div>
-          </form>
+          </div>
         </div>
         <div
           className="buttonGroup-login
@@ -103,13 +122,13 @@ function ModalLogin() {
                       md:px-19 md:pr-19 md:pl-19
                       rounded-full
                       transition-colors duration-500"
-            onClick={handleClose}
+            type="submit"
           >
             Entrar
           </button>
         </div>
       </div>
-    </main>
+    </form>
   )
 }
 export default ModalLogin
