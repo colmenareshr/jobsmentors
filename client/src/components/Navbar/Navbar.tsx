@@ -1,5 +1,5 @@
 import Login from 'components/Login/Login'
-import Sign from 'components/SignLogin/Sign'
+import Sign from 'components/Sign/Sign'
 import { useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 
@@ -51,18 +51,7 @@ function Navbar() {
           </ul>
         </div>
       </div>
-      <div
-        className="flex
-                    justify-end gap-4
-                  "
-      >
-        <div>
-          <Sign />
-        </div>
-        <div>
-          <Login />
-        </div>
-      </div>
+      <div className="flex justify-end gap-4"></div>
     </nav>
   )
 }

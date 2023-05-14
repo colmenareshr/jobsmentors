@@ -14,13 +14,10 @@ function Login() {
   return (
     <Fragment>
       <div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 rounded p-1 px-4 font-bold"
-          onClick={() => handleOpen()}
-        >
+        <button className="button-secondary" onClick={() => handleOpen()}>
           Login
         </button>
-        {isOpen && (
+        {isOpenModalLogin && (
           <div className="modal">
             <div className="modal-content">
               <ModalLogin />

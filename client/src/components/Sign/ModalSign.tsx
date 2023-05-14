@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
-import { useContext } from 'react'
-import { AppContext } from '../../context/appContext'
-import { AppContextProps } from '../../context/appContext'
+import { useState, useContext } from 'react'
+import { AppContext, AppContextProps } from '../../context/appContext'
 
 interface TabData {
   idx: number
@@ -34,13 +32,10 @@ function ModalSign() {
   ]
 
   return (
-    <div
-      className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-md
-                 flex justify-center items-center flex-col"
-    >
-      <div className="w-[600px] flex flex-col bg-white rounded p-2 opacity-60">
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-black/25 backdrop-blur-md">
+      <div className="flex w-[600px] flex-col rounded bg-white p-2 opacity-60">
         <button
-          className="text-black text-xl place-self-end"
+          className="place-self-end text-xl text-black"
           onClick={handleClose}
         >
           X
@@ -50,7 +45,7 @@ function ModalSign() {
           {tabsData.map((t) => (
             <button
               key={t.idx}
-              className={`py-2 border-b-4 transition-colors duration-300 
+              className={`border-b-4 py-2 transition-colors duration-300 
               ${
                 t.idx === activeTabIndex
                   ? 'border-[#005F73] bg-[#005F73]'
@@ -67,7 +62,7 @@ function ModalSign() {
           <p>{tabsData[activeTabIndex].content}</p>
         </div>
         <button
-          className="bg-[#171542] hover:bg-[#322e8d] text-white font-bold p-1 px-4 rounded"
+          className="rounded bg-[#171542] p-1 px-4 font-bold text-white hover:bg-[#322e8d]"
           onClick={handleClose}
         >
           Close
@@ -77,24 +72,3 @@ function ModalSign() {
   )
 }
 export default ModalSign
-
-// <div
-//   className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm
-//                 flex justify-center items-center flex-col"
-// >
-//   <div className="w-[600px] flex flex-col">
-//     <button
-//       className="text-white text-xl place-self-end"
-//       onClick={handleClose}
-//     >
-//       X
-//     </button>
-//     <div className="bg-slate-400 rounded p-2">ESTAS LOGUEADO</div>
-//   </div>
-//   <button
-//     className="bg-purple-500 hover:bg-purple-700 text-white font-bold p-1 px-4 rounded"
-//     onClick={handleClose}
-//   >
-//     Close
-//   </button>
-// </div>
