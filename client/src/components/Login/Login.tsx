@@ -1,8 +1,6 @@
-import React, { Fragment, useState } from 'react'
-import { useContext } from 'react'
-import { AppContext } from '../../context/appContext'
+import { Fragment, useContext } from 'react'
+import { AppContext, AppContextProps } from '../../context/appContext'
 import ModalLogin from './ModalLogin'
-import { AppContextProps } from '../../context/appContext'
 
 function Login() {
   const { isOpen, setIsOpen } = useContext(AppContext) as AppContextProps
@@ -15,7 +13,7 @@ function Login() {
     <Fragment>
       <div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 rounded p-1 px-4 font-bold"
           onClick={() => handleOpen()}
         >
           Login
