@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     
     static associate(models) {
-     
+      
     }
   }
   User.init({
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: {
       allowNull: false,
-      type:DataTypes.ENUM('candidate', 'company'),
+      type:DataTypes.ENUM('candidate', 'company','mentor'),
     },
   }, {
     sequelize,

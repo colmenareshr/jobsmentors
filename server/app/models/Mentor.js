@@ -3,13 +3,13 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Candidate extends Model {
+  class Mentor extends Model {
     
     static associate(models) {
-      
+     
     }
   }
-  Candidate.init({
+  Mentor.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -22,17 +22,18 @@ module.exports = (sequelize, DataTypes) => {
       references: {
          model: 'User',
           key: 'id',
-          role: 'candidate'
+          role: 'mentor'
         },
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     },
-    name: {
+    first_name: {
       type: DataTypes.STRING
     },
-    email: {
-      allowNull: false,
-      unique: true,
+    last_name: {
+      type: DataTypes.STRING
+    },
+    img: {
       type: DataTypes.STRING
     },
     phone: {
@@ -41,36 +42,18 @@ module.exports = (sequelize, DataTypes) => {
     birth: {
       type: DataTypes.DATE
     },
-    gender: {
+    email: {
+      allowNull:false,
+      unique: true,
       type: DataTypes.STRING
     },
     address: {
       type: DataTypes.STRING
     },
-    about: {
-      type: DataTypes.STRING
-    },
-    img: {
-      type: DataTypes.STRING
-    },
-    career: {
-      type: DataTypes.ENUM,
-      values: ['Front-end', 'Back-end', 'QA', 'Full-Stack', 'DBA', 'DevOps', 'PM', 'Tech Lead', 'UX Desing']
-    },
-    hard_skills: {
-      type: DataTypes.STRING
-    },
-    contract: {
-      type: DataTypes.ENUM('CLT', 'PJ')
-    },
-    open_to_work: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
-    },
   }, {
     sequelize,
-    modelName: 'Candidate',
+    modelName: 'Mentor',
     freezeTableName: true
   });
-  return Candidate;
+  return Mentor;
 };

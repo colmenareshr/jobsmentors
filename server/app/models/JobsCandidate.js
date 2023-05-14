@@ -2,14 +2,16 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class Jobs extends Model {
+  class JobsCandidate extends Model {
     
     static associate(models) {
-      
+     
     }
+    
   }
-  Jobs.init({
+  JobsCandidate.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -21,7 +23,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       references: {
          model: 'Company',
-          key: 'id'
+         key: 'id' 
+        },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
+    },
+    candidate_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: {
+         model: 'Candidate',
+         key: 'id' 
         },
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
@@ -38,10 +50,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
+
   }, {
     sequelize,
-    modelName: 'Jobs',
+    modelName: 'JobsCandidate',
     freezeTableName: true
   });
-  return Jobs;
+  return JobsCandidate;
 };
