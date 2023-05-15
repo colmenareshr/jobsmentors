@@ -10,7 +10,10 @@ module.exports = {
       teal400: '#0A9396',
       sky: '#94D2BD',
       orange: '#CA6702',
-      yellow: '#EE9B00'
+      yellow: '#EE9B00',
+      purple: '#39347A',
+      purpleLight: '#615E88',
+      purpleHover: '#642E8D'
     },
     fontFamily: {
       sans: ['Poppins', 'sans-serif']
