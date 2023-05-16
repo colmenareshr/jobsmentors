@@ -1,0 +1,11 @@
+.placeholder-ModalSign::placeholder {
+  font-size: 11px;
+}
+
+.label-ModalSign {
+  @apply pt-2 font-semibold text-white;
+}
+
+.padding-ModalSing {
+  @apply p-1;
+}

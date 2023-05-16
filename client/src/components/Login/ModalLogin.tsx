@@ -19,109 +19,107 @@ function ModalLogin() {
 
   return (
     <form
-      className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-md
-                flex justify-center items-center flex-col
-                border-4 border-yellow-300"
+      className="border-yellow-300 fixed inset-0 flex flex-col
+                items-center justify-center border-4 bg-black
+                bg-opacity-25 backdrop-blur-md"
       onSubmit={handleSubmit}
     >
       <div
-        className="absolute bg-white bg-opacity-50
-                      w-full h-auto rounded-b-3xl rounded-tr-none rounded-tl-lg 
-                      pb-3 pl-1 pr-1
-                      sm:w-full sm:p-2
-                      md:w-[760px] md:pb-3
-                      shadow-xl"
+        className="absolute h-auto w-full
+                  rounded-b-3xl rounded-tl-lg rounded-tr-none bg-white/50
+                  pb-3 pl-1 pr-1
+                  shadow-xl sm:w-full
+                  sm:p-2 md:w-[760px]
+                  md:pb-3"
       >
-        <div className="flex flex-row justify-center w-full">
+        <div className="flex w-full flex-row justify-center">
           <div
-            className="title-ModalLogin p-3 mb-3 text-4xl font-bold text-[#39347A]
-                          hover:drop-shadow-lg hover:drop-shadow-red-500"
+            className="title-ModalLogin hover:drop-shadow-red-500 p-3
+                      text-2xl text-purple
+                      md:text-3xl"
           >
             Acceso a su cuenta
           </div>
 
           <button
-            className="button-x-ModalLogin absolute -right-2 -top-11 
-                    bg-white text-black text-xl place-self-end bg-opacity-25 
-                    hover:bg-[#39347A] hover:text-orange-200 
-                      rounded-md rounded-b-none
-                      pt-1 pr-3 pb-1 pl-3 my-auto mr-2 mt-2
-                      transition-colors duration-400"
+            className="button-x-ModalLogin duration-400
+                      absolute -right-2 
+                      -top-10 my-auto mr-2 mt-2 
+                      place-self-end rounded-md 
+                      rounded-b-none
+                      bg-white bg-opacity-30
+                      pl-3 pr-3 pt-0.5 text-lg transition-colors 
+                      hover:bg-purple hover:text-white hover:shadow-none"
             onClick={handleClose}
           >
             X
           </button>
-
-          <div
-            id="tooltip-X-button"
-            role="tooltip"
-            className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium 
-                        text-white transition-opacity duration-300 bg-gray-900 rounded-lg 
-                          shadow-sm opacity-0 tooltip dark:bg-gray-700
-                          "
-          >
-            Cerrar
-          </div>
         </div>
 
         <div
-          className="bg-[#615E88] flex align-items-center justify-center
-                          p-3 pt-1 text-xl rounded-md"
+          className="align-items-center flex justify-center rounded-md
+                          bg-purpleLight p-3 pt-1 text-xl"
         >
-          <div className="flex flex-col w-full">
+          <div className="flex w-full flex-col">
             <label
-              className="label-ModalLogin font-semibold
-                        pr-2 pb-1  flex ml-2
-                      text-purple-200"
+              className="label-ModalLogin ml-2
+                        flex pb-1 pr-2 pt-5 font-semibold
+                      text-white"
             >
               Email
             </label>
             <input
-              className="hover:ring-purple-600 hover:shadow-lg 
-                          focus:ring-4 focus:ring-purple-600 focus:ring-opacity-40
-                          focus:shadow-lg rounded p-2 w-full outline-none"
+              className="
+                        w-full rounded 
+                        p-2 outline-none hover:shadow-lg
+                      hover:ring-purple
+                        focus:shadow-lg focus:ring-4 focus:ring-purple focus:ring-opacity-90"
               type="email"
               name="email"
               placeholder="ejemplo@email.com"
             />
-            <div className="w-full">
+            <div className="w-full pb-5">
               <label
-                className="label-ModalLogin font-semibold flex
-                        text-purple-200 pr-2 pb-1 ml-2 mt-2"
+                className="label-ModalLogin ml-2
+                        flex pb-1 pr-2 pt-5 font-semibold text-white"
               >
                 Clave
               </label>
               <input
-                className="hover:ring-purple-600 hover:shadow-lg 
-                          focus:ring-4 focus:ring-purple-600 focus:ring-opacity-40
-                          focus:shadow-lg rounded p-2 w-full outline-none"
+                className="
+                          w-full rounded 
+                          p-2 outline-none hover:shadow-lg
+                        hover:ring-purple
+                          focus:shadow-lg focus:ring-4 focus:ring-purple focus:ring-opacity-90"
                 type="password"
                 name="password"
-                placeholder="*********"
+                placeholder="**********"
               />
             </div>
           </div>
         </div>
         <div
           className="buttonGroup-login
-                    p-2 pt-3 pb-0 flex justify-between"
+                    flex justify-between p-2 pb-0 pt-3"
         >
           <button
-            className="bg-[#39347A] hover:bg-[#642e8d] text-white hover:text-orange-200
-                      p-2 px-12
-                      md:px-19 md:pr-19 md:pl-19 md:mr-4
-                      rounded-full
-                      hover:shadow-lg transition-colors duration-500"
+            className="
+                      md:pr-19 
+                      md:pl-19 xs:pr-10 xs:pl-10 rounded-full
+                      bg-purple p-2
+                      px-12 text-white transition-colors duration-500
+                      hover:bg-purpleHover hover:text-white hover:shadow-lg
+                       "
             onClick={handleClose}
           >
             Cancelar
           </button>
           <button
-            className="bg-[#39347A] hover:bg-[#642e8d] text-white hover:text-cyan-200 
-                      px-14
-                      md:px-19 md:pr-19 md:pl-19
+            className="hover:text-cyan-200 md:px-19 md:pr-19 md:pl-19 
                       rounded-full
-                      transition-colors duration-500"
+                      bg-purple px-14 text-white
+                      transition-colors
+                      duration-500 hover:bg-purpleHover"
             type="submit"
           >
             Entrar
@@ -132,47 +130,3 @@ function ModalLogin() {
   )
 }
 export default ModalLogin
-
-// <div
-//   className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-md
-//               flex justify-center items-center flex-col
-//               sm:flex-cols-1
-//             "
-// >
-//   <div className="w-[600px] flex flex-col bg-white rounded p-4 opacity-60">
-//     <button
-//       className="text-black text-xl place-self-end hover:bg-[#642e8d] hover:text-white rounded-md
-//       pt-0.5 pr-1 pb-1 pl-1.5"
-//       onClick={handleClose}
-//     >
-//       X
-//     </button>
-//     <div className="title-ModalLogin p-2">
-//       Rellene los siguientes datos para ingresar
-//     </div>
-//     <div className="inputGroup-ModalLogin border-4 border-blue-200 p-2">
-//       <div className="">
-//         <label className="label-ModalLogin pr-2">Email</label>
-//         <input type="text" />
-//       </div>
-//       <div>
-//         <label className="label-ModalLogin pr-2">Clave</label>
-//         <input type="text" className="" />
-//       </div>
-//     </div>
-//     <div className="buttonsLogin p-2 flex gap-2 justify-center border-4 border-red-100">
-//       <button
-//         className="bg-[#171542] hover:bg-[#642e8d] text-white font-bold p-1 px-4 rounded"
-//         onClick={handleClose}
-//       >
-//         Cancelar
-//       </button>
-//       <button
-//         className="bg-[#171542] hover:bg-[#01995c] text-white font-bold p-1 px-4 rounded"
-//         onClick={handleClose}
-//       >
-//         Entrar
-//       </button>
-//     </div>
-//   </div>
-// </div>
