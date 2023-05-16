@@ -8,6 +8,7 @@ module.exports = {
       black: '#181818',
       teal: '#001219',
       teal400: '#0A9396',
+      emerald: '#005F73',
       sky: '#94D2BD',
       orange: '#CA6702',
       yellow: '#EE9B00'
