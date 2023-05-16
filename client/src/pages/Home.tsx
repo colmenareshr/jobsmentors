@@ -1,3 +1,4 @@
+import AboutSection from 'components/AboutSection'
 import HeroSection from 'components/HeroSection'
 import Main from 'components/Main'
 
@@ -6,6 +7,7 @@ function Home() {
     <>
       <HeroSection />
       <Main />
+      <AboutSection />
     </>
   )
 }
