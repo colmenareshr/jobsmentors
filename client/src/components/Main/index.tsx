@@ -1,8 +1,10 @@
 import CtaJuniors from 'components/CtaJuniors'
+import FeaturesSection from 'components/FeaturesSection'
 function Main() {
   return (
-    <main className="container mx-auto mt-[-265px] h-full max-w-full bg-emerald pt-36 text-center md:mt-[-170px] md:flex md:items-center md:justify-between md:py-2 md:text-left">
+    <main className="container mx-auto h-full max-w-full bg-white pt-36 text-center">
       <CtaJuniors />
+      <FeaturesSection />
     </main>
   )
 }

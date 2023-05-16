@@ -1,6 +1,6 @@
 const CtaJuniors = () => {
   return (
-    <>
+    <section className="mt-[-410px] flex flex-col bg-emerald pt-32 md:mt-[-310px] md:flex-row md:items-center md:justify-between md:pt-0 md:text-left">
       <div className="flex flex-col flex-wrap items-center gap-3 md:flex md:w-[50%] md:items-start md:px-20">
         <h2 className="pt-10 text-white">
           Discover a skilled team to provide the solution your business needs.
@@ -19,7 +19,7 @@ const CtaJuniors = () => {
         src="../src/assets/images/contact-freelancers-jobsmentors.svg"
         alt="Contact Freelancers"
       />
-    </>
+    </section>
   )
 }
 
