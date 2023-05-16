@@ -8,6 +8,7 @@ const HeroSection = () => {
         Get a solution now
       </a>
       <img
+        className="z-50"
         src="../src/assets/images/hero-image-jobsmentors.svg"
         alt="JobsMentors"
       />
