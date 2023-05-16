@@ -26,7 +26,7 @@ function ModalLogin() {
     >
       <div
         className="absolute h-auto w-full
-                  rounded-b-3xl rounded-tl-lg rounded-tr-none bg-white bg-opacity-50 
+                  rounded-b-3xl rounded-tl-lg rounded-tr-none bg-white/50
                   pb-3 pl-1 pr-1
                   shadow-xl sm:w-full
                   sm:p-2 md:w-[760px]
@@ -34,8 +34,8 @@ function ModalLogin() {
       >
         <div className="flex w-full flex-row justify-center">
           <div
-            className="title-ModalLogin hover:drop-shadow-red-500 text-purple
-                      p-3 text-2xl
+            className="title-ModalLogin hover:drop-shadow-red-500 p-3
+                      text-2xl text-purple
                       md:text-3xl"
           >
             Acceso a su cuenta
@@ -43,13 +43,13 @@ function ModalLogin() {
 
           <button
             className="button-x-ModalLogin duration-400
-                      hover:bg-purple absolute 
-                      -right-2 -top-10 my-auto mr-2 
-                      mt-2 place-self-end 
-                      rounded-md
-                      rounded-b-none bg-white
-                      bg-opacity-30 pl-3 pr-3 pt-0.5 text-lg 
-                      transition-colors hover:text-white hover:shadow-none"
+                      absolute -right-2 
+                      -top-10 my-auto mr-2 mt-2 
+                      place-self-end rounded-md 
+                      rounded-b-none
+                      bg-white bg-opacity-30
+                      pl-3 pr-3 pt-0.5 text-lg transition-colors 
+                      hover:bg-purple hover:text-white hover:shadow-none"
             onClick={handleClose}
           >
             X
@@ -57,8 +57,8 @@ function ModalLogin() {
         </div>
 
         <div
-          className="align-items-center bg-purpleLight flex justify-center
-                          rounded-md p-3 pt-1 text-xl"
+          className="align-items-center flex justify-center rounded-md
+                          bg-purpleLight p-3 pt-1 text-xl"
         >
           <div className="flex w-full flex-col">
             <label
@@ -70,10 +70,10 @@ function ModalLogin() {
             </label>
             <input
               className="
-                        hover:ring-purple focus:ring-purple 
-                        w-full rounded p-2
-                      outline-none
-                        hover:shadow-lg focus:shadow-lg focus:ring-4 focus:ring-opacity-90"
+                        w-full rounded 
+                        p-2 outline-none hover:shadow-lg
+                      hover:ring-purple
+                        focus:shadow-lg focus:ring-4 focus:ring-purple focus:ring-opacity-90"
               type="email"
               name="email"
               placeholder="ejemplo@email.com"
@@ -87,10 +87,10 @@ function ModalLogin() {
               </label>
               <input
                 className="
-                          hover:ring-purple focus:ring-purple 
-                          w-full rounded p-2
-                        outline-none
-                          hover:shadow-lg focus:shadow-lg focus:ring-4 focus:ring-opacity-90"
+                          w-full rounded 
+                          p-2 outline-none hover:shadow-lg
+                        hover:ring-purple
+                          focus:shadow-lg focus:ring-4 focus:ring-purple focus:ring-opacity-90"
                 type="password"
                 name="password"
                 placeholder="**********"
@@ -105,10 +105,10 @@ function ModalLogin() {
           <button
             className="
                       md:pr-19 
-                      md:pl-19 xs:pr-10 xs:pl-10 bg-purple
-                      hover:bg-purpleHover rounded-full
-                      p-2 px-12 text-white transition-colors
-                      duration-500 hover:text-white hover:shadow-lg
+                      md:pl-19 xs:pr-10 xs:pl-10 rounded-full
+                      bg-purple p-2
+                      px-12 text-white transition-colors duration-500
+                      hover:bg-purpleHover hover:text-white hover:shadow-lg
                        "
             onClick={handleClose}
           >
@@ -116,10 +116,10 @@ function ModalLogin() {
           </button>
           <button
             className="hover:text-cyan-200 md:px-19 md:pr-19 md:pl-19 
-                      bg-purple
-                      hover:bg-purpleHover rounded-full px-14
-                      text-white
-                      transition-colors duration-500"
+                      rounded-full
+                      bg-purple px-14 text-white
+                      transition-colors
+                      duration-500 hover:bg-purpleHover"
             type="submit"
           >
             Entrar
