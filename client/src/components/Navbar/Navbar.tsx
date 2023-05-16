@@ -12,20 +12,24 @@ function Navbar() {
 
   return (
     <nav className="flex items-center justify-between font-semibold">
-      <ul className="hidden items-center justify-between gap-4 md:flex">
-        <li className="hover:text-teal/90">Encuentra Freelancers</li>
-        <li className="hover:text-teal/90">Encuentra Mentores</li>
-        <li className="hover:text-teal/90">Cómo Funciona</li>
-      </ul>
-      <ul className="hidden items-center justify-between gap-4 md:flex">
-        <li className="hover:text-teal/90">Sé un Mentor</li>
-        <li className="hover:text-teal/90">
-          <Sign />
-        </li>
-        <li className="hover:text-teal/90">
-          <Login />
-        </li>
-      </ul>
+      <div className="hidden lg:block lg:pr-4">
+        <ul className="md:flex md:gap-4">
+          <li className="hover:text-teal/90">Freelancers</li>
+          <li className="hover:text-teal/90">Mentores</li>
+          <li className="hover:text-teal/90">Cómo Funciona</li>
+        </ul>
+      </div>
+      <div className="hidden md:block">
+        <ul className="items-center justify-between gap-4 md:flex">
+          <li className="hover:text-teal/90">Sé un Mentor</li>
+          <li className="hover:text-teal/90">
+            <Sign />
+          </li>
+          <li className="hover:text-teal/90">
+            <Login />
+          </li>
+        </ul>
+      </div>
       <div onClick={handleNav} className="block px-3 md:hidden">
         {!nav ? <AiOutlineMenu size={20} /> : <AiOutlineClose size={20} />}
         <div
