@@ -1,0 +1,13 @@
+.search-form {
+  background-color: var(--bg-color);
+  width: 100%;
+  text-align: center;
+}
+
+.inputSearch {
+  @apply block pl-10 p-2 text-base text-yellow border border-yellow rounded-lg placeholder-yellow/75;
+}
+
+.inputSearch:focus {
+  @apply ring-4 ring-yellow;
+}
