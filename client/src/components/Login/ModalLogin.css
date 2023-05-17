@@ -71,9 +71,9 @@
 }
 
 .footer-button-Entrar-ModalLogin {
-  @apply bg-purple px-14 pl-12 pr-12 text-white transition-colors duration-500
+  @apply px-14 pl-12 pr-12 text-white transition-colors duration-500
 }
 
 .footer-button-Entrar-ModalLogin:hover {
-  @apply bg-purpleHover text-cyan-200
+  @apply bg-purpleHover
 }
