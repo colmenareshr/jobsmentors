@@ -1,4 +1,5 @@
 import AboutSection from 'components/AboutSection'
+import BigProjectSection from 'components/BigProjectSection'
 import HeroSection from 'components/HeroSection'
 import JuniorMentor from 'components/JuniorMentorSection'
 import Main from 'components/Main'
@@ -12,6 +13,7 @@ function Home() {
       <AboutSection />
       <JuniorMentor />
       <OurFreelancers />
+      <BigProjectSection />
     </>
   )
 }
