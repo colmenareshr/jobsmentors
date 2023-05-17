@@ -71,7 +71,8 @@ function ModalLogin() {
           <button
             className="footer-button-Entrar-ModalLogin
                       md:px-19 md:pr-19 
-                      md:pl-19 rounded-full 
+                      md:pl-19 rounded-full
+                      bg-purple 
                       "
             type="submit"
           >
