@@ -18,7 +18,7 @@ const CompanyImages = () => {
     }
   ]
   return (
-    <figure className="flex items-center justify-center gap-4 py-5">
+    <figure className="flex flex-wrap items-center justify-center gap-4 py-5">
       {companiesInfo.map((company) => (
         <img key={companiesInfo.length} src={company.image} alt={company.alt} />
       ))}

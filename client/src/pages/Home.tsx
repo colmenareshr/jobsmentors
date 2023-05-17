@@ -4,6 +4,7 @@ import HeroSection from 'components/HeroSection'
 import JuniorMentor from 'components/JuniorMentorSection'
 import Main from 'components/Main'
 import OurFreelancers from 'components/OurFreelancers'
+import TestimonialSection from 'components/TestimonialSection'
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <JuniorMentor />
       <OurFreelancers />
       <BigProjectSection />
+      <TestimonialSection />
     </>
   )
 }
