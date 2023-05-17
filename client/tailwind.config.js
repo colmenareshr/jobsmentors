@@ -12,7 +12,7 @@ module.exports = {
       sky: '#94D2BD',
       orange: '#CA6702',
       yellow: '#EE9B00',
-      'purple-light': '#9A9CE0'
+      lilac: '#9A9CE0'
     },
     fontFamily: {
       sans: ['Poppins', 'sans-serif']
