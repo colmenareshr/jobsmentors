@@ -1,5 +1,6 @@
 import AboutSection from 'components/AboutSection'
 import BigProjectSection from 'components/BigProjectSection'
+import CtaSection from 'components/CtaSection'
 import HeroSection from 'components/HeroSection'
 import JuniorMentor from 'components/JuniorMentorSection'
 import Main from 'components/Main'
@@ -16,6 +17,7 @@ function Home() {
       <OurFreelancers />
       <BigProjectSection />
       <TestimonialSection />
+      <CtaSection />
     </>
   )
 }

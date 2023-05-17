@@ -27,10 +27,10 @@
 
 @layer components {
   .button {
-    @apply rounded-full border-2 border-orange bg-yellow px-6 py-2 font-bold uppercase duration-200 ease-in-out hover:bg-teal400 hover:text-white;
+    @apply rounded-full border-2 border-orange bg-yellow px-6 py-2 font-bold uppercase duration-200 ease-in-out hover:bg-teal400 hover:text-white cursor-pointer;
   }
 
   .button-secondary {
-    @apply rounded-full border-2 border-black bg-white px-6 py-2 font-bold uppercase duration-200 ease-in-out  hover:border-orange hover:bg-yellow;
+    @apply rounded-full border-2 border-black bg-none px-6 py-2 font-bold uppercase duration-200 ease-in-out  hover:border-orange hover:bg-white cursor-pointer;
   }
 }
