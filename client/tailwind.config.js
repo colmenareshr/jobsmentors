@@ -11,7 +11,8 @@ module.exports = {
       emerald: '#005F73',
       sky: '#94D2BD',
       orange: '#CA6702',
-      yellow: '#EE9B00'
+      yellow: '#EE9B00',
+      'purple-light': '#9A9CE0'
     },
     fontFamily: {
       sans: ['Poppins', 'sans-serif']

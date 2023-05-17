@@ -13,7 +13,7 @@
   }
 
   h2 {
-    @apply text-2xl font-bold text-black;
+    @apply text-2xl font-bold text-black uppercase;
   }
 
   h3 {
@@ -27,10 +27,10 @@
 
 @layer components {
   .button {
-    @apply rounded-full border-2 bg-yellow border-orange px-6 py-2 font-bold ease-in-out duration-200 hover:bg-teal400 hover:text-white;
+    @apply rounded-full border-2 border-orange bg-yellow px-6 py-2 font-bold uppercase duration-200 ease-in-out hover:bg-teal400 hover:text-white;
   }
 
   .button-secondary {
-    @apply rounded-full border-2 bg-white border-black px-6 py-2 font-bold ease-in-out duration-200  hover:bg-yellow hover:border-orange;
+    @apply rounded-full border-2 border-black bg-white px-6 py-2 font-bold uppercase duration-200 ease-in-out  hover:border-orange hover:bg-yellow;
   }
 }
