@@ -5,15 +5,23 @@ import './modalSign.css'
 interface TabData {
   idx: number
   label: string
+  name: string
   email: string
   password1: string
   password2: string
-  name: string
-  project: string
-  skills: string
+}
+
+const inicialState = {
+  idx: 0,
+  label: '',
+  name: '',
+  email: '',
+  password1: '',
+  password2: ''
 }
 
 function ModalSign() {
+  const [data, setData] = useState<TabData>(inicialState as TabData)
   const { isOpenModalSign, setIsOpenModalSign } = useContext(
     AppContext
   ) as AppContextProps
@@ -25,18 +33,23 @@ function ModalSign() {
 
   const handleSubmit = () => {
     alert('Se ha enviado el formulario')
+    console.log(data)
     setIsOpenModalSign(false)
   }
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target
+    setData({ ...data, [name]: value })
+  }
+
   const tabsData: TabData[] = [
     {
       idx: 0,
       label: 'Freelancer',
+      name: 'Nombre',
       email: 'Email',
       password1: 'Clave',
-      password2: 'Confirmar Clave',
-      name: 'Nombre',
-      project: '',
-      skills: 'Tecnologías'
+      password2: 'Confirmar Clave'
     },
     {
       idx: 1,
@@ -44,27 +57,34 @@ function ModalSign() {
       email: 'Email',
       password1: 'Clave',
       password2: 'Confirmar Clave',
-      name: 'Nombre de la Empresa',
-      project: 'Proyecto',
-      skills: 'Tecnologías requeridas'
+      name: 'Nombre de la Empresa'
+    },
+    {
+      idx: 2,
+      label: 'Mentors',
+      email: 'Email',
+      password1: 'Clave',
+      password2: 'Confirmar Clave',
+      name: 'Nombre'
     }
   ]
 
   return (
     <div
-      className="border-yellow-300 fixed inset-0 flex
-                items-center justify-center bg-black
-                bg-opacity-25 backdrop-blur-md"
+      className="border-yellow-300 fixed inset-0
+                flex items-center justify-center
+                bg-black bg-opacity-25 backdrop-blur-md"
     >
       <div
         className="absolute
-                  h-auto w-full rounded-b-3xl rounded-tl-lg
-                  rounded-tr-none bg-white/50 pb-3 pl-1
+                  h-auto w-full rounded-b-3xl
+                  rounded-tl-lg rounded-tr-none bg-white/80 pb-3
+                  pl-1
                   pr-1
-                  shadow-xl
-                  sm:w-[640px] 
-                  sm:p-2 sm:pb-3
-                  md:w-[760px] md:pb-3
+                  shadow-xl 
+                  sm:w-[640px] sm:p-2
+                  sm:pb-3 md:w-[760px]
+                  md:pb-3
                   lg:min-w-[1024px]"
       >
         <header className="flex w-full flex-row justify-center">
@@ -97,11 +117,12 @@ function ModalSign() {
             {tabsData.map((t) => (
               <button
                 key={t.idx}
-                className={`border-b-4 p-2 transition-colors duration-500 
+                className={`p-2 transition-colors duration-500 
               ${
                 t.idx === activeTabIndex
-                  ? 'rounded-t border-b-4 hover:border-b-purple hover:bg-purple/30'
-                  : 'rounded-t border-none hover:bg-purple/30'
+                  ? 'rounded-t border-t-4 border-purpleLight bg-purpleLight/80' +
+                    ' hover:text-purpleLight focus:bg-purpleLight/80 focus:text-purple/80'
+                  : 'rounded-t hover:border-t-4 hover:border-t-purpleLight hover:transition-none'
               }`}
                 onClick={() => setActiveTabIndex(t.idx)}
               >
@@ -113,8 +134,8 @@ function ModalSign() {
           {/* Tab content: Showing fields to be filled */}
 
           <section
-            className="flex flex-wrap items-center justify-center
-                    gap-4 rounded bg-purpleLight/80 p-4"
+            className="flex flex-wrap items-center justify-center gap-4
+                    rounded bg-purpleLight/80 p-4"
           >
             <div>
               <label className="label-ModalSign flex">
@@ -122,7 +143,9 @@ function ModalSign() {
               </label>
               <input
                 className="placeholder-ModalSign padding-ModalSing rounded"
-                id={tabsData[activeTabIndex].name}
+                name="name"
+                onChange={handleChange}
+                // id={tabsData[activeTabIndex].name}
                 type="text"
                 {...(activeTabIndex === 1
                   ? { placeholder: 'Nombre de la empresa' }
@@ -135,7 +158,9 @@ function ModalSign() {
               </label>
               <input
                 className="placeholder-ModalSign padding-ModalSing rounded"
-                id={tabsData[activeTabIndex].email}
+                onChange={handleChange}
+                name="email"
+                // id={tabsData[activeTabIndex].email}
                 type="email"
                 placeholder="ejemplo@ejemplo.com"
               />
@@ -146,7 +171,9 @@ function ModalSign() {
               </label>
               <input
                 className="placeholder-ModalSign padding-ModalSing rounded"
-                id={tabsData[activeTabIndex].password1}
+                onChange={handleChange}
+                name="password1"
+                // id={tabsData[activeTabIndex].password1}
                 placeholder="Mínimo 8 caracteres"
                 type="password"
               />
@@ -157,36 +184,11 @@ function ModalSign() {
               </label>
               <input
                 className="placeholder-ModalSign padding-ModalSing rounded "
-                id={tabsData[activeTabIndex].password2}
+                onChange={handleChange}
+                name="password2"
+                // id={tabsData[activeTabIndex].password2}
                 placeholder="Mínimo 8 caracteres"
                 type="password"
-              />
-            </div>
-
-            {/* If the tab is for Company, don't show the requirement field. */}
-
-            {activeTabIndex === 1 ? (
-              <div>
-                <label className="label-ModalSign flex">
-                  {tabsData[activeTabIndex].project}
-                </label>
-                <input
-                  className="placeholder-ModalSign padding-ModalSing rounded"
-                  id={tabsData[activeTabIndex].project}
-                  placeholder="Nombre del proyecto"
-                  type="text"
-                />
-              </div>
-            ) : null}
-            <div>
-              <label className="label-ModalSign flex">
-                {tabsData[activeTabIndex].skills}
-              </label>
-              <input
-                className="placeholder-ModalSign padding-ModalSing rounded"
-                id={tabsData[activeTabIndex].skills}
-                placeholder="JS, React, Node, etc."
-                type="text"
               />
             </div>
           </section>
