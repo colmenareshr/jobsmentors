@@ -1,9 +1,11 @@
 .form-modalLogin {
-  @apply fixed inset-0 flex flex-col items-center justify-center border-4 bg-black/60 backdrop-blur-md
+  @apply fixed inset-0 flex flex-col items-center;
+  @apply justify-center border-4 bg-black/20 backdrop-blur-md;
 }
 
 .containerBackground-modalLogin {
-  @apply absolute h-auto rounded-b-3xl rounded-tl-lg rounded-tr-none bg-white/50 pb-3 pl-1 pr-1 shadow-xl
+  @apply absolute h-auto rounded-b-3xl rounded-tl-lg;
+  @apply rounded-tr-none bg-white/70 pb-3 pl-1 pr-1 shadow-xl
 }
 
 .title-ModalLogin {
@@ -15,7 +17,10 @@
 }
 
 .header-button-x-ModalLogin {
-  @apply duration-300 absolute -right-2 -top-10 my-auto mr-2 mt-2 place-self-end rounded-md rounded-b-none bg-white bg-opacity-30 pl-3 pr-3 pt-0.5 text-lg transition-colors
+  @apply duration-300 absolute place-self-end;
+  @apply rounded-md rounded-b-none bg-white bg-opacity-30;
+  @apply pl-3 pr-3 pt-0.5 -right-2 -top-10 my-auto mr-2 mt-2;
+  @apply text-lg transition-colors;
 }
 
 .header-button-x-ModalLogin:hover {
@@ -23,7 +28,8 @@
 }
 
 .main-modalLogin {
-  @apply flex w-full flex-col justify-center rounded-md bg-purpleLight p-3 pt-1 text-xl;
+  @apply flex w-full flex-col justify-center;
+  @apply rounded-md bg-purpleLight p-3 pt-1 text-xl;
 }
 
 .main-input-email-ModalLogin {
@@ -63,7 +69,8 @@
 }
 
 .footer-button-Cancelar-ModalLogin {
-  @apply rounded-full bg-purple p-2 px-12 pl-8 pr-8 text-white transition-colors duration-500
+  @apply rounded-full bg-purple p-2 px-12 pl-8 pr-8;
+  @apply text-white text-lg transition-colors duration-500;
 }
 
 .footer-button-Cancelar-ModalLogin:hover {
@@ -71,7 +78,7 @@
 }
 
 .footer-button-Entrar-ModalLogin {
-  @apply px-14 pl-12 pr-12 text-white transition-colors duration-500
+  @apply px-14 pl-12 pr-12 text-lg text-white transition-colors duration-500
 }
 
 .footer-button-Entrar-ModalLogin:hover {
