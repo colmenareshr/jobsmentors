@@ -2,7 +2,7 @@ const database = require('../models')
 
 class UserController {
 
-    static async CadastroModificadoTransaction(req, res) {
+    static async SingUp(req, res) {
         try {
             const  {email, password, role} = req.body 
             await database.sequelize.transaction( async cadastro => {
@@ -15,8 +15,8 @@ class UserController {
                         user_id: newUser.id
                     }, {  transaction: cadastro } );
                   }
-                if (role === 'candidate') {
-                   await database.Candidate.create({
+                if (role === 'freelancer') {
+                   await database.Freelancer.create({
                         email,
                         user_id: newUser.id
                     }, {  transaction: cadastro } );
@@ -36,7 +36,7 @@ class UserController {
         }
     }
 
-    static async Login(req, res) {
+    static async LogIn(req, res) {
         const {email, password} = req.body;
         try { 
             const user = await database.User.findOne({ where: { email } })
@@ -48,15 +48,6 @@ class UserController {
                 return res.status(401).json({ message: 'Invalid email or password' });
               }
             
-        } catch (error) {
-            return res.status(500).json(error.message)
-        }
-    }
-    
-    static async UserAll(req, res) {
-        try {
-            const User = await database.User.findAll()
-            return res.status(200).json(User)
         } catch (error) {
             return res.status(500).json(error.message)
         }

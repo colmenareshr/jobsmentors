@@ -18,22 +18,6 @@ class FreelancerController {
         }
     }
 
-    static async searchFreelancerRandom(req, res){
-        try {
-            const resultFreelancers = await database.Freelancer.findAll({
-                order: sequelize.literal('RAND()'),
-                limit: 6
-            })
-            if(resultFreelancers !== null){
-                return res.status(200).json(resultFreelancers)
-            } else{
-                return res.status(400).send({message:'Freelancer id not found'})
-            }
-        } catch (error) {
-            return res.status(500).json(error.message)
-        }
-    }
-
     static async updateFreelancer(req, res) {
         const {
             name, 
@@ -120,25 +104,6 @@ class FreelancerController {
         }
     
     }
-    
-    static async updateNetwork(req, res) {
-        const uptadedNetwork = req.body
-        const {id} = req.params
-        try {
-            const resultNetwork = await database.Freelancer.findOne({
-                where: {id: Number(id)}
-            })
-            if(resultNetwork !== null){
-            await database.Network.update(uptadedNetwork, {where: {freelancer_id:Number(id)}})
-            const networkUpdated = await database.Network.findOne({where: {freelancer_id:Number(id)}})
-            return res.status(200).json(networkUpdated)
-            } else {
-                return res.status(400).send({message:`Network ${id} not found`})
-            }
-        } catch (error) {
-            return res.status(500).json(error.message)
-        }
-    }
 
     static async CreateNetwork(req, res) {
         const {freelancer_id} = req.body
@@ -159,6 +124,27 @@ class FreelancerController {
             return res.status(500).json(error.message)
         }
     }
+    
+    static async updateNetwork(req, res) {
+        const uptadedNetwork = req.body
+        const {id} = req.params
+        try {
+            const resultNetwork = await database.Freelancer.findOne({
+                where: {id: Number(id)}
+            })
+            if(resultNetwork !== null){
+            await database.Network.update(uptadedNetwork, {where: {freelancer_id:Number(id)}})
+            const networkUpdated = await database.Network.findOne({where: {freelancer_id:Number(id)}})
+            return res.status(200).json(networkUpdated)
+            } else {
+                return res.status(400).send({message:`Network ${id} not found`})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+   
 }
 
 module.exports = FreelancerController
