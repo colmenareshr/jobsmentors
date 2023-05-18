@@ -9,11 +9,11 @@
   }
 
   h1 {
-    @apply text-3xl font-bold text-black;
+    @apply text-3xl font-bold;
   }
 
   h2 {
-    @apply text-2xl font-bold text-black uppercase;
+    @apply text-2xl font-bold uppercase;
   }
 
   h3 {
@@ -21,7 +21,7 @@
   }
 
   p {
-    @apply text-base font-normal text-black;
+    @apply text-base font-normal;
   }
 }
 
