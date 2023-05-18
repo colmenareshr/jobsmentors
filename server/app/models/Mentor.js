@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       Mentor.belongsTo(models.User,{
         foreignKey:'user_id'
       })
+
     }
   }
   Mentor.init({

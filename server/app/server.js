@@ -13,7 +13,7 @@ app.listen(port, () => {
         console.log('DB connection successfull')
     })
 
-    sequelize.sync({force:true}).then (() => {
+    sequelize.sync({force:false}).then (() => {
         console.log(`Connecting port ${port}`)
     }) 
 })

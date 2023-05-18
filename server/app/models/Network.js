@@ -6,17 +6,17 @@ module.exports = (sequelize, DataTypes) => {
   class Network extends Model {
     
     static associate(models) {
-      Network.belongsTo(models.Candidate,{
-        foreignKey:'candidate_id'
+      Network.belongsTo(models.Freelancer,{
+        foreignKey:'freelancer_id'
       })
     }
   }
   Network.init({
-    candidate_id: {
+    freelancer_id: {
       allowNull: false,
       type: DataTypes.INTEGER,
       references: {
-         model: 'Candidate',
+         model: 'Freelancer',
           key: 'id' 
         },
       onUpdate: 'CASCADE',

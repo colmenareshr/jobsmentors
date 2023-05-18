@@ -4,19 +4,19 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class JobsCandidate extends Model {
+  class Jobs extends Model {
     
     static associate(models) {
-      JobsCandidate.belongsTo(models.Company,{
+      Jobs.belongsTo(models.Company,{
         foreignKey:'company_id'
       })
-      JobsCandidate.belongsTo(models.Candidate,{
-        foreignKey:'candidate_id'
+      Jobs.hasMany(models.JobsFreelancer, {
+        foreignKey:'job_id'
       })
     }
     
   }
-  JobsCandidate.init({
+  Jobs.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -33,16 +33,6 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     },
-    candidate_id: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: {
-         model: 'Candidate',
-         key: 'id' 
-        },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
-    },
     title: {
       allowNull: false,
       type: DataTypes.STRING
@@ -51,15 +41,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    contract: {
-      allowNull: false,
+    hard_skills: {
+      allowNull:false,
       type: DataTypes.STRING
     },
-
   }, {
     sequelize,
-    modelName: 'JobsCandidate',
+    modelName: 'Jobs',
     freezeTableName: true
   });
-  return JobsCandidate;
+  return Jobs;
 };
