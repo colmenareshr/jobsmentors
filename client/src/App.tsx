@@ -3,7 +3,7 @@ import { AppContext } from 'context/appContext'
 import { BrowserRouter } from 'react-router-dom'
 import { AppRoutes } from 'routes'
 import Header from 'components/Header/Header'
-import Footer from 'components/Footer/Footer'
+import Footer from 'components/Footer'
 import './app.css'
 
 function App() {
