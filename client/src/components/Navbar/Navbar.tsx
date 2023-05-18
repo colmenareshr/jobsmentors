@@ -2,6 +2,7 @@ import Login from 'components/Login/Login'
 import Sign from 'components/Sign/Sign'
 import { useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   const [nav, setNav] = useState(false)
@@ -14,7 +15,9 @@ function Navbar() {
     <nav className="flex items-center justify-between font-semibold">
       <div className="hidden lg:block lg:pr-4">
         <ul className="md:flex md:gap-4">
-          <li className="hover:text-teal/90">Freelancers</li>
+          <li className="hover:text-teal/90">
+            <Link to="/freelancers">Freelancers</Link>
+          </li>
           <li className="hover:text-teal/90">Mentores</li>
           <li className="hover:text-teal/90">Cómo Funciona</li>
         </ul>

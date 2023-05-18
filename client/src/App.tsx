@@ -2,7 +2,7 @@ import { useStore } from './context/useStore'
 import { AppContext } from 'context/appContext'
 import { BrowserRouter } from 'react-router-dom'
 import { AppRoutes } from 'routes'
-import Header from 'components/Header/Header'
+import Header from 'components/Header'
 import Footer from 'components/Footer'
 import './app.css'
 
