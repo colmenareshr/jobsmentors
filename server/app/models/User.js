@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     
     static associate(models) {
-      User.hasMany(models.Candidate, {
+      User.hasMany(models.Freelancer, {
         foreignKey:'user_id'
       })
       User.hasMany(models.Company, {
@@ -25,20 +25,43 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     email: {
+      type: DataTypes.STRING(128),
       allowNull: false,
-      unique: true,
-      type: DataTypes.STRING
+      validate: {
+        isUnique: (value, next) => {
+          User.findAll({
+            where: { email: value },
+            attributes: ['id'],
+          })
+            .then((user) => {
+              if (user.length != 0)
+                next(new Error('Email address already in use!'));
+              next();
+            })
+            .catch((onError) => console.log(onError));
+        },
+        isEmail:{
+          msg:"checks for email format (email@example.com)"
+        },
+      },
     },
     password: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING(128),
+      validate:{
+        len:  [6,  100]
+      }
     },
     role: {
       allowNull: false,
-      type:DataTypes.ENUM('candidate', 'company','mentor'),
+      type:DataTypes.ENUM('freelancer', 'company','mentor'),
+      validate: {
+        isIn: [['freelancer', 'company', 'mentor']]
+    }
     },
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'User',
     freezeTableName: true
   });

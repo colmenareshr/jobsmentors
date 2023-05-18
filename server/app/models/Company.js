@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Company extends Model {
     
     static associate(models) {
-      Company.hasMany(models.JobsCandidate, {
+      Company.hasMany(models.Jobs, {
         foreignKey:'company_id'
       })
       Company.belongsTo(models.User,{
