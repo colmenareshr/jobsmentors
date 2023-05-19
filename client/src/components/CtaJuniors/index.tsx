@@ -1,4 +1,4 @@
-import Freelancer from '../../assets/images/hero-Image-jobsmentors.svg'
+import Freelancer from '../../assets/images/hero-Image-jobsmentors.png'
 import contactFreelancer from '../../assets/images/contact-freelancers-jobsmentors.svg'
 const CtaJuniors = () => {
   return (
