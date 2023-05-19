@@ -46,7 +46,9 @@ function Navbar() {
           }
         >
           <ul className="flex flex-col gap-3 pt-12">
-            <li>Freelancers</li>
+            <li>
+              <Link to="/freelancers">Freelancers</Link>
+            </li>
             <li className="hover:text-teal/90">
               <Link to="/companies">Empresas</Link>
             </li>
