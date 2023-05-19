@@ -8,6 +8,8 @@ router
     
     .get('/company/:id', authJwt.verifyToken, CompanyController.searchCompanyById)
     .get('/company/freelancerSkills', authJwt.verifyToken, authJwt.isCompany, CompanyController.findFreelancerSkills)
+    .get('/companies', authJwt.verifyToken, CompanyController.searchCompanies)
+    .get('/companies/rand', authJwt.verifyToken, CompanyController.searchCompaniesRandom)
     .post('/company/job', authJwt.verifyToken, authJwt.isCompany, CompanyController.CreateJob)
     .put('/company/update/:id', authJwt.verifyToken, authJwt.isCompany,  CompanyController.updateCompany)
     .delete('/company/:id', authJwt.verifyToken, authJwt.isCompany, CompanyController.deleteCompany)

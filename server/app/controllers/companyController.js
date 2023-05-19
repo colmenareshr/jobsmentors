@@ -22,6 +22,35 @@ class CompanyController {
         }
     }
 
+    static async searchCompanies(req, res){
+        try {
+            const resultCompanies = await database.Company.findAll()
+            if(resultCompanies !== null){
+                return res.status(200).json(resultCompanies)
+            } else{
+                return res.status(400).send({message:'Companies not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+    static async searchCompaniesRandom(req, res){
+        try {
+            const resultCompanies = await database.Company.findAll({
+                order: Sequelize.literal('RAND()'),
+                limit: 9
+            })
+            if(resultCompanies !== null){
+                return res.status(200).json(resultCompanies)
+            } else{
+                return res.status(400).send({message:'Companies not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
     static async updateCompany(req, res) {
         const uptadedCompany = req.body
         const {id} = req.params
