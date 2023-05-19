@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Search from '../Search/Search'
 import ProjectCard from './ProjectCard'
-import Projects from './Projects'
+import Projects from '../Projects/Projects'
 import { Link } from 'react-router-dom'
 
 export interface ProjectsProps {
