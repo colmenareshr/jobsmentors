@@ -2,6 +2,11 @@ import React from 'react'
 import './projects.css'
 
 function Projects() {
+  const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    console.log('Proyecto guardado')
+  }
+
   return (
     <div className="w-full bg-teal400 p-4">
       <div className="container mx-auto rounded-lg border-2 border-white bg-teal400">
@@ -62,7 +67,10 @@ function Projects() {
               </div>
               <div className="col-span-4 row-span-3 flex flex-col place-content-center gap-16">
                 <div className="">
-                  <button className="button w-80 rounded-full p-5 shadow-lg">
+                  <button
+                    className="button w-80 rounded-full p-5 shadow-lg"
+                    onClick={handleSubmit}
+                  >
                     GUARDAR
                   </button>
                 </div>
