@@ -1,0 +1,11 @@
+.label-Projects {
+  color: white;
+}
+
+.button-Proyects {
+  @apply text-lg;
+}
+
+.button-Proyects:hover {
+  @apply shadow-xl;
+}

@@ -18,6 +18,9 @@ function Navbar() {
           <li className="hover:text-teal/90">
             <Link to="/freelancers">Freelancers</Link>
           </li>
+          <li className="hover:text-teal/90">
+            <Link to="/companies">Empresas</Link>
+          </li>
           <li className="hover:text-teal/90">Mentores</li>
           <li className="hover:text-teal/90">Cómo Funciona</li>
         </ul>
@@ -39,12 +42,15 @@ function Navbar() {
           className={
             !nav
               ? 'fixed right-[-100%]'
-              : 'fixed right-0 top-24 h-full w-[50%] border-l border-l-sky bg-white px-3 text-left duration-500 ease-in-out'
+              : 'fixed right-0 top-24 z-30 h-full w-[50%] border-l border-l-sky bg-white px-3 text-left duration-500 ease-in-out'
           }
         >
           <ul className="flex flex-col gap-3 pt-12">
-            <li>Encuentra Freelancers</li>
-            <li>Encuentra Mentores</li>
+            <li>Freelancers</li>
+            <li className="hover:text-teal/90">
+              <Link to="/companies">Empresas</Link>
+            </li>
+            <li>Mentores</li>
             <li>Cómo Funciona</li>
           </ul>
           <ul className="flex flex-col gap-3 pt-3">
