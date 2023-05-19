@@ -1,0 +1,147 @@
+{
+  "candidate": [
+    {
+      "id": 1,
+      "name": "John",
+      "email": "frelancer@freemail.com",
+      "password": "1",
+      "img": ""
+    },
+    {
+      "id": 2,
+      "name": "Jane",
+      "email": "jane@email.com",
+      "password": "1",
+      "img": ""
+    },
+    {
+      "id": 3,
+      "name": "Jack",
+      "email": "jack@email.com",
+      "password": "1",
+      "img": ""
+    },
+    {
+      "id": 4,
+      "name": "Jill",
+      "email": "jill@email.com",
+      "password": "1",
+      "img": ""
+    },
+    {
+      "id": 5,
+      "name": "James",
+      "email": "james@gmai.com",
+      "img": ""
+    },
+    {
+      "id": 6,
+      "name": "Jenny",
+      "email": "jenny@mail.com",
+      "img": ""
+    },
+    {
+      "id": 7,
+      "name": "Jesse",
+      "email": "jesse@mail.com",
+      "password": "1",
+      "img": ""
+    },
+    {
+      "id": 8,
+      "name": "Jasmine",
+      "email": "jasmine@mail.com",
+      "password": "1",
+      "img": ""
+    },
+    {
+      "id": 9,
+      "name": "Jared",
+      "email": "jared@mail.com",
+      "password": "1",
+      "img": ""
+    },
+    {
+      "id": 10,
+      "name": "Jocelyn",
+      "email": "jocelyn@mymail.com",
+      "password": "1",
+      "img": ""
+    }
+  ],
+  "company": [
+    {
+      "id": 1,
+      "name": "Company 1",
+      "email": "comp1@mail.com",
+      "password": "2",
+      "projects": [
+        {
+          "id": 1,
+          "name": "Project 1",
+          "description": "Project 1 description",
+          "freelancers": [
+            {
+              "id": 1,
+              "name": "John",
+              "email": "john@mail.com",
+              "img": ""
+            },
+            {
+              "id": 2,
+              "name": "Jane",
+              "email": "jane@email.com",
+              "img": ""
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Project 2",
+          "description": "Project 2 description",
+          "freelancers": [
+            {
+              "id": 3,
+              "name": "Jack",
+              "email": "jack@email.com",
+              "img": ""
+            },
+            {
+              "id": 4,
+              "name": "Jill",
+              "email": "jill@email.com",
+              "img": ""
+            },
+            {
+              "id": 5,
+              "name": "James",
+              "email": "james@gmai.com",
+              "img": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Company 2",
+      "email": "comp2@mail.com",
+      "password": "2",
+      "projects": [
+        {
+          "id": 3,
+          "name": "Project 3",
+          "description": "Project 3 description",
+          "freelancers": [
+            {
+              "id": 6,
+              "name": "Jenny",
+              "email": "jenny@mail.com",
+              "img": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
