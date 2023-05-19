@@ -18,6 +18,19 @@ class MentorController {
         }
     }
 
+    static async searchMentor(req, res){
+        try {
+            const resultMentors = await database.Mentor.findAll()
+            if(resultMentors !== null){
+                return res.status(200).json(resultMentors)
+            } else{
+                return res.status(400).send({message:'Mentors not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
     static async searchMentorRandom(req, res){
         try {
             const resultMentors = await database.Mentor.findAll({
@@ -27,7 +40,7 @@ class MentorController {
             if(resultMentors !== null){
                 return res.status(200).json(resultMentors)
             } else{
-                return res.status(400).send({message:'Mentor id not found'})
+                return res.status(400).send({message:'Mentors not found'})
             }
         } catch (error) {
             return res.status(500).json(error.message)
