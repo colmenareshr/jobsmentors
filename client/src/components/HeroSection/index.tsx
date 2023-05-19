@@ -9,11 +9,6 @@ const HeroSection = () => {
       <a href="#" className="button uppercase">
         Get a solution now
       </a>
-      <img
-        className="z-100"
-        src="../src/assets/images/hero-image-jobsmentors.svg"
-        alt="JobsMentors"
-      />
     </section>
   )
 }
