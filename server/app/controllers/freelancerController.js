@@ -18,6 +18,19 @@ class FreelancerController {
         }
     }
 
+    static async searchFreelancer(req, res){
+        try {
+            const resultFreelancers = await database.Freelancer.findAll()
+            if(resultFreelancers !== null){
+                return res.status(200).json(resultFreelancers)
+            } else{
+                return res.status(400).send({message:'Freelancers not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
     static async searchFreelancerRandom(req, res){
         try {
             const resultFreelancers = await database.Freelancer.findAll({
@@ -27,7 +40,7 @@ class FreelancerController {
             if(resultFreelancers !== null){
                 return res.status(200).json(resultFreelancers)
             } else{
-                return res.status(400).send({message:'Freelancer id not found'})
+                return res.status(400).send({message:'Freelancers not found'})
             }
         } catch (error) {
             return res.status(500).json(error.message)
