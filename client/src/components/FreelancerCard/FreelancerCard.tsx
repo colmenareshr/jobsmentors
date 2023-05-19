@@ -1,4 +1,5 @@
 import FreelancerCard2 from 'components/FreelancerCard2/FreelamcerCard2'
+import { Link } from 'react-router-dom'
 
 function FreelancerCard() {
   const freelancerInfo = [
@@ -46,7 +47,7 @@ function FreelancerCard() {
   ]
 
   return (
-    <a href="#" className="flex flex-wrap items-center justify-center gap-4">
+    <link className="flex flex-wrap items-center justify-center gap-4">
       {freelancerInfo.map((freelancer, index) => (
         <FreelancerCard2
           key={index}
@@ -55,7 +56,7 @@ function FreelancerCard() {
           skill={freelancer.skill}
         />
       ))}
-    </a>
+    </link>
   )
 }
 
