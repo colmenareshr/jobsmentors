@@ -67,7 +67,7 @@ class FreelancerController {
             const resultFreelancer = await database.Freelancer.findByPk(id)
             if(resultFreelancer !== null){
             await database.Freelancer.update(
-                { name, phone, birth, gender, address, about, img, career, hard_skills, contract, open_to_work } ,
+                { name, phone, birth, gender, address, about, img, career, hard_skills:hard_skills.toLowerCase(), contract, open_to_work } ,
                 {where: {id:Number(id)}})
             const freelancerUpdated = await database.Freelancer.findOne({where: {id:Number(id)}})
             return res.status(200).json(freelancerUpdated)
