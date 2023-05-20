@@ -1,4 +1,4 @@
-import FeaturesCards from 'components/FeaturesCards'
+import FeaturesCards from 'components/FeaturesCards/FeaturesCards'
 
 const FeaturesSection = () => {
   return (

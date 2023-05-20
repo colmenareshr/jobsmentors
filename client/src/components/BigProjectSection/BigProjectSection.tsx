@@ -1,4 +1,4 @@
-import CompanyImages from 'components/CompanyImages'
+import CompanyImages from 'components/CompanyImages/CompanyImages'
 
 const BigProjectSection = () => {
   return (
