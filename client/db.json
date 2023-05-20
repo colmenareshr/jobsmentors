@@ -5,6 +5,7 @@
       "name": "John",
       "email": "frelancer@freemail.com",
       "password": "1",
+      "skills": "Java, Typescript, Mongodb",
       "img": ""
     },
     {
@@ -12,6 +13,7 @@
       "name": "Jane",
       "email": "jane@email.com",
       "password": "1",
+      "skills": "python, C++, C#",
       "img": ""
     },
     {
@@ -19,6 +21,7 @@
       "name": "Jack",
       "email": "jack@email.com",
       "password": "1",
+      "skills": "cobol, fortran, pascal",
       "img": ""
     },
     {
@@ -26,18 +29,23 @@
       "name": "Jill",
       "email": "jill@email.com",
       "password": "1",
+      "skills": "php, javascript, html",
       "img": ""
     },
     {
       "id": 5,
       "name": "James",
       "email": "james@gmai.com",
+      "password": "1",
+      "skills": "ruby, scala, kotlin",
       "img": ""
     },
     {
       "id": 6,
       "name": "Jenny",
       "email": "jenny@mail.com",
+      "password": "1",
+      "skills": "c, c++, c#",
       "img": ""
     },
     {
@@ -45,6 +53,7 @@
       "name": "Jesse",
       "email": "jesse@mail.com",
       "password": "1",
+      "skills": "java, typescript, mongodb",
       "img": ""
     },
     {
@@ -52,6 +61,7 @@
       "name": "Jasmine",
       "email": "jasmine@mail.com",
       "password": "1",
+      "skills": "python, c++, c#",
       "img": ""
     },
     {
@@ -59,6 +69,7 @@
       "name": "Jared",
       "email": "jared@mail.com",
       "password": "1",
+      "skills": "react, angular, vue",
       "img": ""
     },
     {
@@ -66,6 +77,7 @@
       "name": "Jocelyn",
       "email": "jocelyn@mymail.com",
       "password": "1",
+      "skills": "SQL, SQLite, Phyton, Java",
       "img": ""
     }
   ],
@@ -80,17 +92,20 @@
           "id": 1,
           "name": "Project 1",
           "description": "Project 1 description",
-          "freelancers": [
+          "skills": "Java, Typescript, Mongodb",
+          "candidate": [
             {
               "id": 1,
               "name": "John",
               "email": "john@mail.com",
+              "skills": "Java, Typescript, SQL, SQLite, Phyton, Java",
               "img": ""
             },
             {
               "id": 2,
               "name": "Jane",
               "email": "jane@email.com",
+              "skills": "Mongodb, React, Express, Node",
               "img": ""
             }
           ]
@@ -99,23 +114,27 @@
           "id": 2,
           "name": "Project 2",
           "description": "Project 2 description",
-          "freelancers": [
+          "skills": "ruby, scala, kotlin",
+          "candidate": [
             {
               "id": 3,
               "name": "Jack",
               "email": "jack@email.com",
+              "skills": "Scala, Go, C#",
               "img": ""
             },
             {
               "id": 4,
               "name": "Jill",
               "email": "jill@email.com",
+              "skills": "Kotlin, flutter, swift, SQLite",
               "img": ""
             },
             {
               "id": 5,
               "name": "James",
               "email": "james@gmai.com",
+              "skills": "javaScript, Typescript, ruby, scala",
               "img": ""
             }
           ]
@@ -132,11 +151,13 @@
           "id": 3,
           "name": "Project 3",
           "description": "Project 3 description",
-          "freelancers": [
+          "skills": "C#, Java, SQL, phyton",
+          "candidate": [
             {
               "id": 6,
               "name": "Jenny",
               "email": "jenny@mail.com",
+              "skills": "C#, phyton",
               "img": ""
             }
           ]
