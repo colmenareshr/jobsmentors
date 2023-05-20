@@ -16,10 +16,10 @@ function Navbar() {
       <div className="hidden lg:block lg:pr-4">
         <ul className="md:flex md:gap-4">
           <li className="hover:text-teal/90">
-            <Link to="/freelancers">Freelancers</Link>
+            <Link to="/candidate">Freelancers</Link>
           </li>
           <li className="hover:text-teal/90">
-            <Link to="/companies">Empresas</Link>
+            <Link to="/company">Empresas</Link>
           </li>
           <li className="hover:text-teal/90">Mentores</li>
           <li className="hover:text-teal/90">Cómo Funciona</li>
@@ -47,10 +47,10 @@ function Navbar() {
         >
           <ul className="flex flex-col gap-3 pt-12">
             <li>
-              <Link to="/freelancers">Freelancers</Link>
+              <Link to="/candidate">Freelancers</Link>
             </li>
             <li className="hover:text-teal/90">
-              <Link to="/companies">Empresas</Link>
+              <Link to="/company">Empresas</Link>
             </li>
             <li>Mentores</li>
             <li>Cómo Funciona</li>
