@@ -1,7 +1,6 @@
 import { use } from 'chai'
 import { get } from 'http'
 import { useEffect, useState } from 'react'
-// import { useLocation } from 'react-router-dom'
 
 export type CandidateProps = {
   id: number
