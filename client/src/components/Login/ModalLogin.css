@@ -9,7 +9,7 @@
 }
 
 .title-ModalLogin {
-  @apply p-3 text-3xl text-purple
+  @apply p-3 text-3xl text-purple font-bold
 }
 
 .title-ModalLogin:hover {
