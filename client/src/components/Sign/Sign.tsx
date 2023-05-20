@@ -15,7 +15,7 @@ function Register() {
     <Fragment>
       <div>
         <button className="button" onClick={() => handleOpen()}>
-          Sign
+          Cadastro
         </button>
         {isOpenModalSign && (
           <div className="modal">

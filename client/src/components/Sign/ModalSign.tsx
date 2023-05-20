@@ -90,10 +90,10 @@ function ModalSign() {
         <header className="flex w-full flex-row justify-center">
           <div
             className="hover:drop-shadow-red-500 p-9
-                      text-lg text-purple
-                      md:text-5xl"
+                      text-lg font-bold
+                      text-purple md:text-5xl"
           >
-            Registrar {tabsData[activeTabIndex].label}
+            Cadastrar {tabsData[activeTabIndex].label}
           </div>
           <button
             className="duration-400
@@ -201,7 +201,7 @@ function ModalSign() {
             Cancelar
           </button>
           <button className="footer-button-ModalSign" onClick={handleSubmit}>
-            Registrar
+            Cadastrar
           </button>
         </footer>
       </div>

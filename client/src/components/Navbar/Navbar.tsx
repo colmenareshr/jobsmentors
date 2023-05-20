@@ -22,12 +22,12 @@ function Navbar() {
             <Link to="/companies">Empresas</Link>
           </li>
           <li className="hover:text-teal/90">Mentores</li>
-          <li className="hover:text-teal/90">Cómo Funciona</li>
+          <li className="hover:text-teal/90">Como Funciona</li>
         </ul>
       </div>
       <div className="hidden md:block">
         <ul className="items-center justify-between gap-4 md:flex">
-          <li className="hover:text-teal/90">Sé un Mentor</li>
+          <li className="hover:text-teal/90">Seja um Mentor</li>
           <li className="hover:text-teal/90">
             <Sign />
           </li>
@@ -53,10 +53,10 @@ function Navbar() {
               <Link to="/companies">Empresas</Link>
             </li>
             <li>Mentores</li>
-            <li>Cómo Funciona</li>
+            <li>Como Funciona</li>
           </ul>
           <ul className="flex flex-col gap-3 pt-3">
-            <li>Sé un Mentor</li>
+            <li>Seja um Mentor</li>
             <li>
               <Sign />
             </li>
