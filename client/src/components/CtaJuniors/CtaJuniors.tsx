@@ -9,15 +9,16 @@ const CtaJuniors = () => {
       <div className="container-lg mx-auto mt-24 grid md:mt-0 md:grid md:grid-cols-2 md:items-center md:justify-items-center md:px-9">
         <div className="flex flex-col items-center gap-3 text-center text-white md:w-[80%] md:items-start md:text-left">
           <h2>
-            Discover a skilled team to provide the solution your business needs.
+            Descubra uma equipe habilidosa para fornecer a solução que sua
+            empresa precisa.
           </h2>
           <p className="mb-4">
-            Connect with talented junior freelancers ready to tackle your
-            technological projects. Find the perfect match for your business
-            needs and drive innovation forward.
+            Conecte-se com talentosos freelancers juniores prontos para
+            enfrentar seus projetos tecnológicos. Encontre a combinação perfeita
+            para as necessidades de sua empresa e impulsione a inovação.
           </p>
           <a href="#" className="button text-black">
-            Get Started Today
+            Comece hoje mesmo
           </a>
         </div>
         <div>
