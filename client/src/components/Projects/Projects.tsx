@@ -3,6 +3,7 @@ import './projects.css'
 import FreelancerCard, {
   freelancerInfo
 } from 'components/FreelancerCard/FreelancerCard'
+import { CiTrash } from 'react-icons/ci'
 
 function Projects() {
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -98,8 +99,8 @@ function Projects() {
                         <td>{info.name}</td>
                         <td>{info.skill}</td>
                         <td className="flex w-full justify-center">
-                          <button className="rounded-lg bg-orange p-2 pl-10 pr-10 text-white">
-                            DEL
+                          <button className="hover:dropshadow-lg rounded-full p-2 text-white hover:bg-orange/90">
+                            <CiTrash size={25} />
                           </button>
                         </td>
                       </tr>
