@@ -15,7 +15,7 @@ function Login() {
     <Fragment>
       <div>
         <button className="button-secondary" onClick={() => handleOpen()}>
-          Login
+          LogIn
         </button>
         {isOpenModalLogin && (
           <div className="modal">

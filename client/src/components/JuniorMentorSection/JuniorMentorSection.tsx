@@ -3,18 +3,18 @@ import juniorFeaturesImage from '../../assets/images/junior-features-img.svg'
 import mentorshipImage from '../../assets/images/mentorship-img.svg'
 const JuniorMentor = () => {
   const featuresJuniors = [
-    'Cost-effective solutions for your projects',
-    'Fresh perspectives and innovative ideas',
-    'Passionate learners, eager to grow',
-    'Flexible and adaptable to your needs',
-    'Quick to adapt to new technologies',
-    'Dedicated and committed to delivering quality results'
+    'Soluções de custo-benefício para seus projetos',
+    'Perspectivas frescas e ideias inovadoras',
+    'Aprendizes apaixonados, ansiosos para crescer',
+    'Flexíveis e adaptáveis às suas necessidades',
+    'Rápidos em se adaptar a novas tecnologias',
+    'Dedicados e comprometidos em fornecer resultados de qualidade'
   ]
   return (
     <section className="w-full py-14">
       <div className="container-lg mx-auto grid text-center md:grid-cols-2 md:items-center md:justify-items-center md:px-5">
         <div className="left-colu md:text-left">
-          <h2>Why Choose Junior Freelancers?</h2>
+          <h2>Por que escolher freelancers Juniors?</h2>
           <ul className="py-4">
             {featuresJuniors.map((feature) => (
               <li
@@ -27,7 +27,7 @@ const JuniorMentor = () => {
             ))}
           </ul>
           <a href="#" className="button">
-            Get started today
+            Comece hoje mesmo
           </a>
         </div>
         <div className="rigth-colu">
@@ -48,15 +48,15 @@ const JuniorMentor = () => {
             />
           </div>
           <div className="text-center md:w-[80%] md:text-left">
-            <h2>Unlock the Power of Expert Mentorship</h2>
+            <h2>Desbloqueie o Poder da Mentoria Especializada</h2>
             <p className="py-5">
-              When you need a technological solution for your business, leverage
-              the expertise of our mentors. They are here to guide you through
-              the process, provide valuable insights, and ensure the success of
-              your projects.
+              Quando você precisa de uma solução tecnológica para o seu negócio,
+              aproveite a experiência dos nossos mentores. Eles estão aqui para
+              orientá-lo no processo, fornecer insights valiosos e garantir o
+              sucesso dos seus projetos.
             </p>
             <a href="#" className="button">
-              Get started today
+              Comece hoje mesmo
             </a>
           </div>
         </div>

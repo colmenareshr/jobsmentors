@@ -34,7 +34,7 @@ function Search() {
         </div>
         <input
           className="inputSearch"
-          placeholder="proyecto, habilidad, etc..."
+          placeholder="Projeto, habilidad, etc..."
           type="search"
           id="input-search"
           required

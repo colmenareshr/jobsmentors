@@ -4,11 +4,11 @@ function Footer() {
     <footer className="bg-teal px-5 pt-14">
       <div className="container mx-auto flex flex-col items-center gap-3 md:flex-row md:items-start md:justify-center">
         <div className="row border-b border-sky pb-4 md:w-[33.33%] md:border-b-0">
-          <div className="col-md-12 items-start text-center md:flex md:flex-col md:text-left">
+          <div className="items-start text-center md:flex md:flex-col md:text-left">
             <span className="text-xl font-bold text-white">JobsMentors</span>
             <p className="py-2 text-white">
-              Connecting Businesses with Junior Talents, Empowering Growth in
-              Technology.
+              Conectando empresas com talentos juniores, impulsionando o
+              crescimento na área de tecnologia.
             </p>
             <div className="flex items-center justify-center gap-3 text-white">
               <a href="#">
@@ -21,51 +21,54 @@ function Footer() {
           </div>
         </div>
         <div className="row border-b border-sky pb-4 md:w-[33.33%] md:border-b-0">
-          <div className="col-md-12 text-center text-white md:text-left">
-            <h3 className=" text-white">Services</h3>
+          <div className=" text-center text-white md:text-left">
+            <h3 className=" text-white">Serviços</h3>
             <ul>
               <li>
-                <a href="">Mobile app development</a>
+                <a href="">Desenvolvimento de aplicativos móveis</a>
               </li>
               <li>
-                <a href="">Web development and site design</a>
+                <a href="">Desenvolvimento web e design de sites</a>
               </li>
               <li>
-                <a href="">Custom software development</a>
+                <a href="">Desenvolvimento de software personalizado</a>
               </li>
               <li>
                 <a href="">
-                  User interface (UI) and user experience (UX) design
+                  Design de interface do usuário (UI) e experiência do usuário
+                  (UX)
                 </a>
               </li>
               <li>
-                <a href="">Technology consulting and project advisory</a>
+                <a href="">
+                  Consultoria em tecnologia e assessoria de projetos
+                </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12 text-center text-white md:text-left">
-            <h3 className=" text-white">Pages</h3>
+          <div className=" text-center text-white md:text-left">
+            <h3 className="text-white">Páginas</h3>
             <ul>
               <li>
-                <a href="">About us</a>
+                <a href="">Sobre nós</a>
               </li>
               <li>
-                <a href="">Contact us</a>
+                <a href="">Contato</a>
               </li>
               <li>
                 <a href="">Blog</a>
               </li>
               <li>
-                <a href="">Network</a>
+                <a href="">Rede</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
       <div className="container mx-auto mt-4 border-t border-sky/60 pb-4">
-        <div className="col-md-12 text-center text-white md:text-left">
+        <div className="text-center text-white md:text-left">
           <p className="pt-4 text-sm text-white/70">
             © Copyrigth 2023 <strong>JobsMentors</strong>
           </p>

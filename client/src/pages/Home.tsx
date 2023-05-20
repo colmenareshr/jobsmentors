@@ -1,5 +1,5 @@
-import HeroSection from 'components/HeroSection'
-import Main from 'components/Main'
+import HeroSection from 'components/HeroSection/HeroSection'
+import Main from 'components/Main/Main'
 
 function Home() {
   return (

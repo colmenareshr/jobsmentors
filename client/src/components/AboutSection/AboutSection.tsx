@@ -9,16 +9,16 @@ const AboutSection = () => {
         />
       </div>
       <div className="flex flex-col items-center gap-4 md:w-[50%] md:items-start md:justify-self-end md:text-left ">
-        <h2>Our Journey</h2>
+        <h2>Nossa Jornada</h2>
         <p>
-          We are a team of skilled freelancers specializing in various areas of
-          software development and IT. Our mission is to empower individuals,
-          including men, women, people with disabilities, and young
-          professionals, by connecting them with their first job opportunities
-          in the technology field. Join us on our journey!
+          Somos uma equipe de freelancers especializados em diversas áreas de
+          desenvolvimento de software e TI. Nossa missão é capacitar indivíduos,
+          incluindo homens, mulheres, pessoas com deficiência e jovens
+          profissionais, conectando-os com suas primeiras oportunidades de
+          trabalho no campo da tecnologia. Junte-se a nós em nossa jornada!
         </p>
         <a href="#" className="button uppercase">
-          Learn more about us
+          Saiba mais sobre nós
         </a>
       </div>
     </section>

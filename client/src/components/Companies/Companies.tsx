@@ -13,7 +13,7 @@ function Companies() {
       <div className="flex justify-center pb-4 md:justify-start md:pb-0">
         <Link to="/company/projects">
           <button className="button hover:bg-orange hover:shadow-lg">
-            Agregar proyecto
+            Adicionar projeto
           </button>
         </Link>
       </div>

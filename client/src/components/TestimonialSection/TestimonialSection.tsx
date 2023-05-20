@@ -1,3 +1,4 @@
+import testimonialSara from '../../assets/images/testimonial-img-1.jpg'
 const TestimonialSection = () => {
   return (
     <section
@@ -11,7 +12,7 @@ const TestimonialSection = () => {
         <div className="image-info flex flex-col items-center justify-center text-center md:w-[50%]">
           <img
             className="h-auto w-[200px]"
-            src="../src/assets/images/testimonial-img-1.jpg"
+            src={testimonialSara}
             alt="Imagen"
           />
           <div className="nombre">
@@ -26,11 +27,11 @@ const TestimonialSection = () => {
             <blockquote className="text-2xl">
               <span>
                 <strong>
-                  Thanks to @jobsmentors, I found an exceptional development
-                  team
+                  Graças ao @jobsmentors, encontrei uma equipe de
+                  desenvolvimento excepcional
                 </strong>{' '}
-                that turned my project into a success. I can't recommend them
-                enough!
+                que transformou meu projeto em um sucesso. Eu não posso
+                recomendá-los o suficiente!
               </span>
             </blockquote>
           </span>

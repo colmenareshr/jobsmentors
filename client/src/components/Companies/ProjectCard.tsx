@@ -39,7 +39,7 @@ function ProjectCard({ project }: CardProps) {
       </header>
 
       <main className="flex h-52 flex-col">
-        <section className="pl-2 pr-2 pt-2 text-center text-white">
+        <section className="px-2 pt-2 text-center text-white">
           <p>{project.description}</p>
         </section>
         <section className="h-20 overflow-y-scroll bg-sky pt-2 text-center">

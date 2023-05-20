@@ -1,7 +1,6 @@
-import React, { Fragment, useState } from 'react'
 import { useContext } from 'react'
-import { AppContext } from '../../context/appContext'
-import { AppContextProps } from '../../context/appContext'
+import { AppContext, AppContextProps } from '../../context/appContext'
+import { IoMdClose } from 'react-icons/io'
 import './modalLogin.css'
 
 function ModalLogin() {
@@ -27,10 +26,10 @@ function ModalLogin() {
                   md:pb-3"
       >
         <header className="flex w-full flex-row justify-center">
-          <div className="title-ModalLogin">Acceso a su cuenta</div>
+          <div className="title-ModalLogin">Acesso à sua conta</div>
 
           <button className="header-button-x-ModalLogin" onClick={handleClose}>
-            X
+            <IoMdClose size={30} />
           </button>
         </header>
 
@@ -40,14 +39,14 @@ function ModalLogin() {
             className="main-input-email-ModalLogin"
             type="email"
             name="email"
-            placeholder="ejemplo@email.com"
+            placeholder="exemplo@email.com"
           />
           <div className="w-full pb-5">
             <label
               className="label-ModalLogin ml-2
                         flex pb-1 pr-2 pt-5 font-semibold text-white"
             >
-              Clave
+              Senha
             </label>
             <input
               className="main-input-password-ModalLogin"
