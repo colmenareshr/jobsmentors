@@ -1,5 +1,8 @@
 import React from 'react'
 import './projects.css'
+import FreelancerCard, {
+  freelancerInfo
+} from 'components/FreelancerCard/FreelancerCard'
 
 function Projects() {
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -80,12 +83,34 @@ function Projects() {
                   </button>
                 </div>
               </div>
-              <div className="col-span-12 row-span-2 flex w-full items-center justify-center rounded-lg bg-emerald">
-                TABLA
+              <div className="col-span-12 row-span-2 flex w-full justify-center overflow-y-scroll rounded-lg bg-emerald  p-4">
+                <table className="w-full table-auto">
+                  <thead className="text-lg">
+                    <tr>
+                      <th>Name</th>
+                      <th>Skills</th>
+                      <th className="flex justify-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {freelancerInfo.map((info) => (
+                      <tr>
+                        <td>{info.name}</td>
+                        <td>{info.skill}</td>
+                        <td className="flex w-full justify-center">
+                          <button className="rounded-lg bg-orange p-2 pl-10 pr-10 text-white">
+                            DEL
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </main>
           </form>
         </section>
+        {/* TODO: map the cards */}
         <section className="p-4">
           <div className="rounded-lg bg-sky p-4">
             <div className="flex w-full flex-wrap justify-center p-4">
@@ -93,17 +118,7 @@ function Projects() {
                 BUSCAR FREELANCERS
               </button>
             </div>
-            <div className="flex flex-wrap justify-evenly gap-5 p-4">
-              <div className="h-44 w-96 rounded-lg bg-white">CARD</div>
-              <div className="h-44 w-96 rounded-lg bg-white">CARD</div>
-              <div className="h-44 w-96 rounded-lg bg-white">CARD</div>
-              <div className="h-44 w-96 rounded-lg bg-white">CARD</div>
-              <div className="h-44 w-96 rounded-lg bg-white">CARD</div>
-              <div className="h-44 w-96 rounded-lg bg-white">CARD</div>
-              <div className="h-44 w-96 rounded-lg bg-white">CARD</div>
-              <div className="h-44 w-96 rounded-lg bg-white">CARD</div>
-              <div className="h-44 w-96 rounded-lg bg-white">CARD</div>
-            </div>
+            <FreelancerCard title="" color="" />
           </div>
           <div className="flex flex-row items-center justify-evenly gap-16 pb-6 pt-10">
             <div className="">
