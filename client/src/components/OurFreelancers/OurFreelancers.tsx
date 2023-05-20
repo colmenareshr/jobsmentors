@@ -1,14 +1,18 @@
+import FreelancerCard from 'components/FreelancerCard/FreelancerCard'
+
 const OurFreelancers = () => {
   return (
     <section className="continer mx-auto max-w-full bg-emerald py-14 text-center">
-      <h2 className="text-white">Meet Our Talented Freelancers</h2>
-      <div className="flex items-center justify-center gap-4"></div>
+      <h2 className="text-white">Conheça nossos talentosos freelancers</h2>
+      <div className="flex items-center justify-center gap-4 py-12">
+        <FreelancerCard />
+      </div>
       <div>
         <h3 className="pb-4 text-white">
-          Empower Your Projects with Exceptional Freelancers
+          Capacite seus projetos com freelancers excepcionais
         </h3>
         <a href="" className="button">
-          Hire a Freelancer Now
+          Contrate um freelancer agora
         </a>
       </div>
     </section>
