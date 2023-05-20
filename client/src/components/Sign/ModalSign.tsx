@@ -1,5 +1,6 @@
 import { useState, useContext, Fragment } from 'react'
 import { AppContext, AppContextProps } from '../../context/appContext'
+import { IoMdClose } from 'react-icons/io'
 import './modalSign.css'
 
 interface TabData {
@@ -46,26 +47,26 @@ function ModalSign() {
     {
       idx: 0,
       label: 'Freelancer',
-      name: 'Nombre',
+      name: 'Nome',
       email: 'Email',
-      password1: 'Clave',
-      password2: 'Confirmar Clave'
+      password1: 'Senha',
+      password2: 'Confirmar Senha'
     },
     {
       idx: 1,
       label: 'Empresa',
       email: 'Email',
-      password1: 'Clave',
-      password2: 'Confirmar Clave',
+      password1: 'Senha',
+      password2: 'Confirmar Senha',
       name: 'Empresa'
     },
     {
       idx: 2,
       label: 'Mentor',
       email: 'Email',
-      password1: 'Clave',
-      password2: 'Confirmar Clave',
-      name: 'Nombre'
+      password1: 'Senha',
+      password2: 'Confirmar Senha',
+      name: 'Nome'
     }
   ]
 
@@ -73,19 +74,18 @@ function ModalSign() {
     <div
       className="fixed inset-0
                 z-50 flex items-center
-                justify-center bg-black bg-opacity-25 backdrop-blur-md"
+                justify-center bg-black/25 backdrop-blur-md"
     >
       <div
         className="h-aut
                   absolute w-full
                   rounded-b-3xl rounded-tl-lg rounded-tr-none bg-white/80
+                  px-1
                   pb-3
-                  pl-1
-                  pr-1 
-                  shadow-xl
+                  shadow-xl 
                   sm:pb-3
-                  md:w-[590px] md:pb-3
-                  lg:w-[840px]"
+                  md:w-[590px]
+                  md:pb-3 lg:w-[840px]"
       >
         <header className="flex w-full flex-row justify-center">
           <div
@@ -102,12 +102,11 @@ function ModalSign() {
                       mt-2 place-self-end 
                       rounded-md
                       rounded-b-none
-                      bg-white/30 pl-3 pr-3 pt-0.5 text-lg 
-                      transition-colors hover:bg-purple hover:text-white
-                      hover:shadow-none"
+                      bg-white/30 px-3 pt-0.5 text-lg transition-colors 
+                      hover:bg-purple hover:text-white hover:shadow-none"
             onClick={handleClose}
           >
-            X
+            <IoMdClose size={30} />
           </button>
         </header>
 
@@ -144,14 +143,14 @@ function ModalSign() {
                   {tabsData[activeTabIndex].name}
                 </label>
                 <input
-                  className="input-ModalSign placeholder-ModalSign rounded"
+                  className="input-ModalSign placeholder:text-ModalSign rounded"
                   name="name"
                   onChange={handleChange}
                   // id={tabsData[activeTabIndex].name}
                   type="text"
                   {...(activeTabIndex === 1
-                    ? { placeholder: 'Nombre de la empresa' }
-                    : { placeholder: 'Nombre y Apellido' })}
+                    ? { placeholder: 'Nome da empresa' }
+                    : { placeholder: 'Nome e sobrenome' })}
                 />
               </div>
               <div>
@@ -159,11 +158,11 @@ function ModalSign() {
                   {tabsData[activeTabIndex].password1}
                 </label>
                 <input
-                  className="input-ModalSign placeholder-ModalSign g rounded"
+                  className="input-ModalSign placeholder:text-ModalSign g rounded"
                   onChange={handleChange}
                   name="password1"
                   // id={tabsData[activeTabIndex].password1}
-                  placeholder="Mínimo 8 caracteres"
+                  placeholder="Mínimo de 8 caracteres"
                   type="password"
                 />
               </div>
@@ -172,12 +171,12 @@ function ModalSign() {
                   {tabsData[activeTabIndex].email}
                 </label>
                 <input
-                  className="input-ModalSign placeholder-ModalSign g rounded"
+                  className="input-ModalSign placeholder:text-ModalSign g rounded"
                   onChange={handleChange}
                   name="email"
                   // id={tabsData[activeTabIndex].email}
                   type="email"
-                  placeholder="ejemplo@ejemplo.com"
+                  placeholder="exemplo@exemplo.com"
                 />
               </div>
               <div>
@@ -185,11 +184,11 @@ function ModalSign() {
                   {tabsData[activeTabIndex].password2}
                 </label>
                 <input
-                  className="input-ModalSign placeholder-ModalSign g rounded "
+                  className="input-ModalSign placeholder:text-ModalSign g rounded "
                   onChange={handleChange}
                   name="password2"
                   // id={tabsData[activeTabIndex].password2}
-                  placeholder="Mínimo 8 caracteres"
+                  placeholder="Mínimo de 8 caracteres"
                   type="password"
                 />
               </div>
