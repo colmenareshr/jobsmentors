@@ -9,3 +9,11 @@
 .button-Proyects:hover {
   @apply shadow-xl;
 }
+
+th,
+td {
+  color: white;
+  border: solid 1px lightgray;
+  padding: .5rem;
+  text-align: left;
+}
