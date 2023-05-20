@@ -47,7 +47,7 @@ function FreelancerCard() {
   ]
 
   return (
-    <link className="flex flex-wrap items-center justify-center gap-4">
+    <Link to="" className="flex flex-wrap items-center justify-center gap-4">
       {freelancerInfo.map((freelancer, index) => (
         <FreelancerCard2
           key={index}
@@ -56,7 +56,7 @@ function FreelancerCard() {
           skill={freelancer.skill}
         />
       ))}
-    </link>
+    </Link>
   )
 }
 
