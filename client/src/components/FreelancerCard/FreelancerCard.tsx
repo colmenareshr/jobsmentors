@@ -1,7 +1,12 @@
 import FreelancerCard2 from 'components/FreelancerCard2/FreelamcerCard2'
 import { Link } from 'react-router-dom'
 
-function FreelancerCard() {
+interface freelancerTeam {
+  title: string
+  color: string
+}
+
+function FreelancerCard({ title, color }: freelancerTeam) {
   const freelancerInfo = [
     {
       image:
