@@ -16,7 +16,7 @@ function Companies() {
   const projects: ProjectsProps[] = [
     {
       id: 0,
-      title: 'Proyecto 1',
+      title: 'Projeto 1',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
       skills: ['React', 'Node', 'MongoDB'],
@@ -24,7 +24,7 @@ function Companies() {
     },
     {
       id: 1,
-      title: 'Proyecto 2',
+      title: 'Projeto 2',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
       skills: ['JavaScript', 'React', 'CSS'],
@@ -32,7 +32,7 @@ function Companies() {
     },
     {
       id: 2,
-      title: 'Proyecto 3',
+      title: 'Projeto 3',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
       skills: [
@@ -50,7 +50,7 @@ function Companies() {
     },
     {
       id: 3,
-      title: 'Proyecto 4',
+      title: 'Projeto 4',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
       skills: ['PHP', 'JavaScript', 'Oracle'],
@@ -63,7 +63,7 @@ function Companies() {
       <div className="flex justify-center pb-4 md:justify-start md:pb-0">
         <Link to="/companies/projects">
           <button className="button hover:bg-orange hover:shadow-lg">
-            Agregar proyecto
+            Adicionar projeto
           </button>
         </Link>
       </div>

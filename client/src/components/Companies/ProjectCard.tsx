@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { useState } from 'react'
 import { ProjectsProps } from './Companies'
 
 interface CardProps {
@@ -34,7 +34,7 @@ function ProjectCard({ project }: CardProps) {
       </header>
 
       <main className="flex h-52 flex-col">
-        <section className="pl-2 pr-2 pt-2 text-center text-white">
+        <section className="px-2 pt-2 text-center text-white">
           <p>{project.description}</p>
         </section>
         <section className="h-20 overflow-y-scroll bg-sky pt-2 text-center">
@@ -43,8 +43,8 @@ function ProjectCard({ project }: CardProps) {
         </section>
       </main>
 
-      <footer className="absolute bottom-0 w-full border-t-2 pb-2 pt-2 text-center text-white">
-        <p className="text-white">Cupos: {project.availability}/10</p>
+      <footer className="absolute bottom-0 w-full border-t-2 py-2 text-center text-white">
+        <p className="text-white">Vagas: {project.availability}/10</p>
       </footer>
     </div>
   )
