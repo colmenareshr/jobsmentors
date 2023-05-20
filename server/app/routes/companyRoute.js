@@ -7,12 +7,18 @@ const router = Router()
 router
     
     .get('/company/:id', authJwt.verifyToken, CompanyController.searchCompanyById)
-    .get('/company/freelancerSkills', authJwt.verifyToken, authJwt.isCompany, CompanyController.findFreelancerSkills)
-    .get('/companies', authJwt.verifyToken, CompanyController.searchCompanies)
+    .get('/companies', CompanyController.searchCompanies)
     .get('/companies/rand', authJwt.verifyToken, CompanyController.searchCompaniesRandom)
-    .post('/company/job', authJwt.verifyToken, authJwt.isCompany, CompanyController.CreateJob)
     .put('/company/update/:id', authJwt.verifyToken, authJwt.isCompany,  CompanyController.updateCompany)
     .delete('/company/:id', authJwt.verifyToken, authJwt.isCompany, CompanyController.deleteCompany)
+    .post('/company/job', authJwt.verifyToken, authJwt.isCompany, CompanyController.CreateJob)
+
+    .get('/jobs',authJwt.verifyToken, CompanyController.searchJobs)
+    .put('/company/job/:id',authJwt.verifyToken, authJwt.isCompany, CompanyController.updateJob)
+    .delete('/company/job/:id',authJwt.verifyToken, authJwt.isCompany, CompanyController.deleteJob)
+    .get('/company/matching/:id',authJwt.verifyToken, authJwt.isCompany,  CompanyController.MatchWithSkills)
+    .get('/company/freelancerSkills/:id',authJwt.verifyToken, authJwt.isCompany, CompanyController.findFreelancerSkills)
+    
     
 
 
