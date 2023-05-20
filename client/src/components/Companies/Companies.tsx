@@ -61,7 +61,7 @@ function Companies() {
   return (
     <main className="z-40 flex w-full flex-col flex-wrap justify-center bg-teal400 p-4">
       <div className="flex justify-center pb-4 md:justify-start md:pb-0">
-        <Link to="/companies/projects">
+        <Link to="/company/projects">
           <button className="button hover:bg-orange hover:shadow-lg">
             Agregar proyecto
           </button>
