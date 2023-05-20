@@ -7,11 +7,40 @@ class FreelancerController {
     static async searchFreelancerById(req, res){
         const {id} = req.params
         try {
-            const resultFreelancer = await database.Freelancer.findByPK(id)
+            const resultFreelancer = await database.Freelancer.findByPk(id)
             if(resultFreelancer !== null){
                 return res.status(200).json(resultFreelancer)
             } else{
                 return res.status(400).send({message:'Freelancer id not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+    static async searchFreelancer(req, res){
+        try {
+            const resultFreelancers = await database.Freelancer.findAll()
+            if(resultFreelancers !== null){
+                return res.status(200).json(resultFreelancers)
+            } else{
+                return res.status(400).send({message:'Freelancers not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+    static async searchFreelancerRandom(req, res){
+        try {
+            const resultFreelancers = await database.Freelancer.findAll({
+                order: sequelize.literal('RAND()'),
+                limit: 9
+            })
+            if(resultFreelancers !== null){
+                return res.status(200).json(resultFreelancers)
+            } else{
+                return res.status(400).send({message:'Freelancers not found'})
             }
         } catch (error) {
             return res.status(500).json(error.message)
@@ -38,27 +67,12 @@ class FreelancerController {
             const resultFreelancer = await database.Freelancer.findByPk(id)
             if(resultFreelancer !== null){
             await database.Freelancer.update(
-                { name, phone, birth, gender, address, about, img, career, hard_skills, contract, open_to_work } ,
+                { name, phone, birth, gender, address, about, img, career, hard_skills:hard_skills.toLowerCase(), contract, open_to_work } ,
                 {where: {id:Number(id)}})
             const freelancerUpdated = await database.Freelancer.findOne({where: {id:Number(id)}})
             return res.status(200).json(freelancerUpdated)
             } else {
                 return res.status(400).send({message:`Freelancer ${id} not found`})
-            }
-        } catch (error) {
-            return res.status(500).json(error.message)
-        }
-    }
-
-    static async deleteFreelancer(req, res) {
-        const {id}= req.params
-        try {
-            const resultFreelancer = await database.Freelancer.findByPK(id)
-            if(resultFreelancer !== null){
-                await database.Freelancer.destroy({where: {id : Number(id)}})
-                return res.status(200).send({message: `successfully deleted Freelancer ${id} `})
-            } else {
-                return res.status(400).send({message:'Freelancer id not found'})
             }
         } catch (error) {
             return res.status(500).json(error.message)
@@ -104,26 +118,6 @@ class FreelancerController {
         }
     
     }
-
-    static async CreateNetwork(req, res) {
-        const {freelancer_id} = req.body
-        try {
-            const freelancer = await database.Freelancer.findOne({ 
-            where: {
-                id: Number(freelancer_id)
-            }
-        })
-        if (!freelancer) {
-            return res.status(400).send({message:`Freelancer ${id} not found`})
-        } else{
-            const network = req.body
-            const newNetwork = await database.Network.create(network)
-            return res.status(200).json(newNetwork)
-        }
-        } catch (error) {
-            return res.status(500).json(error.message)
-        }
-    }
     
     static async updateNetwork(req, res) {
         const uptadedNetwork = req.body
@@ -144,7 +138,40 @@ class FreelancerController {
         }
     }
 
-   
+    static async CreateNetwork(req, res) {
+        const {freelancer_id} = req.body
+        try {
+            const freelancer = await database.Freelancer.findOne({ 
+            where: {
+                id: Number(freelancer_id)
+            }
+        })
+        if (!freelancer) {
+            return res.status(400).send({message:`Freelancer ${id} not found`})
+        } else{
+            const network = req.body
+            const newNetwork = await database.Network.create(network)
+            return res.status(200).json(newNetwork)
+        }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+    static async deleteFreelancer(req, res) {
+        const {id}= req.params
+        try {
+            const resultFreelancer = await database.Freelancer.findByPk(id)
+            if(resultFreelancer !== null){
+                await database.Freelancer.destroy({where: {id : Number(id)}})
+                return res.status(200).send({message: `successfully deleted Freelancer ${id} `})
+            } else {
+                return res.status(400).send({message:'Freelancer id not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
 }
 
 module.exports = FreelancerController

@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isUnique: (value, next) => {
-          Freelancer.findAll({
+          Mentor.findAll({
             where: { email: value },
             attributes: ['id'],
           })

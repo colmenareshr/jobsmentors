@@ -1,13 +1,18 @@
 const database = require('../models')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const authConfig = require('../../config/authConfig')
 
-class UserController {
+class authController {
 
     static async SingUp(req, res) {
         try {
-            const  {email, password, role} = req.body 
+            const password = await bcrypt.hash(req.body.password, 10)
+            const  {email, role} = req.body 
             await database.sequelize.transaction( async cadastro => {
                 const newUser = await 
                 database.User.create({email, password, role}, { transaction: cadastro })
+                const token = jwt.sign({ id: newUser.id}, authConfig.secret, {expiresIn: authConfig.expires }  )
         
                 if (role === 'company') {
                    await database.Company.create({
@@ -27,8 +32,6 @@ class UserController {
                         user_id: newUser.id
                     }, {  transaction: cadastro } );
                   }
-
-                
                   res.status(200).json(newUser) 
             })
         } catch (error) {
@@ -44,16 +47,26 @@ class UserController {
                 return res.status(404).json({message: 'Invalid email or password'})
             } 
             
-            if (user.password !== password) {
-                return res.status(401).json({ message: 'Invalid email or password' });
-              }
-            
+            if(bcrypt.compareSync(password, user.password)) {
+                const token = jwt.sign({ id: user.id}, authConfig.secret, { expiresIn: authConfig.expires }  )
+                res.status(200).json({token})
+            }
         } catch (error) {
             return res.status(500).json(error.message)
         }
     }
-    
-    
+
+    static async UserAll(req, res) {
+        try {
+            const User = await database.User.findAll()
+            return res.status(200).json(User)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+
 }
 
-module.exports = UserController
+
+module.exports = authController
