@@ -8,7 +8,7 @@ interface CardProps {
 
 function ProjectCard({ project }: CardProps) {
   const [isOpenModalProjectCard, setIsOpenModalProjectCard] = useState(true)
-  console.log(project)
+
   const ModalProjects = () => {
     return (
       <div className="fixed inset-0 z-10 overflow-y-auto">
