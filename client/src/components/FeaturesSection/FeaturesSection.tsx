@@ -4,27 +4,26 @@ const FeaturesSection = () => {
   return (
     <section className="min-h-fill container mx-auto py-20">
       <h2 className="p-3 md:p-10">
-        Harness the Power of Junior Freelancers and Expert Mentors
+        Aproveite o poder dos freelancers Juniors e mentores especializados
       </h2>
       <div className="flex flex-col gap-4 p-5 md:flex-row">
         <FeaturesCards
           image="1"
-          title="Technological Development Services"
-          text="Customized technological development solutions tailored to meet your
-          business needs."
-          cta={{ text: 'Explore our tech services', link: '#' }}
+          title="Serviços de Desenvolvimento Tecnológico"
+          text="Soluções de desenvolvimento tecnológico personalizadas, adaptadas às suas necessidades empresariais."
+          cta={{ text: 'Explore nossos serviços', link: '#' }}
         />
         <FeaturesCards
           image="2"
-          title="Connection with Highly Skilled Junior Freelancers"
-          text="Connect with highly skilled junior freelancers ready to tackle your projects."
-          cta={{ text: 'Find your perfect match', link: '#' }}
+          title="Conexão com Freelancers Juniores Altamente Qualificados"
+          text="Conecte-se com freelancers Juniors altamente qualificados prontos para enfrentar seus projetos com o maior compromisso."
+          cta={{ text: 'Encontre o candidato perfeito', link: '#' }}
         />
         <FeaturesCards
           image="3"
-          title="Guidance and Support from Expert Mentors"
-          text="Get guidance and support from expert mentors to drive your project to success."
-          cta={{ text: 'Get expert guidance now', link: '#' }}
+          title="Orientação e Suporte de Mentores Especializados"
+          text="Obtenha orientação e suporte de mentores especializados para impulsionar o sucesso do seu projeto."
+          cta={{ text: 'Orientação especializada agora', link: '#' }}
         />
       </div>
     </section>
