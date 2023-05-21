@@ -58,23 +58,18 @@ export const useStore = () => {
   const location = window.location.pathname
 
   const getCompanies = async () => {
-    const response = await fetch('http://localhost:4000/company')
+    const response = await fetch('http://localhost:3000/company')
     const data = await response.json()
 
     setCompany(data[0] as Company)
   }
 
   const getCandidates = async () => {
-    const response = await fetch('http://localhost:4000/candidate')
+    const response = await fetch('http://localhost:3000/freelancers')
     const data = await response.json()
 
     setCandidates(data as CandidateProps[])
   }
-
-  useEffect(() => {
-    getCompanies()
-    getCandidates()
-  }, [])
 
   return {
     isOpenModalLogin,
