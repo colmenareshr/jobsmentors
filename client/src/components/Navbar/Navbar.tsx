@@ -3,20 +3,40 @@ import Sign from 'components/Sign/Sign'
 import { useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { AuthContext } from 'context/authContext'
+import { useContext } from 'react'
+import { AuthContextProps } from 'interfaces/autContextInterface'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AppContext, AppContextProps } from 'context/appContext'
 
 function Navbar() {
+  const navigate = useNavigate()
+  const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
+  const { currentUser, login, logout } = useContext(
+    AuthContext
+  ) as AuthContextProps
   const [nav, setNav] = useState(false)
 
   const handleNav = () => {
     setNav(!nav)
   }
+  useEffect(() => {
+    console.log(currentUser)
+    if (currentUser) {
+      if (currentUser.role === 'company') navigate('/company')
+      if (currentUser.role === 'freelancer') navigate('/freelancers')
+      setIsOpenModalLogin(false)
+    }
+    if (!currentUser) navigate('/')
+  }, [currentUser])
 
   return (
     <nav className="flex items-center justify-between font-semibold">
       <div className="hidden lg:block lg:pr-4">
         <ul className="md:flex md:gap-4">
           <li className="hover:text-teal/90">
-            <Link to="/candidate">Freelancers</Link>
+            <Link to="/freelancers">Freelancers</Link>
           </li>
           <li className="hover:text-teal/90">
             <Link to="/company">Empresas</Link>
@@ -32,7 +52,13 @@ function Navbar() {
             <Sign />
           </li>
           <li className="hover:text-teal/90">
-            <Login />
+            {!currentUser?.id ? (
+              <Login />
+            ) : (
+              <button className="button-secondary" onClick={() => logout()}>
+                Logout
+              </button>
+            )}
           </li>
         </ul>
       </div>
@@ -47,7 +73,7 @@ function Navbar() {
         >
           <ul className="flex flex-col gap-3 pt-12">
             <li>
-              <Link to="/candidate">Freelancers</Link>
+              <Link to="/freelancers">Freelancers</Link>
             </li>
             <li className="hover:text-teal/90">
               <Link to="/company">Empresas</Link>
@@ -61,7 +87,13 @@ function Navbar() {
               <Sign />
             </li>
             <li>
-              <Login />
+              {!currentUser?.id ? (
+                <Login />
+              ) : (
+                <button className="button-secondary" onClick={() => logout()}>
+                  Logout
+                </button>
+              )}
             </li>
           </ul>
         </div>

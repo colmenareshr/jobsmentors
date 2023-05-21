@@ -1,11 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import './modalLogin.css'
 import { AppContext, AppContextProps } from 'context/appContext'
 import { useNavigate } from 'react-router-dom'
 import api from 'api'
+import { AuthContext } from 'context/authContext'
+import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 
 function ModalLogin() {
+  const { login, currentUser } = useContext(AuthContext) as AuthContextProps
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
@@ -25,9 +28,7 @@ function ModalLogin() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      await api.post('/login', inputs)
-      setIsOpenModalLogin(false)
-      navigate('/candidate')
+      await login(inputs)
     } catch (err: any) {
       setError(err.response.data.message)
     }
