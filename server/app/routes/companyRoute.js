@@ -11,13 +11,13 @@ router
     .get('/companies/rand', authJwt.verifyToken, CompanyController.searchCompaniesRandom)
     .put('/company/update/:id', authJwt.verifyToken, authJwt.isCompany,  CompanyController.updateCompany)
     .delete('/company/:id', authJwt.verifyToken, authJwt.isCompany, CompanyController.deleteCompany)
-    .post('/company/job', authJwt.verifyToken, authJwt.isCompany, CompanyController.CreateJob)
 
-    .get('/jobs',authJwt.verifyToken, CompanyController.searchJobs)
+    .post('/company/:id/job', authJwt.verifyToken, authJwt.isCompany, CompanyController.CreateJob)
+    .get('/companies/jobs', authJwt.verifyToken, CompanyController.searchJobsCompanies)
     .put('/company/job/:id',authJwt.verifyToken, authJwt.isCompany, CompanyController.updateJob)
     .delete('/company/job/:id',authJwt.verifyToken, authJwt.isCompany, CompanyController.deleteJob)
-    .get('/company/matching/:id',authJwt.verifyToken, authJwt.isCompany,  CompanyController.MatchWithSkills)
-    .get('/company/freelancerSkills/:id',authJwt.verifyToken, authJwt.isCompany, CompanyController.findFreelancerSkills)
+    .get('/company/:id/matching',authJwt.verifyToken, authJwt.isCompany,  CompanyController.MatchWithSkills)
+    .get('/company/:id/freelancerSkills',authJwt.verifyToken, authJwt.isCompany, CompanyController.findFreelancerSkills)
     
     
 
