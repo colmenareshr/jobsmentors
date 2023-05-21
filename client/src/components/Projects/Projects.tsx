@@ -94,8 +94,8 @@ function Projects() {
                     </tr>
                   </thead>
                   <tbody>
-                    {freelancerInfo.map((info) => (
-                      <tr>
+                    {freelancerInfo.map((info, index) => (
+                      <tr key={index}>
                         <td>{info.name}</td>
                         <td>{info.skill}</td>
                         <td className="flex w-full justify-center">
