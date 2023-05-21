@@ -28,7 +28,7 @@ function ModalLogin() {
       await api.post('/login', inputs)
       setIsOpenModalLogin(false)
       navigate('/candidate')
-    } catch (err) {
+    } catch (err: any) {
       setError(err.response.data.message)
     }
   }
