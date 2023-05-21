@@ -37,6 +37,22 @@ class CompanyController {
         }
     }
 
+    static async searchJobsCompany(req, res){
+        const {id} = req.params
+        try {
+            const resultJobs = await database.Jobs.findAll({
+                where: {company_id : Number(id)}
+            })
+            if(resultJobs !== null){
+                return res.status(200).json(resultJobs)
+            } else{
+                return res.status(400).send({message:'Companies not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
     static async searchCompaniesRandom(req, res){
         try {
             const resultCompanies = await database.Company.findAll({
@@ -230,7 +246,23 @@ class CompanyController {
         }
     }
 
+    static async FreelancerAtJobs(req, res){
+        const {id} = req.params
+        try {
+            const resultFreelancers = await database.JobsFreelancer.findAll({
+                where: {job_id : Number(id)}
+            })
+            if(resultFreelancers !== null){
+                return res.status(200).json(resultFreelancers)
+            } else{
+                return res.status(400).send({message:'Companies not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
 
+    
 
 
 }
