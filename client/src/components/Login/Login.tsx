@@ -1,8 +1,13 @@
 import { Fragment, useContext } from 'react'
 import { AppContext, AppContextProps } from '../../context/appContext'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../context/authContext'
+import { AuthContextProps } from '../../interfaces/autContextInterface'
 import ModalLogin from './ModalLogin'
 
 function Login() {
+  const { currentUser } = useContext(AuthContext) as AuthContextProps
+  const navigate = useNavigate()
   const { isOpenModalLogin, setIsOpenModalLogin } = useContext(
     AppContext
   ) as AppContextProps
