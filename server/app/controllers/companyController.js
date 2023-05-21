@@ -90,10 +90,11 @@ class CompanyController {
     }
 
     static async CreateJob(req, res) {
+        const {id}= req.params
         const {company_id, title, description, hard_skills} = req.body 
         try {
             const newJob = await database.Jobs.create({   
-                company_id,  
+                company_id: id,
                 title, 
                 description,
                 hard_skills: hard_skills.toLowerCase()}
@@ -105,13 +106,26 @@ class CompanyController {
         }
     }
 
-    static async searchJobs(req, res){
+    static async searchJobsCompanies(req, res){
         try {
             const resultJobs = await database.Jobs.findAll()
             if(resultJobs !== null){
                 return res.status(200).json(resultJobs)
             } else{
                 return res.status(400).send({message:'Jobs not found'})
+            }
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+    static async searchFreelancer(req, res){
+        try {
+            const resultFreelancers = await database.Freelancer.findAll()
+            if(resultFreelancers !== null){
+                return res.status(200).json(resultFreelancers)
+            } else{
+                return res.status(400).send({message:'Freelancers not found'})
             }
         } catch (error) {
             return res.status(500).json(error.message)
@@ -169,8 +183,9 @@ class CompanyController {
                 console.info(findFreelancers);
 
              const allMatch = findFreelancers.map(freelancer => ({
-                name: freelancer.name,
                 freelancer_id: freelancer.id,
+                name: freelancer.name,
+                img: freelancer.img,
                 hard_skills:freelancer.hard_skills
              }))
               console.info(allMatch);

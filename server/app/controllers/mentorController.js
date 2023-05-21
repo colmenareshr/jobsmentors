@@ -7,7 +7,7 @@ class MentorController {
     static async searchMentorById(req, res){
         const {id} = req.params
         try {
-            const resultMentor = await database.Mentor.findByPK(id)
+            const resultMentor = await database.Mentor.findByPk(id)
             if(resultMentor !== null){
                 return res.status(200).json(resultMentor)
             } else{
@@ -18,7 +18,7 @@ class MentorController {
         }
     }
 
-    static async searchMentor(req, res){
+    static async searchMentors(req, res){
         try {
             const resultMentors = await database.Mentor.findAll()
             if(resultMentors !== null){
@@ -79,7 +79,7 @@ class MentorController {
     static async deleteMentor(req, res) {
         const {id}= req.params
         try {
-            const resultMentor = await database.Mentor.findByPK(id)
+            const resultMentor = await database.Mentor.findByPk(id)
             if(resultMentor !== null){
                 await database.Mentor.destroy({where: {id : Number(id)}})
                 return res.status(200).send({message: `successfully deleted Mentor ${id} `})
