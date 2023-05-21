@@ -1,6 +1,7 @@
-import { useState, useContext, Fragment } from 'react'
+import { useState, useContext } from 'react'
 import { AppContext, AppContextProps } from '../../context/appContext'
 import { IoMdClose } from 'react-icons/io'
+import { AuthContext } from 'context/authContext.tsx'
 import './modalSign.css'
 
 interface TabData {
