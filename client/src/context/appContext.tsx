@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 import { Candidate, Company } from './useStore'
 import { User } from 'interfaces/AuthInterfaces'
-import { currentUser, setCurrenUser } from './authContext'
+// import { currentUser, setCurrenUser } from './authContext'
 
 export interface AppContextProps {
   isOpenModalLogin: boolean
@@ -14,8 +14,8 @@ export interface AppContextProps {
   setCandidate: (candidate: Candidate[]) => void
   company: Company[]
   setCompany: (company: Company[]) => void
-  currentUser: User[]
-  setCurrentUser: (currentUser: User[]) => void
+  // currentUser: User[]
+  // setCurrentUser: (currentUser: User[]) => void
 }
 
 export const AppContext = createContext<AppContextProps | null>(null)
