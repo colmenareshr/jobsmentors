@@ -22,13 +22,13 @@ function ModalLogin() {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
       await api.post('/login', inputs)
       setIsOpenModalLogin(false)
-      navigate('/')
-    } catch (err: any) {
+      navigate('/candidate')
+    } catch (err) {
       setError(err.response.data.message)
     }
   }

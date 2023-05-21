@@ -17,6 +17,11 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
         const response = await api.get('/user')
         const user: User = response.data
         setCurrentUser(user)
+        console.log(currentUser)
+        if (user.role === 'company') {
+          window.location.href = '/company'
+        }
+        window.location.href = '/freelancer'
       }
     } catch (error) {
       console.error('Error obtaining the current user:', error)
