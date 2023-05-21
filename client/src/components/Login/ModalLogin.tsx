@@ -1,9 +1,13 @@
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { AppContext, AppContextProps } from '../../context/appContext'
 import { IoMdClose } from 'react-icons/io'
 import './modalLogin.css'
+import { useNavigate } from 'react-router-dom'
 
 function ModalLogin() {
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const { isOpenModalLogin, setIsOpenModalLogin } = useContext(
     AppContext
   ) as AppContextProps
@@ -12,13 +16,28 @@ function ModalLogin() {
     setIsOpenModalLogin(false)
   }
 
-  const handleSubmit = () => {
-    alert('Se ha enviado el formulario')
-    setIsOpenModalLogin(false)
+  // Login validation
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (email.trim() !== '') {
+      if (email === 'c@c') {
+        setIsLoggedIn(true)
+        return navigate('/company')
+      } else {
+        setIsOpenModalLogin(false)
+        return navigate('/candidate')
+      }
+    }
+    console.log('hola')
+  }
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value)
   }
 
   return (
-    <form className="form-modalLogin z-50" onSubmit={handleSubmit}>
+    <form className="form-modalLogin z-50" onSubmit={(e) => handleSubmit(e)}>
       <div
         className="containerBackground-modalLogin 
                   sm:w-full
@@ -39,7 +58,9 @@ function ModalLogin() {
             className="main-input-email-ModalLogin"
             type="email"
             name="email"
+            value={email}
             placeholder="exemplo@email.com"
+            onChange={(e) => handleEmailChange(e)}
           />
           <div className="w-full pb-5">
             <label
@@ -74,6 +95,7 @@ function ModalLogin() {
                       bg-purple 
                       "
             type="submit"
+            value={email}
           >
             Entrar
           </button>
