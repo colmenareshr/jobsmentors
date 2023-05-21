@@ -18,33 +18,35 @@ class authController {
         });
 
         if (role === 'company') {
-          await database.Company.create(
+          const newCompany =  await database.Company.create(
             {
               email,
               user_id: newUser.id,
             },
             { transaction: cadastro }
           );
+          res.status(200).json(newCompany) 
         }
         if (role === 'freelancer') {
-          await database.Freelancer.create(
+          const newFrelancer = await database.Freelancer.create(
             {
               email,
               user_id: newUser.id,
             },
             { transaction: cadastro }
           );
+          res.status(200).json(newFrelancer) 
         }
         if (role === 'mentor') {
-          await database.Mentor.create(
+          const newMentor = await database.Mentor.create(
             {
               email,
               user_id: newUser.id,
             },
             { transaction: cadastro }
           );
+          res.status(200).json(newMentor) 
         }
-        res.status(200).json(newUser);
       });
     } catch (error) {
       return res.status(500).json(error.message);
