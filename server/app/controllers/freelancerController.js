@@ -80,11 +80,11 @@ class FreelancerController {
     }
     
     static async CreateInformation(req, res) {
-        const {freelancer_id} = req.body
+        const {id} = req.params
         try {
             const freelancer = await database.Freelancer.findOne({ 
             where: {
-                id: Number(freelancer_id)
+                id: Number(id)
             }
         })
         if (!freelancer) {
@@ -139,11 +139,11 @@ class FreelancerController {
     }
 
     static async CreateNetwork(req, res) {
-        const {freelancer_id} = req.body
+        const {id} = req.params
         try {
             const freelancer = await database.Freelancer.findOne({ 
             where: {
-                id: Number(freelancer_id)
+                id: Number(id)
             }
         })
         if (!freelancer) {
