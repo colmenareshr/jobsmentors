@@ -3,11 +3,11 @@ import { AppContext, AppContextProps } from '../../context/appContext'
 import { IoMdClose } from 'react-icons/io'
 import { AuthContext } from 'context/authContext.tsx'
 import './modalSign.css'
+import api from 'api'
 
 interface TabData {
   idx: number
   label: string
-  name: string
   email: string
   password1: string
   password2: string
@@ -34,7 +34,6 @@ function ModalSign() {
   }
 
   const handleSubmit = () => {
-    alert('Se ha enviado el formulario')
     console.log(data)
     setIsOpenModalSign(false)
   }
@@ -48,7 +47,6 @@ function ModalSign() {
     {
       idx: 0,
       label: 'Freelancer',
-      name: 'Nome',
       email: 'Email',
       password1: 'Senha',
       password2: 'Confirmar Senha'
@@ -58,16 +56,14 @@ function ModalSign() {
       label: 'Empresa',
       email: 'Email',
       password1: 'Senha',
-      password2: 'Confirmar Senha',
-      name: 'Empresa'
+      password2: 'Confirmar Senha'
     },
     {
       idx: 2,
       label: 'Mentor',
       email: 'Email',
       password1: 'Senha',
-      password2: 'Confirmar Senha',
-      name: 'Nome'
+      password2: 'Confirmar Senha'
     }
   ]
 
@@ -139,7 +135,7 @@ function ModalSign() {
               className="grid w-full justify-items-center gap-4 rounded
               bg-purpleLight/80 p-4 md:grid-cols-2"
             >
-              <div>
+              {/* <div>
                 <label className="label-ModalSign flex">
                   {tabsData[activeTabIndex].name}
                 </label>
@@ -153,7 +149,7 @@ function ModalSign() {
                     ? { placeholder: 'Nome da empresa' }
                     : { placeholder: 'Nome e sobrenome' })}
                 />
-              </div>
+              </div> */}
               <div>
                 <label className="label-ModalSign flex">
                   {tabsData[activeTabIndex].password1}
