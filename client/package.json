@@ -24,9 +24,12 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "i18n-react": "^0.7.0",
+    "js-yaml": "^4.1.0",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^12.3.1",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.11.1"
   },
@@ -37,6 +40,7 @@
     "@babel/preset-typescript": "^7.21.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "@types/js-yaml": "^4.0.5",
     "@types/node": "^20.1.0",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
