@@ -1,0 +1,19 @@
+{
+  "app": {
+    "title": "JobMentors",
+    "menu": {
+      "freelancer": "Freelancer",
+      "company": "Company",
+      "mentors": "Mentors",
+      "howitworks": "How it works",
+      "becomeamentor": "Become a Mentor",
+      "signin": "Sign In",
+      "login": "Login",
+      "logout": "Logout"
+    },
+    "herosection": {
+      "comment": "Find a talented and perfect freelancer for your technology projects.",
+      "button": "GET A SOLUTION NOW"
+    }
+  }
+}
