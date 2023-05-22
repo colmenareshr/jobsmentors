@@ -1,6 +1,6 @@
 import { MdCheckCircle } from 'react-icons/md'
-import juniorFeaturesImage from '../../assets/images/junior-features-img.svg'
-import mentorshipImage from '../../assets/images/mentorship-img.svg'
+import juniorFeaturesImage from '../../assets/images/junior-features-img.png'
+import mentorshipImage from '../../assets/images/mentorship-img.png'
 const JuniorMentor = () => {
   const featuresJuniors = [
     'Soluções de custo-benefício para seus projetos',
