@@ -1,5 +1,5 @@
 import Freelancer from '../../assets/images/hero-Image-jobsmentors.png'
-import contactFreelancer from '../../assets/images/contact-freelancers-jobsmentors.svg'
+import contactFreelancer from '../../assets/images/contact-freelancers-jobsmentors.png'
 const CtaJuniors = () => {
   return (
     <section className="relative h-full w-full bg-emerald py-16 text-center">

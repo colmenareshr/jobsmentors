@@ -22,7 +22,7 @@ const BigProjectSection = () => {
         <div>
           <img
             className="h-auto w-[500px] "
-            src="../src/assets/images/build-team-img.svg"
+            src="../src/assets/images/build-team-img.png"
             alt="Buil a big team"
           />
         </div>
