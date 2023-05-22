@@ -35,7 +35,7 @@ function ModalLogin() {
   }
 
   return (
-    <form className="form-modalLogin z-50">
+    <form className="form-modalLogin z-50" onClick={handleSubmit}>
       <div className="containerBackground-modalLogin sm:w-full sm:p-2 md:w-[760px] md:pb-3">
         <header className="flex w-full flex-row justify-center">
           <div className="title-ModalLogin">Acceso a tu cuenta</div>
