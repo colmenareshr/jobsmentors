@@ -9,9 +9,17 @@ import { AuthContextProps } from 'interfaces/autContextInterface'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppContext, AppContextProps } from 'context/appContext'
+import { useTranslation } from 'react-i18next'
+import flagEs from '../../assets/images/spain-flag-round-icon.svg'
+import flagUs from '../../assets/images/usa-flag-round-circle-icon.svg'
+import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
 
 function Navbar() {
+  const { i18n } = useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate()
+  const storedLang = localStorage.getItem('lang')
+  const [language, setLanguage] = useState(storedLang || 'pt')
   const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
   const { currentUser, login, logout } = useContext(
     AuthContext
@@ -31,23 +39,33 @@ function Navbar() {
     if (!currentUser) navigate('/')
   }, [currentUser])
 
+  // Function to handle language change
+  function handleLanguage(lang: string) {
+    console.log(lang)
+    // const lang = event.target.value
+    i18n.changeLanguage(lang).then(() => {
+      setLanguage(lang)
+      localStorage.setItem('lang', lang)
+    })
+  }
+
   return (
     <nav className="flex items-center justify-between font-semibold">
       <div className="hidden lg:block lg:pr-4">
         <ul className="md:flex md:gap-4">
           <li className="hover:text-teal/90">
-            <Link to="/freelancers">Freelancers</Link>
+            <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
           </li>
           <li className="hover:text-teal/90">
-            <Link to="/company">Empresas</Link>
+            <Link to="/company">{t('app.menu.company')}</Link>
           </li>
-          <li className="hover:text-teal/90">Mentores</li>
-          <li className="hover:text-teal/90">Como Funciona</li>
+          <li className="hover:text-teal/90">{t('app.menu.mentors')}</li>
+          <li className="hover:text-teal/90">{t('app.menu.howitworks')}</li>
         </ul>
       </div>
       <div className="hidden md:block">
         <ul className="items-center justify-between gap-4 md:flex">
-          <li className="hover:text-teal/90">Seja um Mentor</li>
+          <li className="hover:text-teal/90">{t('app.menu.becomeamentor')}</li>
           <li className="hover:text-teal/90">
             <Sign />
           </li>
@@ -56,7 +74,7 @@ function Navbar() {
               <Login />
             ) : (
               <button className="button-secondary" onClick={() => logout()}>
-                Logout
+                {t('app.menu.logout')}
               </button>
             )}
           </li>
@@ -73,16 +91,16 @@ function Navbar() {
         >
           <ul className="flex flex-col gap-3 pt-12">
             <li>
-              <Link to="/freelancers">Freelancers</Link>
+              <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
             </li>
             <li className="hover:text-teal/90">
-              <Link to="/company">Empresas</Link>
+              <Link to="/company">{t('app.menu.company')}</Link>
             </li>
-            <li>Mentores</li>
-            <li>Como Funciona</li>
+            <li>{t('app.menu.mentors')}</li>
+            <li>{t('app.menu.howitworks')}</li>
           </ul>
           <ul className="flex flex-col gap-3 pt-3">
-            <li>Seja um Mentor</li>
+            <li>{t('app.menu.becomeamentor')}</li>
             <li>
               <Sign />
             </li>
@@ -91,14 +109,25 @@ function Navbar() {
                 <Login />
               ) : (
                 <button className="button-secondary" onClick={() => logout()}>
-                  Logout
+                  {t('app.menu.logout')}
                 </button>
               )}
             </li>
           </ul>
         </div>
       </div>
-      <div className="flex justify-end gap-4"></div>
+
+      <div className="flex justify-end gap-4 pl-4">
+        <button value={language} onClick={() => handleLanguage('br')}>
+          <img src={flagBr} alt="flagBr" className="h-8 w-8" />
+        </button>
+        <button value={language} onClick={() => handleLanguage('es')}>
+          <img src={flagEs} alt="flagEs" className="h-8 w-8" />
+        </button>
+        <button value={language} onClick={() => handleLanguage('en')}>
+          <img src={flagUs} alt="flagUs" className="h-8 w-8" />
+        </button>
+      </div>
     </nav>
   )
 }

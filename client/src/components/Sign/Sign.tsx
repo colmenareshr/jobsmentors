@@ -1,8 +1,10 @@
 import { Fragment, useContext } from 'react'
 import { AppContext, AppContextProps } from '../../context/appContext'
 import ModalSign from './ModalSign'
+import { useTranslation } from 'react-i18next'
 
 function Register() {
+  const { t } = useTranslation()
   const { isOpenModalSign, setIsOpenModalSign } = useContext(
     AppContext
   ) as AppContextProps
@@ -15,7 +17,7 @@ function Register() {
     <Fragment>
       <div>
         <button className="button" onClick={() => handleOpen()}>
-          Cadastro
+          {t('app.menu.signin')}
         </button>
         {isOpenModalSign && (
           <div className="modal">
