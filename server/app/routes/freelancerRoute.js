@@ -6,14 +6,14 @@ const router = Router()
 
 router
     
-    .get('/freelancer/:id',authJwt.verifyToken, FreelancerController.searchFreelancerById)
+    .get('/freelancer/:user_id',authJwt.verifyToken, FreelancerController.searchFreelancerById)
     .get('/freelancers',FreelancerController.searchFreelancer)
     .get('/freelancers/rand', authJwt.verifyToken, FreelancerController.searchFreelancerRandom)
-    .post('/freelancer/:id/information',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.CreateInformation )
-    .post('/freelancer/:id/network',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.CreateNetwork )
-    .put('/freelancer/update/:id', authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.updateFreelancer)
-    .put('/freelancer/updateInformation/:id', authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.updateInformation)
-    .put('/freelancer/updateNetwork/:id',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.updateNetwork)
-    .delete('/freelancer/:id',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.deleteFreelancer)
+    .post('/freelancer/:user_id/information',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.CreateInformation )
+    .post('/freelancer/:user_id/network',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.CreateNetwork )
+    .put('/freelancer/:user_id', authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.updateFreelancer)
+    .put('/freelancer/information/:user_id', authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.updateInformation)
+    .put('/freelancer/network/:user_id',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.updateNetwork)
+    .delete('/freelancer/:user_id',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.deleteFreelancer)
 
 module.exports = router
