@@ -26,29 +26,29 @@ import { useTranslation } from 'react-i18next'
 //   img: string
 // }
 
-// export interface Company {
-//   id: number
-//   name: string
-//   email: string
-//   password: string
-//   projects: Project[]
-// }
+export interface Company {
+  id: number
+  name: string
+  email: string
+  password: string
+  projects: Project[]
+}
 
-// export interface Project {
-//   id: number
-//   name: string
-//   description: string
-//   skills: string
-//   frelancer: Freelancer2[]
-// }
+export interface Project {
+  id: number
+  name: string
+  description: string
+  skills: string
+  freelancer: Freelancer2[]
+}
 
-// export interface Freelancer2 {
-//   id: number
-//   name: string
-//   email: string
-//   skills: string
-//   img: string
-// }
+export interface Freelancer2 {
+  id: number
+  name: string
+  email: string
+  skills: string
+  img: string
+}
 
 export const useStore = () => {
   const { t } = useTranslation()
@@ -56,7 +56,7 @@ export const useStore = () => {
   const [isOpenModalSign, setIsOpenModalSign] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   // const [candidates, setCandidates] = useState<CandidateProps[]>([])
-  // const [company, setCompany] = useState<Company>()
+  const [company, setCompany] = useState<Company>()
   // const location = window.location.pathname
 
   // const getCompanies = async () => {
@@ -80,8 +80,8 @@ export const useStore = () => {
     setIsOpenModalSign,
     searchTerm,
     setSearchTerm,
-    location
+    location,
     // candidates,
-    // company
+    company
   }
 }

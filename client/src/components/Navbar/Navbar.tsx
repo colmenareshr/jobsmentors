@@ -32,7 +32,7 @@ function Navbar() {
   useEffect(() => {
     console.log(currentUser)
     if (currentUser) {
-      if (currentUser.role === 'company') navigate('/company')
+      if (currentUser.role === 'company') navigate('/company/landingpage')
       if (currentUser.role === 'freelancer') navigate('/freelancers')
       setIsOpenModalLogin(false)
     }
@@ -41,7 +41,6 @@ function Navbar() {
 
   // Function to handle language change
   function handleLanguage(lang: string) {
-    console.log(lang)
     // const lang = event.target.value
     i18n.changeLanguage(lang).then(() => {
       setLanguage(lang)
@@ -57,7 +56,7 @@ function Navbar() {
             <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
           </li>
           <li className="hover:text-teal/90">
-            <Link to="/company">{t('app.menu.company')}</Link>
+            <Link to="/company/landingpage">{t('app.menu.company')}</Link>
           </li>
           <li className="hover:text-teal/90">{t('app.menu.mentors')}</li>
           <li className="hover:text-teal/90">{t('app.menu.howitworks')}</li>
@@ -94,7 +93,7 @@ function Navbar() {
               <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
             </li>
             <li className="hover:text-teal/90">
-              <Link to="/company">{t('app.menu.company')}</Link>
+              <Link to="/company/landingpage">{t('app.menu.company')}</Link>
             </li>
             <li>{t('app.menu.mentors')}</li>
             <li>{t('app.menu.howitworks')}</li>
