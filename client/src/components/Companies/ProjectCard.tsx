@@ -6,6 +6,7 @@ import React, { FC, useState, useContext } from 'react'
 import { useStore, Project } from '../../context/useStore'
 import { randomInt } from 'crypto'
 import { FakeCard } from './Companies'
+import { useNavigate } from 'react-router-dom'
 
 // interface CardProps {
 //   project: Project
@@ -15,6 +16,7 @@ import { FakeCard } from './Companies'
 
 function ProjectCard({ project }: FakeCard) {
   const [isOpenModalProjectCard, setIsOpenModalProjectCard] = useState(true)
+  const navigate = useNavigate()
 
   // Showing project details in a modal
   const ModalProjects = () => {
@@ -30,6 +32,7 @@ function ProjectCard({ project }: FakeCard) {
   // Opening Project Card Modal
   const handleOpenModalProjectCard = () => {
     console.log('ProjectCard')
+    navigate('/company/projects')
     setIsOpenModalProjectCard(true)
   }
 
@@ -51,14 +54,14 @@ function ProjectCard({ project }: FakeCard) {
         <section className="px-2 pt-2 text-center text-white">
           <p>{project.description}</p>
         </section>
-        <section className="h-20 overflow-y-scroll pt-2 text-center">
+        <section className="h-20 overflow-hidden pt-2 text-center">
           <p className="font-semibold">Habilidades: </p>
           {project.skills}
         </section>
       </main>
 
       <footer className="absolute bottom-0 w-full border-t-2 pb-2 pt-2 text-center text-white">
-        <p className="text-white">Cupos: {availability}/10</p>
+        <p className="text-white">Vagas: {availability}/10</p>
       </footer>
     </div>
   )
