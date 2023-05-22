@@ -5,9 +5,13 @@ class MentorController {
 
 
     static async searchMentorById(req, res){
-        const {id} = req.params
+        const id = req.params.user_id
         try {
-            const resultMentor = await database.Mentor.findByPk(id)
+            const resultMentor = await database.Mentor.findOne({
+                where: {
+                    user_id: id
+                }
+            })
             if(resultMentor !== null){
                 return res.status(200).json(resultMentor)
             } else{
@@ -18,7 +22,7 @@ class MentorController {
         }
     }
 
-    static async searchMentors(req, res){
+    static async searchMentor(req, res){
         try {
             const resultMentors = await database.Mentor.findAll()
             if(resultMentors !== null){
@@ -59,14 +63,18 @@ class MentorController {
             career, 
         } = req.body
     
-        const {id} = req.params
+        const id = req.params.user_id
         try {
-            const resultMentor = await database.Mentor.findByPk(id)
+            const resultMentor = await database.Mentor.findOne({
+                where: {
+                    user_id:id
+                }
+            })
             if(resultMentor !== null){
             await database.Mentor.update(
                 { name, phone, birth, gender, address, about, img, career } ,
-                {where: {id:Number(id)}})
-            const mentorUpdated = await database.Mentor.findOne({where: {id:Number(id)}})
+                {where: {user_id:Number(id)}})
+            const mentorUpdated = await database.Mentor.findOne({where: {user_id:Number(id)}})
             return res.status(200).json(mentorUpdated)
             } else {
                 return res.status(400).send({message:`Mentor ${id} not found`})
@@ -77,11 +85,15 @@ class MentorController {
     }
 
     static async deleteMentor(req, res) {
-        const {id}= req.params
+        const id = req.params.user_id
         try {
-            const resultMentor = await database.Mentor.findByPk(id)
+            const resultMentor = await database.Mentor.findOne({
+                where: {
+                    user_id: Number(id)
+                }
+            })
             if(resultMentor !== null){
-                await database.Mentor.destroy({where: {id : Number(id)}})
+                await database.Mentor.destroy({where: {user_id : Number(id)}})
                 return res.status(200).send({message: `successfully deleted Mentor ${id} `})
             } else {
                 return res.status(400).send({message:'Mentor id not found'})
