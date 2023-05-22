@@ -15,21 +15,21 @@ export interface FakeCard {
 export const FakeDataCard: FakeCard[] = [
   {
     id: 1,
-    project: 'Project 1',
+    project: 'Projeto 1',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
     skills: 'React, Node, Typescript'
   },
   {
     id: 2,
-    project: 'Project 2',
+    project: 'Projeto 2',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
     skills: 'React, Node, Typescript'
   },
   {
     id: 3,
-    project: 'Project 3',
+    project: 'Projeto 3',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
     skills: 'React, Node, Typescript'
