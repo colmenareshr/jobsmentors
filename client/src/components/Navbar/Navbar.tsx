@@ -33,7 +33,8 @@ function Navbar() {
     console.log(currentUser)
     if (currentUser) {
       if (currentUser.role === 'company') navigate('/company/landingpage')
-      if (currentUser.role === 'freelancer') navigate('/freelancers')
+      if (currentUser.role === 'freelancer')
+        navigate('/freelancers/landingpage')
       setIsOpenModalLogin(false)
     }
     if (!currentUser) navigate('/')
@@ -58,7 +59,9 @@ function Navbar() {
           <li className="hover:text-teal/90">
             <Link to="/company/landingpage">{t('app.menu.company')}</Link>
           </li>
-          <li className="hover:text-teal/90">{t('app.menu.mentors')}</li>
+          <Link to="/freelancers/landingpage">
+            <li className="hover:text-teal/90">{t('app.menu.mentors')}</li>
+          </Link>
           <li className="hover:text-teal/90">{t('app.menu.howitworks')}</li>
         </ul>
       </div>
