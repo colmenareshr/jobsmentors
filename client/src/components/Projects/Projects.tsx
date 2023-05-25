@@ -4,6 +4,7 @@ import FreelancerCard, {
   freelancerInfo
 } from 'components/FreelancerCard/FreelancerCard'
 import { CiTrash } from 'react-icons/ci'
+import { IoMailOutline } from 'react-icons/io5'
 
 function Projects() {
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -98,7 +99,10 @@ function Projects() {
                       <tr key={index}>
                         <td>{info.name}</td>
                         <td>{info.skill}</td>
-                        <td className="flex w-full justify-center">
+                        <td className="flex  w-full justify-evenly">
+                          <button className="hover:dropshadow-lg rounded-full p-2 text-white hover:bg-teal400/90">
+                            <IoMailOutline size={25} />
+                          </button>
                           <button className="hover:dropshadow-lg rounded-full p-2 text-white hover:bg-orange/90">
                             <CiTrash size={25} />
                           </button>
