@@ -2,7 +2,6 @@ const database = require('../models')
 const Sequelize = require('sequelize');
 
 
-
 class CompanyController {
 
     static async searchCompanyById(req, res){
@@ -237,58 +236,43 @@ class CompanyController {
           }
       }
 
-    
     static async MatchWithSkills(req, res) {
+        const id = req.params.user_id
+        const JobId = req.params.id
         try {
-            const {id} = req.params;
-        
-            const findSkillJob = await database.Jobs.findByPk(id)
-             const hardSkillsArrayJob = findSkillJob.hard_skills.split(',').map(skill => skill.trim().toLowerCase());
-             console.info(hardSkillsArrayJob)
-
-             const whereFreelancer = {
-                [Sequelize.Op.or]: hardSkillsArrayJob.map(skill => ({
-                    hard_skills: {
-                        [Sequelize.Op.like]: `%${skill}%`
-                    }
-                }))
-             }
-             const findFreelancers = await database.Freelancer.findAll({ where: whereFreelancer });
-                console.info(findFreelancers);
-
-             const allInvited = findFreelancers.map(freelancer => ({
-                name: freelancer.name,
-                img: freelancer.img,
-                freelancer_id: freelancer.id,
-                hard_skills:freelancer.hard_skills,
-                job_id: findSkillJob.id
-             }))
-            
-            const match = await database.JobsFreelancer.bulkCreate(allInvited)
-            console.info(match)
-            return res.status(200).json(allInvited)
-        } catch (error) {
-            return res.status(500).json(error.message)
-        }
-    }
-
-    static async FreelancerAtJobs(req, res){
-        const {id} = req.params
-        try {
-            const resultFreelancers = await database.JobsFreelancer.findAll({
-                where: {job_id : Number(id)}
+            const resultCompany = await database.Company.findOne({
+                where: {user_id:Number(id) }
             })
-            if(resultFreelancers !== null){
-                return res.status(200).json(resultFreelancers)
-            } else{
-                return res.status(400).send({message:'Companies not found'})
-            }
+            if(resultCompany !== null){
+                const resultJob = await database.Jobs.findOne({
+                    where: {id: Number(JobId)  }
+                })
+                if(resultJob !== null){
+                    const hardSkillsArrayJob = resultJob.hard_skills.split(',').map(skill => skill.trim().toLowerCase());
+    
+                    const whereFreelancer = {
+                       [Sequelize.Op.or]: hardSkillsArrayJob.map(skill => ({
+                           hard_skills: {
+                               [Sequelize.Op.like]: `%${skill}%`
+                           }
+                       }))
+                    }
+                    const findFreelancers = await database.Freelancer.findAll({ where: whereFreelancer });
+                     
+                    const allInvited = findFreelancers.map(freelancer => ({
+                       name: freelancer.name,
+                       img: freelancer.img,
+                       freelancer_id: freelancer.user_id,
+                       hard_skills:freelancer.hard_skills,
+                       job_id: JobId
+                    }))
+                   await database.JobsFreelancer.bulkCreate(allInvited)
+                   return res.status(200).json(allInvited)
+            }} 
         } catch (error) {
             return res.status(500).json(error.message)
         }
     }
-
-    
 
 
 }
