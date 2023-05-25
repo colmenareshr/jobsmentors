@@ -45,6 +45,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
       type: DataTypes.STRING
     },
+    amount: {
+      type: DataTypes.INTEGER,
+      validate: {
+        max: 10, 
+        isInt: {
+          msg: 'Quantity must be an integer.',
+        },
+      }
+    }
   }, {
     sequelize,
     modelName: 'Jobs',
