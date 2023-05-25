@@ -206,32 +206,36 @@ class CompanyController {
     }
 
     static async findFreelancerSkills(req, res){
-          try {
-             const {id} = req.params
-
-             const findSkillJob = await database.Jobs.findByPk(id)
-             const hardSkillsArrayJob = findSkillJob.hard_skills.split(',').map(skill => skill.trim().toLowerCase());
-             console.info(hardSkillsArrayJob)
-
-             const whereFreelancer = {
-                [Sequelize.Op.or]: hardSkillsArrayJob.map(skill => ({
-                    hard_skills: {
-                        [Sequelize.Op.like]: `%${skill}%`
+        const id = req.params.user_id
+        const JobId = req.params.id
+        try {
+            const resultCompany = await database.Company.findOne({
+                where: {user_id:Number(id) }
+            })
+            if(resultCompany !== null){
+                const resultJob = await database.Jobs.findOne({
+                    where: {id: Number(JobId)  }
+                })
+                if(resultJob !== null){
+                    const hardSkillsArrayJob = resultJob.hard_skills.split(',').map(skill => skill.trim().toLowerCase());
+       
+                    const whereFreelancer = {
+                       [Sequelize.Op.or]: hardSkillsArrayJob.map(skill => ({
+                           hard_skills: {
+                               [Sequelize.Op.like]: `%${skill}%`
+                           }
+                       }))
                     }
-                }))
-             }
-             const findFreelancers = await database.Freelancer.findAll({ where: whereFreelancer });
-                console.info(findFreelancers);
-
-             const allMatch = findFreelancers.map(freelancer => ({
-                freelancer_id: freelancer.id,
-                name: freelancer.name,
-                img: freelancer.img,
-                hard_skills:freelancer.hard_skills
-             }))
-              console.info(allMatch);
-              return res.status(200).json(allMatch)
-          } catch (error) {
+                    const findFreelancers = await database.Freelancer.findAll({ where: whereFreelancer });
+                    const allMatch = findFreelancers.map(freelancer => ({
+                        freelancer_id: freelancer.id,
+                        name: freelancer.name,
+                        img: freelancer.img,
+                        hard_skills:freelancer.hard_skills
+                    }))
+                    return res.status(200).json(allMatch) }
+            }
+          }  catch (error) {
               return res.status(500).json(error.message)
           }
       }
