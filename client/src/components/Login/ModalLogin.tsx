@@ -3,19 +3,17 @@ import { IoMdClose } from 'react-icons/io'
 import './modalLogin.css'
 import { AppContext, AppContextProps } from 'context/appContext'
 import { useNavigate } from 'react-router-dom'
-import api from 'api'
 import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 
 function ModalLogin() {
-  const { login, currentUser } = useContext(AuthContext) as AuthContextProps
+  const { login } = useContext(AuthContext) as AuthContextProps
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
   })
   const [err, setError] = useState<string>('')
   const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
-  const navigate = useNavigate()
 
   const handleClose = () => {
     setIsOpenModalLogin(false)
@@ -35,7 +33,7 @@ function ModalLogin() {
   }
 
   return (
-    <form className="form-modalLogin z-50" onClick={handleSubmit}>
+    <form className="form-modalLogin z-50">
       <div className="containerBackground-modalLogin sm:w-full sm:p-2 md:w-[760px] md:pb-3">
         <header className="flex w-full flex-row justify-center">
           <div className="title-ModalLogin">Acceso a tu cuenta</div>
