@@ -40,7 +40,7 @@ function ModalSign() {
         password: data.password1,
         role: tabsData[activeTabIndex].role.toLowerCase()
       })
-      console.log('Usuario Registrado', data.role)
+      console.log('Usuario Registrado', data)
     } catch (error) {
       console.error('Error registering user:', error)
     }
