@@ -64,7 +64,7 @@ class FreelancerController {
             career, 
             hard_skills, 
             contract, 
-            open_to_work 
+            open_to_work
         } = req.body
     
         const id = req.params.user_id
@@ -76,7 +76,7 @@ class FreelancerController {
             })
             if(resultFreelancer !== null){
             await database.Freelancer.update(
-                { name, phone, birth, gender, address, about, img, career, hard_skills:hard_skills.toLowerCase(), contract, open_to_work } ,
+                { name, phone, birth, gender, address, about, img, career,hard_skills: hard_skills ? hard_skills.toLowerCase() : undefined, contract, open_to_work } ,
                 {where: {user_id:Number(id)}})
             const freelancerUpdated = await database.Freelancer.findOne({where: {user_id:Number(id)}})
             return res.status(200).json(freelancerUpdated)
@@ -177,7 +177,7 @@ class FreelancerController {
             const networkUpdated = await database.Network.findOne({where: {freelancer_id: id}})
             return res.status(200).json(networkUpdated)
             } else {
-                return res.status(400).send({message:`Network ${id} not found`})
+                return res.status(400).send({message:`Network not found`})
             }
         } catch (error) {
             return res.status(500).json(error.message)

@@ -103,7 +103,7 @@ module.exports = (sequelize, DataTypes) => {
     contract: {
       type: DataTypes.ENUM('CLT', 'PJ')
     },
-    open_to_Work: {
+    open_to_work: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
