@@ -42,12 +42,13 @@ function Projects() {
   }
 
   return (
-    <div className="w-full bg-teal400 p-4">
+    <div className="mt-24 w-full bg-teal400 p-4">
       <div className="container mx-auto rounded-lg border-2 border-white bg-teal400">
         <section className="">
           <form className="pb-4 pl-4 pr-4">
             <main
-              className="bg-gray-300 grid h-[900px] grid-flow-col-dense grid-cols-12 grid-rows-6
+              className="bg-gray-300 grid h-[900px] grid-flow-col-dense 
+                      grid-cols-12 grid-rows-6
                       gap-4 rounded-lg text-center
                       "
             >
@@ -57,7 +58,7 @@ function Projects() {
                 </p>
               </header>
 
-              <div className="col-span-4 row-span-1 self-center">
+              <div className="col-span-4 row-span-1 self-center pl-10">
                 <label htmlFor="" className="label-Projects text-xl">
                   Nome do projeto
                 </label>
@@ -69,7 +70,7 @@ function Projects() {
                   name="title"
                 />
               </div>
-              <div className="col-span-4 row-span-1 self-center rounded-lg">
+              <div className="col-span-4 row-span-1 self-center rounded-lg pl-10">
                 <label htmlFor="" className="label-Projects text-xl">
                   Habilidades requeridas
                 </label>
@@ -79,7 +80,7 @@ function Projects() {
                   type="text"
                 />
               </div>
-              <div className="col-span-4 row-span-1 self-center">
+              <div className="col-span-4 row-span-1 self-center pl-10">
                 <label htmlFor="" className="label-Projects text-xl">
                   Freelancers
                 </label>
