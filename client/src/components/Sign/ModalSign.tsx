@@ -1,8 +1,8 @@
-import { useState, useContext } from 'react'
-import { AppContext, AppContextProps } from '../../context/appContext'
 import { IoMdClose } from 'react-icons/io'
-import { AuthContext } from 'context/authContext.tsx'
+import React, { useState, useContext } from 'react'
+import { registerUser } from 'api/authApi'
 import './modalSign.css'
+import { AppContext, AppContextProps } from 'context/appContext'
 
 interface TabData {
   idx: number
@@ -24,24 +24,31 @@ const inicialState = {
 
 function ModalSign() {
   const [data, setData] = useState<TabData>(inicialState as TabData)
-  const { isOpenModalSign, setIsOpenModalSign } = useContext(
-    AppContext
-  ) as AppContextProps
+  const { setIsOpenModalSign } = useContext(AppContext) as AppContextProps
   const [activeTabIndex, setActiveTabIndex] = useState(0)
 
   const handleClose = () => {
     setIsOpenModalSign(false)
   }
 
-  const handleSubmit = () => {
-    alert('Se ha enviado el formulario')
-    console.log(data)
-    setIsOpenModalSign(false)
+  const handleSubmit = async () => {
+    try {
+      await registerUser({
+        email: data.email,
+        password: data.password1,
+        role: tabsData[activeTabIndex].label.toLowerCase()
+      })
+      console.log('Usuario Registrado', data)
+    } catch (error) {
+      console.error('Error registering user:', error)
+    }
   }
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target
-    setData({ ...data, [name]: value })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
+    })
   }
 
   const tabsData: TabData[] = [
@@ -159,6 +166,7 @@ function ModalSign() {
                   {tabsData[activeTabIndex].password1}
                 </label>
                 <input
+                  value={data.password1}
                   className="input-ModalSign placeholder:text-ModalSign g rounded"
                   onChange={handleChange}
                   name="password1"
@@ -172,6 +180,7 @@ function ModalSign() {
                   {tabsData[activeTabIndex].email}
                 </label>
                 <input
+                  value={data.email}
                   className="input-ModalSign placeholder:text-ModalSign g rounded"
                   onChange={handleChange}
                   name="email"
@@ -185,6 +194,7 @@ function ModalSign() {
                   {tabsData[activeTabIndex].password2}
                 </label>
                 <input
+                  value={data.password2}
                   className="input-ModalSign placeholder:text-ModalSign g rounded "
                   onChange={handleChange}
                   name="password2"
