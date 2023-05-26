@@ -1,0 +1,1370 @@
+{
+	"info": {
+		"_postman_id": "3cb8a280-2b88-4657-833c-36db17063710",
+		"name": "jobsmentors",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22920719",
+		"_collection_link": "https://lively-astronaut-472418.postman.co/workspace/My-Workspace~91e1cdce-f45f-4512-8088-ccf994e99b6a/collection/22920719-3cb8a280-2b88-4657-833c-36db17063710?action=share&creator=22920719&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"var password = pm.request.body.urlencoded.find(function(item){\r",
+									"    return item.key === 'password';\r",
+									"}).value;\r",
+									"\r",
+									"resposta = pm.response.json()\r",
+									"\r",
+									"pm.globals.set(\"EMAIL\", resposta.email);\r",
+									"pm.globals.set(\"PASSWORD\", password)\r",
+									"pm.globals.set(\"USER_ID\", resposta.user_id )"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{$randomExampleEmail}}",
+									"description": "{{$randomExampleEmail}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "teste123",
+									"description": "{{$randomPassword}}",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "freelancer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"resposta = pm.response.json()\r",
+									"\r",
+									"pm.globals.set(\"TOKEN\", resposta.token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{EMAIL}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "teste123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Freelancer",
+			"item": [
+				{
+					"name": "Search Freelancer Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/freelancer/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"freelancer",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Freelancers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/freelancers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"freelancers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Freelancers Random",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/freelancers/rand",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"freelancers",
+								"rand"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "freelancer_id",
+									"value": "{{FREE_ID}}",
+									"type": "text"
+								},
+								{
+									"key": "education",
+									"value": "{{$randomLoremWords}}",
+									"type": "text"
+								},
+								{
+									"key": "languages",
+									"value": "{{$randomLoremWords}}",
+									"type": "text"
+								},
+								{
+									"key": "experience",
+									"value": "{{$randomLoremWords}}",
+									"type": "text"
+								},
+								{
+									"key": "course",
+									"value": "{{$randomLoremWords}}",
+									"type": "text"
+								},
+								{
+									"key": "disability",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "soft_skills",
+									"value": "Trabalho em equipe",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/freelancer/{{USER_ID}}/information",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"freelancer",
+								"{{USER_ID}}",
+								"information"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Network",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "freelancer_id",
+									"value": "{{FREE_ID}}",
+									"type": "text"
+								},
+								{
+									"key": "github",
+									"value": "Git Hub {{$randomUrl}}",
+									"type": "text"
+								},
+								{
+									"key": "linkedin",
+									"value": "Linkedin  {{$randomUrl}}",
+									"type": "text"
+								},
+								{
+									"key": "portfolio",
+									"value": "Portfolio {{$randomUrl}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/freelancer/{{USER_ID}}/network",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"freelancer",
+								"{{USER_ID}}",
+								"network"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Freelancer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{$randomFullName}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "{{$randomPhoneNumber}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "brith",
+									"value": "{{$randomDatePast}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "gender",
+									"value": "female",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "{{$randomCity}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "about",
+									"value": "{{$randomLoremSentence}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"value": "{{$randomPeopleImage}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "career",
+									"value": "Front-End",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "hard_skills",
+									"value": "Java, SQL",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contract",
+									"value": "PJ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "open_to_Work",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/freelancer/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"freelancer",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "education",
+									"value": "{{$randomLoremWords}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "languages",
+									"value": "{{$randomLoremWords}}",
+									"type": "text"
+								},
+								{
+									"key": "experience",
+									"value": "{{$randomLoremWords}}",
+									"type": "text"
+								},
+								{
+									"key": "course",
+									"value": "{{$randomLoremWords}}",
+									"type": "text"
+								},
+								{
+									"key": "disability",
+									"value": "false",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "soft_skills",
+									"value": "Trabalho em equipe",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/freelancer/information/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"freelancer",
+								"information",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Network",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "github",
+									"value": "Git Hub {{$randomUrl}}",
+									"type": "text"
+								},
+								{
+									"key": "linkedin",
+									"value": "Linkedin  {{$randomUrl}}",
+									"type": "text"
+								},
+								{
+									"key": "portfolio",
+									"value": "Portfolio {{$randomUrl}}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/freelancer/network/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"freelancer",
+								"network",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Freelancer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/freelancer/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"freelancer",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Search Company Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/company/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Companies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Companies Random",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/companies/rand",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"companies",
+								"rand"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Jobs Company Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjg0NjI2NzgwLCJleHAiOjE2ODQ2MzAzODB9.jzcGx4mCok7SM85rn_4_x_OJbX6ZValm2exCuFj-_WQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/company/{{USER_ID}}/jobs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{USER_ID}}",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{$randomFullName}}",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "{{$randomLoremSentence}}",
+									"type": "text"
+								},
+								{
+									"key": "site ",
+									"value": "{{$randomUrl}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/company/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/company/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Job",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"resposta = pm.response.json()\r",
+									"\r",
+									"pm.globals.set(\"JOB_ID\", resposta.id )"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "company_id",
+									"value": "{{USER_ID}}",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Jobs1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Otro trabajo",
+									"type": "text"
+								},
+								{
+									"key": "hard_skills",
+									"value": "java",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/company/{{USER_ID}}/job",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{USER_ID}}",
+								"job"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Candidate for Skill",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/company/{{USER_ID}}/findSkills/{{JOB_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{USER_ID}}",
+								"findSkills",
+								"{{JOB_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Matching with skills",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"freelancer_id\": 17,\r\n        \"name\": \"Melissa Lakin\",\r\n        \"img\": \"http://placeimg.com/640/480/people\",\r\n        \"hard_skills\": \"java\",\r\n        \"job_id\": \"1\"\r\n    },\r\n    {\r\n        \"freelancer_id\": 9,\r\n        \"name\": \"Dorothy Ebert\",\r\n        \"img\": \"http://placeimg.com/640/480/people\",\r\n        \"hard_skills\": \"java, sql\",\r\n        \"job_id\": \"1\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/company/{{USER_ID}}/match/{{JOB_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{USER_ID}}",
+								"match",
+								"{{JOB_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Freelancers at Job",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/company/{{JOB_ID}}/freelancers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{JOB_ID}}",
+								"freelancers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Job Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "{{$randomLoremSentence}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "{{$randomLoremSentence}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "hard_skills",
+									"value": "java",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/company/{{USER_ID}}/{{JOB_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{USER_ID}}",
+								"{{JOB_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Job Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/company/{{USER_ID}}/{{JOB_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"company",
+								"{{USER_ID}}",
+								"{{JOB_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mentor",
+			"item": [
+				{
+					"name": "Search Mentor Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/mentor/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"mentor",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Mentors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/mentors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"mentors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Mentors Random",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/mentors/rand",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"mentors",
+								"rand"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Mentor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{$randomFullName}}",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "{{$randomPhoneNumber}}",
+									"type": "text"
+								},
+								{
+									"key": "brith",
+									"value": "{{$randomDatePast}}",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "female",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "{{$randomCity}}",
+									"type": "text"
+								},
+								{
+									"key": "about",
+									"value": "{{$randomLoremSentence}}",
+									"type": "text"
+								},
+								{
+									"key": "img",
+									"value": "{{$randomPeopleImage}}",
+									"type": "text"
+								},
+								{
+									"key": "career",
+									"value": "Front-End",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "@gmail.com",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/mentor/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"mentor",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mentor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/mentor/{{USER_ID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"mentor",
+								"{{USER_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status test\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	]
+}
