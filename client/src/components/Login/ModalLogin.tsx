@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import './modalLogin.css'
 import { AppContext, AppContextProps } from 'context/appContext'
-import { useNavigate } from 'react-router-dom'
-import api from 'api'
 import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 
@@ -15,7 +13,6 @@ function ModalLogin() {
   })
   const [err, setError] = useState<string>('')
   const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
-  const navigate = useNavigate()
 
   const handleClose = () => {
     setIsOpenModalLogin(false)
