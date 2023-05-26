@@ -6,12 +6,8 @@ const { authJwt } = require('../middlewares')
 const router = Router()
 
 router
-  .post(
-    '/register',
-    verifySignUp.checkDuplicateUserEmail,
-    AuthController.signUp
-  )
-  .post('/login', AuthController.LogIn)
+  .post('/register',verifySignUp.checkDuplicateUserEmail,AuthController.singUp)
+  .post('/login', AuthController.logIn)
   .get('/users', authJwt.verifyToken, AuthController.UserAll);
 
 
