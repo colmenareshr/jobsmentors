@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import './modalLogin.css'
 import { AppContext, AppContextProps } from 'context/appContext'
-import { useNavigate } from 'react-router-dom'
 import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 
