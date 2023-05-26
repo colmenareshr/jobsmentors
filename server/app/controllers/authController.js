@@ -1,10 +1,11 @@
-const database = require("../models");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const authConfig = require("../../config/authConfig");
+const { User, Company, Freelancer, Mentor } = require('../models');
+const database = require('../models');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const authConfig = require('../../config/authConfig');
 
-class authController {
-  static async createToken(user) {
+class AuthController {
+  static createToken(user) {
     const payload = {
       id: user.id,
       email: user.email,
@@ -16,64 +17,58 @@ class authController {
     return token;
   }
 
-  static async SingUp(req, res) {
+  static async signUp(req, res) {
     try {
       const password = await bcrypt.hash(req.body.password, 10);
       const { email, role } = req.body;
-      await database.sequelize.transaction(async (signIn) => {
-        const newUser = await database.User.create(
+
+      await database.sequelize.transaction(async (transaction) => {
+        const newUser = await User.create(
           { email, password, role },
-          { transaction: signIn }
+          { transaction }
         );
-        const token = jwt.sign({ id: newUser.id }, authConfig.secret, {
-          expiresIn: authConfig.expires,
-        });
-        if (role === "company") {
-          const newCompany = await database.Company.create(
-            {
-              email,
-              user_id: newUser.id,
-            },
-            { transaction: signIn }
-          );
-          res.status(200).json(newCompany);
+        let createdUser;
+
+        switch (role) {
+          case 'company':
+            createdUser = await Company.create(
+              { email, user_id: newUser.id },
+              { transaction }
+            );
+            break;
+          case 'freelancer':
+            createdUser = await Freelancer.create(
+              { email, user_id: newUser.id },
+              { transaction }
+            );
+            break;
+          case 'mentor':
+            createdUser = await Mentor.create(
+              { email, user_id: newUser.id },
+              { transaction }
+            );
+            break;
+          default:
+            throw new Error('Invalid role');
         }
-        if (role === "freelancer") {
-          const newFrelancer = await database.Freelancer.create(
-            {
-              email,
-              user_id: newUser.id,
-            },
-            { transaction: signIn }
-          );
-          res.status(200).json(newFrelancer);
-        }
-        if (role === "mentor") {
-          const newMentor = await database.Mentor.create(
-            {
-              email,
-              user_id: newUser.id,
-            },
-            { transaction: signIn }
-          );
-          res.status(200).json(newMentor);
-        }
+
+        const token = AuthController.createToken(newUser);
+        res.status(200).json({ user: createdUser, token });
       });
     } catch (error) {
-      return res.status(500).json(error.message);
+      res.status(500).json({ error: error.message });
     }
   }
-
   static async LogIn(req, res) {
     const { email, password } = req.body;
     try {
       const user = await database.User.findOne({ where: { email } });
       if (!user) {
-        return res.status(404).json({ message: "Invalid email or password" });
+        return res.status(404).json({ message: 'Invalid email or password' });
       }
 
       if (bcrypt.compareSync(password, user.password)) {
-        const token = await authController.createToken(user);
+        const token = AuthController.createToken(user);
         res.status(200).json({ token });
       }
     } catch (error) {
@@ -91,4 +86,4 @@ class authController {
   }
 }
 
-module.exports = authController;
+module.exports = AuthController;
