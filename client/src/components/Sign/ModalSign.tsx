@@ -11,6 +11,7 @@ interface TabData {
   email: string
   password1: string
   password2: string
+  role: string
 }
 
 const inicialState = {
@@ -19,7 +20,8 @@ const inicialState = {
   name: '',
   email: '',
   password1: '',
-  password2: ''
+  password2: '',
+  role: ''
 }
 
 function ModalSign() {
@@ -36,9 +38,9 @@ function ModalSign() {
       await registerUser({
         email: data.email,
         password: data.password1,
-        role: tabsData[activeTabIndex].label.toLowerCase()
+        role: tabsData[activeTabIndex].role.toLowerCase()
       })
-      console.log('Usuario Registrado', data)
+      console.log('Usuario Registrado', data.role)
     } catch (error) {
       console.error('Error registering user:', error)
     }
@@ -58,7 +60,8 @@ function ModalSign() {
       name: 'Nome',
       email: 'Email',
       password1: 'Senha',
-      password2: 'Confirmar Senha'
+      password2: 'Confirmar Senha',
+      role: 'Freelancer'
     },
     {
       idx: 1,
@@ -66,7 +69,8 @@ function ModalSign() {
       email: 'Email',
       password1: 'Senha',
       password2: 'Confirmar Senha',
-      name: 'Empresa'
+      name: 'Empresa',
+      role: 'Company'
     },
     {
       idx: 2,
@@ -74,7 +78,8 @@ function ModalSign() {
       email: 'Email',
       password1: 'Senha',
       password2: 'Confirmar Senha',
-      name: 'Nome'
+      name: 'Nome',
+      role: 'Mentor'
     }
   ]
 
