@@ -1,14 +1,10 @@
 import Login from 'components/Login/Login'
 import Sign from 'components/Sign/Sign'
-import { useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { AuthContext } from 'context/authContext'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContextProps } from 'interfaces/autContextInterface'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { AppContext, AppContextProps } from 'context/appContext'
 import { useTranslation } from 'react-i18next'
 import flagEs from '../../assets/images/spain-flag-round-icon.svg'
 import flagUs from '../../assets/images/usa-flag-round-circle-icon.svg'
@@ -17,28 +13,14 @@ import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
 function Navbar() {
   const { i18n } = useTranslation()
   const { t } = useTranslation()
-  const navigate = useNavigate()
   const storedLang = localStorage.getItem('lang')
   const [language, setLanguage] = useState(storedLang || 'pt')
-  const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
-  const { currentUser, login, logout } = useContext(
-    AuthContext
-  ) as AuthContextProps
+  const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
   const [nav, setNav] = useState(false)
 
   const handleNav = () => {
     setNav(!nav)
   }
-  useEffect(() => {
-    console.log(currentUser)
-    if (currentUser) {
-      if (currentUser.role === 'company') navigate('/company/landingpage')
-      if (currentUser.role === 'freelancer')
-        navigate('/freelancers/landingpage')
-      setIsOpenModalLogin(false)
-    }
-    if (!currentUser) navigate('/')
-  }, [currentUser])
 
   // Function to handle language change
   function handleLanguage(lang: string) {
@@ -69,15 +51,15 @@ function Navbar() {
         <ul className="items-center justify-between gap-4 md:flex">
           <li className="hover:text-teal/90">{t('app.menu.becomeamentor')}</li>
           <li className="hover:text-teal/90">
-            <Sign />
+            {currentUser ? <span></span> : <Sign />}
           </li>
           <li className="hover:text-teal/90">
-            {!currentUser?.id ? (
-              <Login />
-            ) : (
-              <button className="button-secondary" onClick={() => logout()}>
+            {currentUser ? (
+              <button className="button-secondary" onClick={logout}>
                 {t('app.menu.logout')}
               </button>
+            ) : (
+              <Login />
             )}
           </li>
         </ul>
