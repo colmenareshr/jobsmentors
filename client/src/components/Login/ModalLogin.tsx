@@ -25,7 +25,8 @@ function ModalLogin() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      await login(inputs)
+      const res = await login(inputs)
+      localStorage.setItem('token', res.token)
     } catch (err: any) {
       setError(err.response.data.message)
     }

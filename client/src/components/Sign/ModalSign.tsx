@@ -26,11 +26,13 @@ const inicialState = {
 
 function ModalSign() {
   const [data, setData] = useState<TabData>(inicialState as TabData)
-  const { setIsOpenModalSign, setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
+  const { setIsOpenModalSign, setIsOpenModalLogin } = useContext(
+    AppContext
+  ) as AppContextProps
   const [activeTabIndex, setActiveTabIndex] = useState(0)
 
   const handleClose = () => {
-    setIsOpenModalSign(true)
+    setIsOpenModalSign(false)
   }
 
   const handleSubmit = async () => {
@@ -41,6 +43,7 @@ function ModalSign() {
         role: tabsData[activeTabIndex].role.toLowerCase()
       })
       console.log('Usuario Registrado', data)
+      handleClose()
       setIsOpenModalLogin(true)
     } catch (error) {
       console.error('Error registering user:', error)

@@ -33,38 +33,49 @@ function Navbar() {
 
   return (
     <nav className="flex items-center justify-between font-semibold">
-      <div className="hidden lg:block lg:pr-4">
-        <ul className="md:flex md:gap-4">
-          <li className="hover:text-teal/90">
-            <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
-          </li>
-          <li className="hover:text-teal/90">
-            <Link to="/company/landingpage">{t('app.menu.company')}</Link>
-          </li>
-          <Link to="/freelancers/landingpage">
-            <li className="hover:text-teal/90">{t('app.menu.mentors')}</li>
-          </Link>
-          <li className="hover:text-teal/90">{t('app.menu.howitworks')}</li>
-        </ul>
-      </div>
-      <div className="hidden md:block">
-        <ul className="items-center justify-between gap-4 md:flex">
-          <li className="hover:text-teal/90">{t('app.menu.becomeamentor')}</li>
-          <li className="hover:text-teal/90">
-            {currentUser ? <span></span> : <Sign />}
-          </li>
-          <li className="hover:text-teal/90">
-            {currentUser ? (
-              <button className="button-secondary" onClick={logout}>
-                {t('app.menu.logout')}
-              </button>
+      <div className="hidden lg:flex">
+        <div className="hidden lg:block lg:pr-4">
+          <ul className="md:flex md:gap-4">
+            <li className="hover:text-teal/90">
+              <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
+            </li>
+            <li className="hover:text-teal/90">
+              <Link to="/company/landingpage">{t('app.menu.company')}</Link>
+            </li>
+            <Link to="/freelancers/landingpage">
+              <li className="hover:text-teal/90">{t('app.menu.mentors')}</li>
+            </Link>
+            <li className="hover:text-teal/90">{t('app.menu.howitworks')}</li>
+          </ul>
+        </div>
+        <div className="hidden md:block">
+          <ul className="items-center justify-between gap-4 md:flex">
+            {!currentUser?.id ? (
+              <li className="hover:text-teal/90">
+                <Sign />
+              </li>
             ) : (
-              <Login />
+              <li className="hidden hover:text-teal/90">
+                <Sign />
+              </li>
             )}
-          </li>
-        </ul>
+
+            <li className="hover:text-teal/90">
+              {!currentUser?.id ? (
+                <Login />
+              ) : (
+                <button className="button-secondary" onClick={() => logout()}>
+                  {t('app.menu.logout')}
+                </button>
+              )}
+            </li>
+          </ul>
+        </div>
       </div>
-      <div onClick={handleNav} className="block px-3 md:hidden">
+
+      {/* DRAWER */}
+
+      <div onClick={handleNav} className="block px-3 lg:hidden">
         {!nav ? <AiOutlineMenu size={20} /> : <AiOutlineClose size={20} />}
         <div
           className={
@@ -98,10 +109,21 @@ function Navbar() {
               )}
             </li>
           </ul>
+          <div className="mt-44 flex justify-center gap-4">
+            <button value={language} onClick={() => handleLanguage('br')}>
+              <img src={flagBr} alt="flagBr" className="h-8 w-8" />
+            </button>
+            <button value={language} onClick={() => handleLanguage('es')}>
+              <img src={flagEs} alt="flagEs" className="h-8 w-8" />
+            </button>
+            <button value={language} onClick={() => handleLanguage('en')}>
+              <img src={flagUs} alt="flagUs" className="h-8 w-8" />
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="flex justify-end gap-4 pl-4">
+      <div className="hidden justify-end gap-4 pl-4 md:flex">
         <button value={language} onClick={() => handleLanguage('br')}>
           <img src={flagBr} alt="flagBr" className="h-8 w-8" />
         </button>

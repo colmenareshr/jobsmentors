@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+
   html,
   body {
     @apply bg-white;
   }
 
   h1 {
-    @apply text-3xl font-bold;
+    @apply text-xl font-bold;
   }
 
   h2 {
@@ -27,10 +28,19 @@
 
 @layer components {
   .button {
-    @apply rounded-full border-2 border-orange bg-yellow px-6 py-2 font-bold uppercase duration-200 ease-in-out hover:bg-teal400 hover:text-white cursor-pointer;
+    @apply rounded-full border-2 border-orange bg-yellow px-6 py-2 font-bold uppercase duration-200 ease-in-out cursor-pointer;
+  }
+
+  .button:hover {
+    @apply bg-orange text-white;
+
   }
 
   .button-secondary {
-    @apply rounded-full border-2 border-black bg-none px-6 py-2 font-bold uppercase duration-200 ease-in-out  hover:border-orange hover:bg-white cursor-pointer;
+    @apply rounded-full border-2 border-black bg-none px-6 py-2 font-bold uppercase duration-200 ease-in-out cursor-pointer;
+  }
+
+  .button-secondary:hover {
+    @apply bg-white text-black border-orange;
   }
 }
