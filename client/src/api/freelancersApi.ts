@@ -36,7 +36,7 @@ export const getFreelancerById = async (
   id: string
 ): Promise<AxiosResponse<FreelancerData>> => {
   try {
-    const res = await api.get<FreelancerData>(`/freelancers/${id}`)
+    const res = await api.get<FreelancerData>(`/freelancer/${id}`)
     return res
   } catch (error) {
     console.error(`Error getting freelancer with ID ${id}:`, error)
