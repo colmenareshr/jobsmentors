@@ -14,7 +14,8 @@ const initialState: JobData = {
   user_id: 0,
   title: '',
   description: '',
-  hard_skills: ''
+  hard_skills: '',
+  amount: 0
 }
 
 function Projects() {
@@ -68,6 +69,7 @@ function Projects() {
                   type="text"
                   onChange={handleChange}
                   name="title"
+                  value={data.title}
                 />
               </div>
               <div className="col-span-4 row-span-1 self-center rounded-lg pl-10">
@@ -78,6 +80,9 @@ function Projects() {
                   className="rouded-lg w-full rounded-lg p-3"
                   placeholder="Javascript, React, Node, etc."
                   type="text"
+                  onChange={handleChange}
+                  name="hard_skills"
+                  value={data.hard_skills}
                 />
               </div>
               <div className="col-span-4 row-span-1 self-center pl-10">
@@ -88,6 +93,9 @@ function Projects() {
                   className="rouded-lg w-full rounded-lg p-3"
                   placeholder="min ( 1 ) . . . max ( 20 )"
                   type="text"
+                  onChange={handleChange}
+                  name="amount"
+                  value={data.amount}
                 />
               </div>
               <div className="col-span-4 row-span-3 rounded-lg pl-20">
@@ -100,6 +108,9 @@ function Projects() {
                 <textarea
                   className="rouded-lg h-3/4 w-full scroll-smooth rounded-lg p-3"
                   placeholder="descripción del proyecto"
+                  onChange={handleChange}
+                  name="description"
+                  value={data.description}
                 />
               </div>
               <div className="col-span-4 row-span-3 flex flex-col place-content-center gap-16">
