@@ -401,68 +401,57 @@
 								{
 									"key": "name",
 									"value": "{{$randomFullName}}",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "phone",
 									"value": "{{$randomPhoneNumber}}",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "brith",
 									"value": "{{$randomDatePast}}",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "gender",
 									"value": "female",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "address",
 									"value": "{{$randomCity}}",
-									"type": "text",
-									"disabled": true
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "{{$randomLoremSentence}}",
+									"type": "text"
 								},
 								{
 									"key": "about",
 									"value": "{{$randomLoremSentence}}",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "img",
 									"value": "{{$randomPeopleImage}}",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "career",
 									"value": "Front-End",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "hard_skills",
-									"value": "Java, SQL",
-									"type": "text",
-									"disabled": true
+									"value": "Python, node",
+									"type": "text"
 								},
 								{
 									"key": "contract",
 									"value": "PJ",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "open_to_Work",
@@ -900,12 +889,12 @@
 								},
 								{
 									"key": "hard_skills",
-									"value": "java",
+									"value": "python",
 									"type": "text"
 								},
 								{
 									"key": "amount",
-									"value": "5",
+									"value": "2",
 									"type": "text"
 								}
 							]
@@ -993,7 +982,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"freelancer_id\": 17,\r\n        \"name\": \"Melissa Lakin\",\r\n        \"img\": \"http://placeimg.com/640/480/people\",\r\n        \"hard_skills\": \"java\",\r\n        \"job_id\": \"1\"\r\n    },\r\n    {\r\n        \"freelancer_id\": 9,\r\n        \"name\": \"Dorothy Ebert\",\r\n        \"img\": \"http://placeimg.com/640/480/people\",\r\n        \"hard_skills\": \"java, sql\",\r\n        \"job_id\": \"1\"\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"freelancer_id\": 8,\r\n        \"name\": \"Gladys Klocko\",\r\n        \"img\": \"http://placeimg.com/640/480/people\",\r\n        \"hard_skills\": \"python\",\r\n        \"job_id\": \"1\"\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
