@@ -42,7 +42,7 @@ function ModalSign() {
         password: data.password1,
         role: tabsData[activeTabIndex].role.toLowerCase()
       })
-      console.log('Usuario Registrado', data)
+      console.log('Usuario Registrado')
       handleClose()
       setIsOpenModalLogin(true)
     } catch (error) {
@@ -223,6 +223,12 @@ function ModalSign() {
           <button className="footer-button-ModalSign" onClick={handleSubmit}>
             Cadastrar
           </button>
+          <div>
+            <p>¿Ya tienes cuenta?</p>
+            <button onClick={() => setIsOpenModalLogin(true)}>
+              Accede a tu cuenta
+            </button>
+          </div>
         </footer>
       </div>
     </div>
