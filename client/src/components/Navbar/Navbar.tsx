@@ -29,6 +29,7 @@ function Navbar() {
   const handleNav = () => {
     setNav(!nav)
   }
+
   useEffect(() => {
     console.log(currentUser)
     if (currentUser) {
@@ -42,7 +43,6 @@ function Navbar() {
 
   // Function to handle language change
   function handleLanguage(lang: string) {
-    // const lang = event.target.value
     i18n.changeLanguage(lang).then(() => {
       setLanguage(lang)
       localStorage.setItem('lang', lang)
