@@ -72,15 +72,14 @@ function ModalLogin() {
           >
             Cancelar
           </button>
-          <input type="submit" value="Entrar" onClick={handleSubmit} />
 
-          {/* <button
+          <button
             className="footer-button-Entrar-ModalLogin md:px-19 md:pr-19 md:pl-19 rounded-full bg-purple"
             type="submit"
             onClick={handleSubmit}
           >
             Entrar
-          </button> */}
+          </button>
         </div>
         <div className="py-6 text-center">
           <span>
