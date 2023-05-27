@@ -12,7 +12,9 @@ function ModalLogin() {
     password: ''
   })
   const [err, setError] = useState<null>(null)
-  const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
+  const { setIsOpenModalLogin, setIsOpenModalSign } = useContext(
+    AppContext
+  ) as AppContextProps
 
   const handleClose = () => {
     setIsOpenModalLogin(false)
@@ -29,6 +31,11 @@ function ModalLogin() {
     } catch (err) {
       setError(err.response.data.message)
     }
+  }
+
+  const handleSignUp = () => {
+    setIsOpenModalLogin(false)
+    setIsOpenModalSign(true)
   }
 
   return (
@@ -82,7 +89,13 @@ function ModalLogin() {
         <div className="py-6 text-center">
           <span>
             Ainda não sou usuário{' '}
-            <button className="font-bold uppercase">Criar Conta</button>
+            <button
+              type="button"
+              onClick={handleSignUp}
+              className="font-bold uppercase"
+            >
+              Criar Conta
+            </button>
           </span>
         </div>
       </div>
