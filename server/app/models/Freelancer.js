@@ -84,8 +84,11 @@ module.exports = (sequelize, DataTypes) => {
     address: {
       type: DataTypes.STRING(128)
     },
-    about: {
+    bio: {
       type: DataTypes.STRING(128)
+    },
+    about: {
+      type: DataTypes.STRING(200)
     },
     img: {
       type: DataTypes.STRING(128),
