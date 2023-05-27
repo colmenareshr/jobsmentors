@@ -118,12 +118,12 @@ function Navbar() {
               <Sign />
             </li>
             <li>
-              {!currentUser?.id ? (
-                <Login />
-              ) : (
-                <button className="button-secondary" onClick={() => logout()}>
+              {currentUser ? (
+                <button className="button-secondary" onClick={logout}>
                   {t('app.menu.logout')}
                 </button>
+              ) : (
+                <Login />
               )}
             </li>
           </ul>
