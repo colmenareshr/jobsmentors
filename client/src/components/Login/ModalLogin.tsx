@@ -25,10 +25,9 @@ function ModalLogin() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const res = await login(inputs)
-      localStorage.setItem('token', res.token)
+      await login(inputs)
     } catch (err) {
-      setError(err.response.data)
+      setError(err.response.data.message)
     }
   }
 
@@ -64,7 +63,7 @@ function ModalLogin() {
             />
           </div>
         </main>
-        <div className="text-center">{err && <p>{err}</p>}</div>
+        {err && <p className="py-3 text-center text-[red]"> {err} </p>}
         <div className="footer-buttonGroup-ModalLogin">
           <button
             className="footer-button-Cancelar-ModalLogin md:pr-19 md:pl-19"
@@ -75,7 +74,6 @@ function ModalLogin() {
 
           <button
             className="footer-button-Entrar-ModalLogin md:px-19 md:pr-19 md:pl-19 rounded-full bg-purple"
-            type="submit"
             onClick={handleSubmit}
           >
             Entrar

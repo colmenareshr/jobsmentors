@@ -13,17 +13,11 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
   )
 
   const login = async (inputs: { email: string; password: string }) => {
-    try {
-      const res = await api.post('/login', inputs)
-      setCurrentUser(res.data as User)
-    } catch (error) {
-      console.error('Failed to login:', error)
-    }
+    const res = await api.post('/login', inputs)
+    setCurrentUser(res.data as User)
   }
 
   const logout = () => {
-    localStorage.removeItem('token')
-    delete api.defaults.headers.common.Authorization
     setCurrentUser(null)
   }
 
