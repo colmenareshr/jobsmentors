@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 function Login() {
   const { t } = useTranslation()
-  const { currentUser } = useContext(AuthContext) as AuthContextProps
+  const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
   const { isOpenModalLogin, setIsOpenModalLogin } = useContext(
     AppContext
   ) as AppContextProps
@@ -19,9 +19,11 @@ function Login() {
   }
 
   const handleLogout = () => {
+    logout()
     setIsOpenModalLogin(false)
-    navigate('/')
+    navigate('/') // Redirige al usuario a la página de inicio
   }
+
   return (
     <Fragment>
       <div>
