@@ -17,32 +17,17 @@ import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
 function Navbar() {
   const { i18n } = useTranslation()
   const { t } = useTranslation()
-  const navigate = useNavigate()
   const storedLang = localStorage.getItem('lang')
   const [language, setLanguage] = useState(storedLang || 'pt')
-  const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
-  const { currentUser, login, logout } = useContext(
-    AuthContext
-  ) as AuthContextProps
+  const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
   const [nav, setNav] = useState(false)
 
   const handleNav = () => {
     setNav(!nav)
   }
-  useEffect(() => {
-    console.log(currentUser)
-    if (currentUser) {
-      if (currentUser.role === 'company') navigate('/company/landingpage')
-      if (currentUser.role === 'freelancer')
-        navigate('/freelancers/landingpage')
-      setIsOpenModalLogin(false)
-    }
-    if (!currentUser) navigate('/')
-  }, [currentUser])
 
   // Function to handle language change
   function handleLanguage(lang: string) {
-    // const lang = event.target.value
     i18n.changeLanguage(lang).then(() => {
       setLanguage(lang)
       localStorage.setItem('lang', lang)
@@ -68,18 +53,12 @@ function Navbar() {
         </div>
         <div className="hidden md:block">
           <ul className="items-center justify-between gap-4 md:flex">
-            {!currentUser?.id ? (
-              <li className="hover:text-teal/90">
-                <Sign />
-              </li>
-            ) : (
-              <li className="hidden hover:text-teal/90">
-                <Sign />
-              </li>
-            )}
+            <li className={!currentUser ? 'hover:text-teal/90' : 'hidden'}>
+              <Sign />
+            </li>
 
             <li className="hover:text-teal/90">
-              {!currentUser?.id ? (
+              {!currentUser ? (
                 <Login />
               ) : (
                 <button className="button-secondary" onClick={() => logout()}>
@@ -114,7 +93,7 @@ function Navbar() {
           </ul>
           <ul className="flex flex-col gap-3 pt-3">
             <li>{t('app.menu.becomeamentor')}</li>
-            <li>
+            <li className={!currentUser ? 'hover:text-teal/90' : 'hidden'}>
               <Sign />
             </li>
             <li>
