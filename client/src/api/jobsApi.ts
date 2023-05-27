@@ -6,6 +6,7 @@ export interface JobData {
   title: string
   description: string
   hard_skills: string
+  amount: number
 }
 
 export const addJob = async (job: JobData) => {
