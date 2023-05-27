@@ -11,7 +11,7 @@ function ModalLogin() {
     email: '',
     password: ''
   })
-  const [err, setError] = useState<string>('')
+  const [err, setError] = useState<null>(null)
   const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
 
   const handleClose = () => {
@@ -26,8 +26,8 @@ function ModalLogin() {
     e.preventDefault()
     try {
       await login(inputs)
-    } catch (err: any) {
-      setError(err.response.data.message)
+    } catch (err) {
+      setError(err.response.data)
     }
   }
 
@@ -63,9 +63,7 @@ function ModalLogin() {
             />
           </div>
         </main>
-        <div className="text-center">
-          {err && <p className="text-red">{err}</p>}
-        </div>
+        <div className="text-center">{err && <p>{err}</p>}</div>
         <div className="footer-buttonGroup-ModalLogin">
           <button
             className="footer-button-Cancelar-ModalLogin md:pr-19 md:pl-19"
@@ -73,13 +71,15 @@ function ModalLogin() {
           >
             Cancelar
           </button>
-          <button
+          <input type="submit" value="Entrar" onClick={handleSubmit} />
+
+          {/* <button
             className="footer-button-Entrar-ModalLogin md:px-19 md:pr-19 md:pl-19 rounded-full bg-purple"
             type="submit"
             onClick={handleSubmit}
           >
             Entrar
-          </button>
+          </button> */}
         </div>
         <div className="py-6 text-center">
           <span>
