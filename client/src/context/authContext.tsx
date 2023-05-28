@@ -9,9 +9,7 @@ export const AuthContext = createContext<AuthContextProps | null>(null)
 export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
   children
 }) => {
-  const [currentUser, setCurrentUser] = useState<User>(
-    JSON.parse(localStorage.getItem('user') || null)
-  )
+  const [currentUser, setCurrentUser] = useState<User | null>(null)
 
   const login = async (inputs: { email: string; password: string }) => {
     const res = await api.post('/login', inputs)
