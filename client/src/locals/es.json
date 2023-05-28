@@ -75,6 +75,18 @@
       "btnsignup": "Crear una cuenta",
       "spanmsg": "¿Ya tienes una cuenta?",
       "btncreateaccount": "Acceder a tu cuenta"
+    },
+    "juniormentorsection": {
+      "title": "POR QUÉ ELEGIR FREELANCERS JUNIORS?",
+      "line1": "Soluciones rentables para tus proyectos",
+      "line2": "Perspectivas frescas e ideas innovadoras",
+      "line3": "Aprendices apasionados, ansiosos por crecer",
+      "line4": "Flexibles y adaptables a tus necesidades",
+      "line5": "Rápidos en adaptarse a nuevas tecnologías",
+      "line6": "Dedicados y comprometidos a ofrecer resultados de calidad",
+      "button": "COMIENCE HOY MISMO",
+      "title2": "DESBLOQUEA EL PODER DE LA MENTORÍA ESPECIALIZADA",
+      "comment": "Cuando necesitas una solución tecnológica para tu negocio, aprovecha la experiencia de nuestros mentores. Están aquí para guiarte en el proceso, brindar ideas valiosas y garantizar el éxito de tus proyectos."
     }
   }
 }

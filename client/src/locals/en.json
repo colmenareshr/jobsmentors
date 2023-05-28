@@ -75,6 +75,18 @@
       "btnsignup": "Create an account",
       "spanmsg": "Already have an account? ",
       "btncreateaccount": "Access your account"
+    },
+    "juniormentorsection": {
+      "title": "WHY CHOOSE JUNIOR FREELANCERS?",
+      "line1": "Cost-effective solutions for your projects",
+      "line2": "Fresh perspectives and innovative ideas",
+      "line3": "Passionate learners, eager to grow",
+      "line4": "Flexible and adaptable to your needs",
+      "line5": "Quick to adapt to new technologies",
+      "line6": "Dedicated and committed to delivering quality results",
+      "button": "START TODAY",
+      "title2": "UNLEASH THE POWER OF SPECIALIZED MENTORSHIP",
+      "comment": "When you need a technological solution for your business, take advantage of the expertise of our mentors. They are here to guide you through the process, provide valuable insights, and ensure the success of your projects."
     }
   }
 }
