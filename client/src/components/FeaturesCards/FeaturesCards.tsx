@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 interface featuresInfo {
   image: string
   title: string
@@ -8,6 +10,11 @@ interface featuresInfo {
   }
 }
 const FeaturesCards = ({ image, title, text, cta }: featuresInfo) => {
+  const { t } = useTranslation()
+
+  const title2 = t(title)
+  const ctaText = t(cta.text)
+
   return (
     <div className="container">
       <div className="flex flex-col items-center gap-4">
@@ -15,10 +22,10 @@ const FeaturesCards = ({ image, title, text, cta }: featuresInfo) => {
           src={`../src/assets/images/feature-img-${image}.svg`}
           alt="Explore our tech services"
         />
-        <h3>{title}</h3>
+        <h3>{title2}</h3>
         <p>{text}</p>
         <a href={cta.link} className="button uppercase">
-          {cta.text}
+          {ctaText}
         </a>
       </div>
     </div>

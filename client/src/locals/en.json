@@ -14,6 +14,36 @@
     "herosection": {
       "comment": "Find a talented and perfect freelancer for your technology projects.",
       "button": "GET A SOLUTION NOW"
+    },
+    "ctajuniors": {
+      "title": "Find a skilled team to provide the solution your company needs.",
+      "comment": "We have a large community of talented freelancers who are ready to start working on your project.",
+      "button": "START TODAY"
+    },
+    "featuresection": {
+      "title": "ENJOY THE POWER OF JUNIOR FREELANCERS AND SPECIALIZED MENTORS",
+      "cards": {
+        "card1": {
+          "title": "Technological Development Services",
+          "text": "Customized technological development solutions tailored to your business needs.",
+          "button": "EXPLORE OUR SERVICES"
+        },
+        "card2": {
+          "title": "Connect with Highly Skilled Junior Freelancers",
+          "text": "Connect with highly skilled junior freelancers ready to take on your projects with utmost commitment.",
+          "button": "FIND THE PERFECT FREELANCER"
+        },
+        "card3": {
+          "title": "Guidance and Support from Specialized Mentors",
+          "text": "Get guidance and support from specialized mentors to boost the success of your project.",
+          "button": "SPECIALIZED GUIDANCE NOW"
+        }
+      }
+    },
+    "aboutsection": {
+      "title": "OUR JURNEY",
+      "comment": "We are a team of specialized freelancers in various areas of software development and IT. Our mission is to empower individuals, including men, women, people with disabilities, and young professionals, by connecting them with their first job opportunities in the field of technology. Join us on our journey!We are a team of specialized freelancers in various areas of software development and IT. Our mission is to empower individuals, including men, women, people with disabilities, and young professionals, by connecting them with their first job opportunities in the field of technology. Join us on our journey!",
+      "button": "LEARN MORE ABOUT US"
     }
   }
 }

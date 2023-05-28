@@ -1,24 +1,22 @@
 import Login from 'components/Login/Login'
 import Sign from 'components/Sign/Sign'
-import { useState, useContext, useEffect } from 'react'
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
-import { AuthContext } from 'context/authContext'
-import { AuthContextProps } from 'interfaces/autContextInterface'
-import { useTranslation } from 'react-i18next'
 import flagEs from '../../assets/images/spain-flag-round-icon.svg'
 import flagUs from '../../assets/images/usa-flag-round-circle-icon.svg'
 import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
-import { useNavigate } from 'react-router-dom'
+import { useState, useContext, useEffect } from 'react'
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from 'context/authContext'
+import { AuthContextProps } from 'interfaces/autContextInterface'
+import { useTranslation } from 'react-i18next'
 
 function Navbar() {
-  const { i18n } = useTranslation()
-  const { t } = useTranslation()
   const storedLang = localStorage.getItem('lang')
-  const [language, setLanguage] = useState(storedLang || 'pt')
-  const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
-  const [nav, setNav] = useState(false)
   const navegate = useNavigate()
+  const { t, i18n } = useTranslation()
+  const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
+  const [language, setLanguage] = useState(storedLang || 'pt')
+  const [nav, setNav] = useState(false)
   const [isOpenModalLogin, setIsOpenModalLogin] = useState(false)
 
   const handleNav = () => {
@@ -26,7 +24,6 @@ function Navbar() {
   }
 
   useEffect(() => {
-    console.log({ currentUser })
     if (currentUser) {
       if (currentUser.role === 'company') navegate('/company/landingpage')
       if (currentUser.role === 'freelancer')

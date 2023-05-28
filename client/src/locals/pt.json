@@ -14,6 +14,36 @@
     "herosection": {
       "comment": "Encontre o talento freelance perfeito pra seus projetos tecnologicos",
       "button": "OBTENHA UMA SOLUÇÃO AGORA"
+    },
+    "ctajuniors": {
+      "title": "Descubra uma equipe habilidosa para fornecer a solução que sua empresa precisa.",
+      "comment": "Conecte-se com talentosos freelancers juniores prontos para enfrentar seus projetos tecnológicos. Encontre a combinação perfeita para as necessidades de sua empresa e impulsione a inovação.",
+      "button": "COMECE HOJE MESMO"
+    },
+    "featuresection": {
+      "title": "APROVEITE O PODER DOS FREELANCERS JUNIORS E MENTORES ESPECIALIZADOS",
+      "cards": {
+        "card1": {
+          "title": "Serviços de Desenvolvimento Tecnológico",
+          "text": "Soluções de desenvolvimento tecnológico personalizadas, adaptadas às suas necessidades empresariais.",
+          "button": "EXPLORE NOSSOS SERVIÇOS"
+        },
+        "card2": {
+          "title": "Conexão com Freelancers Juniores Altamente Qualificados",
+          "text": "Conecte-se com freelancers Juniors altamente qualificados prontos para enfrentar seus projetos com o maior compromisso.",
+          "button": "ENCONTRE O FREELANCER PERFEITO"
+        },
+        "card3": {
+          "title": "Orientação e Suporte de Mentores Especializados",
+          "text": "Obtenha orientação e suporte de mentores especializados para impulsionar o sucesso do seu projeto.",
+          "button": "ORIENTAÇÃO ESPECIALIZADA AGORA"
+        }
+      }
+    },
+    "aboutsection": {
+      "title": "NOSSA JORNADA",
+      "comment": "Somos uma equipe de freelancers especializados em diversas áreas de desenvolvimento de software e TI. Nossa missão é capacitar indivíduos, incluindo homens, mulheres, pessoas com deficiência e jovens profissionais, conectando-os com suas primeiras oportunidades de trabalho no campo da tecnologia. Junte-se a nós em nossa jornada!",
+      "button": "SAIBA MAIS SOBRE NÓS"
     }
   }
 }

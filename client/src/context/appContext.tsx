@@ -10,12 +10,6 @@ export interface AppContextProps {
   setIsOpenModalSign: (isOpenModalSign: boolean) => void
   searchTerm: string
   setSearchTerm: (searchTerm: string) => void
-  // candidate: Candidate[]
-  // setCandidate: (candidate: Candidate[]) => void
-  // company: Company[]
-  // setCompany: (company: Company[]) => void
-  // currentUser: User[]
-  // setCurrentUser: (currentUser: User[]) => void
 }
 
 export const AppContext = createContext<AppContextProps | null>(null)

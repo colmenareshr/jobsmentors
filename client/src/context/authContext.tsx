@@ -17,6 +17,14 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
     setCurrentUser(data as User)
   }
 
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      const data = jwt_decode(token)
+      setCurrentUser(data as User)
+    }
+  }, [])
+
   const logout = () => {
     setCurrentUser(null)
   }
