@@ -21,10 +21,11 @@ export const getFreelancers = async (): Promise<
 }
 
 export const createFreelancer = async (
-  freelancerData: FreelancerData
+  // freelancerData: FreelancerData,
+  id: string
 ): Promise<AxiosResponse<any>> => {
   try {
-    const res = await api.post('/freelancers', freelancerData)
+    const res = await api.post(`/freelancer/${id}/information`)
     return res
   } catch (error) {
     console.error('Error creating freelancer:', error)
