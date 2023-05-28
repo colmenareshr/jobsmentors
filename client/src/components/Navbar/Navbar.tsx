@@ -1,6 +1,6 @@
 import Login from 'components/Login/Login'
 import Sign from 'components/Sign/Sign'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { AuthContext } from 'context/authContext'
@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import flagEs from '../../assets/images/spain-flag-round-icon.svg'
 import flagUs from '../../assets/images/usa-flag-round-circle-icon.svg'
 import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
+import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
   const { i18n } = useTranslation()
@@ -17,20 +18,22 @@ function Navbar() {
   const [language, setLanguage] = useState(storedLang || 'pt')
   const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
   const [nav, setNav] = useState(false)
+  const navegate = useNavigate()
+  const [isOpenModalLogin, setIsOpenModalLogin] = useState(false)
 
   const handleNav = () => {
     setNav(!nav)
   }
 
   useEffect(() => {
-    console.log(currentUser)
+    console.log({ currentUser })
     if (currentUser) {
-      if (currentUser.role === 'company') navigate('/company/landingpage')
+      if (currentUser.role === 'company') navegate('/company/landingpage')
       if (currentUser.role === 'freelancer')
-        navigate('/freelancers/landingpage')
+        navegate('/freelancers/landingpage')
       setIsOpenModalLogin(false)
     }
-    if (!currentUser) navigate('/')
+    if (!currentUser) navegate('/')
   }, [currentUser])
 
   // Function to handle language change
