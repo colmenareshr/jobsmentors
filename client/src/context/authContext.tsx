@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react'
 import api from 'api'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 import { User } from 'interfaces/AuthInterfaces'
-import jwt_decode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 
 export const AuthContext = createContext<AuthContextProps | null>(null)
 
@@ -13,14 +13,14 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
 
   const login = async (inputs: { email: string; password: string }) => {
     const res = await api.post('/login', inputs)
-    const data = jwt_decode(res.data.token)
+    const data = jwtDecode(res.data.token)
     setCurrentUser(data as User)
   }
 
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      const data = jwt_decode(token)
+      const data = jwtDecode(token)
       setCurrentUser(data as User)
     }
   }, [])
