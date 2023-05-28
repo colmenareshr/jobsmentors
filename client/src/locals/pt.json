@@ -92,6 +92,12 @@
       "title": "CONHEÇA NOSSOS TALENTOSOS FREELANCERS",
       "comment": "Capacite seus projetos com freelancers excepcionais",
       "button": "CONTRATE UM FREELANCER AGORA"
+    },
+    "bigprojectsection": {
+      "title": "PROCURANDO UMA EQUIPE DE DESENVOLVIMENTO PARA PROJETOS DE GRANDE ESCALA?",
+      "subtitle": "Desbloqueie o potencial dos seus projetos",
+      "comment": "Construa sua equipe dos sonhos de desenvolvedores habilidosos e eleve seus projetos de grande escala a novas alturas. Nossa plataforma conecta você a mentores especializados para garantir o sucesso em cada etapa do caminho.",
+      "button": "Crie sua equipe de sucesso agora"
     }
   }
 }

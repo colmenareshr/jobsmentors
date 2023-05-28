@@ -92,6 +92,12 @@
       "title": "MEET OUR TALENTED FREELANCERS",
       "comment": "Empower your projects with exceptional freelancers",
       "button": "HIRE A FREELANCER NOW"
+    },
+    "bigprojectsection": {
+      "title": "LOOKING FOR A DEVELOPMENT TEAM FOR LARGE-SCALE PROJECTS?",
+      "subtitle": "Unlock the potential of your projects",
+      "comment": "Build your dream team of skilled developers and take your large-scale projects to new heights. Our platform connects you with specialized mentors to ensure success at every step of the way.",
+      "button": "Create your successful team now"
     }
   }
 }
