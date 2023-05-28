@@ -16,7 +16,7 @@ class authController {
     return token;
   }
 
-  static async SingUp(req, res) {
+  static async singUp(req, res) {
     try {
       const password = await bcrypt.hash(req.body.password, 10);
       const { email, role } = req.body;
@@ -64,7 +64,7 @@ class authController {
     }
   }
 
-  static async LogIn(req, res) {
+  static async logIn(req, res) {
     const { email, password } = req.body;
     try {
       const user = await database.User.findOne({ where: { email } });

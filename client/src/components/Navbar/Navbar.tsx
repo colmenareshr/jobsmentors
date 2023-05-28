@@ -1,14 +1,10 @@
 import Login from 'components/Login/Login'
 import Sign from 'components/Sign/Sign'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { AuthContext } from 'context/authContext'
-import { useContext } from 'react'
 import { AuthContextProps } from 'interfaces/autContextInterface'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { AppContext, AppContextProps } from 'context/appContext'
 import { useTranslation } from 'react-i18next'
 import flagEs from '../../assets/images/spain-flag-round-icon.svg'
 import flagUs from '../../assets/images/usa-flag-round-circle-icon.svg'
@@ -17,13 +13,9 @@ import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
 function Navbar() {
   const { i18n } = useTranslation()
   const { t } = useTranslation()
-  const navigate = useNavigate()
   const storedLang = localStorage.getItem('lang')
   const [language, setLanguage] = useState(storedLang || 'pt')
-  const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
-  const { currentUser, login, logout } = useContext(
-    AuthContext
-  ) as AuthContextProps
+  const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
   const [nav, setNav] = useState(false)
 
   const handleNav = () => {
@@ -68,18 +60,12 @@ function Navbar() {
         </div>
         <div className="hidden md:block">
           <ul className="items-center justify-between gap-4 md:flex">
-            {!currentUser?.id ? (
-              <li className="hover:text-teal/90">
-                <Sign />
-              </li>
-            ) : (
-              <li className="hidden hover:text-teal/90">
-                <Sign />
-              </li>
-            )}
+            <li className={!currentUser ? 'hover:text-teal/90' : 'hidden'}>
+              <Sign />
+            </li>
 
             <li className="hover:text-teal/90">
-              {!currentUser?.id ? (
+              {!currentUser ? (
                 <Login />
               ) : (
                 <button className="button-secondary" onClick={() => logout()}>
@@ -114,16 +100,16 @@ function Navbar() {
           </ul>
           <ul className="flex flex-col gap-3 pt-3">
             <li>{t('app.menu.becomeamentor')}</li>
-            <li>
+            <li className={!currentUser ? 'hover:text-teal/90' : 'hidden'}>
               <Sign />
             </li>
             <li>
-              {!currentUser?.id ? (
-                <Login />
-              ) : (
-                <button className="button-secondary" onClick={() => logout()}>
+              {currentUser ? (
+                <button className="button-secondary" onClick={logout}>
                   {t('app.menu.logout')}
                 </button>
+              ) : (
+                <Login />
               )}
             </li>
           </ul>

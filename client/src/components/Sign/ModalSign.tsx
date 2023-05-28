@@ -1,8 +1,8 @@
-import { useState, useContext } from 'react'
-import { AppContext, AppContextProps } from '../../context/appContext'
 import { IoMdClose } from 'react-icons/io'
-import { AuthContext } from 'context/authContext.tsx'
+import React, { useState, useContext } from 'react'
+import { registerUser } from 'api/authApi'
 import './modalSign.css'
+import { AppContext, AppContextProps } from 'context/appContext'
 
 interface TabData {
   idx: number
@@ -11,6 +11,7 @@ interface TabData {
   email: string
   password1: string
   password2: string
+  role: string
 }
 
 const inicialState = {
@@ -19,12 +20,13 @@ const inicialState = {
   name: '',
   email: '',
   password1: '',
-  password2: ''
+  password2: '',
+  role: ''
 }
 
 function ModalSign() {
   const [data, setData] = useState<TabData>(inicialState as TabData)
-  const { isOpenModalSign, setIsOpenModalSign } = useContext(
+  const { setIsOpenModalSign, setIsOpenModalLogin } = useContext(
     AppContext
   ) as AppContextProps
   const [activeTabIndex, setActiveTabIndex] = useState(0)
@@ -33,15 +35,26 @@ function ModalSign() {
     setIsOpenModalSign(false)
   }
 
-  const handleSubmit = () => {
-    alert('Se ha enviado el formulario')
-    console.log(data)
-    setIsOpenModalSign(false)
+  const handleSubmit = async () => {
+    try {
+      await registerUser({
+        email: data.email,
+        password: data.password1,
+        role: tabsData[activeTabIndex].role.toLowerCase()
+      })
+      console.log('Usuario Registrado')
+      handleClose()
+      setIsOpenModalLogin(true)
+    } catch (error) {
+      console.error('Error registering user:', error)
+    }
   }
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target
-    setData({ ...data, [name]: value })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
+    })
   }
 
   const tabsData: TabData[] = [
@@ -51,7 +64,8 @@ function ModalSign() {
       name: 'Nome',
       email: 'Email',
       password1: 'Senha',
-      password2: 'Confirmar Senha'
+      password2: 'Confirmar Senha',
+      role: 'Freelancer'
     },
     {
       idx: 1,
@@ -59,7 +73,8 @@ function ModalSign() {
       email: 'Email',
       password1: 'Senha',
       password2: 'Confirmar Senha',
-      name: 'Empresa'
+      name: 'Empresa',
+      role: 'Company'
     },
     {
       idx: 2,
@@ -67,7 +82,8 @@ function ModalSign() {
       email: 'Email',
       password1: 'Senha',
       password2: 'Confirmar Senha',
-      name: 'Nome'
+      name: 'Nome',
+      role: 'Mentor'
     }
   ]
 
@@ -159,6 +175,7 @@ function ModalSign() {
                   {tabsData[activeTabIndex].password1}
                 </label>
                 <input
+                  value={data.password1}
                   className="input-ModalSign placeholder:text-ModalSign g rounded"
                   onChange={handleChange}
                   name="password1"
@@ -172,6 +189,7 @@ function ModalSign() {
                   {tabsData[activeTabIndex].email}
                 </label>
                 <input
+                  value={data.email}
                   className="input-ModalSign placeholder:text-ModalSign g rounded"
                   onChange={handleChange}
                   name="email"
@@ -185,6 +203,7 @@ function ModalSign() {
                   {tabsData[activeTabIndex].password2}
                 </label>
                 <input
+                  value={data.password2}
                   className="input-ModalSign placeholder:text-ModalSign g rounded "
                   onChange={handleChange}
                   name="password2"
@@ -204,6 +223,12 @@ function ModalSign() {
           <button className="footer-button-ModalSign" onClick={handleSubmit}>
             Cadastrar
           </button>
+          <div>
+            <p>¿Ya tienes cuenta?</p>
+            <button onClick={() => setIsOpenModalLogin(true)}>
+              Accede a tu cuenta
+            </button>
+          </div>
         </footer>
       </div>
     </div>

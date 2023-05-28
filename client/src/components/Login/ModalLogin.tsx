@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import './modalLogin.css'
 import { AppContext, AppContextProps } from 'context/appContext'
@@ -6,13 +6,15 @@ import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 
 function ModalLogin() {
-  const { login, currentUser } = useContext(AuthContext) as AuthContextProps
+  const { login } = useContext(AuthContext) as AuthContextProps
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
   })
-  const [err, setError] = useState<string>('')
-  const { setIsOpenModalLogin } = useContext(AppContext) as AppContextProps
+  const [err, setError] = useState<null>(null)
+  const { setIsOpenModalLogin, setIsOpenModalSign } = useContext(
+    AppContext
+  ) as AppContextProps
 
   const handleClose = () => {
     setIsOpenModalLogin(false)
@@ -25,15 +27,19 @@ function ModalLogin() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const res = await login(inputs)
-      localStorage.setItem('token', res.token)
-    } catch (err: any) {
+      await login(inputs)
+    } catch (err) {
       setError(err.response.data.message)
     }
   }
 
+  const handleSignUp = () => {
+    setIsOpenModalLogin(false)
+    setIsOpenModalSign(true)
+  }
+
   return (
-    <form className="form-modalLogin z-50" onClick={handleSubmit}>
+    <form className="form-modalLogin z-50">
       <div className="containerBackground-modalLogin sm:w-full sm:p-2 md:w-[760px] md:pb-3">
         <header className="flex w-full flex-row justify-center">
           <div className="title-ModalLogin">Acceso a tu cuenta</div>
@@ -64,9 +70,7 @@ function ModalLogin() {
             />
           </div>
         </main>
-        <div className="text-center">
-          {err && <p className="text-red">{err}</p>}
-        </div>
+        {err && <p className="py-3 text-center text-[red]"> {err} </p>}
         <div className="footer-buttonGroup-ModalLogin">
           <button
             className="footer-button-Cancelar-ModalLogin md:pr-19 md:pl-19"
@@ -74,9 +78,9 @@ function ModalLogin() {
           >
             Cancelar
           </button>
+
           <button
             className="footer-button-Entrar-ModalLogin md:px-19 md:pr-19 md:pl-19 rounded-full bg-purple"
-            type="submit"
             onClick={handleSubmit}
           >
             Entrar
@@ -85,7 +89,13 @@ function ModalLogin() {
         <div className="py-6 text-center">
           <span>
             Ainda não sou usuário{' '}
-            <button className="font-bold uppercase">Criar Conta</button>
+            <button
+              type="button"
+              onClick={handleSignUp}
+              className="font-bold uppercase"
+            >
+              Criar Conta
+            </button>
           </span>
         </div>
       </div>

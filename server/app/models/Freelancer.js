@@ -84,8 +84,11 @@ module.exports = (sequelize, DataTypes) => {
     address: {
       type: DataTypes.STRING(128)
     },
-    about: {
+    bio: {
       type: DataTypes.STRING(128)
+    },
+    about: {
+      type: DataTypes.STRING(200)
     },
     img: {
       type: DataTypes.STRING(128),
@@ -103,7 +106,7 @@ module.exports = (sequelize, DataTypes) => {
     contract: {
       type: DataTypes.ENUM('CLT', 'PJ')
     },
-    open_to_Work: {
+    open_to_work: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
