@@ -44,6 +44,29 @@
       "title": "OUR JURNEY",
       "comment": "We are a team of specialized freelancers in various areas of software development and IT. Our mission is to empower individuals, including men, women, people with disabilities, and young professionals, by connecting them with their first job opportunities in the field of technology. Join us on our journey!We are a team of specialized freelancers in various areas of software development and IT. Our mission is to empower individuals, including men, women, people with disabilities, and young professionals, by connecting them with their first job opportunities in the field of technology. Join us on our journey!",
       "button": "LEARN MORE ABOUT US"
+    },
+    "loginmodal": {
+      "title": "Account Access",
+      "email": "Email",
+      "password": "Password",
+      "btncancel": "Cancel",
+      "btnlogin": "Login",
+      "spanmsg": "Don't have an account yet? ",
+      "btnsingup": "Create an account",
+      "placeholderemail": "example@email.com",
+      "placeholderpassword": "write your password"
+    },
+    "signupmodal": {
+      "title": "Create an Account",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "btncancel": "Cancel",
+      "btnsingup": "Create an account",
+      "spanmsg": "Already have an account? ",
+      "btnlogin": "Login",
+      "placeholdername": "write your name",
+      "placeholderemail": "write your email"
     }
   }
 }

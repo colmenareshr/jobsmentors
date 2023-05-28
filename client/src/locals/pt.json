@@ -44,6 +44,17 @@
       "title": "NOSSA JORNADA",
       "comment": "Somos uma equipe de freelancers especializados em diversas áreas de desenvolvimento de software e TI. Nossa missão é capacitar indivíduos, incluindo homens, mulheres, pessoas com deficiência e jovens profissionais, conectando-os com suas primeiras oportunidades de trabalho no campo da tecnologia. Junte-se a nós em nossa jornada!",
       "button": "SAIBA MAIS SOBRE NÓS"
+    },
+    "loginmodal": {
+      "title": "Acessar Conta",
+      "email": "E-mail",
+      "password": "Senha",
+      "btncancel": "Cancelar",
+      "btnlogin": "Entrar",
+      "spanmsg": "Ainda nãp tem uma cunta? ",
+      "btnsingup": "Crie uma conta",
+      "placeholderemail": "exemplo@email.com",
+      "placeholderpassword": "digite sua senha"
     }
   }
 }

@@ -29,11 +29,11 @@ function Login() {
       <div>
         {currentUser ? (
           <button className="button-secondary" onClick={handleLogout}>
-            {t('app.menu.logout')}
+            {t('app.loginmodal.title')}
           </button>
         ) : (
           <button className="button-secondary" onClick={handleOpen}>
-            {t('app.menu.login')}
+            {t('app.loginmodal.btnlogin')}
           </button>
         )}
         {isOpenModalLogin && (
