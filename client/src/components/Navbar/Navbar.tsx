@@ -44,7 +44,7 @@ function Navbar() {
   return (
     <nav className="flex items-center justify-between font-semibold">
       <div className="hidden lg:flex">
-        <div className="hidden lg:block lg:pr-4">
+        <div className="hidden lg:flex lg:items-center lg:pr-4">
           <ul className="md:flex md:gap-4">
             <li className="hover:text-teal/90">
               <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
