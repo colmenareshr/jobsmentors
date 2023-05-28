@@ -1,10 +1,21 @@
-import api from 'api'
-import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react'
+import React, {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useContext
+} from 'react'
 import { useParams } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import { createFreelancer, getFreelancerById } from 'api/freelancersApi'
-import { User } from 'interfaces/AuthInterfaces'
+import {
+  createFreelancer,
+  getFreelancerById,
+  updateFreelancer
+} from 'api/freelancersApi'
+import { AuthContext } from '../context/authContext'
+import { AuthContextProps } from 'interfaces/authContextInterface'
+import api from 'api'
 
 interface FreelancerInfo {
   imageUrl: string
@@ -22,6 +33,7 @@ interface FreelancerInfo {
 }
 
 const RegisterFreelancer: React.FC = () => {
+  const { currentUser } = useContext(AuthContext) as AuthContextProps
   const [about, setAbout] = useState('')
   const params = useParams<{ id: string }>()
   const [freelancerInfo, setFreelancerInfo] = useState<FreelancerInfo>({
@@ -39,20 +51,29 @@ const RegisterFreelancer: React.FC = () => {
     contract: ''
   })
 
-  useEffect(() => {
+  const fetchFreelancer = async () => {
     if (params.id) {
-      ;(async () => {
-        try {
-          const res = await getFreelancerById(params.id)
-          console.log(res)
-          setFreelancerInfo({
-            ...freelancerInfo
-          })
-        } catch (error) {
-          console.log('Error:', error)
-        }
-      })()
+      const res = await getFreelancerById(params.id)
+      setFreelancerInfo({
+        name: res.data.name,
+        phone: res.data.phone,
+        email: res.data.email,
+        bio: res.data.bio,
+        imageUrl: res.data.imageUrl,
+        birth: res.data.birth,
+        gender: res.data.gender,
+        address: res.data.address,
+        about: res.data.about,
+        career: res.data.career,
+        hardSkills: res.data.hardSkills,
+        contract: res.data.contract
+      })
+      console.log(res.data)
     }
+  }
+
+  useEffect(() => {
+    fetchFreelancer()
   }, [params.id])
 
   const handleEditorChange = (content: string) => {
@@ -73,23 +94,16 @@ const RegisterFreelancer: React.FC = () => {
     // Crear un objeto con los datos del formulario
     const formData = {
       ...freelancerInfo,
-      imageUrl,
-      name,
-      email,
-      phone,
-      birth,
-      gender,
-      address,
-      bio,
-      about,
-      career,
-      hardSkills,
-      contract
+      about
     }
 
     // Enviar formData al backend
     try {
-      const response = await createFreelancer(formData)
+      const response = await api.put('/freelancer/' + params.id, formData, {
+        headers: {
+          Authorization: 'Bearer ' + currentUser.token
+        }
+      })
 
       if (response.ok) {
         // La información se ha enviado correctamente
@@ -103,6 +117,18 @@ const RegisterFreelancer: React.FC = () => {
       console.log('Error:', error)
     }
   }
+
+  const carrersValues = [
+    'Front-end',
+    'Back-end',
+    'QA',
+    'Full-Stack',
+    'DBA',
+    'DevOps',
+    'PM',
+    'Tech Lead',
+    'UX Desing'
+  ]
 
   return (
     <section className="mt-28 w-full py-16">
@@ -209,15 +235,13 @@ const RegisterFreelancer: React.FC = () => {
                 value={freelancerInfo.career}
                 onChange={handleInputChange}
               >
-                <option value="frontend">Front-end</option>
-                <option value="backend">Back-end</option>
-                <option value="fullstack">Full-stack</option>
-                <option value="qa">QA</option>
-                <option value="dba">DBA</option>
-                <option value="devops">DevOps</option>
-                <option value="pm">PM</option>
-                <option value="tech-lead">Tech Lead</option>
-                <option value="ux-design">UX Design</option>
+                {carrersValues.map((values) => {
+                  return (
+                    <option value={values} key={values}>
+                      {values}
+                    </option>
+                  )
+                })}
               </select>
             </div>
           </div>
@@ -251,7 +275,7 @@ const RegisterFreelancer: React.FC = () => {
             <div>
               <ReactQuill
                 className="h-40 bg-white"
-                value={about}
+                value={freelancerInfo.about}
                 onChange={handleEditorChange}
                 theme="snow"
               />

@@ -4,9 +4,11 @@ import './modalLogin.css'
 import { AppContext, AppContextProps } from 'context/appContext'
 import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
+import { useNavigate } from 'react-router-dom'
 
 function ModalLogin() {
-  const { login } = useContext(AuthContext) as AuthContextProps
+  const { currentUser, login } = useContext(AuthContext) as AuthContextProps
+  console.log(currentUser)
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
@@ -15,6 +17,7 @@ function ModalLogin() {
   const { setIsOpenModalLogin, setIsOpenModalSign } = useContext(
     AppContext
   ) as AppContextProps
+  const navigate = useNavigate()
 
   const handleClose = () => {
     setIsOpenModalLogin(false)
@@ -28,6 +31,7 @@ function ModalLogin() {
     e.preventDefault()
     try {
       await login(inputs)
+      console.log(currentUser)
     } catch (err) {
       setError(err.response.data.message)
     }

@@ -14,6 +14,7 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
 
   const login = async (inputs: { email: string; password: string }) => {
     const res = await api.post('/login', inputs)
+    console.log(res)
     setCurrentUser(res.data as User)
   }
 
