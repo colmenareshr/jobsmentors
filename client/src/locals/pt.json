@@ -55,6 +55,26 @@
       "btnsingup": "Crie uma conta",
       "placeholderemail": "exemplo@email.com",
       "placeholderpassword": "digite sua senha"
+    },
+    "signupmodal": {
+      "title": "Criar conta para",
+      "labelfreelancer": "Freelancer",
+      "labelcompany": "Empresa",
+      "labelmentor": "Mentor",
+      "name": "Nome",
+      "email": "Email",
+      "password1": "escreva a senha",
+      "password2": "confirmar senha",
+      "placeholdernamefreelancer": "nome e sobrenome",
+      "placeholdernamecompany": "nome da empresa",
+      "placeholdernamementor": "nome e sobrenome",
+      "placeholderemail": "exemplo@email.com",
+      "placeholderpassword1": "escreva sua senha",
+      "placeholderpassword2": "confirme sua senha",
+      "btncancel": "Cancelar",
+      "btnsignup": "Criar uma conta",
+      "spanmsg": "Já tem uma conta?",
+      "btncreateaccount": "Acesse sua conta"
     }
   }
 }

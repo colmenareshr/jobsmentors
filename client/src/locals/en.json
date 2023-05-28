@@ -57,16 +57,24 @@
       "placeholderpassword": "write your password"
     },
     "signupmodal": {
-      "title": "Create an Account",
+      "title": "Create Account for ",
+      "labelfreelancer": "Freelancer",
+      "labelcompany": "Company",
+      "labelmentor": "Mentor",
       "name": "Name",
       "email": "Email",
-      "password": "Password",
+      "password1": "write password",
+      "password2": "confirm password",
+      "placeholdernamefreelancer": "name and lastname",
+      "placeholdernamecompany": "company name",
+      "placeholdernamementor": "name and lastname",
+      "placeholderemail": "example@email.com",
+      "placeholderpassword1": "write your password",
+      "placeholderpassword2": "confirm your password",
       "btncancel": "Cancel",
-      "btnsingup": "Create an account",
+      "btnsignup": "Create an account",
       "spanmsg": "Already have an account? ",
-      "btnlogin": "Login",
-      "placeholdername": "write your name",
-      "placeholderemail": "write your email"
+      "btncreateaccount": "Access your account"
     }
   }
 }

@@ -1,8 +1,9 @@
-import { IoMdClose } from 'react-icons/io'
 import React, { useState, useContext } from 'react'
-import { registerUser } from 'api/authApi'
 import './modalSign.css'
+import { IoMdClose } from 'react-icons/io'
+import { registerUser } from 'api/authApi'
 import { AppContext, AppContextProps } from 'context/appContext'
+import { useTranslation } from 'react-i18next'
 
 interface TabData {
   idx: number
@@ -11,6 +12,7 @@ interface TabData {
   email: string
   password1: string
   password2: string
+  placeholdername: string
   role: string
 }
 
@@ -25,6 +27,7 @@ const inicialState = {
 }
 
 function ModalSign() {
+  const { t } = useTranslation()
   const [data, setData] = useState<TabData>(inicialState as TabData)
   const { setIsOpenModalSign, setIsOpenModalLogin } = useContext(
     AppContext
@@ -60,29 +63,32 @@ function ModalSign() {
   const tabsData: TabData[] = [
     {
       idx: 0,
-      label: 'Freelancer',
-      name: 'Nome',
-      email: 'Email',
-      password1: 'Senha',
-      password2: 'Confirmar Senha',
+      label: t('app.signupmodal.labelfreelancer'),
+      name: t('app.signupmodal.name'),
+      email: t('app.signupmodal.email'),
+      password1: t('app.signupmodal.password1'),
+      password2: t('app.signupmodal.password2'),
+      placeholdername: t('app.signupmodal.placeholdernamefreelancer'),
       role: 'Freelancer'
     },
     {
       idx: 1,
-      label: 'Empresa',
-      email: 'Email',
-      password1: 'Senha',
-      password2: 'Confirmar Senha',
-      name: 'Empresa',
+      label: t('app.signupmodal.labelcompany'),
+      name: t('app.signupmodal.name'),
+      email: t('app.signupmodal.email'),
+      password1: t('app.signupmodal.password1'),
+      password2: t('app.signupmodal.password2'),
+      placeholdername: t('app.signupmodal.placeholdernamecompany'),
       role: 'Company'
     },
     {
       idx: 2,
-      label: 'Mentor',
-      email: 'Email',
-      password1: 'Senha',
-      password2: 'Confirmar Senha',
-      name: 'Nome',
+      label: t('app.signupmodal.labelmentor'),
+      name: t('app.signupmodal.name'),
+      email: t('app.signupmodal.email'),
+      password1: t('app.signupmodal.password1'),
+      password2: t('app.signupmodal.password2'),
+      placeholdername: t('app.signupmodal.placeholdernamentor'),
       role: 'Mentor'
     }
   ]
@@ -110,7 +116,7 @@ function ModalSign() {
                       text-lg font-bold
                       text-purple md:text-5xl"
           >
-            Cadastrar {tabsData[activeTabIndex].label}
+            {t('app.signupmodal.title')} {tabsData[activeTabIndex].label}
           </div>
           <button
             className="duration-400
@@ -165,9 +171,11 @@ function ModalSign() {
                   onChange={handleChange}
                   // id={tabsData[activeTabIndex].name}
                   type="text"
-                  {...(activeTabIndex === 1
-                    ? { placeholder: 'Nome da empresa' }
-                    : { placeholder: 'Nome e sobrenome' })}
+                  placeholder={
+                    activeTabIndex === 1
+                      ? tabsData[1].placeholdername
+                      : tabsData[0].placeholdername
+                  }
                 />
               </div>
               <div>
@@ -180,7 +188,7 @@ function ModalSign() {
                   onChange={handleChange}
                   name="password1"
                   // id={tabsData[activeTabIndex].password1}
-                  placeholder="Mínimo de 8 caracteres"
+                  placeholder={t('app.signupmodal.placeholderpassword1') ?? ''}
                   type="password"
                 />
               </div>
@@ -193,9 +201,10 @@ function ModalSign() {
                   className="input-ModalSign placeholder:text-ModalSign g rounded"
                   onChange={handleChange}
                   name="email"
+                  // name={t('app.signupmodal.email') ?? ''}
                   // id={tabsData[activeTabIndex].email}
                   type="email"
-                  placeholder="exemplo@exemplo.com"
+                  placeholder={t('app.signupmodal.placeholderemail') ?? ''}
                 />
               </div>
               <div>
@@ -208,7 +217,7 @@ function ModalSign() {
                   onChange={handleChange}
                   name="password2"
                   // id={tabsData[activeTabIndex].password2}
-                  placeholder="Mínimo de 8 caracteres"
+                  placeholder={t('app.signupmodal.placeholderpassword2') ?? ''}
                   type="password"
                 />
               </div>
@@ -218,15 +227,19 @@ function ModalSign() {
 
         <footer className="flex justify-evenly pb-0 pt-3">
           <button className="footer-button-ModalSign" onClick={handleClose}>
-            Cancelar
+            {t('app.signupmodal.btncancel')}
           </button>
           <button className="footer-button-ModalSign" onClick={handleSubmit}>
-            Cadastrar
+            {t('app.signupmodal.btnsignup')}
           </button>
           <div>
-            <p>¿Ya tienes cuenta?</p>
-            <button onClick={() => setIsOpenModalLogin(true)}>
-              Accede a tu cuenta
+            <p>{t('app.signupmodal.spanmsg')}</p>
+            <button
+              className="rounded-xl pl-4 pr-4 transition-colors
+                        duration-300 hover:bg-orange/80 hover:text-white hover:shadow-none"
+              onClick={() => setIsOpenModalLogin(true)}
+            >
+              {t('app.signupmodal.btncreateaccount')}
             </button>
           </div>
         </footer>
