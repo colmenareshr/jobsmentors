@@ -87,6 +87,11 @@
       "button": "COMECE HOJE MESMO",
       "title2": "DESBLOQUEIE O PODER DA MENTORIA ESPECIALIZADA",
       "comment": "Quando você precisa de uma solução tecnológica para o seu negócio, aproveite a experiência dos nossos mentores. Eles estão aqui para orientá-lo no processo, fornecer insights valiosos e garantir o sucesso dos seus projetos."
+    },
+    "ourfreelancers": {
+      "title": "CONHEÇA NOSSOS TALENTOSOS FREELANCERS",
+      "comment": "Capacite seus projetos com freelancers excepcionais",
+      "button": "CONTRATE UM FREELANCER AGORA"
     }
   }
 }

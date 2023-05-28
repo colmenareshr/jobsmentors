@@ -87,6 +87,11 @@
       "button": "START TODAY",
       "title2": "UNLEASH THE POWER OF SPECIALIZED MENTORSHIP",
       "comment": "When you need a technological solution for your business, take advantage of the expertise of our mentors. They are here to guide you through the process, provide valuable insights, and ensure the success of your projects."
+    },
+    "ourfreelancers": {
+      "title": "MEET OUR TALENTED FREELANCERS",
+      "comment": "Empower your projects with exceptional freelancers",
+      "button": "HIRE A FREELANCER NOW"
     }
   }
 }
