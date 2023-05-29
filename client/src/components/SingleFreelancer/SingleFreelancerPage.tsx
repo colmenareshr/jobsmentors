@@ -8,8 +8,8 @@ import {
 const SingleFreelancerPage = () => {
   return (
     <section className="w-full">
-      <div className="mx-auto -mb-36 max-w-full bg-teal400 py-16"></div>
-      <div className="mx-auto max-w-full pt-16">
+      <div className="mx-auto -mb-36 max-w-full py-16"></div>
+      <div className="mx-auto max-w-full pt-32">
         <div className="container mx-auto bg-white px-3 py-8 text-center">
           <div className="flex flex-col items-center justify-center">
             <img
