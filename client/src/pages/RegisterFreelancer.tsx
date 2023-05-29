@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useContext
 } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { AuthContext } from '../context/authContext'
@@ -28,8 +28,8 @@ interface FreelancerInfo {
 }
 
 const RegisterFreelancer: React.FC = () => {
+  const navigate = useNavigate()
   const { currentUser } = useContext(AuthContext) as AuthContextProps
-  console.log(currentUser?.token)
   const [about, setAbout] = useState('')
   const params = useParams<{ id: string }>()
   const [freelancerInfo, setFreelancerInfo] = useState<FreelancerInfo>({
@@ -100,19 +100,20 @@ const RegisterFreelancer: React.FC = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
 
-    // Crear un objeto con los datos del formulario
+    // Create an object with form data
     const formData = {
       ...freelancerInfo,
       about
     }
 
-    // Enviar formData al backend
+    // send Form Data To Backend
     try {
       await api.put('/freelancer/' + params.id, formData, {
         headers: {
           Authorization: 'Bearer ' + currentUser?.token
         }
       })
+      navigate('/freelancer/' + params.id)
     } catch (error) {
       console.log('Error:', error)
     }
