@@ -12,8 +12,8 @@ interface featuresInfo {
 const FeaturesCards = ({ image, title, text, cta }: featuresInfo) => {
   const { t } = useTranslation()
 
-  const title2 = t(title)
-  const ctaText = t(cta.text)
+  // const title2 = t(title)
+  // const ctaText = t(cta.text)
 
   return (
     <div className="container">
@@ -22,10 +22,10 @@ const FeaturesCards = ({ image, title, text, cta }: featuresInfo) => {
           src={`../src/assets/images/feature-img-${image}.svg`}
           alt="Explore our tech services"
         />
-        <h3>{title2}</h3>
+        <h3>{t(title)}</h3>
         <p>{text}</p>
         <a href={cta.link} className="button uppercase">
-          {ctaText}
+          {cta.text}
         </a>
       </div>
     </div>
