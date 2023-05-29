@@ -103,6 +103,22 @@
       "title": "START TODAY !",
       "button1": "HIRE A FREELANCER",
       "button2": "BECOME A MENTOR"
+    },
+    "footer": {
+      "title1": "JobsMentors",
+      "comment1": "Connecting companies with junior talents, driving growth in the technology field.",
+      "title2": "Services",
+      "servicesOp1": "Mobile app development",
+      "servicesOp2": "Web development and website design",
+      "servicesOp3": "Custom software development",
+      "servicesOp4": "User interface (UI) and user experience (UX) design",
+      "servicesOp5": "Technology consulting and project advisory",
+      "title3": "Pages",
+      "pageaboutUs": "About us",
+      "pagecontact": "Contact",
+      "pageblog": "Blog",
+      "pagesocial": "Social",
+      "copyright": " Copyright "
     }
   }
 }

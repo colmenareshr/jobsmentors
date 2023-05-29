@@ -103,6 +103,22 @@
       "title": "COMECE HOJE MESMO !",
       "button1": "CONTRATE UM FREELANCER",
       "button2": "TORNE-SE UM MENTOR"
+    },
+    "footer": {
+      "title1": "JobsMentors",
+      "comment1": "Conectando empresas com talentos juniores, impulsionando o crescimento na área de tecnologia.",
+      "title2": "Serviços",
+      "servicesOp1": "Desenvolvimento de aplicativos móveis",
+      "servicesOp2": "Desenvolvimento web e design de sites",
+      "servicesOp3": "Desenvolvimento de software personalizado",
+      "servicesOp4": "Design de interface do usuário (UI) e experiência do usuário (UX)",
+      "servicesOp5": "Consultoria em tecnologia e assessoria de projetos",
+      "title3": "Páginas",
+      "pageaboutUs": "Sobre nós",
+      "pagecontact": "Contato",
+      "pageblog": "Blog",
+      "pagesocial": "Rede",
+      "copyright": " Direito Autoral "
     }
   }
 }
