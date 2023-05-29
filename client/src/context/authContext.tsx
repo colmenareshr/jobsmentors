@@ -9,23 +9,21 @@ export const AuthContext = createContext<AuthContextProps | null>(null)
 export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
   children
 }) => {
-  const [currentUser, setCurrentUser] = useState<User>(
+  const [currentUser, setCurrentUser] = useState<User | null>(
     JSON.parse(localStorage.getItem('user') ?? 'null')
   )
 
   const login = async (inputs: { email: string; password: string }) => {
     const res = await api.post('/login', inputs)
-    const data = jwtDecode(res.data.token)
-    setCurrentUser(data as User)
-  }
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      const data = jwtDecode(token)
-      setCurrentUser(data as User)
+    const token = res.data.token
+    try {
+      const decodedToken = jwtDecode(token)
+      setCurrentUser({ token, ...decodedToken } as User)
+    } catch (error) {
+      console.log('Error decoding token:', error)
+      setCurrentUser(null)
     }
-  }, [])
+  }
 
   const logout = () => {
     setCurrentUser(null)
