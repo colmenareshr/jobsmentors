@@ -1,4 +1,5 @@
 export interface User {
+  token: User | null
   id: number
   email: string
   role: string
