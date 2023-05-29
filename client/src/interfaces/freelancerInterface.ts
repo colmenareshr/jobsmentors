@@ -6,7 +6,7 @@ export interface FreelancerInfo {
   name: string
   email: string
   phone: string
-  birth: string
+  birth: Date
   gender: string
   address: string
   bio: string
