@@ -49,18 +49,11 @@ export const createFreelancer = async (
   }
 }
 
-
-
 export const getFreelancerById = async (
   id: string
 ): Promise<AxiosResponse<FreelancerUpdateData>> => {
-  const user = jwtDecode(localStorage.getItem('token'))
   try {
-    const res = await api.get<FreelancerUpdateData>(`/freelancer/${id}`, {
-      headers: {
-        Authorization: `Bearer ${user}`
-      }
-    })
+    const res = await api.get<FreelancerUpdateData>(`/freelancer/${id}`)
     return res
   } catch (error) {
     console.error(`Error getting freelancer with ID ${id}:`, error)
