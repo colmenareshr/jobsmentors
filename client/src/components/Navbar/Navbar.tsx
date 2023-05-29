@@ -28,7 +28,7 @@ function Navbar() {
     if (currentUser) {
       if (currentUser.role === 'company') navegate('/company/landingpage')
       if (currentUser.role === 'freelancer')
-        navegate(`/freelancers/${currentUser.id}`)
+        navegate(`/freelancer/register/${currentUser.id}`)
       setIsOpenModalLogin(false)
     }
     if (!currentUser) navegate('/')
