@@ -12,18 +12,12 @@ export const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/freelancers" element={<FreelancersPage />} />
-      <Route
-        path="/freelancers/landingpage"
-        element={<SingleFreelancerPage />}
-      />
-      <Route
-        path="/freelancer/register/profile"
-        element={<RegisterFreelancer />}
-      />
+      <Route path="/freelancers/:id" element={<SingleFreelancerPage />} />
+      <Route path="/freelancer/register/:id" element={<RegisterFreelancer />} />
       <Route path="/company" element={<Companies />} />
       <Route path="/company/landingpage" element={<CompanyLandingPage />} />
       <Route path="/company/projects" element={<Projects />} />
-      {/* <Route path="*" element={<Navigate to="/" />} />  */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
 }

@@ -1,11 +1,27 @@
 import { AxiosResponse } from 'axios'
 import api from 'api'
+import jwtDecode from 'jwt-decode'
 
 interface FreelancerData {
   id: number
   email: string
   password: string
   role: 'freelancer' | 'company' | 'mentor'
+}
+
+interface FreelancerUpdateData {
+  name: string
+  email: string
+  phone: string
+  bio: string
+  imageUrl: string
+  birth: string
+  gender: string
+  address: string
+  about: string
+  career: string
+  hardSkills: string
+  contract: string
 }
 
 export const getFreelancers = async (): Promise<
@@ -21,11 +37,11 @@ export const getFreelancers = async (): Promise<
 }
 
 export const createFreelancer = async (
-  // freelancerData: FreelancerData,
+  freelancerData: FreelancerData,
   id: string
 ): Promise<AxiosResponse<any>> => {
   try {
-    const res = await api.post(`/freelancer/${id}/information`)
+    const res = await api.post(`/freelancer/${id}/information`, freelancerData)
     return res
   } catch (error) {
     console.error('Error creating freelancer:', error)
@@ -35,9 +51,9 @@ export const createFreelancer = async (
 
 export const getFreelancerById = async (
   id: string
-): Promise<AxiosResponse<FreelancerData>> => {
+): Promise<AxiosResponse<FreelancerUpdateData>> => {
   try {
-    const res = await api.get<FreelancerData>(`/freelancer/${id}`)
+    const res = await api.get<FreelancerUpdateData>(`/freelancer/${id}`)
     return res
   } catch (error) {
     console.error(`Error getting freelancer with ID ${id}:`, error)
@@ -45,20 +61,27 @@ export const getFreelancerById = async (
   }
 }
 
-interface FreelancerUpdateData {
-  email?: string
-  password?: string
-  role?: 'freelancer' | 'company' | 'mentor'
-}
+// interface FreelancerUpdateData {
+//   email?: string
+//   password?: string
+//   role?: 'freelancer' | 'company' | 'mentor'
+// }
 
 export const updateFreelancer = async (
   id: string,
   freelancerData: FreelancerUpdateData
 ): Promise<AxiosResponse<FreelancerData>> => {
   try {
+    const token = localStorage.getItem('user')
+    const user = jwtDecode(token)
     const res = await api.put<FreelancerData>(
-      `/freelancers/${id}`,
-      freelancerData
+      `/freelancer/${id}`,
+      freelancerData,
+      {
+        headers: {
+          Authorization: `Bearer ${user}`
+        }
+      }
     )
     return res
   } catch (error) {

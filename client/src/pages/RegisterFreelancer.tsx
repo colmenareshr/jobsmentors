@@ -1,58 +1,80 @@
-import api from 'api'
-import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react'
+import React, {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useContext
+} from 'react'
 import { useParams } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import { createFreelancer, getFreelancerById } from 'api/freelancersApi'
-import { User } from 'interfaces/AuthInterfaces'
+import { AuthContext } from '../context/authContext'
+import { AuthContextProps } from '../interfaces/autContextInterface'
+import api from 'api'
 
 interface FreelancerInfo {
-  imageUrl: string
+  img: string
   name: string
   email: string
   phone: string
-  birth: string
+  birth: Date
   gender: string
   address: string
   bio: string
   about: string
   career: string
-  hardSkills: string
+  hard_skills: string
   contract: string
 }
 
 const RegisterFreelancer: React.FC = () => {
+  const { currentUser } = useContext(AuthContext) as AuthContextProps
+  console.log(currentUser?.token)
   const [about, setAbout] = useState('')
   const params = useParams<{ id: string }>()
   const [freelancerInfo, setFreelancerInfo] = useState<FreelancerInfo>({
-    imageUrl: '',
+    img: '',
     name: '',
     email: '',
     phone: '',
-    birth: '',
+    birth: new Date(),
     gender: '',
     address: '',
     bio: '',
     about: '',
     career: '',
-    hardSkills: '',
+    hard_skills: '',
     contract: ''
   })
 
-  useEffect(() => {
+  const fetchFreelancer = async () => {
     if (params.id) {
-      ;(async () => {
-        try {
-          const res = await getFreelancerById(params.id)
-          console.log(res)
-          setFreelancerInfo({
-            ...freelancerInfo
-          })
-        } catch (error) {
-          console.log('Error:', error)
+      const res = await api.get('/freelancer/' + params.id, {
+        headers: {
+          Authorization: `Bearer ${currentUser?.token}`
         }
-      })()
+      })
+      setFreelancerInfo({
+        name: res.data.name,
+        phone: res.data.phone,
+        email: res.data.email,
+        bio: res.data.bio,
+        img: res.data.img,
+        birth: new Date(res.data.birth),
+        gender: res.data.gender,
+        address: res.data.address,
+        about: res.data.about,
+        career: res.data.career,
+        hard_skills: res.data.hard_skills,
+        contract: res.data.contract
+      })
+      setAbout(res.data.about)
+      console.log(res.data)
     }
+  }
+
+  useEffect(() => {
+    fetchFreelancer()
   }, [params.id])
 
   const handleEditorChange = (content: string) => {
@@ -61,10 +83,18 @@ const RegisterFreelancer: React.FC = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
-    setFreelancerInfo({
-      ...freelancerInfo,
+    setFreelancerInfo((prevInfo) => ({
+      ...prevInfo,
       [name]: value
-    })
+    }))
+  }
+
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = event.target
+    setFreelancerInfo((prevInfo) => ({
+      ...prevInfo,
+      [name]: value
+    }))
   }
 
   const handleSubmit = async (event: FormEvent) => {
@@ -73,48 +103,44 @@ const RegisterFreelancer: React.FC = () => {
     // Crear un objeto con los datos del formulario
     const formData = {
       ...freelancerInfo,
-      imageUrl,
-      name,
-      email,
-      phone,
-      birth,
-      gender,
-      address,
-      bio,
-      about,
-      career,
-      hardSkills,
-      contract
+      about
     }
 
     // Enviar formData al backend
     try {
-      const response = await createFreelancer(formData)
-
-      if (response.ok) {
-        // La información se ha enviado correctamente
-        console.log('La información se ha enviado correctamente')
-        // Realizar cualquier acción adicional después de enviar la información
-      } else {
-        // Hubo un error al enviar la información
-        console.log('Hubo un error al enviar la información')
-      }
+      await api.put('/freelancer/' + params.id, formData, {
+        headers: {
+          Authorization: 'Bearer ' + currentUser?.token
+        }
+      })
     } catch (error) {
       console.log('Error:', error)
     }
   }
+
+  const carrersValues = [
+    'Front-end',
+    'Back-end',
+    'QA',
+    'Full-Stack',
+    'DBA',
+    'DevOps',
+    'PM',
+    'Tech Lead',
+    'UX Desing'
+  ]
 
   return (
     <section className="mt-28 w-full py-16">
       <div className="container mx-auto max-w-[1024px] bg-sky p-16 text-center md:px-0">
         <form className="flex flex-col gap-5 px-5" action="">
           <div className="grid grid-cols-1 gap-2 text-left">
-            <label htmlFor="imageUrl">URL de la imagen</label>
+            <label htmlFor="img">URL de la imagen</label>
             <input
               type="text"
-              id="imageUrl"
-              name="imageUrl"
-              value={freelancerInfo.imageUrl}
+              id="img"
+              name="img"
+              value={freelancerInfo.img}
               onChange={handleInputChange}
             />
           </div>
@@ -158,7 +184,9 @@ const RegisterFreelancer: React.FC = () => {
                 type="date"
                 id="birth"
                 name="birth"
-                value={freelancerInfo.birth}
+                value={new Date(freelancerInfo.birth).toLocaleDateString(
+                  'en-CA'
+                )}
                 onChange={handleInputChange}
               />
             </div>
@@ -168,7 +196,7 @@ const RegisterFreelancer: React.FC = () => {
                 id="gender"
                 name="gender"
                 value={freelancerInfo.gender}
-                onChange={handleInputChange}
+                onChange={handleSelectChange}
               >
                 <option value="male">Hombre</option>
                 <option value="female">Mujer</option>
@@ -191,13 +219,13 @@ const RegisterFreelancer: React.FC = () => {
 
           <div className="grid gap-6 text-left md:grid-cols-2">
             <div className="flex flex-col gap-2">
-              <label htmlFor="hardSkills">Habilidades</label>
+              <label htmlFor="hard_skills">Habilidades</label>
               <input
                 type="text"
-                id="hardSkills"
-                name="hardSkills"
+                id="hard_skills"
+                name="hard_skills"
                 placeholder="Javascript, MongoDB..."
-                value={freelancerInfo.hardSkills}
+                value={freelancerInfo.hard_skills}
                 onChange={handleInputChange}
               />
             </div>
@@ -207,17 +235,15 @@ const RegisterFreelancer: React.FC = () => {
                 name="career"
                 id="career"
                 value={freelancerInfo.career}
-                onChange={handleInputChange}
+                onChange={handleSelectChange}
               >
-                <option value="frontend">Front-end</option>
-                <option value="backend">Back-end</option>
-                <option value="fullstack">Full-stack</option>
-                <option value="qa">QA</option>
-                <option value="dba">DBA</option>
-                <option value="devops">DevOps</option>
-                <option value="pm">PM</option>
-                <option value="tech-lead">Tech Lead</option>
-                <option value="ux-design">UX Design</option>
+                {carrersValues.map((values) => {
+                  return (
+                    <option value={values} key={values}>
+                      {values}
+                    </option>
+                  )
+                })}
               </select>
             </div>
           </div>
@@ -239,7 +265,7 @@ const RegisterFreelancer: React.FC = () => {
                 name="contract"
                 id="contract"
                 value={freelancerInfo.contract}
-                onChange={handleInputChange}
+                onChange={handleSelectChange}
               >
                 <option value="clt">CLT</option>
                 <option value="pj">PJ</option>
