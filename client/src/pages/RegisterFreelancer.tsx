@@ -8,66 +8,67 @@ import React, {
 import { useParams } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import {
-  createFreelancer,
-  getFreelancerById,
-  updateFreelancer
-} from 'api/freelancersApi'
 import { AuthContext } from '../context/authContext'
-import { AuthContextProps } from 'interfaces/authContextInterface'
+import { AuthContextProps } from '../interfaces/autContextInterface'
 import api from 'api'
 
 interface FreelancerInfo {
-  imageUrl: string
+  img: string
   name: string
   email: string
   phone: string
-  birth: string
+  birth: Date
   gender: string
   address: string
   bio: string
   about: string
   career: string
-  hardSkills: string
+  hard_skills: string
   contract: string
 }
 
 const RegisterFreelancer: React.FC = () => {
   const { currentUser } = useContext(AuthContext) as AuthContextProps
+  console.log(currentUser?.token)
   const [about, setAbout] = useState('')
   const params = useParams<{ id: string }>()
   const [freelancerInfo, setFreelancerInfo] = useState<FreelancerInfo>({
-    imageUrl: '',
+    img: '',
     name: '',
     email: '',
     phone: '',
-    birth: '',
+    birth: new Date(),
     gender: '',
     address: '',
     bio: '',
     about: '',
     career: '',
-    hardSkills: '',
+    hard_skills: '',
     contract: ''
   })
 
   const fetchFreelancer = async () => {
     if (params.id) {
-      const res = await getFreelancerById(params.id)
+      const res = await api.get('/freelancer/' + params.id, {
+        headers: {
+          Authorization: `Bearer ${currentUser?.token}`
+        }
+      })
       setFreelancerInfo({
         name: res.data.name,
         phone: res.data.phone,
         email: res.data.email,
         bio: res.data.bio,
-        imageUrl: res.data.imageUrl,
-        birth: res.data.birth,
+        img: res.data.img,
+        birth: new Date(res.data.birth),
         gender: res.data.gender,
         address: res.data.address,
         about: res.data.about,
         career: res.data.career,
-        hardSkills: res.data.hardSkills,
+        hard_skills: res.data.hard_skills,
         contract: res.data.contract
       })
+      setAbout(res.data.about)
       console.log(res.data)
     }
   }
@@ -82,10 +83,18 @@ const RegisterFreelancer: React.FC = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
-    setFreelancerInfo({
-      ...freelancerInfo,
+    setFreelancerInfo((prevInfo) => ({
+      ...prevInfo,
       [name]: value
-    })
+    }))
+  }
+
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = event.target
+    setFreelancerInfo((prevInfo) => ({
+      ...prevInfo,
+      [name]: value
+    }))
   }
 
   const handleSubmit = async (event: FormEvent) => {
@@ -99,20 +108,11 @@ const RegisterFreelancer: React.FC = () => {
 
     // Enviar formData al backend
     try {
-      const response = await api.put('/freelancer/' + params.id, formData, {
+      await api.put('/freelancer/' + params.id, formData, {
         headers: {
-          Authorization: 'Bearer ' + currentUser.token
+          Authorization: 'Bearer ' + currentUser?.token
         }
       })
-
-      if (response.ok) {
-        // La información se ha enviado correctamente
-        console.log('La información se ha enviado correctamente')
-        // Realizar cualquier acción adicional después de enviar la información
-      } else {
-        // Hubo un error al enviar la información
-        console.log('Hubo un error al enviar la información')
-      }
     } catch (error) {
       console.log('Error:', error)
     }
@@ -135,12 +135,12 @@ const RegisterFreelancer: React.FC = () => {
       <div className="container mx-auto max-w-[1024px] bg-sky p-16 text-center md:px-0">
         <form className="flex flex-col gap-5 px-5" action="">
           <div className="grid grid-cols-1 gap-2 text-left">
-            <label htmlFor="imageUrl">URL de la imagen</label>
+            <label htmlFor="img">URL de la imagen</label>
             <input
               type="text"
-              id="imageUrl"
-              name="imageUrl"
-              value={freelancerInfo.imageUrl}
+              id="img"
+              name="img"
+              value={freelancerInfo.img}
               onChange={handleInputChange}
             />
           </div>
@@ -184,7 +184,9 @@ const RegisterFreelancer: React.FC = () => {
                 type="date"
                 id="birth"
                 name="birth"
-                value={freelancerInfo.birth}
+                value={new Date(freelancerInfo.birth).toLocaleDateString(
+                  'en-CA'
+                )}
                 onChange={handleInputChange}
               />
             </div>
@@ -194,7 +196,7 @@ const RegisterFreelancer: React.FC = () => {
                 id="gender"
                 name="gender"
                 value={freelancerInfo.gender}
-                onChange={handleInputChange}
+                onChange={handleSelectChange}
               >
                 <option value="male">Hombre</option>
                 <option value="female">Mujer</option>
@@ -217,13 +219,13 @@ const RegisterFreelancer: React.FC = () => {
 
           <div className="grid gap-6 text-left md:grid-cols-2">
             <div className="flex flex-col gap-2">
-              <label htmlFor="hardSkills">Habilidades</label>
+              <label htmlFor="hard_skills">Habilidades</label>
               <input
                 type="text"
-                id="hardSkills"
-                name="hardSkills"
+                id="hard_skills"
+                name="hard_skills"
                 placeholder="Javascript, MongoDB..."
-                value={freelancerInfo.hardSkills}
+                value={freelancerInfo.hard_skills}
                 onChange={handleInputChange}
               />
             </div>
@@ -233,7 +235,7 @@ const RegisterFreelancer: React.FC = () => {
                 name="career"
                 id="career"
                 value={freelancerInfo.career}
-                onChange={handleInputChange}
+                onChange={handleSelectChange}
               >
                 {carrersValues.map((values) => {
                   return (
@@ -263,7 +265,7 @@ const RegisterFreelancer: React.FC = () => {
                 name="contract"
                 id="contract"
                 value={freelancerInfo.contract}
-                onChange={handleInputChange}
+                onChange={handleSelectChange}
               >
                 <option value="clt">CLT</option>
                 <option value="pj">PJ</option>
@@ -275,7 +277,7 @@ const RegisterFreelancer: React.FC = () => {
             <div>
               <ReactQuill
                 className="h-40 bg-white"
-                value={freelancerInfo.about}
+                value={about}
                 onChange={handleEditorChange}
                 theme="snow"
               />
