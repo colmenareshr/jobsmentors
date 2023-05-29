@@ -4,17 +4,10 @@ import './modalLogin.css'
 import { AppContext, AppContextProps } from 'context/appContext'
 import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
-import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 function ModalLogin() {
-  
-  
   const { t } = useTranslation()
-  const { login } = useContext(AuthContext) as AuthContextProps
-import { useNavigate } from 'react-router-dom'
-
-function ModalLogin() {
   const { currentUser, login } = useContext(AuthContext) as AuthContextProps
   console.log(currentUser)
   const [inputs, setInputs] = useState({
@@ -25,7 +18,6 @@ function ModalLogin() {
   const { setIsOpenModalLogin, setIsOpenModalSign } = useContext(
     AppContext
   ) as AppContextProps
-  const navigate = useNavigate()
 
   const handleClose = () => {
     setIsOpenModalLogin(false)
@@ -116,4 +108,5 @@ function ModalLogin() {
     </form>
   )
 }
+
 export default ModalLogin

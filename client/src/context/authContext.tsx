@@ -3,7 +3,6 @@ import api from 'api'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 import { User } from 'interfaces/AuthInterfaces'
 import jwtDecode from 'jwt-decode'
-import jwtDecode from 'jwt-decode'
 
 export const AuthContext = createContext<AuthContextProps | null>(null)
 
