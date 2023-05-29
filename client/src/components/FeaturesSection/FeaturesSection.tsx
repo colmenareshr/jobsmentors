@@ -14,19 +14,19 @@ const FeaturesSection = () => {
           image="1"
           title={t('app.featuresection.cards.card1.title')}
           text={t('app.featuresection.cards.card1.text')}
-          cta={{ text: 'Explore nossos serviços', link: '#' }}
+          cta={{ text: t('app.featuresection.cards.card1.button'), link: '#' }}
         />
         <FeaturesCards
           image="2"
           title={t('app.featuresection.cards.card2.title')}
           text={t('app.featuresection.cards.card2.text')}
-          cta={{ text: 'Encontre o candidato perfeito', link: '#' }}
+          cta={{ text: t('app.featuresection.cards.card2.button'), link: '#' }}
         />
         <FeaturesCards
           image="3"
           title={t('app.featuresection.cards.card3.title')}
           text={t('app.featuresection.cards.card3.text')}
-          cta={{ text: 'Orientação especializada agora', link: '#' }}
+          cta={{ text: t('app.featuresection.cards.card3.button'), link: '#' }}
         />
       </div>
     </section>
