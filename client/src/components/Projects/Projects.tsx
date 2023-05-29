@@ -9,6 +9,7 @@ import { CiTrash } from 'react-icons/ci'
 import { IoMailOutline } from 'react-icons/io5'
 import axios from 'axios'
 import { addJob, JobData } from '../../api/jobsApi'
+import { useTranslation } from 'react-i18next'
 
 const initialState: JobData = {
   user_id: 0,
@@ -19,6 +20,7 @@ const initialState: JobData = {
 }
 
 function Projects() {
+  const { t } = useTranslation()
   const [isSearchFreelancers, setIsSearchFreelancers] = useState(false)
   const [isAddFreelancers, setIsAddFreelancers] = useState(false)
   const [data, setData] = useState<JobData>(initialState as JobData)
@@ -55,17 +57,17 @@ function Projects() {
             >
               <header className="col-span-12 row-span-1 flex w-full flex-wrap content-center justify-center border-b-2 border-white">
                 <p className="p-title-Projects text-center text-5xl font-black text-white drop-shadow-lg">
-                  INSIRA OS DETALHES DO SEU PROJETO E PROCURE OS FREELANCERS
+                  {t('app.projects.title')}
                 </p>
               </header>
 
               <div className="col-span-4 row-span-1 self-center pl-10">
                 <label htmlFor="" className="label-Projects text-xl">
-                  Nome do projeto
+                  {t('app.projects.name')}
                 </label>
                 <input
                   className="w-full rounded-lg p-3"
-                  placeholder="nombre del proyecto"
+                  placeholder={t('app.projects.placeholders.name') ?? ''}
                   type="text"
                   onChange={handleChange}
                   name="title"
@@ -74,11 +76,11 @@ function Projects() {
               </div>
               <div className="col-span-4 row-span-1 self-center rounded-lg pl-10">
                 <label htmlFor="" className="label-Projects text-xl">
-                  Habilidades requeridas
+                  {t('app.projects.skills')}
                 </label>
                 <input
                   className="rouded-lg w-full rounded-lg p-3"
-                  placeholder="Javascript, React, Node, etc."
+                  placeholder={t('app.projects.placeholders.skills') ?? ''}
                   type="text"
                   onChange={handleChange}
                   name="hard_skills"
@@ -87,11 +89,11 @@ function Projects() {
               </div>
               <div className="col-span-4 row-span-1 self-center pl-10">
                 <label htmlFor="" className="label-Projects text-xl">
-                  Freelancers
+                  {t('app.projects.quantity')}
                 </label>
                 <input
                   className="rouded-lg w-full rounded-lg p-3"
-                  placeholder="min ( 1 ) . . . max ( 20 )"
+                  placeholder="{t('app.projects.placeholders.flquantity') ?? ''}"
                   type="text"
                   onChange={handleChange}
                   name="amount"
@@ -103,11 +105,11 @@ function Projects() {
                   htmlFor=""
                   className="label-Projects flex content-center justify-center pt-7 text-center text-xl"
                 >
-                  Descrição
+                  {t('app.projects.description')}
                 </label>
                 <textarea
                   className="rouded-lg h-3/4 w-full scroll-smooth rounded-lg p-3"
-                  placeholder="descripción del proyecto"
+                  placeholder={t('app.projects.placeholders.description') ?? ''}
                   onChange={handleChange}
                   name="description"
                   value={data.description}
@@ -119,12 +121,12 @@ function Projects() {
                     className="button disabled w-80 cursor-not-allowed rounded-full p-5 shadow-lg"
                     onClick={handleSubmit}
                   >
-                    GUARDAR
+                    {t('app.projects.btnsave')}
                   </button>
                 </div>
                 <div className="">
                   <button className="button rounded-full p-5 pl-20 pr-20 shadow-lg">
-                    ELIMINAR PROJETO
+                    {t('app.projects.btndelete')}
                   </button>
                 </div>
               </div>
@@ -165,7 +167,7 @@ function Projects() {
             <div className="rounded-lg bg-sky p-4 pb-4">
               <div className="flex w-full flex-wrap justify-center p-4">
                 <button className="button mb-4 flex rounded-full p-5 pl-20 pr-20 shadow-lg">
-                  PROCURAR FREELANCERS
+                  {t('app.projects.btnsearch')}
                 </button>
               </div>
               <FreelancerCard title="" color="" />
@@ -173,7 +175,7 @@ function Projects() {
             <div className="flex flex-row items-center justify-evenly gap-16 pb-6 pt-10">
               <div className="">
                 <button className="button p-5 pl-24 pr-24 shadow-lg">
-                  CANCELAR
+                  {t('app.projects.btncancel')}
                 </button>
               </div>
               <div className="">
@@ -181,7 +183,7 @@ function Projects() {
                   className="button p-5 pl-10 pr-10 shadow-lg"
                   onClick={handleAddFreelancers}
                 >
-                  ADICIONAR FREELANCERS
+                  {t('app.projects.btnaddfreelancers')}
                 </button>
               </div>
             </div>

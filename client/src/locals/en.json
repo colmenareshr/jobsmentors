@@ -119,6 +119,29 @@
       "pageblog": "Blog",
       "pagesocial": "Social",
       "copyright": " Copyright "
+    },
+    "projects": {
+      "title": "PROJECT DETAILS",
+      "name": "Project name",
+      "skills": "Required skills",
+      "quantity": "Freelancers quantity",
+      "description": "Description",
+      "btnsave": "SAVE",
+      "btndelete": "DELETE PROJECT",
+      "btnsearch": "SEARCH FREELANCERS",
+      "btncancel": "CANCEL",
+      "btnaddfreelancers": "ADD FREELANCERS",
+      "placeholders": {
+        "name": "project name",
+        "skills": "Javascript, Python, SQL, etc...",
+        "flquantity": "freelancers quantity",
+        "description": "project description"
+      },
+      "table": {
+        "name": "Name",
+        "skills": "Skills",
+        "actions": "Actions"
+      }
     }
   }
 }
