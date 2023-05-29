@@ -55,6 +55,93 @@
       "btnsingup": "Crie uma conta",
       "placeholderemail": "exemplo@email.com",
       "placeholderpassword": "digite sua senha"
+    },
+    "signupmodal": {
+      "title": "Criar conta para",
+      "labelfreelancer": "Freelancer",
+      "labelcompany": "Empresa",
+      "labelmentor": "Mentor",
+      "name": "Nome",
+      "email": "Email",
+      "password1": "escreva a senha",
+      "password2": "confirmar senha",
+      "placeholdernamefreelancer": "nome e sobrenome",
+      "placeholdernamecompany": "nome da empresa",
+      "placeholdernamementor": "nome e sobrenome",
+      "placeholderemail": "exemplo@email.com",
+      "placeholderpassword1": "escreva sua senha",
+      "placeholderpassword2": "confirme sua senha",
+      "btncancel": "Cancelar",
+      "btnsignup": "Criar uma conta",
+      "spanmsg": "Já tem uma conta?",
+      "btncreateaccount": "Acesse sua conta"
+    },
+    "juniormentorsection": {
+      "title": "POR QUE ESCOLHER FREELANCERS JUNIORS?",
+      "line1": "Soluções de custo-benefício para seus projetos",
+      "line2": "Perspectivas frescas e ideias inovadoras",
+      "line3": "Aprendizes apaixonados, ansiosos para crescer",
+      "line4": "Flexíveis e adaptáveis às suas necessidades",
+      "line5": "Rápidos em se adaptar a novas tecnologias",
+      "line6": "Dedicados e comprometidos em fornecer resultados de qualidade",
+      "button": "COMECE HOJE MESMO",
+      "title2": "DESBLOQUEIE O PODER DA MENTORIA ESPECIALIZADA",
+      "comment": "Quando você precisa de uma solução tecnológica para o seu negócio, aproveite a experiência dos nossos mentores. Eles estão aqui para orientá-lo no processo, fornecer insights valiosos e garantir o sucesso dos seus projetos."
+    },
+    "ourfreelancers": {
+      "title": "CONHEÇA NOSSOS TALENTOSOS FREELANCERS",
+      "comment": "Capacite seus projetos com freelancers excepcionais",
+      "button": "CONTRATE UM FREELANCER AGORA"
+    },
+    "bigprojectsection": {
+      "title": "PROCURANDO UMA EQUIPE DE DESENVOLVIMENTO PARA PROJETOS DE GRANDE ESCALA?",
+      "subtitle": "Desbloqueie o potencial dos seus projetos",
+      "comment": "Construa sua equipe dos sonhos de desenvolvedores habilidosos e eleve seus projetos de grande escala a novas alturas. Nossa plataforma conecta você a mentores especializados para garantir o sucesso em cada etapa do caminho.",
+      "button": "Crie sua equipe de sucesso agora"
+    },
+    "ctasection": {
+      "title": "COMECE HOJE MESMO !",
+      "button1": "CONTRATE UM FREELANCER",
+      "button2": "TORNE-SE UM MENTOR"
+    },
+    "footer": {
+      "title1": "JobsMentors",
+      "comment1": "Conectando empresas com talentos juniores, impulsionando o crescimento na área de tecnologia.",
+      "title2": "Serviços",
+      "servicesOp1": "Desenvolvimento de aplicativos móveis",
+      "servicesOp2": "Desenvolvimento web e design de sites",
+      "servicesOp3": "Desenvolvimento de software personalizado",
+      "servicesOp4": "Design de interface do usuário (UI) e experiência do usuário (UX)",
+      "servicesOp5": "Consultoria em tecnologia e assessoria de projetos",
+      "title3": "Páginas",
+      "pageaboutUs": "Sobre nós",
+      "pagecontact": "Contato",
+      "pageblog": "Blog",
+      "pagesocial": "Rede",
+      "copyright": " Direito Autoral "
+    },
+    "projects": {
+      "title": "DETALHES DO PROJETO",
+      "name": "Nome do projeto",
+      "skills": "Habilidades requeridas",
+      "quantity": "Quantidade de freelancers",
+      "description": "Descrição",
+      "btnsave": "SALVAR",
+      "btndelete": "EXCLUIR PROJETO",
+      "btnsearch": "BUSCAR FREELANCERS",
+      "btncancel": "CANCELAR",
+      "btnaddfreelancers": "ADICIONAR FREELANCERS",
+      "placeholders": {
+        "name": "nome do projeto",
+        "skills": "Javascript, Python, SQL, etc...",
+        "flquantity": "quantidade de freelancers",
+        "description": "descrição do projeto"
+      },
+      "table": {
+        "name": "Nome",
+        "skills": "Habilidades",
+        "actions": "Ações"
+      }
     }
   }
 }

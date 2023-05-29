@@ -1,33 +1,33 @@
 import { MdCheckCircle } from 'react-icons/md'
 import juniorFeaturesImage from '../../assets/images/junior-features-img.png'
 import mentorshipImage from '../../assets/images/mentorship-img.png'
+import { useTranslation } from 'react-i18next'
+
 const JuniorMentor = () => {
+  const { t } = useTranslation()
   const featuresJuniors = [
-    'Soluções de custo-benefício para seus projetos',
-    'Perspectivas frescas e ideias inovadoras',
-    'Aprendizes apaixonados, ansiosos para crescer',
-    'Flexíveis e adaptáveis às suas necessidades',
-    'Rápidos em se adaptar a novas tecnologias',
-    'Dedicados e comprometidos em fornecer resultados de qualidade'
+    t('app.juniormentorsection.line1'),
+    t('app.juniormentorsection.line2'),
+    t('app.juniormentorsection.line3'),
+    t('app.juniormentorsection.line4'),
+    t('app.juniormentorsection.line5'),
+    t('app.juniormentorsection.line6')
   ]
   return (
     <section className="w-full py-14">
       <div className="container-lg mx-auto grid text-center md:grid-cols-2 md:items-center md:justify-items-center md:px-5">
         <div className="left-colu md:text-left">
-          <h2>Por que escolher freelancers Juniors?</h2>
+          <h2>{t('app.juniormentorsection.title')}</h2>
           <ul className="py-4">
-            {featuresJuniors.map((feature) => (
-              <li
-                key={feature.length}
-                className="flex items-start gap-2 py-1 text-left"
-              >
+            {featuresJuniors.map((feature, index) => (
+              <li key={index} className="flex items-start gap-2 py-1 text-left">
                 <MdCheckCircle className="text-lg text-lilac" size={27} />
                 {feature}
               </li>
             ))}
           </ul>
           <a href="#" className="button">
-            Comece hoje mesmo
+            {t('app.juniormentorsection.button')}
           </a>
         </div>
         <div className="rigth-colu">
@@ -48,15 +48,10 @@ const JuniorMentor = () => {
             />
           </div>
           <div className="text-center md:w-[80%] md:text-left">
-            <h2>Desbloqueie o Poder da Mentoria Especializada</h2>
-            <p className="py-5">
-              Quando você precisa de uma solução tecnológica para o seu negócio,
-              aproveite a experiência dos nossos mentores. Eles estão aqui para
-              orientá-lo no processo, fornecer insights valiosos e garantir o
-              sucesso dos seus projetos.
-            </p>
+            <h2>{t('app.juniormentorsection.title2')}</h2>
+            <p className="py-5">{t('app.juniormentorsection.comment')}</p>
             <a href="#" className="button">
-              Comece hoje mesmo
+              {t('app.juniormentorsection.button')}
             </a>
           </div>
         </div>
