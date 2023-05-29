@@ -15,6 +15,7 @@ function Navbar() {
   const navegate = useNavigate()
   const { t, i18n } = useTranslation()
   const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
+  console.log(currentUser)
   const [language, setLanguage] = useState(storedLang || 'pt')
   const [nav, setNav] = useState(false)
   const [isOpenModalLogin, setIsOpenModalLogin] = useState(false)
@@ -27,7 +28,7 @@ function Navbar() {
     if (currentUser) {
       if (currentUser.role === 'company') navegate('/company/landingpage')
       if (currentUser.role === 'freelancer')
-        navegate('/freelancers/landingpage')
+        navegate(`/freelancers/${currentUser.id}`)
       setIsOpenModalLogin(false)
     }
     if (!currentUser) navegate('/')
