@@ -28,7 +28,7 @@ function Navbar() {
 
   const handleProfileClick = () => {
     if (currentUser) {
-      if (currentUser.role === 'company') navigate('/company/landingpage')
+      if (currentUser.role === 'company') navigate(`/company/${currentUser.id}`)
       if (currentUser.role === 'freelancer')
         navigate(`/freelancer/${currentUser?.id}`)
     }
