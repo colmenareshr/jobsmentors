@@ -1,21 +1,10 @@
-import React from 'react'
 import NoCompanyLogo from '../../assets/images/no-companylogo.svg'
 import Companies from './Companies'
 
 function CompanyLandingPage() {
   return (
-    <div
-      className="main-CompanyLanginPage grid w-full grid-cols-1 items-center bg-black/20
-                    pt-5
-                    sm:grid-cols-1
-                    md:grid-cols-3
-                    "
-    >
-      <div
-        className="col-span-3 flex h-full w-full flex-col items-center justify-center 
-                      md:col-span-1
-                      "
-      >
+    <div className="main-CompanyLanginPage grid w-full grid-cols-1 items-center bg-black/20 pt-5 sm:grid-cols-1 md:grid-cols-3">
+      <div className="col-span-3 flex h-full w-full flex-col items-center justify-center md:col-span-1">
         <img
           src={NoCompanyLogo}
           alt="Your Company Logo"
@@ -31,11 +20,7 @@ function CompanyLandingPage() {
           <button className="button rounded-md p-2">Excluir Empresa</button>
         </div>
         <div className="flex h-full w-full flex-col p-2">
-          <h1
-            className="text-blue-500 pt-10 text-center text-xl font-bold
-                        lg:text-3xl
-                      "
-          >
+          <h1 className="text-blue-500 pt-10 text-center text-xl font-bold lg:text-3xl">
             Nesta página
           </h1>
           <p className="p-10 text-left text-lg">

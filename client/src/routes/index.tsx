@@ -6,6 +6,7 @@ import Projects from 'components/Projects/Projects'
 import SingleFreelancerPage from 'pages/SingleFreelancerPage'
 import Companies from 'components/Companies/Companies'
 import RegisterFreelancer from 'pages/RegisterFreelancer'
+import CompanyRegistrationPage from 'pages/CompanyRegistrationPage'
 
 export const AppRoutes = () => {
   return (
@@ -14,6 +15,10 @@ export const AppRoutes = () => {
       <Route path="/freelancers" element={<FreelancersPage />} />
       <Route path="/freelancer/:id" element={<SingleFreelancerPage />} />
       <Route path="/freelancer/register/:id" element={<RegisterFreelancer />} />
+      <Route
+        path="/company/register/:id"
+        element={<CompanyRegistrationPage />}
+      />
       <Route path="/company" element={<Companies />} />
       <Route path="/company/landingpage" element={<CompanyLandingPage />} />
       <Route path="/company/projects" element={<Projects />} />
