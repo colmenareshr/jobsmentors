@@ -1,12 +1,15 @@
-import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const AboutSection = () => {
-  const { t } = useTranslation()
-
+const navigate = useNavigate()
+const handleClick = () => {
+  navigate('/about')
+}
   return (
     <section
       className="w-full items-center bg-sky 
-                py-20 text-center md:justify-center md:gap-4 md:px-10"
+                 py-20 text-center md:justify-center md:gap-4 md:px-10"
     >
       <div
         className="container-lg mx-auto grid items-center 
@@ -23,15 +26,19 @@ const AboutSection = () => {
           className="flex flex-col items-center gap-4 md:w-[80%] 
                     md:items-start md:justify-self-end md:text-left "
         >
-          <h2>{t('app.aboutsection.title')}</h2>
-          <p>{t('app.aboutsection.comment')}</p>
-          <a href="#" className="button uppercase">
-            {t('app.aboutsection.button')}
-          </a>
+          <h2>Nossa Jornada</h2>
+          <p>
+            Somos uma equipe de freelancers especializados em diversas áreas de
+            desenvolvimento de software e TI. Nossa missão é capacitar
+            indivíduos, incluindo homens, mulheres, pessoas com deficiência e
+            jovens profissionais, conectando-os com suas primeiras oportunidades
+            de trabalho no campo da tecnologia. Junte-se a nós em nossa jornada!
+          </p>
+          <Link className="button uppercase" to="/about" onClick={handleClick}>Saiba mais sobre nos</Link>
         </div>
       </div>
     </section>
   )
 }
 
-export default AboutSection
+export default AboutSection 
