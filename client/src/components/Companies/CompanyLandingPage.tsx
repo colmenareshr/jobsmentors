@@ -1,44 +1,64 @@
-import NoCompanyLogo from '../../assets/images/no-companylogo.svg'
+import { useEffect, useContext, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import Companies from './Companies'
+import api from 'api'
+import { AuthContext } from '../../context/authContext'
+import { AuthContextProps } from '../../interfaces/autContextInterface'
+import { CompanyInfo } from 'interfaces/CompanyInterface'
 
 function CompanyLandingPage() {
+  const params = useParams<{ id: string }>()
+  const navigate = useNavigate()
+  const { currentUser } = useContext(AuthContext) as AuthContextProps
+  const [company, setCompany] = useState<CompanyInfo>({})
+  const fetchCompany = async () => {
+    if (params.id) {
+      const res = await api.get('/company/' + params.id, {
+        headers: {
+          Authorization: `Bearer ${currentUser?.token}`
+        }
+      })
+      setCompany(res.data)
+    }
+  }
+  useEffect(() => {
+    fetchCompany()
+  }, [params.id])
+
   return (
-    <div className="main-CompanyLanginPage grid w-full grid-cols-1 items-center bg-black/20 pt-5 sm:grid-cols-1 md:grid-cols-3">
+    <main className="mt-20 grid w-full grid-cols-1 items-center bg-white py-16 sm:grid-cols-1 md:grid-cols-3">
       <div className="col-span-3 flex h-full w-full flex-col items-center justify-center md:col-span-1">
         <img
-          src={NoCompanyLogo}
+          src={company.img}
           alt="Your Company Logo"
-          className="flex max-w-xs"
+          className="h-[220px] w-[220px] rounded-full"
         />
-        <h6 className="p-10 text-center text-xl font-bold lg:text-3xl">
-          Nome da Empresa
-        </h6>
+        <h1 className="px-10 text-center text-xl font-bold lg:text-3xl">
+          {company.name}
+        </h1>
+        <p> {company.site} </p>
       </div>
       <div className="flex-column col-span-2 flex h-auto flex-wrap md:col-span-2">
-        <div className="flex-column flex h-full w-full items-center justify-evenly sm:p-10">
-          <button className="button rounded-md p-2">Editar Empresa</button>
-          <button className="button rounded-md p-2">Excluir Empresa</button>
+        <div className="md: flex h-full w-full items-center justify-center gap-4 p-5 md:justify-end">
+          <button
+            className="button"
+            onClick={() => navigate(`/company/register/${params.id}`)}
+          >
+            Editar Empresa
+          </button>
+          <button className="button-secondary">Excluir Empresa</button>
         </div>
         <div className="flex h-full w-full flex-col p-2">
-          <h1 className="text-blue-500 pt-10 text-center text-xl font-bold lg:text-3xl">
-            Nesta página
-          </h1>
-          <p className="p-10 text-left text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-            tenetur unde quia maiores. Explicabo atque ut enim quis sunt! Harum
-            iste repudiandae neque id, corporis earum debitis laborum ratione
-            minima! Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            <br />
-            Expedita aperiam tempora, quod repellat eaque, accusantium ipsa
-            temporibus quas, facere aliquam eveniet cupiditate quam aut numquam
-            explicabo commodi deserunt nihil. Eum?
-          </p>
+          <h2 className="text-blue-500 px-10 text-left text-xl font-bold lg:text-3xl">
+            Biografía de la empresa
+          </h2>
+          <p className="px-10 text-left text-lg">{company.bio}</p>
         </div>
       </div>
       <div className="col-span-3 items-center justify-center">
         <Companies />
       </div>
-    </div>
+    </main>
   )
 }
 
