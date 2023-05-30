@@ -66,15 +66,14 @@ class CompanyController {
   }
 
   static async updateCompany(req, res) {
-    const { name, bio, site } = req.body;
+    const { name, bio, site, img } = req.body;
     const id = req.params.user_id;
     try {
       const resultCompany = await database.Company.findOne({
         where: { user_id: id },
       });
       if (resultCompany !== null) {
-        await database.Company.update(
-          { name, site, bio },
+        await database.Company.update( { name, bio , site, img},
           { where: { user_id: Number(id) } }
         );
         const companyUpdated = await database.Company.findOne({
