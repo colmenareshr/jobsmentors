@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../../context/authContext'
+import { AuthContext } from '../context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface'
 import { useParams, useNavigate } from 'react-router-dom'
 import {
