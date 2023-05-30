@@ -52,6 +52,7 @@ const JobsRegisterPage: React.FC<JobFormProps> = ({ onSubmit }) => {
         hard_skills: '',
         amount: 0
       })
+      navigate(`/company/${params.id}`)
     } catch (error) {
       console.error('Error to send new Project', error)
     }
