@@ -1,18 +1,20 @@
 // almacenar token en localstorage
 // importarlo
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import './projects.css'
 import FreelancerCard, {
   freelancerInfo
 } from 'components/FreelancerCard/FreelancerCard'
 import { CiTrash } from 'react-icons/ci'
 import { IoMailOutline } from 'react-icons/io5'
-import axios from 'axios'
-import { addJob, JobData } from '../../api/jobsApi'
+import { JobData } from '../../api/jobsApi'
 import { useTranslation } from 'react-i18next'
+import api from 'api'
+import { AuthContext } from 'context/authContext'
+import { AuthContextProps } from 'interfaces/autContextInterface'
 
 const initialState: JobData = {
-  user_id: 0,
   title: '',
   description: '',
   hard_skills: '',
@@ -21,20 +23,43 @@ const initialState: JobData = {
 
 function Projects() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
+  const params = useParams<{ id: string }>()
+  const { currentUser } = useContext(AuthContext) as AuthContextProps
   const [isSearchFreelancers, setIsSearchFreelancers] = useState(false)
   const [isAddFreelancers, setIsAddFreelancers] = useState(false)
   const [data, setData] = useState<JobData>(initialState as JobData)
 
-  const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    addJob(data)
-    console.log('Proyecto guardado')
-    setIsSearchFreelancers(true)
+    try {
+      const res = await api.post(`/company/${params.id}/job`, data, {
+        headers: {
+          Authorization: `Bearer ${currentUser?.token}`
+        }
+      })
+      console.log(res.data)
+      setData({
+        title: '',
+        description: '',
+        hard_skills: '',
+        amount: 0
+      })
+      setIsSearchFreelancers(!isSearchFreelancers)
+      // navigate(`/company/${params.id}`)
+    } catch (error) {
+      console.error('Error to send new Project', error)
+    }
   }
 
-  const handleChange = (e: any) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target
-    setData({ ...data, [name]: value })
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }))
   }
 
   const handleAddFreelancers = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -48,7 +73,7 @@ function Projects() {
     <div className="mt-24 w-full bg-teal400 p-4">
       <div className="container mx-auto rounded-lg border-2 border-white bg-teal400">
         <section className="">
-          <form className="pb-4 pl-4 pr-4">
+          <form className="px-4 pb-4">
             <main
               className="bg-gray-300 grid h-[900px] grid-flow-col-dense 
                       grid-cols-12 grid-rows-6
@@ -125,7 +150,7 @@ function Projects() {
                   </button>
                 </div>
                 <div className="">
-                  <button className="button rounded-full p-5 pl-20 pr-20 shadow-lg">
+                  <button className="button rounded-full p-5 px-20 shadow-lg">
                     {t('app.projects.btndelete')}
                   </button>
                 </div>
@@ -164,9 +189,9 @@ function Projects() {
         </section>
         {isSearchFreelancers ? (
           <section className="p-4">
-            <div className="rounded-lg bg-sky p-4 pb-4">
+            <div className="rounded-lg bg-sky p-4">
               <div className="flex w-full flex-wrap justify-center p-4">
-                <button className="button mb-4 flex rounded-full p-5 pl-20 pr-20 shadow-lg">
+                <button className="button mb-4 flex rounded-full p-5 px-20 shadow-lg">
                   {t('app.projects.btnsearch')}
                 </button>
               </div>
@@ -174,13 +199,13 @@ function Projects() {
             </div>
             <div className="flex flex-row items-center justify-evenly gap-16 pb-6 pt-10">
               <div className="">
-                <button className="button p-5 pl-24 pr-24 shadow-lg">
+                <button className="button p-5 px-24 shadow-lg">
                   {t('app.projects.btncancel')}
                 </button>
               </div>
               <div className="">
                 <button
-                  className="button p-5 pl-10 pr-10 shadow-lg"
+                  className="button p-5 px-10 shadow-lg"
                   onClick={handleAddFreelancers}
                 >
                   {t('app.projects.btnaddfreelancers')}
