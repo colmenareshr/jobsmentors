@@ -3,13 +3,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../context/authContext'
 import { AuthContextProps } from '../interfaces/autContextInterface'
-
-interface CompanyInfo {
-  name: string
-  bio: string
-  email: string
-  site: string
-}
+import { CompanyInfo } from 'interfaces/CompanyInterface'
 
 function CompanyRegistrationPage() {
   const navigate = useNavigate()
@@ -19,7 +13,7 @@ function CompanyRegistrationPage() {
     name: '',
     bio: '',
     site: '',
-    email: ''
+    img: ''
   })
 
   const fetchCompany = async () => {
@@ -31,9 +25,8 @@ function CompanyRegistrationPage() {
       })
       setCompany({
         name: res.data.name,
-        email: res.data.email,
         bio: res.data.bio,
-        // img: res.data.img,
+        img: res.data.img,
         site: res.data.site
       })
       console.log(res.data)
@@ -76,6 +69,19 @@ function CompanyRegistrationPage() {
       <h1 className="mb-5 text-3xl font-bold">Registro de Compañía</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
+          <label className="text-gray-700 mb-2 block font-bold" htmlFor="img">
+            Imagen de la Compañía (Url)
+          </label>
+          <input
+            type="text"
+            id="img"
+            name="img"
+            className="border-gray-300 focus:border-blue-500 w-full rounded-md border px-3 py-2 focus:outline-none"
+            value={company.img}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
           <label className="text-gray-700 mb-2 block font-bold" htmlFor="name">
             Nombre
           </label>
@@ -113,21 +119,8 @@ function CompanyRegistrationPage() {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-4">
-          <label className="text-gray-700 mb-2 block font-bold" htmlFor="email">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="border-gray-300 focus:border-blue-500 w-full rounded-md border px-3 py-2 focus:outline-none"
-            value={company.email}
-            onChange={handleChange}
-          />
-        </div>
         <button type="submit" className="button">
-          Registrar Compañía
+          Editar Compañía
         </button>
       </form>
     </div>
