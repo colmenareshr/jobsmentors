@@ -2,7 +2,6 @@ import { AxiosResponse } from 'axios'
 import api from 'api'
 
 export interface JobData {
-  user_id: number
   title: string
   description: string
   hard_skills: string
