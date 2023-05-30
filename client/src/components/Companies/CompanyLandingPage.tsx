@@ -42,7 +42,7 @@ function CompanyLandingPage() {
         <div className="md: flex h-full w-full items-center justify-center gap-4 p-5 md:justify-end">
           <button
             className="button"
-            onClick={() => navigate(`/company/register/${params.id}`)}
+            onClick={() => navigate('/company/register/' + params.id)}
           >
             Editar Empresa
           </button>
