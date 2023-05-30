@@ -1,4 +1,11 @@
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 const AboutSection = () => {
+const navigate = useNavigate()
+const handleClick = () => {
+  navigate('/about')
+}
   return (
     <section
       className="w-full items-center bg-sky 
@@ -27,9 +34,7 @@ const AboutSection = () => {
             jovens profissionais, conectando-os com suas primeiras oportunidades
             de trabalho no campo da tecnologia. Junte-se a nós em nossa jornada!
           </p>
-          <a href="#" className="button uppercase">
-            Saiba mais sobre nós
-          </a>
+          <Link className="button uppercase" to="/about" onClick={handleClick}>Saiba mais sobre nos</Link>
         </div>
       </div>
     </section>

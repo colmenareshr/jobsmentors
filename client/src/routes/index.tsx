@@ -5,6 +5,7 @@ import CompanyLandingPage from 'components/Companies/CompanyLandingPage'
 import Projects from 'components/Projects/Projects'
 import SingleFreelancerPage from 'components/SingleFreelancer/SingleFreelancerPage'
 import Companies from 'components/Companies/Companies'
+import AboutPage from 'pages/AboutPage'
 
 export const AppRoutes = () => {
   return (
@@ -18,6 +19,8 @@ export const AppRoutes = () => {
       <Route path="/company" element={<Companies />} />
       <Route path="/company/landingpage" element={<CompanyLandingPage />} />
       <Route path="/company/projects" element={<Projects />} />
+      <Route path="/about" element={<AboutPage />} />
+      
       {/* <Route path="*" element={<Navigate to="/" />} />  */}
     </Routes>
   )
