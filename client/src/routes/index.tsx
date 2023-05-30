@@ -20,7 +20,7 @@ export const AppRoutes = () => {
         element={<CompanyRegistrationPage />}
       />
       <Route path="/company" element={<Companies />} />
-      <Route path="/company/landingpage" element={<CompanyLandingPage />} />
+      <Route path="/company/:id" element={<CompanyLandingPage />} />
       <Route path="/company/projects" element={<Projects />} />
     </Routes>
   )
