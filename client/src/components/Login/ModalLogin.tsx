@@ -8,8 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 function ModalLogin() {
   const { t } = useTranslation()
-  const { currentUser, login } = useContext(AuthContext) as AuthContextProps
-  console.log(currentUser)
+  const { login } = useContext(AuthContext) as AuthContextProps
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
@@ -31,7 +30,6 @@ function ModalLogin() {
     e.preventDefault()
     try {
       await login(inputs)
-      console.log(currentUser)
     } catch (err) {
       setError(err.response.data.message)
     }
