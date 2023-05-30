@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Search from '../Search/Search'
 import ProjectCard from './ProjectCard'
 // import Projects from '../Projects/Projects'
 import { Link } from 'react-router-dom'
 import { useStore } from '../../context/useStore'
+import { AuthContext } from '../../context/authContext'
+import { AuthContextProps } from '../../interfaces/autContextInterface'
 
 export interface FakeCard {
   id: number
@@ -38,11 +40,12 @@ export const FakeDataCard: FakeCard[] = [
 
 function Companies() {
   const { company } = useStore()
+  const { currentUser } = useContext(AuthContext) as AuthContextProps
 
   return (
     <main className="z-40 flex w-full flex-col flex-wrap justify-center bg-teal/30 p-4">
       <div className="flex justify-center p-4 sm:p-10 md:justify-end md:pb-0">
-        <Link to="/company/projects">
+        <Link to={`/company/${currentUser?.id}/jobs`}>
           <button className="button hover:bg-orange hover:shadow-lg">
             Adicionar projeto
           </button>
