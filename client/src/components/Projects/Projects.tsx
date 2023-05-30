@@ -3,9 +3,6 @@
 import React, { useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import './projects.css'
-import FreelancerCard, {
-  freelancerInfo
-} from 'components/FreelancerCard/FreelancerCard'
 import { CiTrash } from 'react-icons/ci'
 import { IoMailOutline } from 'react-icons/io5'
 import { JobData } from '../../api/jobsApi'
@@ -13,8 +10,10 @@ import { useTranslation } from 'react-i18next'
 import api from 'api'
 import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface'
+import FreelancerSkillCards from 'components/FreelancerSkillCards/FreelancerSkillCards'
 
 const initialState: JobData = {
+  id: '',
   title: '',
   description: '',
   hard_skills: '',
@@ -28,6 +27,7 @@ function Projects() {
   const [isSearchFreelancers, setIsSearchFreelancers] = useState(false)
   const [isAddFreelancers, setIsAddFreelancers] = useState(false)
   const [data, setData] = useState<JobData>(initialState as JobData)
+  const [freelaSkill, setFreelaSkill] = useState([])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -39,11 +39,22 @@ function Projects() {
       })
       console.log(res.data)
       setData({
+        id: '',
         title: '',
         description: '',
         hard_skills: '',
         amount: 0
       })
+      const response = await api.get(
+        `/company/${params.id}/findSkills/${res.data.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUser?.token}`
+          }
+        }
+      )
+      console.log(response.data)
+      setFreelaSkill(response.data)
       setIsSearchFreelancers(!isSearchFreelancers)
     } catch (error) {
       console.error('Error to send new Project', error)
@@ -63,8 +74,8 @@ function Projects() {
   const handleAddFreelancers = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
     console.log('Freelancer agregado')
-    setIsAddFreelancers(true)
-    setIsSearchFreelancers(false)
+    setIsAddFreelancers(!isAddFreelancers)
+    setIsSearchFreelancers(!isSearchFreelancers)
   }
 
   return (
@@ -193,7 +204,14 @@ function Projects() {
                   {t('app.projects.btnsearch')}
                 </button>
               </div>
-              <FreelancerCard title="" color="" />
+              {freelaSkill.map((freelancer, index) => (
+                <FreelancerSkillCards
+                  key={index}
+                  image={freelancer.img}
+                  name={freelancer.name}
+                  skill={freelancer.hard_skills}
+                />
+              ))}
             </div>
             <div className="flex flex-row items-center justify-evenly gap-16 pb-6 pt-10">
               <div className="">
