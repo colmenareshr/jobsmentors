@@ -3,36 +3,44 @@ import Sign from 'components/Sign/Sign'
 import flagEs from '../../assets/images/spain-flag-round-icon.svg'
 import flagUs from '../../assets/images/usa-flag-round-circle-icon.svg'
 import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface'
 import { useTranslation } from 'react-i18next'
+import { FaAngleDown, FaUserCircle } from 'react-icons/fa'
 
 function Navbar() {
   const storedLang = localStorage.getItem('lang')
-  const navegate = useNavigate()
+  const navigate = useNavigate()
   const { t, i18n } = useTranslation()
   const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
   console.log(currentUser)
   const [language, setLanguage] = useState(storedLang || 'pt')
   const [nav, setNav] = useState(false)
   const [isOpenModalLogin, setIsOpenModalLogin] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleNav = () => {
     setNav(!nav)
   }
 
-  useEffect(() => {
+  const handleProfileClick = () => {
     if (currentUser) {
-      if (currentUser.role === 'company') navegate('/company/landingpage')
+      if (currentUser.role === 'company') navigate('/company/landingpage')
       if (currentUser.role === 'freelancer')
-        navegate(`/freelancer/register/${currentUser.id}`)
-      setIsOpenModalLogin(false)
+        navigate(`/freelancer/${currentUser?.id}`)
     }
-    if (!currentUser) navegate('/')
-  }, [currentUser])
+
+    setIsOpen(false)
+  }
+
+  const handleLogout = () => {
+    logout()
+    setIsOpenModalLogin(!isOpenModalLogin)
+    navigate('/')
+  }
 
   // Function to handle language change
   function handleLanguage(lang: string) {
@@ -40,6 +48,11 @@ function Navbar() {
       setLanguage(lang)
       localStorage.setItem('lang', lang)
     })
+  }
+
+  const getUsernameFromEmail = (email: string) => {
+    const parts = email.split('@')
+    return parts[0]
   }
 
   return (
@@ -64,12 +77,43 @@ function Navbar() {
             <li className={!currentUser ? 'hover:text-teal/90' : 'hidden'}>
               <Sign />
             </li>
+            {currentUser && (
+              <li className="group relative">
+                <button
+                  className="flex items-center gap-2 focus:outline-none"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <FaUserCircle size={24} />
+                  <span>{getUsernameFromEmail(currentUser.email)}</span>
+                  <FaAngleDown
+                    size={20}
+                    className={`${
+                      isOpen ? 'rotate-180' : ''
+                    } transition-transform duration-200`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <ul className="absolute right-0 mt-2 rounded border bg-white py-2 shadow-sm">
+                    <li>
+                      <button
+                        className="text-gray-700 hover:bg-gray-100 block w-[100px] px-4 py-2 text-left text-sm"
+                        onClick={handleProfileClick}
+                      >
+                        Ver perfil
+                      </button>
+                    </li>
+                    {/* Add more menu options here */}
+                  </ul>
+                )}
+              </li>
+            )}
 
             <li className="hover:text-teal/90">
               {!currentUser ? (
                 <Login />
               ) : (
-                <button className="button-secondary" onClick={() => logout()}>
+                <button className="button-secondary" onClick={handleLogout}>
                   {t('app.menu.logout')}
                 </button>
               )}
