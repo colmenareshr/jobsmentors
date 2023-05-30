@@ -1,7 +1,7 @@
 // almacenar token en localstorage
 // importarlo
 import React, { useState, useContext } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import './projects.css'
 import FreelancerCard, {
   freelancerInfo
@@ -23,7 +23,6 @@ const initialState: JobData = {
 
 function Projects() {
   const { t } = useTranslation()
-  const navigate = useNavigate()
   const params = useParams<{ id: string }>()
   const { currentUser } = useContext(AuthContext) as AuthContextProps
   const [isSearchFreelancers, setIsSearchFreelancers] = useState(false)
@@ -46,7 +45,6 @@ function Projects() {
         amount: 0
       })
       setIsSearchFreelancers(!isSearchFreelancers)
-      // navigate(`/company/${params.id}`)
     } catch (error) {
       console.error('Error to send new Project', error)
     }
