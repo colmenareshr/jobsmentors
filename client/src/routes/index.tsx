@@ -3,7 +3,7 @@ import Home from 'pages/Home'
 import { Routes, Route } from 'react-router-dom'
 import CompanyLandingPage from 'components/Companies/CompanyLandingPage'
 import Projects from 'components/Projects/Projects'
-import SingleFreelancerPage from 'components/SingleFreelancer/SingleFreelancerPage'
+import SingleFreelancerPage from 'pages/SingleFreelancerPage'
 import Companies from 'components/Companies/Companies'
 import RegisterFreelancer from 'pages/RegisterFreelancer'
 
