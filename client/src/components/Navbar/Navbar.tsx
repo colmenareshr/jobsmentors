@@ -16,7 +16,6 @@ function Navbar() {
   const navigate = useNavigate()
   const { t, i18n } = useTranslation()
   const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
-  console.log(currentUser)
   const [language, setLanguage] = useState(storedLang || 'pt')
   const [nav, setNav] = useState(false)
   const [isOpenModalLogin, setIsOpenModalLogin] = useState(false)
