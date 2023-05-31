@@ -6,6 +6,9 @@ import './projects.css'
 import { CiTrash } from 'react-icons/ci'
 import { IoMailOutline } from 'react-icons/io5'
 import { JobData } from '../../api/jobsApi'
+import FreelancerCard, {
+  freelancerInfo
+} from 'components/FreelancerCard/FreelancerCard'
 import { useTranslation } from 'react-i18next'
 import api from 'api'
 import { AuthContext } from 'context/authContext'
@@ -28,6 +31,8 @@ function Projects() {
   const [isAddFreelancers, setIsAddFreelancers] = useState(false)
   const [data, setData] = useState<JobData>(initialState as JobData)
   const [freelaSkill, setFreelaSkill] = useState([])
+  const [jobId, setJobId] = useState('')
+  const [freelancerIds, setFreelancerIds] = useState<string[]>([])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -45,6 +50,7 @@ function Projects() {
         hard_skills: '',
         amount: 0
       })
+      setJobId(res.data.id)
       const response = await api.get(
         `/company/${params.id}/findSkills/${res.data.id}`,
         {
@@ -54,6 +60,10 @@ function Projects() {
         }
       )
       console.log(response.data)
+      const freelancers = response.data.map((item: any) => item.freelancer_id)
+      console.log(freelancers)
+
+      setFreelancerIds(freelancers)
       setFreelaSkill(response.data)
       setIsSearchFreelancers(!isSearchFreelancers)
     } catch (error) {
@@ -71,9 +81,33 @@ function Projects() {
     }))
   }
 
-  const handleAddFreelancers = (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleAddFreelancers = async (
+    e: React.FormEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault()
-    console.log('Freelancer agregado')
+    const jobFreelancers = freelaSkill.map((freelancer) => ({
+      name: freelancer.name,
+      img: freelancer.img,
+      freelancer_id: freelancer.freelancer_id,
+      hard_skills: freelancer.hard_skills,
+      job_id: jobId
+    }))
+    console.log(jobFreelancers)
+    try {
+      const resMatch = await api.post(
+        `/company/${params.id}/match/${jobId}`,
+        jobFreelancers,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUser?.token}`
+          }
+        }
+      )
+      console.log(resMatch.data)
+      console.log('Freelancers agregados')
+    } catch (error) {
+      console.log(error)
+    }
     setIsAddFreelancers(!isAddFreelancers)
     setIsSearchFreelancers(!isSearchFreelancers)
   }
@@ -175,7 +209,7 @@ function Projects() {
                       </tr>
                     </thead>
                     <tbody>
-                      {freelancerInfo.map((info, index) => (
+                      {freelaSkill.map((info, index) => (
                         <tr key={index}>
                           <td>{info.name}</td>
                           <td>{info.skill}</td>
