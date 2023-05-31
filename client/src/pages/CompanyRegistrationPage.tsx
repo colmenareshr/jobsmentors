@@ -18,7 +18,7 @@ function CompanyRegistrationPage() {
 
   const fetchCompany = async () => {
     if (params.id) {
-      const res = await api.get('/company/' + params.id, {
+      const res = await api.get(`/company/${params.id}`, {
         headers: {
           Authorization: `Bearer ${currentUser?.token}`
         }
@@ -35,7 +35,7 @@ function CompanyRegistrationPage() {
 
   useEffect(() => {
     fetchCompany()
-  }, [params.id])
+  }, [params.id, currentUser?.id])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -47,14 +47,13 @@ function CompanyRegistrationPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí puedes realizar la lógica para enviar los datos del formulario al servidor
     const formData = {
       ...company
     }
     try {
       await api.put('/company/' + params.id, formData, {
         headers: {
-          Authorization: 'Bearer ' + currentUser?.token
+          Authorization: `Bearer ${currentUser?.token}`
         }
       })
       navigate('/company/' + params.id)
