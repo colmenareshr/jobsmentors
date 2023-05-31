@@ -223,7 +223,7 @@ class CompanyController {
   static async findFreelancerSkills(req, res) {
     const id = req.params.user_id;
     const JobId = req.params.id;
-    const page = req.query.page || 1; // Página actual (valor : 1)
+    const page = req.query.page || 1;
 
     try {
       const resultCompany = await database.Company.findOne({
@@ -248,8 +248,8 @@ class CompanyController {
               { open_to_work: true },
             ],
           };
-          const limit = resultJob.amount; // Quantidade de freelancers por página
-          const offset = (page - 1) * limit; // Cálculo de pasar pagina
+          const limit = resultJob.amount; 
+          const offset = (page - 1) * limit; 
 
           const countFreelancers = await database.JobsFreelancer.count({
             where: { job_id: Number(JobId) },
@@ -270,7 +270,7 @@ class CompanyController {
           console.info(remainingLimit);
 
           const allMatch = findFreelancers.map((freelancer) => ({
-            freelancer_id: freelancer.id,
+            freelancer_id: freelancer.user_id,
             name: freelancer.name,
             img: freelancer.img,
             hard_skills: freelancer.hard_skills,
