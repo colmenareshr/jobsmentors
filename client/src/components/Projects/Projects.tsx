@@ -52,7 +52,7 @@ function Projects() {
       })
       setJobId(res.data.id)
       const response = await api.get(
-        `/company/${params.id}/findSkills/${jobId}`,
+        `/company/${params.id}/findSkills/${res.data.id}`,
         {
           headers: {
             Authorization: `Bearer ${currentUser?.token}`
