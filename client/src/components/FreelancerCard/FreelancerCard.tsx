@@ -1,3 +1,7 @@
+import { useState, useEffect, useContext } from 'react'
+import { AuthContext } from '../../context/authContext'
+import { AuthContextProps } from '../../interfaces/autContextInterface'
+import api from 'api'
 import FreelancerCard2 from 'components/FreelancerCard2/FreelamcerCard2'
 import { Link } from 'react-router-dom'
 
@@ -50,15 +54,31 @@ export const freelancerInfo = [
   }
 ]
 
-function FreelancerCard({ title, color }: freelancerTeam) {
+function FreelancerCard() {
+  const { currentUser } = useContext(AuthContext) as AuthContextProps
+  const [freelancers, setFreelancers] = useState()
+
+  useEffect(() => {
+    const fetchFreelancers = async () => {
+      const res = await api.get('/freelancers', {
+        headers: {
+          Authorization: `Bearer ${currentUser?.token}`
+        }
+      })
+      console.log(res.data)
+      setFreelancers(res.data)
+    }
+    fetchFreelancers()
+  }, [])
   return (
     <Link to="" className="flex flex-wrap items-center justify-center gap-4">
-      {freelancerInfo.map((freelancer, index) => (
+      {freelancers?.map((freelancer) => (
         <FreelancerCard2
-          key={index}
-          image={freelancer.image}
+          key={freelancer.id}
+          image={freelancer.img}
           name={freelancer.name}
-          skill={freelancer.skill}
+          skill={freelancer.hard_skills
+}
         />
       ))}
     </Link>

@@ -1,6 +1,9 @@
+import { useState, useContext } from 'react'
 import FreelancerCard from 'components/FreelancerCard/FreelancerCard'
-import { useState } from 'react'
+import { AppContext, AppContextProps } from '../context/appContext'
+
 const FreelancersPage = () => {
+  const { setIsOpenModalSign } = useContext(AppContext) as AppContextProps
   const [skills, setSkills] = useState([
     {
       speciality: 'Frontend',
@@ -39,15 +42,18 @@ const FreelancersPage = () => {
       primaryColor: 'bg-lilac'
     }
   ])
+  const handleOpen = () => {
+    setIsOpenModalSign(true)
+  }
   return (
-    <section className="w-full">
+    <section className="mt-24 w-full py-16">
       <div className="container-lg mx-auto grid place-items-center justify-items-center gap-9 text-center">
         <h1 className="mx-auto mt-16 max-w-[900px]">
           Encontre os melhores freelancers para seus projetos tecnológicos.
           Contrate programadores Juniors qualificados.
         </h1>
         {skills.map((skill, index) => (
-          <div key={index} className={`${skill.primaryColor}  py-16`}>
+          <div key={index} className={`${skill.primaryColor} w-full py-16`}>
             <h3 className="pb-6 text-center text-xl font-bold text-white md:text-2xl">
               {skill.speciality}
             </h3>
@@ -67,9 +73,9 @@ const FreelancersPage = () => {
             objetivos. Não espere mais, o futuro está a apenas um clique de
             distância!
           </p>
-          <a href="#" className="button">
+          <button className="button" onClick={handleOpen}>
             Cadastre-se e descubra o talento!
-          </a>
+          </button>
         </div>
       </div>
     </section>
