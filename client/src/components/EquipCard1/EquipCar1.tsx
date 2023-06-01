@@ -32,7 +32,7 @@ export const equipeInfo = [
   }
 ]
 
-function EquipCard1({ title, color }: equipeTeam) {
+function EquipCard1() {
   return (
     <Link
       to=""

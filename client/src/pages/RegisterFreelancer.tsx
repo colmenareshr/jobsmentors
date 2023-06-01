@@ -68,7 +68,7 @@ const RegisterFreelancer: React.FC = () => {
         hard_skills: res.data.hard_skills,
         contract: res.data.contract
       })
-      setAbout(res.data.about)(res.data)
+      setAbout(res.data.about)
     }
   }
 
@@ -99,13 +99,11 @@ const RegisterFreelancer: React.FC = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
 
-    // Create an object with form data
     const formData = {
       ...freelancerInfo,
       about
     }
 
-    // send Form Data To Backend
     try {
       await api.put('/freelancer/' + params.id, formData, {
         headers: {
@@ -114,7 +112,7 @@ const RegisterFreelancer: React.FC = () => {
       })
       navigate('/freelancer/' + params.id)
     } catch (error) {
-      'Error:', error
+      console.error('Error:', error)
     }
   }
 

@@ -21,7 +21,7 @@ function Login() {
   const handleLogout = () => {
     logout()
     setIsOpenModalLogin(false)
-    navigate('/') // Redirige al usuario a la página de inicio
+    navigate('/') 
   }
 
   return (

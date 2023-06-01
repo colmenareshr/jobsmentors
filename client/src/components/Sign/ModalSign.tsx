@@ -42,7 +42,8 @@ function ModalSign() {
         email: data.email,
         password: data.password1,
         role: tabsData[activeTabIndex].role.toLowerCase()
-      })('Usuario Registrado')
+      })
+      
       handleClose()
       setIsOpenModalLogin(true)
     } catch (error) {
@@ -76,6 +77,7 @@ function ModalSign() {
       placeholdername: t('app.signupmodal.placeholdernamecompany'),
       role: 'Company'
     }
+
   ]
 
   return (

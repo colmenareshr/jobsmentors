@@ -7,7 +7,7 @@ import EquipVision from 'components/EquipVision/EquipVision'
 
 function AboutPage() {
   return (
-    <main className="container mx-auto  max-w-full bg-white mt-24 text-center">
+    <main className="container mx-auto  mt-24 max-w-full bg-white text-center">
       <EquipHero />
       <EquipCard3 />
       <EquipMision />

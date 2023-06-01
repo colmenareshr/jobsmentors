@@ -39,7 +39,8 @@ function Projects() {
         headers: {
           Authorization: `Bearer ${currentUser?.token}`
         }
-      })(res.data)
+      })
+
       setData({
         id: '',
         title: '',
@@ -55,10 +56,8 @@ function Projects() {
             Authorization: `Bearer ${currentUser?.token}`
           }
         }
-      )(response.data)
-      const freelancers = response.data.map((item: any) => item.freelancer_id)(
-        freelancers
       )
+      const freelancers = response.data.map((item: any) => item.freelancer_id)
 
       setFreelancerIds(freelancers)
       setFreelaSkill(response.data)
@@ -88,19 +87,16 @@ function Projects() {
       freelancer_id: freelancer.freelancer_id,
       hard_skills: freelancer.hard_skills,
       job_id: jobId
-    }))(jobFreelancers)
+    }))
+
     try {
-      const resMatch = await api.post(
-        `/company/${params.id}/match/${jobId}`,
-        jobFreelancers,
-        {
-          headers: {
-            Authorization: `Bearer ${currentUser?.token}`
-          }
+      await api.post(`/company/${params.id}/match/${jobId}`, jobFreelancers, {
+        headers: {
+          Authorization: `Bearer ${currentUser?.token}`
         }
-      )(resMatch.data)('Freelancers agregados')
+      })
     } catch (error) {
-      error
+      console.error(error)
     }
     setIsAddFreelancers(!isAddFreelancers)
     setIsSearchFreelancers(!isSearchFreelancers)

@@ -28,7 +28,7 @@ function CompanyRegistrationPage() {
         bio: res.data.bio,
         img: res.data.img,
         site: res.data.site
-      })(res.data)
+      })
     }
   }
 
@@ -57,10 +57,9 @@ function CompanyRegistrationPage() {
       })
       navigate('/company/' + params.id)
     } catch (error) {
-      'Error:', error
+      console.error('Error:', error)
     }
   }
-  company
 
   return (
     <div className="container mx-auto mt-24 p-16">
