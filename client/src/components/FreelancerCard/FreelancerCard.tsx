@@ -63,7 +63,8 @@ function FreelancerCard() {
       headers: {
         Authorization: `Bearer ${currentUser?.token}`
       }
-    })(res.data)
+    })
+    console.log(res.data)
     setFreelancers(res.data)
   }
   useEffect(() => {
