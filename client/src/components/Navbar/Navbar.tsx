@@ -59,6 +59,9 @@ function Navbar() {
       <div className="hidden lg:flex">
         <div className="hidden lg:flex lg:items-center lg:pr-4">
           <ul className="md:flex md:gap-4">
+            <li>
+              <Link to="/about">Sobre nós</Link>{' '}
+            </li>
             <li className="hover:text-teal/90">
               <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
             </li>
@@ -129,6 +132,9 @@ function Navbar() {
           }
         >
           <ul className="flex flex-col gap-3 pt-12">
+            <li>
+              <Link to="/about">Sobre nós</Link>{' '}
+            </li>
             <li>
               <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
             </li>
