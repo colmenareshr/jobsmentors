@@ -1,0 +1,147 @@
+{
+  "app": {
+    "title": "JobMentors",
+    "menu": {
+      "freelancer": "Freelancer",
+      "company": "Empresas",
+      "mentors": "Mentores",
+      "howitworks": "Cómo funciona",
+      "becomeamentor": "Sea un Mentor",
+      "signin": "REGISTRO",
+      "login": "ACCESAR",
+      "logout": "SALIR"
+    },
+    "herosection": {
+      "comment": "Encuentre un talentoso y perfecto freelancer para sus proyectos de tecnología",
+      "button": "OBTENGA UNA SOLUCIÓN AHORA"
+    },
+    "ctajuniors": {
+      "title": "Descubre un equipo hábil para proporcionar la solución que tu empresa necesita.",
+      "comment": "Conéctate con talentosos freelancers juniors listos para enfrentar tus proyectos tecnológicos. Encuentra la combinación perfecta para las necesidades de tu empresa y potencia la innovación.",
+      "button": "COMIENZA HOY MISMO"
+    },
+    "featuresection": {
+      "title": "DISFRUTA DEL PODER DE LOS FREELANCERS JUNIORS Y LOS MENTORES ESPECIALIZADOS",
+      "cards": {
+        "card1": {
+          "title": "Servicios de Desarrollo Tecnológico",
+          "text": "Soluciones personalizadas de desarrollo tecnológico adaptadas a tus necesidades empresariales.",
+          "button": "EXPLORA NUESTROS SERVICIOS"
+        },
+        "card2": {
+          "title": "Conéctate con Freelancers Juniors Altamente Calificados",
+          "text": "Conecta con freelancers juniors altamente calificados listos para asumir tus proyectos con el mayor compromiso.",
+          "button": "ENCUENTRA AL FREELANCER PERFECTO"
+        },
+        "card3": {
+          "title": "Orientación y Apoyo de Mentores Especializados",
+          "text": "Obtén orientación y apoyo de mentores especializados para impulsar el éxito de tu proyecto.",
+          "button": "ORIENTACIÓN ESPECIALIZADA AHORA"
+        }
+      }
+    },
+    "aboutsection": {
+      "title": "NUESTRA TRAYECTORIA",
+      "comment": "Somos un equipo de freelancers especializados en diversas áreas de desarrollo de software y tecnología de la información (TI). Nuestra misión es capacitar a individuos, incluyendo hombres, mujeres, personas con discapacidad y jóvenes profesionales, conectándolos con sus primeras oportunidades laborales en el campo de la tecnología. ¡Únete a nosotros en nuestra jornada!",
+      "button": "MÁS SOBRE NOSOTROS"
+    },
+    "loginmodal": {
+      "title": "Accesar Cuenta",
+      "email": "Correo Electrónico",
+      "password": "Clave",
+      "btncancel": "Cancelar",
+      "btnlogin": "Entrar",
+      "spanmsg": "Aún no tienes cuenta? ",
+      "btnsingup": "Crea una cuenta...",
+      "placeholderemail": "ejemplo@email.com",
+      "placeholderpassword": "escriba su clave"
+    },
+    "signupmodal": {
+      "title": "Crear cuenta para",
+      "labelfreelancer": "Freelancer",
+      "labelcompany": "Empresa",
+      "labelmentor": "Mentor",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "password1": "escribe contraseña",
+      "password2": "confirmar contraseña",
+      "placeholdernamefreelancer": "nombre y apellido",
+      "placeholdernamecompany": "nombre de la empresa",
+      "placeholdernamementor": "nombre y apellido",
+      "placeholderemail": "ejemplo@correo.com",
+      "placeholderpassword1": "escribe tu contraseña",
+      "placeholderpassword2": "confirmar tu contraseña",
+      "btncancel": "Cancelar",
+      "btnsignup": "Crear una cuenta",
+      "spanmsg": "¿Ya tienes una cuenta?",
+      "btncreateaccount": "Acceder a tu cuenta"
+    },
+    "juniormentorsection": {
+      "title": "POR QUÉ ELEGIR FREELANCERS JUNIORS?",
+      "line1": "Soluciones rentables para tus proyectos",
+      "line2": "Perspectivas frescas e ideas innovadoras",
+      "line3": "Aprendices apasionados, ansiosos por crecer",
+      "line4": "Flexibles y adaptables a tus necesidades",
+      "line5": "Rápidos en adaptarse a nuevas tecnologías",
+      "line6": "Dedicados y comprometidos a ofrecer resultados de calidad",
+      "button": "COMIENCE HOY MISMO",
+      "title2": "DESBLOQUEA EL PODER DE LA MENTORÍA ESPECIALIZADA",
+      "comment": "Cuando necesitas una solución tecnológica para tu negocio, aprovecha la experiencia de nuestros mentores. Están aquí para guiarte en el proceso, brindar ideas valiosas y garantizar el éxito de tus proyectos."
+    },
+    "ourfreelancers": {
+      "title": "CONOCE A NUESTROS TALENTOSOS FREELANCERS",
+      "comment": "Potencia tus proyectos con freelancers excepcionales",
+      "button": "CONTRATA UN FREELANCER AHORA"
+    },
+    "bigprojectsection": {
+      "title": "¿BUSCANDO UN EQUIPO DE DESARROLLO PARA PROYECTOS A GRAN ESCALA?",
+      "subtitle": "Desbloquea el potencial de tus proyectos",
+      "comment": "Construye tu equipo de ensueño de desarrolladores habilidosos y lleva tus proyectos a gran escala a nuevas alturas. Nuestra plataforma te conecta con mentores especializados para asegurar el éxito en cada etapa del camino.",
+      "button": "Crea tu equipo de éxito ahora"
+    },
+    "ctasection": {
+      "title": "¡EMPIEZA HOY MISMO!",
+      "button1": "CONTRATA UN FREELANCER",
+      "button2": "CONVIERTE EN UN MENTOR"
+    },
+    "footer": {
+      "title1": "JobsMentors",
+      "comment1": "Conectando empresas con talentos juniors, impulsando el crecimiento en el campo de la tecnología.",
+      "title2": "Servicios",
+      "servicesOp1": "Desarrollo de aplicaciones móviles",
+      "servicesOp2": "Desarrollo web y diseño de sitios web",
+      "servicesOp3": "Desarrollo de software personalizado",
+      "servicesOp4": "Diseño de interfaz de usuario (UI) y experiencia de usuario (UX)",
+      "servicesOp5": "Consultoría tecnológica y asesoría de proyectos",
+      "title3": "Páginas",
+      "pageaboutUs": "Acerca de nosotros",
+      "pagecontact": "Contacto",
+      "pageblog": "Blog",
+      "pagesocial": "Redes sociales",
+      "copyright": " Derechos de autor "
+    },
+    "projects": {
+      "title": "DETALLES DEL PROYECTO",
+      "name": "Nombre del proyecto",
+      "skills": "Habilidades requeridas",
+      "quantity": "Cantidad de freelancers",
+      "description": "Descripción",
+      "btnsave": "GUARDAR",
+      "btndelete": "ELIMINAR PROYECTO",
+      "btnsearch": "BUSCAR FREELANCERS",
+      "btncancel": "CANCELAR",
+      "btnaddfreelancers": "AGREGAR FREELANCERS",
+      "placeholders": {
+        "name": "nombre del proyecto",
+        "skills": "Javascript, Python, SQL, etc...",
+        "flquantity": "cantidad de freelancers",
+        "description": "descripción del proyecto"
+      },
+      "table": {
+        "name": "Nombre",
+        "skills": "Habilidades",
+        "actions": "Acciones"
+      }
+    }
+  }
+}

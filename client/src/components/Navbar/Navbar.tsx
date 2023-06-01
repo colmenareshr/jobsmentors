@@ -1,89 +1,220 @@
-import React from 'react'
+import Login from 'components/Login/Login'
+import Sign from 'components/Sign/Sign'
+import flagEs from '../../assets/images/spain-flag-round-icon.svg'
+import flagUs from '../../assets/images/usa-flag-round-circle-icon.svg'
+import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
+import { useState, useContext } from 'react'
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from 'context/authContext'
+import { AuthContextProps } from 'interfaces/autContextInterface'
+import { useTranslation } from 'react-i18next'
+import { FaAngleDown, FaUserCircle } from 'react-icons/fa'
 
 function Navbar() {
+  const storedLang = localStorage.getItem('lang')
+  const navigate = useNavigate()
+  const { t, i18n } = useTranslation()
+  const { currentUser, logout } = useContext(AuthContext) as AuthContextProps
+  const [language, setLanguage] = useState(storedLang || 'pt')
+  const [nav, setNav] = useState(false)
+  const [isOpenModalLogin, setIsOpenModalLogin] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleNav = () => {
+    setNav(!nav)
+  }
+
+  const handleProfileClick = () => {
+    if (currentUser) {
+      if (currentUser.role === 'company') navigate(`/company/${currentUser.id}`)
+      if (currentUser.role === 'freelancer')
+        navigate(`/freelancer/${currentUser?.id}`)
+    }
+
+    setIsOpen(false)
+  }
+
+  const handleLogout = () => {
+    logout()
+    setIsOpenModalLogin(!isOpenModalLogin)
+    navigate('/')
+  }
+
+  // Function to handle language change
+  function handleLanguage(lang: string) {
+    i18n.changeLanguage(lang).then(() => {
+      setLanguage(lang)
+      localStorage.setItem('lang', lang)
+    })
+  }
+
+  const getUsernameFromEmail = (email: string) => {
+    const parts = email.split('@')
+    return parts[0]
+  }
+
   return (
-    <nav className="bg-slate-500 border-gray-200 dark:bg-gray-900">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" className="flex items-center">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8 mr-3"
-            alt="JobMentors Logo"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            JobMentors
-          </span>
-        </a>
-        <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-default"
-          aria-expanded="false"
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-6 h-6"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-        </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+    <nav className="flex items-center justify-between font-semibold">
+      <div className="hidden lg:flex">
+        <div className="hidden lg:flex lg:items-center lg:pr-4">
+          <ul className="md:flex md:gap-4">
             <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page"
-              >
-                Home
-              </a>
+              <Link to="/about">Sobre nós</Link>{' '}
             </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                About
-              </a>
+            <li className="hover:text-teal/90">
+              <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
             </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Services
-              </a>
+            <li className="hover:text-teal/90">{t('app.menu.company')}</li>
+            <li className="hover:text-teal/90">{t('app.menu.mentors')}</li>
+            <li className="hover:text-teal/90">{t('app.menu.howitworks')}</li>
+          </ul>
+        </div>
+        <div className="hidden md:block">
+          <ul className="items-center justify-between gap-4 md:flex">
+            <li className={!currentUser ? 'hover:text-teal/90' : 'hidden'}>
+              <Sign />
             </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Pricing
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Contact
-              </a>
+            {currentUser && (
+              <li className="group relative">
+                <button
+                  className="flex items-center gap-2 focus:outline-none"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <FaUserCircle size={24} />
+                  <span>{getUsernameFromEmail(currentUser.email)}</span>
+                  <FaAngleDown
+                    size={20}
+                    className={`${
+                      isOpen ? 'rotate-180' : ''
+                    } transition-transform duration-200`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <ul className="absolute right-0 mt-2 rounded border bg-white py-2 shadow-sm">
+                    <li>
+                      <button
+                        className="text-gray-700 hover:bg-gray-100 block w-[100px] px-4 py-2 text-left text-sm"
+                        onClick={handleProfileClick}
+                      >
+                        Ver perfil
+                      </button>
+                    </li>
+                    {/* Add more menu options here */}
+                  </ul>
+                )}
+              </li>
+            )}
+
+            <li className="hover:text-teal/90">
+              {!currentUser ? (
+                <Login />
+              ) : (
+                <button className="button-secondary" onClick={handleLogout}>
+                  {t('app.menu.logout')}
+                </button>
+              )}
             </li>
           </ul>
         </div>
+      </div>
+
+      {/* DRAWER */}
+
+      <div onClick={handleNav} className="block px-3 lg:hidden">
+        {!nav ? <AiOutlineMenu size={20} /> : <AiOutlineClose size={20} />}
+        <div
+          className={
+            !nav
+              ? 'fixed right-[-100%]'
+              : 'fixed right-0 top-24 z-30 h-full w-[50%] border-l border-l-sky bg-white px-3 text-left duration-500 ease-in-out'
+          }
+        >
+          <ul className="flex flex-col gap-3 pt-12">
+            <li>
+              <Link to="/about">Sobre nós</Link>{' '}
+            </li>
+            <li>
+              <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
+            </li>
+            <li className="hover:text-teal/90">{t('app.menu.company')}</li>
+            <li>{t('app.menu.mentors')}</li>
+            <li>{t('app.menu.howitworks')}</li>
+          </ul>
+          <ul className="flex flex-col gap-3 pt-3">
+            <li className={!currentUser ? 'hover:text-teal/90' : 'hidden'}>
+              <Sign />
+            </li>
+            {currentUser && (
+              <li className="group relative">
+                <button
+                  className="flex items-center gap-2 focus:outline-none"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <FaUserCircle size={24} />
+                  <span>{getUsernameFromEmail(currentUser.email)}</span>
+                  <FaAngleDown
+                    size={20}
+                    className={`${
+                      isOpen ? 'rotate-180' : ''
+                    } transition-transform duration-200`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <ul className="absolute right-0 mt-2 rounded border bg-white py-2 shadow-sm">
+                    <li>
+                      <button
+                        className="text-gray-700 hover:bg-gray-100 block w-[100px] px-4 py-2 text-left text-sm"
+                        onClick={handleProfileClick}
+                      >
+                        Ver perfil
+                      </button>
+                    </li>
+                    {/* Add more menu options here */}
+                  </ul>
+                )}
+              </li>
+            )}
+            <li>
+              {currentUser ? (
+                <button className="button-secondary" onClick={logout}>
+                  {t('app.menu.logout')}
+                </button>
+              ) : (
+                <Login />
+              )}
+            </li>
+          </ul>
+          <div className="mt-44 flex justify-center gap-4">
+            <button value={language} onClick={() => handleLanguage('br')}>
+              <img src={flagBr} alt="flagBr" className="h-8 w-8" />
+            </button>
+            <button value={language} onClick={() => handleLanguage('es')}>
+              <img src={flagEs} alt="flagEs" className="h-8 w-8" />
+            </button>
+            <button value={language} onClick={() => handleLanguage('en')}>
+              <img src={flagUs} alt="flagUs" className="h-8 w-8" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="hidden justify-end gap-4 pl-4 md:flex">
+        <button value={language} onClick={() => handleLanguage('br')}>
+          <img src={flagBr} alt="flagBr" className="h-8 w-8" />
+        </button>
+        <button value={language} onClick={() => handleLanguage('es')}>
+          <img src={flagEs} alt="flagEs" className="h-8 w-8" />
+        </button>
+        <button value={language} onClick={() => handleLanguage('en')}>
+          <img src={flagUs} alt="flagUs" className="h-8 w-8" />
+        </button>
       </div>
     </nav>
   )
 }
 
 export default Navbar
+

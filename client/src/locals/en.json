@@ -1,0 +1,147 @@
+{
+  "app": {
+    "title": "JobMentors",
+    "menu": {
+      "freelancer": "Freelancer",
+      "company": "Company",
+      "mentors": "Mentors",
+      "howitworks": "How it works",
+      "becomeamentor": "Become a Mentor",
+      "signin": "Sign Up",
+      "login": "Login",
+      "logout": "Logout"
+    },
+    "herosection": {
+      "comment": "Find a talented and perfect freelancer for your technology projects.",
+      "button": "GET A SOLUTION NOW"
+    },
+    "ctajuniors": {
+      "title": "Find a skilled team to provide the solution your company needs.",
+      "comment": "We have a large community of talented freelancers who are ready to start working on your project.",
+      "button": "START TODAY"
+    },
+    "featuresection": {
+      "title": "ENJOY THE POWER OF JUNIOR FREELANCERS AND SPECIALIZED MENTORS",
+      "cards": {
+        "card1": {
+          "title": "Technological Development Services",
+          "text": "Customized technological development solutions tailored to your business needs.",
+          "button": "EXPLORE OUR SERVICES"
+        },
+        "card2": {
+          "title": "Connect with Highly Skilled Junior Freelancers",
+          "text": "Connect with highly skilled junior freelancers ready to take on your projects with utmost commitment.",
+          "button": "FIND THE PERFECT FREELANCER"
+        },
+        "card3": {
+          "title": "Guidance and Support from Specialized Mentors",
+          "text": "Get guidance and support from specialized mentors to boost the success of your project.",
+          "button": "SPECIALIZED GUIDANCE NOW"
+        }
+      }
+    },
+    "aboutsection": {
+      "title": "OUR JURNEY",
+      "comment": "We are a team of specialized freelancers in various areas of software development and IT. Our mission is to empower individuals, including men, women, people with disabilities, and young professionals, by connecting them with their first job opportunities in the field of technology. Join us on our journey!We are a team of specialized freelancers in various areas of software development and IT. Our mission is to empower individuals, including men, women, people with disabilities, and young professionals, by connecting them with their first job opportunities in the field of technology. Join us on our journey!",
+      "button": "LEARN MORE ABOUT US"
+    },
+    "loginmodal": {
+      "title": "Account Access",
+      "email": "Email",
+      "password": "Password",
+      "btncancel": "Cancel",
+      "btnlogin": "Login",
+      "spanmsg": "Don't have an account yet? ",
+      "btnsingup": "Create an account",
+      "placeholderemail": "example@email.com",
+      "placeholderpassword": "write your password"
+    },
+    "signupmodal": {
+      "title": "Create Account for ",
+      "labelfreelancer": "Freelancer",
+      "labelcompany": "Company",
+      "labelmentor": "Mentor",
+      "name": "Name",
+      "email": "Email",
+      "password1": "write password",
+      "password2": "confirm password",
+      "placeholdernamefreelancer": "name and lastname",
+      "placeholdernamecompany": "company name",
+      "placeholdernamementor": "name and lastname",
+      "placeholderemail": "example@email.com",
+      "placeholderpassword1": "write your password",
+      "placeholderpassword2": "confirm your password",
+      "btncancel": "Cancel",
+      "btnsignup": "Create an account",
+      "spanmsg": "Already have an account? ",
+      "btncreateaccount": "Access your account"
+    },
+    "juniormentorsection": {
+      "title": "WHY CHOOSE JUNIOR FREELANCERS?",
+      "line1": "Cost-effective solutions for your projects",
+      "line2": "Fresh perspectives and innovative ideas",
+      "line3": "Passionate learners, eager to grow",
+      "line4": "Flexible and adaptable to your needs",
+      "line5": "Quick to adapt to new technologies",
+      "line6": "Dedicated and committed to delivering quality results",
+      "button": "START TODAY",
+      "title2": "UNLEASH THE POWER OF SPECIALIZED MENTORSHIP",
+      "comment": "When you need a technological solution for your business, take advantage of the expertise of our mentors. They are here to guide you through the process, provide valuable insights, and ensure the success of your projects."
+    },
+    "ourfreelancers": {
+      "title": "MEET OUR TALENTED FREELANCERS",
+      "comment": "Empower your projects with exceptional freelancers",
+      "button": "HIRE A FREELANCER NOW"
+    },
+    "bigprojectsection": {
+      "title": "LOOKING FOR A DEVELOPMENT TEAM FOR LARGE-SCALE PROJECTS?",
+      "subtitle": "Unlock the potential of your projects",
+      "comment": "Build your dream team of skilled developers and take your large-scale projects to new heights. Our platform connects you with specialized mentors to ensure success at every step of the way.",
+      "button": "Create your successful team now"
+    },
+    "ctasection": {
+      "title": "START TODAY !",
+      "button1": "HIRE A FREELANCER",
+      "button2": "BECOME A MENTOR"
+    },
+    "footer": {
+      "title1": "JobsMentors",
+      "comment1": "Connecting companies with junior talents, driving growth in the technology field.",
+      "title2": "Services",
+      "servicesOp1": "Mobile app development",
+      "servicesOp2": "Web development and website design",
+      "servicesOp3": "Custom software development",
+      "servicesOp4": "User interface (UI) and user experience (UX) design",
+      "servicesOp5": "Technology consulting and project advisory",
+      "title3": "Pages",
+      "pageaboutUs": "About us",
+      "pagecontact": "Contact",
+      "pageblog": "Blog",
+      "pagesocial": "Social",
+      "copyright": " Copyright "
+    },
+    "projects": {
+      "title": "PROJECT DETAILS",
+      "name": "Project name",
+      "skills": "Required skills",
+      "quantity": "Freelancers quantity",
+      "description": "Description",
+      "btnsave": "SAVE",
+      "btndelete": "DELETE PROJECT",
+      "btnsearch": "SEARCH FREELANCERS",
+      "btncancel": "CANCEL",
+      "btnaddfreelancers": "ADD FREELANCERS",
+      "placeholders": {
+        "name": "project name",
+        "skills": "Javascript, Python, SQL, etc...",
+        "flquantity": "freelancers quantity",
+        "description": "project description"
+      },
+      "table": {
+        "name": "Name",
+        "skills": "Skills",
+        "actions": "Actions"
+      }
+    }
+  }
+}

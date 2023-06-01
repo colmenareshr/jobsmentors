@@ -1,0 +1,86 @@
+.form-modalLogin {
+  @apply fixed inset-0 flex flex-col items-center;
+  @apply justify-center border-4 bg-black/20 backdrop-blur-md;
+}
+
+.containerBackground-modalLogin {
+  @apply absolute h-auto rounded-b-3xl rounded-tl-lg;
+  @apply rounded-tr-none bg-white/70 pb-3 pl-1 pr-1 shadow-xl
+}
+
+.title-ModalLogin {
+  @apply p-3 text-3xl text-purple font-bold
+}
+
+.title-ModalLogin:hover {
+  @apply drop-shadow-lg
+}
+
+.header-button-x-ModalLogin {
+  @apply duration-300 absolute place-self-end;
+  @apply rounded-md rounded-b-none bg-white bg-opacity-30;
+  @apply pl-3 pr-3 pt-0.5 -right-2 -top-10 my-auto mr-2 mt-2;
+  @apply text-lg transition-colors;
+}
+
+.header-button-x-ModalLogin:hover {
+  @apply bg-purple text-white shadow-none;
+}
+
+.main-modalLogin {
+  @apply flex w-full flex-col justify-center;
+  @apply rounded-md bg-purpleLight p-3 pt-1 text-xl;
+}
+
+.main-input-email-ModalLogin {
+  @apply w-full rounded p-2 outline-none;
+}
+
+.main-input-email-ModalLogin:hover {
+  @apply shadow-lg ring-purple;
+}
+
+.main-input-email-ModalLogin:focus {
+  @apply shadow-lg ring-4 ring-purple ring-opacity-90;
+}
+
+.main-label-email-ModalLogin {
+  @apply ml-2 flex pb-1 pr-2 pt-5 font-semibold text-white;
+}
+
+.main-input-password-ModalLogin {
+  @apply w-full rounded p-2 outline-none;
+}
+
+.main-input-password-ModalLogin:hover {
+  @apply shadow-lg
+}
+
+.main-input-password-ModalLogin:focus {
+  @apply shadow-lg ring-4 ring-purple ring-opacity-90;
+}
+
+.main-input-password-ModalLogin:hover {
+  @apply ring-purple
+}
+
+.footer-buttonGroup-ModalLogin {
+  @apply flex justify-evenly p-2 pb-0 pt-3
+}
+
+.footer-button-Cancelar-ModalLogin {
+  @apply rounded-full bg-purple p-2 px-12 pl-8 pr-8;
+  @apply text-white text-lg transition-colors duration-500;
+}
+
+.footer-button-Cancelar-ModalLogin:hover {
+  @apply bg-purpleHover text-white shadow-lg
+}
+
+.footer-button-Entrar-ModalLogin {
+  @apply px-14 pl-12 pr-12 text-lg text-white transition-colors duration-500
+}
+
+.footer-button-Entrar-ModalLogin:hover {
+  @apply bg-purpleHover
+}

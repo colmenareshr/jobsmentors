@@ -6,7 +6,12 @@ module.exports = (sequelize, DataTypes) => {
   class Company extends Model {
     
     static associate(models) {
-      
+      Company.hasMany(models.Jobs, {
+        foreignKey:'company_id'
+      })
+      Company.belongsTo(models.User,{
+        foreignKey:'user_id'
+      })
     }
   }
   Company.init({
@@ -28,16 +33,22 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     },
     name: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     bio: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     site: {
-      allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING(128),
+      validate:{
+        isUrl: true
+      }
+    },
+    img: {
+      type: DataTypes.STRING(128),
+      validate:{
+        isUrl: true
+      }
     },
     email: {
       allowNull: false,
@@ -45,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
+    paranoid:true,
     modelName: 'Company',
     freezeTableName: true
   });
