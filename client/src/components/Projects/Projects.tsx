@@ -228,7 +228,7 @@ function Projects() {
                   {t('app.projects.btnsearch')}
                 </button>
               </div>
-              <div className="items-center, justify-certer flex gap-3">
+              <div className="md:items-center, md:justify-certer flex flex-col items-center justify-center gap-2  py-3 md:flex-row">
                 {freelaSkill.map((freelancer, index) => (
                   <FreelancerSkillCards
                     key={index}
