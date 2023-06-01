@@ -1,5 +1,3 @@
-// almacenar token en localstorage
-// importarlo
 import React, { useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import './projects.css'
@@ -198,8 +196,8 @@ function Projects() {
                   </button>
                 </div>
               </div>
-              <div className="col-span-12 row-span-2 flex w-full justify-center overflow-y-scroll rounded-lg bg-emerald  p-4">
-                {isAddFreelancers ? (
+              {isAddFreelancers ? (
+                <div className="col-span-12 row-span-2 flex w-full justify-center overflow-y-scroll rounded-lg bg-emerald  p-4">
                   <table className="w-full table-auto">
                     <thead className="text-lg">
                       <tr>
@@ -225,8 +223,8 @@ function Projects() {
                       ))}
                     </tbody>
                   </table>
-                ) : null}
-              </div>
+                </div>
+              ) : null}
             </main>
           </form>
         </section>
