@@ -1,46 +1,59 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Search from '../Search/Search'
 import ProjectCard from './ProjectCard'
 // import Projects from '../Projects/Projects'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useStore } from '../../context/useStore'
 import { AuthContext } from '../../context/authContext'
 import { AuthContextProps } from '../../interfaces/autContextInterface'
+import api from 'api'
 
-export interface FakeCard {
+export interface Job {
   id: number
-  project: string
+  title: string
   description: string
-  skills: string
+  hardSkill: string
+  amount: number
+  onDelete: () => void
 }
 
-export const FakeDataCard: FakeCard[] = [
-  {
-    id: 1,
-    project: 'Projeto 1',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-    skills: 'React, Node, Typescript'
-  },
-  {
-    id: 2,
-    project: 'Projeto 2',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-    skills: 'React, Node, Typescript'
-  },
-  {
-    id: 3,
-    project: 'Projeto 3',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-    skills: 'React, Node, Typescript'
-  }
-]
-
 function Companies() {
-  const { company } = useStore()
+  const params = useParams<{ id: string }>()
   const { currentUser } = useContext(AuthContext) as AuthContextProps
+  const [jobs, setJobs] = useState<Job | []>([])
+
+  const fetchProjects = async () => {
+    try {
+      const res = await api.get(`/company/${params.id}/jobs`, {
+        headers: {
+          Authorization: `Bearer ${currentUser?.token}`
+        }
+      })
+      setJobs(res.data)
+      console.log(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchProjects()
+  }, [params.id])
+
+  const handleDeleteProject = async (jobId: number) => {
+    try {
+      await api.delete(`/company/${params.id}/` + jobId, {
+        headers: {
+          Authorization: `Bearer ${currentUser?.token}`
+        }
+      })
+      console.log('proyecto borrado')
+      setJobs(jobs.filter((job) => job.id !== job.id))
+      fetchProjects()
+    } catch (error) {
+      console.error('Error al eliminar el proyecto', error)
+    }
+  }
 
   return (
     <main className="z-40 flex w-full flex-col flex-wrap justify-center bg-teal/30 p-4">
@@ -54,16 +67,22 @@ function Companies() {
       <div
         className="flex justify-center
                       md:pb-4 md:pt-10"
-      >
-        <Search />
-      </div>
+      ></div>
       <section
         className="flex flex-wrap justify-center gap-4 
                   p-4
                   md:pb-20 md:pt-10"
       >
-        {FakeDataCard.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {jobs.map((job: Job) => (
+          <ProjectCard
+            key={job.id}
+            id={job.id}
+            title={job.title}
+            description={job.description}
+            hardSkill={job.hard_skills}
+            amount={job.amount}
+            onDelete={() => handleDeleteProject(job.id)}
+          />
         ))}
       </section>
     </main>
@@ -71,10 +90,3 @@ function Companies() {
 }
 
 export default Companies
-
-// THIS PART WE GOING TO USED AFTER BACKEND BE DONE
-//  {
-//    company?.projects.map((project) => (
-//      <ProjectCard key={project.id} project={project} />
-//    ))
-//  }
