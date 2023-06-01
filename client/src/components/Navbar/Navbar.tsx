@@ -59,15 +59,14 @@ function Navbar() {
       <div className="hidden lg:flex">
         <div className="hidden lg:flex lg:items-center lg:pr-4">
           <ul className="md:flex md:gap-4">
+            <li>
+              <Link to="/about">Sobre nós</Link>{' '}
+            </li>
             <li className="hover:text-teal/90">
               <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
             </li>
-            <li className="hover:text-teal/90">
-              <Link to="/company/landingpage">{t('app.menu.company')}</Link>
-            </li>
-            <Link to="/freelancers/landingpage">
-              <li className="hover:text-teal/90">{t('app.menu.mentors')}</li>
-            </Link>
+            <li className="hover:text-teal/90">{t('app.menu.company')}</li>
+            <li className="hover:text-teal/90">{t('app.menu.mentors')}</li>
             <li className="hover:text-teal/90">{t('app.menu.howitworks')}</li>
           </ul>
         </div>
@@ -134,19 +133,50 @@ function Navbar() {
         >
           <ul className="flex flex-col gap-3 pt-12">
             <li>
+              <Link to="/about">Sobre nós</Link>{' '}
+            </li>
+            <li>
               <Link to="/freelancers">{t('app.menu.freelancer')}</Link>
             </li>
-            <li className="hover:text-teal/90">
-              <Link to="/company/landingpage">{t('app.menu.company')}</Link>
-            </li>
+            <li className="hover:text-teal/90">{t('app.menu.company')}</li>
             <li>{t('app.menu.mentors')}</li>
             <li>{t('app.menu.howitworks')}</li>
           </ul>
           <ul className="flex flex-col gap-3 pt-3">
-            <li>{t('app.menu.becomeamentor')}</li>
             <li className={!currentUser ? 'hover:text-teal/90' : 'hidden'}>
               <Sign />
             </li>
+            {currentUser && (
+              <li className="group relative">
+                <button
+                  className="flex items-center gap-2 focus:outline-none"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <FaUserCircle size={24} />
+                  <span>{getUsernameFromEmail(currentUser.email)}</span>
+                  <FaAngleDown
+                    size={20}
+                    className={`${
+                      isOpen ? 'rotate-180' : ''
+                    } transition-transform duration-200`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <ul className="absolute right-0 mt-2 rounded border bg-white py-2 shadow-sm">
+                    <li>
+                      <button
+                        className="text-gray-700 hover:bg-gray-100 block w-[100px] px-4 py-2 text-left text-sm"
+                        onClick={handleProfileClick}
+                      >
+                        Ver perfil
+                      </button>
+                    </li>
+                    {/* Add more menu options here */}
+                  </ul>
+                )}
+              </li>
+            )}
             <li>
               {currentUser ? (
                 <button className="button-secondary" onClick={logout}>

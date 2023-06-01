@@ -43,7 +43,7 @@ function ModalSign() {
         password: data.password1,
         role: tabsData[activeTabIndex].role.toLowerCase()
       })
-      console.log('Usuario Registrado')
+      
       handleClose()
       setIsOpenModalLogin(true)
     } catch (error) {
@@ -77,6 +77,7 @@ function ModalSign() {
       placeholdername: t('app.signupmodal.placeholdernamecompany'),
       role: 'Company'
     }
+
   ]
 
   return (

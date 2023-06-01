@@ -30,9 +30,8 @@ function Companies() {
         }
       })
       setJobs(res.data)
-      console.log(res.data)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -47,7 +46,6 @@ function Companies() {
           Authorization: `Bearer ${currentUser?.token}`
         }
       })
-      console.log('proyecto borrado')
       setJobs(jobs.filter((job) => job.id !== job.id))
       fetchProjects()
     } catch (error) {

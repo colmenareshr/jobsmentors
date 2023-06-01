@@ -29,7 +29,6 @@ function CompanyRegistrationPage() {
         img: res.data.img,
         site: res.data.site
       })
-      console.log(res.data)
     }
   }
 
@@ -58,10 +57,9 @@ function CompanyRegistrationPage() {
       })
       navigate('/company/' + params.id)
     } catch (error) {
-      console.log('Error:', error)
+      console.error('Error:', error)
     }
   }
-  console.log(company)
 
   return (
     <div className="container mx-auto mt-24 p-16">

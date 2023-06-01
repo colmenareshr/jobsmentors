@@ -8,40 +8,36 @@ interface equipeTeam {
 
 export const equipeInfo = [
   {
-    image:
-      'https://avatars.githubusercontent.com/u/101142283?v=4',
+    image: 'https://avatars.githubusercontent.com/u/101142283?v=4',
     name: 'Pedro Gil Bonett',
     skill: 'Desenvolvedor Full Stack'
-           
   },
 
   {
-    image:
-      'https://avatars.githubusercontent.com/u/102869871?v=4',
+    image: 'https://avatars.githubusercontent.com/u/102869871?v=4',
     name: 'José Freites',
     skill: 'Desenvolvedor Full Satck'
   },
 
   {
-    image:
-      'https://avatars.githubusercontent.com/u/14103160?v=4',
+    image: 'https://avatars.githubusercontent.com/u/14103160?v=4',
     name: 'Humberto Colmenares',
     skill: 'Desenvolvedor Full Stack'
   },
 
   {
-    image:
-      'https://avatars.githubusercontent.com/u/105180420?v=4',
+    image: 'https://avatars.githubusercontent.com/u/105180420?v=4',
     name: 'Samil Moret',
     skill: 'Desenvolvedor Full Satck'
-  },
-
-  
+  }
 ]
 
-function EquipCard1({ title, color }: equipeTeam) {
+function EquipCard1() {
   return (
-    <Link to="" className="flex flex-wrap items-center justify-center gap-4 py-16">
+    <Link
+      to=""
+      className="flex flex-wrap items-center justify-center gap-4 py-16"
+    >
       {equipeInfo.map((equipe, index) => (
         <EquipCard2
           key={index}

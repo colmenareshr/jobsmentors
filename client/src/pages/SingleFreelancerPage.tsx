@@ -2,13 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface'
 import { useParams, useNavigate } from 'react-router-dom'
-import {
-  IoLogoGithub,
-  IoLogoLinkedin,
-  IoLogoReact,
-  IoLogoNodejs,
-  IoLogoWordpress
-} from 'react-icons/io5'
+import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
 import { FreelancerUpdateData } from 'api/freelancersApi'
 import api from 'api'
 
@@ -37,7 +31,7 @@ const SingleFreelancerPage = () => {
   }
 
   return (
-    <section className="w-full pt-16">
+    <section className="mt-12 w-full pt-16">
       <div className="mx-auto -mb-36 max-w-full bg-teal400 py-16"></div>
       <div className="mx-auto max-w-full pt-16">
         <div className="container mx-auto bg-white px-3 py-8 text-center">
@@ -69,31 +63,7 @@ const SingleFreelancerPage = () => {
         <div className="container mx-auto border-t border-t-emerald/30 bg-white p-12">
           <h3>Expertise</h3>
           <div className="flex items-center gap-2">
-            <IoLogoReact />
-            <span>React</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoLogoWordpress />
-            <span>WordPress</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoLogoNodejs />
-            <span>Node</span>
-          </div>
-        </div>
-        <div className="container mx-auto border-t border-t-emerald/30 bg-white p-12">
-          <h3>Projects</h3>
-          <div>
-            <div className="flex items-center justify-between ">
-              <h4>JobsMentors</h4>
-              <button className="button-secondary">View Projects</button>
-            </div>
-            <span>2023</span>
-            <p>
-              CRUD interface The proposal of the work is, from the theme drawn
-              for the group, to develop an application in React, integrated to a
-              REST...
-            </p>
+            <span>{freela?.hard_skills} </span>
           </div>
         </div>
       </div>

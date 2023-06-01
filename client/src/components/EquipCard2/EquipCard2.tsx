@@ -6,8 +6,7 @@ interface infoEquipCard {
 
 function EquipCard2({ image, name, skill }: infoEquipCard) {
   return (
-  
-    <div className="flex flex-col h-[200px] w-full max-w-[300px] flex-nowrap items-center justify-center gap-4 rounded-md bg-white">
+    <div className="flex h-[200px] w-full max-w-[300px] flex-col flex-nowrap items-center justify-center gap-4 rounded-md bg-white">
       <div className="">
         <img
           src={`${image}`}

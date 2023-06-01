@@ -1,8 +1,7 @@
 import Navbar from 'components/Navbar/Navbar'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import JobMentorLogo from '../../assets/images/JobMentors-Logo.svg'
-import { useNavigate } from 'react-router-dom'
 
 function Header() {
   const { t } = useTranslation()

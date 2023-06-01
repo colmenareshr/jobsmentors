@@ -58,30 +58,34 @@ function FreelancerCard() {
   const { currentUser } = useContext(AuthContext) as AuthContextProps
   const [freelancers, setFreelancers] = useState()
 
+  const fetchFreelancers = async () => {
+    const res = await api.get('/freelancers', {
+      headers: {
+        Authorization: `Bearer ${currentUser?.token}`
+      }
+    })
+    setFreelancers(res.data)
+  }
   useEffect(() => {
-    const fetchFreelancers = async () => {
-      const res = await api.get('/freelancers', {
-        headers: {
-          Authorization: `Bearer ${currentUser?.token}`
-        }
-      })
-      console.log(res.data)
-      setFreelancers(res.data)
-    }
     fetchFreelancers()
   }, [])
+
   return (
-    <Link to="" className="flex flex-wrap items-center justify-center gap-4">
+    <div className="flex w-full flex-wrap items-center justify-center gap-4">
       {freelancers?.map((freelancer) => (
-        <FreelancerCard2
+        <Link
+          className="flex w-[350px] flex-wrap items-center justify-center gap-4"
           key={freelancer.id}
-          image={freelancer.img}
-          name={freelancer.name}
-          skill={freelancer.hard_skills
-}
-        />
+          to={`/freelancer/${freelancer?.user_id}`}
+        >
+          <FreelancerCard2
+            image={freelancer.img}
+            name={freelancer.name}
+            skill={freelancer.hard_skills}
+          />
+        </Link>
       ))}
-    </Link>
+    </div>
   )
 }
 
