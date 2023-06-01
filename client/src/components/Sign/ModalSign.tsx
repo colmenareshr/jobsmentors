@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next'
 interface TabData {
   idx: number
   label: string
-  name: string
   email: string
   password1: string
   password2: string
@@ -19,7 +18,6 @@ interface TabData {
 const inicialState = {
   idx: 0,
   label: '',
-  name: '',
   email: '',
   password1: '',
   password2: '',
@@ -64,7 +62,6 @@ function ModalSign() {
     {
       idx: 0,
       label: t('app.signupmodal.labelfreelancer'),
-      name: t('app.signupmodal.name'),
       email: t('app.signupmodal.email'),
       password1: t('app.signupmodal.password1'),
       password2: t('app.signupmodal.password2'),
@@ -74,22 +71,11 @@ function ModalSign() {
     {
       idx: 1,
       label: t('app.signupmodal.labelcompany'),
-      name: t('app.signupmodal.name'),
       email: t('app.signupmodal.email'),
       password1: t('app.signupmodal.password1'),
       password2: t('app.signupmodal.password2'),
       placeholdername: t('app.signupmodal.placeholdernamecompany'),
       role: 'Company'
-    },
-    {
-      idx: 2,
-      label: t('app.signupmodal.labelmentor'),
-      name: t('app.signupmodal.name'),
-      email: t('app.signupmodal.email'),
-      password1: t('app.signupmodal.password1'),
-      password2: t('app.signupmodal.password2'),
-      placeholdername: t('app.signupmodal.placeholdernamentor'),
-      role: 'Mentor'
     }
   ]
 
@@ -163,37 +149,6 @@ function ModalSign() {
             >
               <div>
                 <label className="label-ModalSign flex">
-                  {tabsData[activeTabIndex].name}
-                </label>
-                <input
-                  className="input-ModalSign placeholder:text-ModalSign rounded"
-                  name="name"
-                  onChange={handleChange}
-                  // id={tabsData[activeTabIndex].name}
-                  type="text"
-                  placeholder={
-                    activeTabIndex === 1
-                      ? tabsData[1].placeholdername
-                      : tabsData[0].placeholdername
-                  }
-                />
-              </div>
-              <div>
-                <label className="label-ModalSign flex">
-                  {tabsData[activeTabIndex].password1}
-                </label>
-                <input
-                  value={data.password1}
-                  className="input-ModalSign placeholder:text-ModalSign g rounded"
-                  onChange={handleChange}
-                  name="password1"
-                  // id={tabsData[activeTabIndex].password1}
-                  placeholder={t('app.signupmodal.placeholderpassword1') ?? ''}
-                  type="password"
-                />
-              </div>
-              <div>
-                <label className="label-ModalSign flex">
                   {tabsData[activeTabIndex].email}
                 </label>
                 <input
@@ -208,18 +163,38 @@ function ModalSign() {
                 />
               </div>
               <div>
-                <label className="label-ModalSign flex">
-                  {tabsData[activeTabIndex].password2}
-                </label>
-                <input
-                  value={data.password2}
-                  className="input-ModalSign placeholder:text-ModalSign g rounded "
-                  onChange={handleChange}
-                  name="password2"
-                  // id={tabsData[activeTabIndex].password2}
-                  placeholder={t('app.signupmodal.placeholderpassword2') ?? ''}
-                  type="password"
-                />
+                <div>
+                  <label className="label-ModalSign flex">
+                    {tabsData[activeTabIndex].password1}
+                  </label>
+                  <input
+                    value={data.password1}
+                    className="input-ModalSign placeholder:text-ModalSign g rounded"
+                    onChange={handleChange}
+                    name="password1"
+                    // id={tabsData[activeTabIndex].password1}
+                    placeholder={
+                      t('app.signupmodal.placeholderpassword1') ?? ''
+                    }
+                    type="password"
+                  />
+                </div>
+                <div>
+                  <label className="label-ModalSign flex">
+                    {tabsData[activeTabIndex].password2}
+                  </label>
+                  <input
+                    value={data.password2}
+                    className="input-ModalSign placeholder:text-ModalSign g rounded "
+                    onChange={handleChange}
+                    name="password2"
+                    // id={tabsData[activeTabIndex].password2}
+                    placeholder={
+                      t('app.signupmodal.placeholderpassword2') ?? ''
+                    }
+                    type="password"
+                  />
+                </div>
               </div>
             </div>
           </section>
