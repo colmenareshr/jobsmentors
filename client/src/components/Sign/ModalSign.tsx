@@ -42,8 +42,7 @@ function ModalSign() {
         email: data.email,
         password: data.password1,
         role: tabsData[activeTabIndex].role.toLowerCase()
-      })
-      console.log('Usuario Registrado')
+      })('Usuario Registrado')
       handleClose()
       setIsOpenModalLogin(true)
     } catch (error) {

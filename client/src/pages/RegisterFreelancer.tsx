@@ -68,8 +68,7 @@ const RegisterFreelancer: React.FC = () => {
         hard_skills: res.data.hard_skills,
         contract: res.data.contract
       })
-      setAbout(res.data.about)
-      console.log(res.data)
+      setAbout(res.data.about)(res.data)
     }
   }
 
@@ -115,7 +114,7 @@ const RegisterFreelancer: React.FC = () => {
       })
       navigate('/freelancer/' + params.id)
     } catch (error) {
-      console.log('Error:', error)
+      'Error:', error
     }
   }
 

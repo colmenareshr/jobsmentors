@@ -44,8 +44,7 @@ const JobsRegisterPage: React.FC<JobFormProps> = ({ onSubmit }) => {
         headers: {
           Authorization: `Bearer ${currentUser?.token}`
         }
-      })
-      console.log(res.data)
+      })(res.data)
       setJobs({
         title: '',
         description: '',

@@ -29,10 +29,9 @@ function Companies() {
           Authorization: `Bearer ${currentUser?.token}`
         }
       })
-      setJobs(res.data)
-      console.log(res.data)
+      setJobs(res.data)(res.data)
     } catch (error) {
-      console.log(error)
+      error
     }
   }
 
@@ -46,8 +45,7 @@ function Companies() {
         headers: {
           Authorization: `Bearer ${currentUser?.token}`
         }
-      })
-      console.log('proyecto borrado')
+      })('proyecto borrado')
       setJobs(jobs.filter((job) => job.id !== job.id))
       fetchProjects()
     } catch (error) {
