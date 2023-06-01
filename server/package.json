@@ -5,6 +5,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "start": "node app/server.js",
     "dev": "nodemon app/server.js"
   },
   "keywords": [],
