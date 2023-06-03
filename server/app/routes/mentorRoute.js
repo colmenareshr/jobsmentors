@@ -6,8 +6,8 @@ const router = Router()
 router
     
     .get('/mentor/:user_id',authJwt.verifyToken, MentorController.searchMentorById)
-    .get('/mentors', MentorController.searchMentor)
-    .get('/mentors/rand', authJwt.verifyToken, authJwt.isMentor, MentorController.searchMentorRandom)
+    .get('/mentor/all', MentorController.searchMentor)
+    .get('/mentor/rand', authJwt.verifyToken, authJwt.isMentor, MentorController.searchMentorRandom)
     .put('/mentor/:user_id', authJwt.verifyToken, authJwt.isMentor,   MentorController.updateMentor)
     .delete('/mentor/:user_id',authJwt.verifyToken, authJwt.isMentor,  MentorController.deleteMentor)
 
