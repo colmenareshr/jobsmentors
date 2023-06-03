@@ -133,6 +133,29 @@ class CompanyController {
     }
   }
 
+  static async getJobById(req, res) {
+    const id = req.params.user_id;
+    const JobId = req.params.id;
+    try {
+      const resultCompany = await database.Company.findOne({
+        where: { user_id: Number(id) },
+      });
+      if (resultCompany !== null) {
+        const resultJob = await database.Jobs.findOne({
+          where: { id: Number(JobId) },
+        });
+        if (resultJob !== null) {
+          return res.status(200).json(resultJob);
+        }
+      } else {
+        return res.status(400).send({ message: `Job ${JobId} not found` });
+      }
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+
   static async searchJobsCompanies(req, res) {
     try {
       const resultJobs = await database.Jobs.findAll();
