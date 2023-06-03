@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './projects.css'
 import { CiTrash } from 'react-icons/ci'
 import { IoMailOutline } from 'react-icons/io5'
@@ -229,13 +229,17 @@ function Projects() {
                 </button>
               </div>
               <div className="md:items-center, md:justify-certer flex flex-col items-center justify-center gap-2  py-3 md:flex-row">
-                {freelaSkill.map((freelancer, index) => (
-                  <FreelancerSkillCards
-                    key={index}
-                    image={freelancer.img}
-                    name={freelancer.name}
-                    skill={freelancer.hard_skills}
-                  />
+                {freelaSkill.map((freelancer) => (
+                  <Link
+                    to={`/freelancer/${freelancer?.freelancer_id}`}
+                    key={freelancer?.freelancer_id}
+                  >
+                    <FreelancerSkillCards
+                      image={freelancer.img}
+                      name={freelancer.name}
+                      skill={freelancer.hard_skills}
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
