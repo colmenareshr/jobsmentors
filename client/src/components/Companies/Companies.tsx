@@ -1,9 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react'
-import Search from '../Search/Search'
+import { useContext, useState, useEffect } from 'react'
 import ProjectCard from './ProjectCard'
-// import Projects from '../Projects/Projects'
 import { Link, useParams } from 'react-router-dom'
-import { useStore } from '../../context/useStore'
 import { AuthContext } from '../../context/authContext'
 import { AuthContextProps } from '../../interfaces/autContextInterface'
 import api from 'api'
@@ -20,7 +17,7 @@ export interface Job {
 function Companies() {
   const params = useParams<{ id: string }>()
   const { currentUser } = useContext(AuthContext) as AuthContextProps
-  const [jobs, setJobs] = useState<Job | []>([])
+  const [jobs, setJobs] = useState<Job[]>([])
 
   const fetchProjects = async () => {
     try {
@@ -46,7 +43,8 @@ function Companies() {
           Authorization: `Bearer ${currentUser?.token}`
         }
       })
-      setJobs(jobs.filter((job) => job.id !== job.id))
+      const updatedJobs = jobs.filter((job) => job.id !== jobId)
+      setJobs(updatedJobs)
       fetchProjects()
     } catch (error) {
       console.error('Error al eliminar el proyecto', error)
@@ -62,22 +60,15 @@ function Companies() {
           </button>
         </Link>
       </div>
-      <div
-        className="flex justify-center
-                      md:pb-4 md:pt-10"
-      ></div>
-      <section
-        className="flex flex-wrap justify-center gap-4 
-                  p-4
-                  md:pb-20 md:pt-10"
-      >
-        {jobs.map((job: Job) => (
+      <div className="flex justify-center md:pb-4 md:pt-10"></div>
+      <section className="flex flex-wrap justify-center gap-4 p-4 md:pb-20 md:pt-10">
+        {jobs.map((job) => (
           <ProjectCard
             key={job.id}
             id={job.id}
             title={job.title}
             description={job.description}
-            hardSkill={job.hard_skills}
+            hardSkill={job.hardSkill}
             amount={job.amount}
             onDelete={() => handleDeleteProject(job.id)}
           />
