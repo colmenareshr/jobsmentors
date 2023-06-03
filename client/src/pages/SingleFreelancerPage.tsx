@@ -21,6 +21,7 @@ const SingleFreelancerPage = () => {
           }
         })
         setFreela(res.data)
+        console.log(res.data)
       }
     }
     fetchFreelancer()
@@ -63,12 +64,14 @@ const SingleFreelancerPage = () => {
         <div className="container mx-auto border-t border-t-emerald/30 bg-white p-12">
           <h3>Expertise</h3>
           <div className="flex items-center gap-2">
-            <span>{freela?.hard_skills} </span>
+            <span>{freela?.hard_skills.toLocaleUpperCase()} </span>
           </div>
         </div>
       </div>
       <div className="flex justify-center p-12">
-        <button className="button">Delete profile</button>
+        {currentUser?.role === 'freelancer' && (
+          <button className="button">Delete profile</button>
+        )}
       </div>
     </section>
   )
