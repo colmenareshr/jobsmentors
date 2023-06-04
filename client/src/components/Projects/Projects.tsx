@@ -4,14 +4,20 @@ import './projects.css'
 import { CiTrash } from 'react-icons/ci'
 import { IoMailOutline } from 'react-icons/io5'
 import { JobData } from '../../api/jobsApi'
-import FreelancerCard, {
-  freelancerInfo
-} from 'components/FreelancerCard/FreelancerCard'
+// import { freelancerInfo } from 'components/FreelancerCard/FreelancerCard'
 import { useTranslation } from 'react-i18next'
 import api from 'api'
 import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface'
 import FreelancerSkillCards from 'components/FreelancerSkillCards/FreelancerSkillCards'
+
+interface FreelancerSkill {
+  name: string
+  img: string
+  freelancer_id: string
+  hard_skills: string
+  job_id: string
+}
 
 const initialState: JobData = {
   id: '',
@@ -28,9 +34,9 @@ function Projects() {
   const [isSearchFreelancers, setIsSearchFreelancers] = useState(false)
   const [isAddFreelancers, setIsAddFreelancers] = useState(false)
   const [data, setData] = useState<JobData>(initialState as JobData)
-  const [freelaSkill, setFreelaSkill] = useState([])
+  const [freelaSkill, setFreelaSkill] = useState<Array<FreelancerSkill>>([])
   const [jobId, setJobId] = useState('')
-  const [freelancerIds, setFreelancerIds] = useState<string[]>([])
+  // const [freelancerIds, setFreelancerIds] = useState<string[]>([])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -57,9 +63,9 @@ function Projects() {
           }
         }
       )
-      const freelancers = response.data.map((item: any) => item.freelancer_id)
+      // const freelancers = response.data.map((item: any) => item.freelancer_id)
 
-      setFreelancerIds(freelancers)
+      // setFreelancerIds(freelancers)
       setFreelaSkill(response.data)
       setIsSearchFreelancers(!isSearchFreelancers)
     } catch (error) {
@@ -202,7 +208,7 @@ function Projects() {
                       {freelaSkill.map((info, index) => (
                         <tr key={index}>
                           <td>{info.name}</td>
-                          <td>{info.skill}</td>
+                          <td>{info.hard_skills}</td>
                           <td className="flex  w-full justify-evenly">
                             <button className="hover:dropshadow-lg rounded-full p-2 text-white hover:bg-teal400/90">
                               <IoMailOutline size={25} />
