@@ -10,7 +10,12 @@ function CompanyLandingPage() {
   const params = useParams<{ id: string }>()
   const navigate = useNavigate()
   const { currentUser } = useContext(AuthContext) as AuthContextProps
-  const [company, setCompany] = useState<CompanyInfo>({})
+  const [company, setCompany] = useState<CompanyInfo>({
+    name: '',
+    img: '',
+    site: '',
+    bio: ''
+  })
   const fetchCompany = async () => {
     if (params.id) {
       const res = await api.get('/company/' + params.id, {
@@ -49,7 +54,9 @@ function CompanyLandingPage() {
               <h2 className="text-blue-500 text-xl font-bold lg:text-3xl">
                 Complete el perfil de su empresa
               </h2>
-              <span>Pruebe haciendo click en el botón "Editar empresa"</span>
+              <span>
+                Pruebe haciendo click en el botón &quot;Editar empresa&quot;
+              </span>
             </div>
           ) : (
             <h2 className="text-blue-500 px-10 text-left text-xl font-bold lg:text-3xl">

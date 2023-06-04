@@ -6,6 +6,15 @@ import { AuthContext } from 'context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 import { useTranslation } from 'react-i18next'
 
+interface Error {
+  error: string
+  response?: {
+    data: {
+      message: string
+    }
+  }
+}
+
 function ModalLogin() {
   const { t } = useTranslation()
   const { login } = useContext(AuthContext) as AuthContextProps
@@ -13,7 +22,9 @@ function ModalLogin() {
     email: '',
     password: ''
   })
-  const [err, setError] = useState<null>(null)
+  const [err, setError] = useState<Error | null>({
+    error: ''
+  })
   const { setIsOpenModalLogin, setIsOpenModalSign } = useContext(
     AppContext
   ) as AppContextProps
@@ -30,8 +41,24 @@ function ModalLogin() {
     e.preventDefault()
     try {
       await login(inputs)
-    } catch (err) {
-      setError(err.response.data.message)
+    } catch (error: any) {
+      if (typeof error === 'string') {
+        setError({ error })
+      } else if (
+        error &&
+        typeof error === 'object' &&
+        Object.prototype.hasOwnProperty.call(error, 'response') &&
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setError({
+          error: error.response.data.message,
+          response: error.response
+        })
+      } else {
+        setError({ error: 'An error occurred' })
+      }
     }
   }
 
@@ -74,7 +101,7 @@ function ModalLogin() {
             />
           </div>
         </main>
-        {err && <p className="py-3 text-center text-[red]"> {err} </p>}
+        {err && <p className="py-3 text-center text-[red]"> {err.error} </p>}
         <div className="footer-buttonGroup-ModalLogin">
           <button
             className="footer-button-Cancelar-ModalLogin md:pr-19 md:pl-19"
