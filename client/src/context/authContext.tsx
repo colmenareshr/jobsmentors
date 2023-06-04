@@ -18,7 +18,9 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
     const token = res.data.token
     try {
       const decodedToken = jwtDecode(token)
-      setCurrentUser({ token, ...decodedToken } as User)
+      const decodedTokenObject =
+        typeof decodedToken === 'object' ? decodedToken : {}
+      setCurrentUser({ token, ...decodedTokenObject } as User)
     } catch (error) {
       console.error('Error decoding token:', error)
       setCurrentUser(null)
