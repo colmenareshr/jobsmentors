@@ -2,8 +2,8 @@ import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../../context/authContext'
 import { AuthContextProps } from '../../interfaces/autContextInterface'
 import api from 'api'
-import FreelancerCard2 from 'components/FreelancerCard2/FreelamcerCard2'
 import { Link } from 'react-router-dom'
+import FreelancerInfoCard from 'components/FreelancerInfoCard/FreelancerInfoCard'
 
 interface Freelancer {
   id: number
@@ -38,7 +38,7 @@ function FreelancerCard() {
           key={freelancer.id}
           to={`/freelancer/${freelancer?.user_id}`}
         >
-          <FreelancerCard2
+          <FreelancerInfoCard
             image={freelancer.img}
             name={freelancer.name}
             skill={freelancer.hard_skills}
