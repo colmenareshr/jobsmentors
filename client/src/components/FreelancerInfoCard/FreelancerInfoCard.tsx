@@ -4,7 +4,7 @@ interface infoCard {
   skill: string
 }
 
-function FreelancerCard2({ image, name, skill }: infoCard) {
+function FreelancerInfoCard({ image, name, skill }: infoCard) {
   return (
     <div className="grid h-[200px] w-full max-w-[400px] grid-cols-2 items-center justify-items-center gap-1 rounded-md bg-white">
       <div className="">
@@ -22,4 +22,4 @@ function FreelancerCard2({ image, name, skill }: infoCard) {
   )
 }
 
-export default FreelancerCard2
+export default FreelancerInfoCard

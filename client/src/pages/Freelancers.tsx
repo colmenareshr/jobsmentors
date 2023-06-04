@@ -1,10 +1,11 @@
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import FreelancerCard from 'components/FreelancerCard/FreelancerCard'
 import { AppContext, AppContextProps } from '../context/appContext'
 
 const FreelancersPage = () => {
   const { setIsOpenModalSign } = useContext(AppContext) as AppContextProps
-  const [skills, setSkills] = useState([
+
+  const skills = [
     {
       speciality: 'Frontend',
       primaryColor: 'bg-teal'
@@ -41,7 +42,7 @@ const FreelancersPage = () => {
       speciality: 'UX Design',
       primaryColor: 'bg-lilac'
     }
-  ])
+  ]
   const handleOpen = () => {
     setIsOpenModalSign(true)
   }
@@ -57,10 +58,7 @@ const FreelancersPage = () => {
             <h3 className="pb-6 text-center text-xl font-bold text-white md:text-2xl">
               {skill.speciality}
             </h3>
-            <FreelancerCard
-              title={skill.speciality}
-              color={skill.primaryColor}
-            />
+            <FreelancerCard />
           </div>
         ))}
         <div className="max-w-[900px] pb-9">
