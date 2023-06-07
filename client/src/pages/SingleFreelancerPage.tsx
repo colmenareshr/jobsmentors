@@ -1,16 +1,18 @@
-import { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/authContext'
 import { AuthContextProps } from 'interfaces/autContextInterface'
 import { useParams, useNavigate } from 'react-router-dom'
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
 import { FreelancerUpdateData } from 'api/freelancersApi'
 import api from 'api'
+import Modal from 'components/Modal'
 
 const SingleFreelancerPage = () => {
   const params = useParams<{ id: string }>()
   const navigate = useNavigate()
   const [freela, setFreela] = useState<FreelancerUpdateData | null>(null)
   const { currentUser } = useContext(AuthContext) as AuthContextProps
+  const [openModal, setOpenModal] = useState(false)
 
   useEffect(() => {
     const fetchFreelancer = async () => {
@@ -21,7 +23,6 @@ const SingleFreelancerPage = () => {
           }
         })
         setFreela(res.data)
-        console.log(res.data)
       }
     }
     fetchFreelancer()
@@ -70,9 +71,35 @@ const SingleFreelancerPage = () => {
       </div>
       <div className="flex justify-center p-12">
         {currentUser?.role === 'freelancer' && (
-          <button className="button">Delete profile</button>
+          <button
+            className="button-warning"
+            onClick={() => setOpenModal(!openModal)}
+          >
+            Delete profile
+          </button>
         )}
       </div>
+      <Modal
+        title="Confirmación"
+        closeModal={setOpenModal}
+        openModal={openModal}
+      >
+        <span className="text-center font-semibold">
+          ¡Es una lástima que te vayas! por favor confirma que deseas eliminar
+          tu perfil.
+        </span>
+        <div className="mt-4 flex justify-center gap-2">
+          <button className="button-warning" onClick={() => 'borrado'}>
+            Eliminar perfil
+          </button>
+          <button
+            className="button button-secondary"
+            onClick={() => setOpenModal(!openModal)}
+          >
+            Cancelar
+          </button>
+        </div>
+      </Modal>
     </section>
   )
 }
