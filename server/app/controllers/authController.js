@@ -1,24 +1,39 @@
-const AuthService = require("../services/authService")
+const database = require("../models");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const authConfig = require("../../config/authConfig");
+
 class authController {
+  static async createToken(user) {
+    const payload = {
+      id: user.id,
+      email: user.email,
+      role: user.role,
+    };
+    const token = jwt.sign(payload, authConfig.secret, {
+      expiresIn: authConfig.expires,
+    });
+    return token;
+  }
+
 
   static async logIn(req, res) {
     const { email, password } = req.body;
-
-    if(!email || !password) {
-       return res.status(400).message('bad request')
-    }
-
     try {
-      const { token } = await AuthService.authenticate(user);
-      if (!token) {
-        return res.status(401).message('Invalid email or password')
+      const user = await database.User.findOne({ where: { email } });
+      if (!user) {
+        return res.status(404).json({ message: "Invalid email or password" });
       }
-      return res.status(200).message({ token })
 
+      if (bcrypt.compareSync(password, user.password)) {
+        const token = await authController.createToken(user);
+        res.status(200).json({ token });
+      }
     } catch (error) {
       return res.status(500).json(error.message);
     }
   }
+
 }
 
 module.exports = authController;
