@@ -4,7 +4,7 @@ import JobMentorsLogo from '../public/JobMentors-logo.png'
 const LoginPage = () => {
   return (
     <div className="mt-20 h-[100vh] w-full bg-sky/20  py-16">
-      <div className="container mx-auto flex min-h-[100px] w-full flex-col items-center justify-center gap-4 rounded-xl bg-white p-12 text-center shadow md:w-1/2 lg:w-1/3">
+      <div className="container mx-auto flex min-h-[100px] w-full flex-col items-center justify-center gap-4 rounded-xl bg-white p-12 text-center shadow-2xl md:w-1/2 lg:w-1/3">
         <img
           src={JobMentorsLogo}
           alt="JobMentors Logo"
