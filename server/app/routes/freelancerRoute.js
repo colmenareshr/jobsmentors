@@ -7,8 +7,8 @@ const router = Router()
 router
     
     .get('/freelancer/:user_id',authJwt.verifyToken, FreelancerController.searchFreelancerById)
-    .get('/freelancer/all',FreelancerController.searchFreelancer)
-    .get('/freelancer/rand', authJwt.verifyToken, FreelancerController.searchFreelancerRandom)
+    // .get('/freelancer/all',FreelancerController.searchFreelancer)
+    .get('/freelancer', FreelancerController.searchFreelancerRandom)
     .post('/freelancer/:user_id/information',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.CreateInformation )
     .post('/freelancer/:user_id/network',authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.CreateNetwork )
     .put('/freelancer/:user_id', authJwt.verifyToken, authJwt.isFreelancer, FreelancerController.updateFreelancer)

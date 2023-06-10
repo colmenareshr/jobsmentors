@@ -18,7 +18,7 @@ function FreelancerCard() {
   const [freelancers, setFreelancers] = useState<Freelancer[]>([])
 
   const fetchFreelancers = async () => {
-    const res = await api.get('/freelancers', {
+    const res = await api.get('/freelancer', {
       headers: {
         Authorization: `Bearer ${currentUser?.token}`
       }
