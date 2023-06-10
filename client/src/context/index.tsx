@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react'
-import api from 'api'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 import { User } from 'interfaces/AuthInterfaces'
 import jwtDecode from 'jwt-decode'
+import { loginUser } from 'api/usersApi'
 
 export const AuthContext = createContext<AuthContextProps | null>(null)
 
@@ -14,9 +14,9 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
   )
 
   const login = async (inputs: { email: string; password: string }) => {
-    const res = await api.post('/login', inputs)
-    const token = res.data.token
     try {
+      const res = await loginUser(inputs)
+      const token = res.token
       const decodedToken = jwtDecode(token)
       const decodedTokenObject =
         typeof decodedToken === 'object' ? decodedToken : {}

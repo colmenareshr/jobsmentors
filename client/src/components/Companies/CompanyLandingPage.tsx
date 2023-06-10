@@ -2,7 +2,7 @@ import { useEffect, useContext, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Companies from './Companies'
 import api from 'api'
-import { AuthContext } from '../../context/authContext'
+import { AuthContext } from '../../context'
 import { AuthContextProps } from '../../interfaces/autContextInterface'
 import { CompanyInfo } from 'interfaces/CompanyInterface'
 

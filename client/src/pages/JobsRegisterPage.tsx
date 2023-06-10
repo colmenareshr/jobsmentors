@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import api from 'api'
 import { useNavigate, useParams } from 'react-router-dom'
-import { AuthContext } from '../context/authContext'
+import { AuthContext } from '../context'
 import { AuthContextProps } from '../interfaces/autContextInterface'
 
 interface FormData {
