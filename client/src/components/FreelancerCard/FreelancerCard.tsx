@@ -1,28 +1,14 @@
-import { useState, useEffect, useContext } from 'react'
-import { AuthContext } from '../../context'
-import { AuthContextProps } from '../../interfaces/autContextInterface'
-import api from 'api'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import FreelancerInfoCard from 'components/FreelancerInfoCard/FreelancerInfoCard'
-
-interface Freelancer {
-  id: number
-  img: string
-  name: string
-  hard_skills: string
-  user_id: number
-}
+import { FreelancerUpdateData, getFreelancers } from 'api/freelancersApi'
 
 function FreelancerCard() {
-  const { currentUser } = useContext(AuthContext) as AuthContextProps
-  const [freelancers, setFreelancers] = useState<Freelancer[]>([])
+  const [freelancers, setFreelancers] = useState<FreelancerUpdateData[]>([])
 
   const fetchFreelancers = async () => {
-    const res = await api.get('/freelancer', {
-      headers: {
-        Authorization: `Bearer ${currentUser?.token}`
-      }
-    })
+    const res = await getFreelancers()
+    console.log(res.data)
     setFreelancers(res.data)
   }
 
@@ -32,7 +18,7 @@ function FreelancerCard() {
 
   return (
     <div className="flex w-full flex-wrap items-center justify-center gap-4">
-      {freelancers.map((freelancer: Freelancer) => (
+      {freelancers.map((freelancer: FreelancerUpdateData) => (
         <Link
           className="flex w-[350px] flex-wrap items-center justify-center gap-4"
           key={freelancer.id}
