@@ -8,11 +8,13 @@ import Companies from 'components/Companies/Companies'
 import RegisterFreelancer from 'pages/RegisterFreelancer'
 import CompanyRegistrationPage from 'pages/CompanyRegistrationPage'
 import AboutPage from 'pages/AboutPage'
+import LoginPage from 'pages/LoginPage'
 
 export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/freelancers" element={<FreelancersPage />} />
       <Route path="/freelancer/:id" element={<SingleFreelancerPage />} />
       <Route path="/freelancer/register/:id" element={<RegisterFreelancer />} />
