@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import FreelancerInfoCard from 'components/FreelancerInfoCard/FreelancerInfoCard'
+import InfoCard from 'components/InfoCard'
 import { FreelancerUpdateData, getFreelancers } from 'api/freelancersApi'
 
 function FreelancerCard() {
@@ -24,11 +24,10 @@ function FreelancerCard() {
           key={freelancer.id}
           to={`/freelancer/${freelancer?.user_id}`}
         >
-          <FreelancerInfoCard
-            image={freelancer.img}
-            name={freelancer.name}
-            skill={freelancer.hard_skills}
-          />
+          <InfoCard image={freelancer.img} name={freelancer.name}>
+            <h3>{freelancer.name}</h3>
+            <span>{freelancer.hard_skills}</span>
+          </InfoCard>
         </Link>
       ))}
     </div>

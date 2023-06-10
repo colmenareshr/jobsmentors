@@ -1,10 +1,12 @@
+import React from 'react'
+
 interface infoCard {
+  children: React.ReactNode
   image: string
   name: string
-  skill: string
 }
 
-function FreelancerInfoCard({ image, name, skill }: infoCard) {
+function InfoCard({ children, image, name }: infoCard) {
   return (
     <div className="grid h-[200px] w-full max-w-[400px] grid-cols-2 items-center justify-items-center gap-1 rounded-md bg-white">
       <div className="">
@@ -15,11 +17,10 @@ function FreelancerInfoCard({ image, name, skill }: infoCard) {
         />
       </div>
       <div className="max-w-[300px] flex-col flex-wrap justify-self-start text-left ">
-        <h4 className="text-[20px] font-bold ">{name}</h4>
-        <p className=" font-semibold">{skill}</p>
+        {children}
       </div>
     </div>
   )
 }
 
-export default FreelancerInfoCard
+export default InfoCard
