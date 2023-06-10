@@ -6,7 +6,7 @@ import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
 import { useState, useContext } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from 'context/authContext'
+import { AuthContext } from 'context'
 import { AuthContextProps } from 'interfaces/autContextInterface'
 import { useTranslation } from 'react-i18next'
 import { FaAngleDown, FaUserCircle } from 'react-icons/fa'
@@ -217,4 +217,3 @@ function Navbar() {
 }
 
 export default Navbar
-

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { AuthContext } from '../../context/authContext'
+import { AuthContext } from '../../context'
 import { AuthContextProps } from '../../interfaces/autContextInterface'
 import api from 'api'
 import { Link } from 'react-router-dom'

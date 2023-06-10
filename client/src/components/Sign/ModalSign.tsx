@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import './modalSign.css'
 import { IoMdClose } from 'react-icons/io'
-import { registerUser } from 'api/authApi'
+import { registerUser } from 'api/usersApi'
 import { AppContext, AppContextProps } from 'context/appContext'
 import { useTranslation } from 'react-i18next'
 

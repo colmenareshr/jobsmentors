@@ -7,7 +7,7 @@ import { JobData } from '../../api/jobsApi'
 // import { freelancerInfo } from 'components/FreelancerCard/FreelancerCard'
 import { useTranslation } from 'react-i18next'
 import api from 'api'
-import { AuthContext } from 'context/authContext'
+import { AuthContext } from 'context'
 import { AuthContextProps } from 'interfaces/autContextInterface'
 import FreelancerSkillCards from 'components/FreelancerSkillCards/FreelancerSkillCards'
 

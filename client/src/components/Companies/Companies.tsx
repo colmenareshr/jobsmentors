@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react'
 import ProjectCard from './ProjectCard'
 import { Link, useParams } from 'react-router-dom'
-import { AuthContext } from '../../context/authContext'
+import { AuthContext } from '../../context'
 import { AuthContextProps } from '../../interfaces/autContextInterface'
 import api from 'api'
 
