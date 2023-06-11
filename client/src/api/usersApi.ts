@@ -16,7 +16,7 @@ export const registerUser = async (userData: userData) => {
     const res = await api.post('/users', userData)
     return res.data
   } catch (error: any) {
-    throw error.res.data
+    throw error.response
   }
 }
 
@@ -25,6 +25,6 @@ export const loginUser = async (loginUserProps: loginUserProps) => {
     const res = await api.post('/login', loginUserProps)
     return res.data
   } catch (error: any) {
-    throw error.res.data
+    throw error.response?.data.message
   }
 }

@@ -21,9 +21,10 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
       const decodedTokenObject =
         typeof decodedToken === 'object' ? decodedToken : {}
       setCurrentUser({ token, ...decodedTokenObject } as User)
-    } catch (error) {
-      console.error('Error decoding token:', error)
+    } catch (error: any) {
+      console.error('Error during login:', error)
       setCurrentUser(null)
+      throw error
     }
   }
 
