@@ -20,6 +20,11 @@ const LoginPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!inputs.email || !inputs.password) {
+      setError('Por favor, ingresa el email y la contraseña')
+      setTimeout(setError, 4000)
+      return
+    }
     try {
       await login(inputs)
       navigate('/')
