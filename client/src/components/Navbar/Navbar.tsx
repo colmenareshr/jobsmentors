@@ -1,4 +1,3 @@
-import Login from 'components/Login/Login'
 import Sign from 'components/Sign/Sign'
 import flagEs from '../../assets/images/spain-flag-round-icon.svg'
 import flagUs from '../../assets/images/usa-flag-round-circle-icon.svg'
@@ -6,7 +5,7 @@ import flagBr from '../../assets/images/brazil-flag-round-circle-icon.svg'
 import { useState, useContext } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from 'context/authContext'
+import { AuthContext } from 'context'
 import { AuthContextProps } from 'interfaces/autContextInterface'
 import { useTranslation } from 'react-i18next'
 import { FaAngleDown, FaUserCircle } from 'react-icons/fa'
@@ -37,6 +36,7 @@ function Navbar() {
 
   const handleLogout = () => {
     logout()
+    handleNav()
     setIsOpenModalLogin(!isOpenModalLogin)
     navigate('/')
   }
@@ -109,7 +109,9 @@ function Navbar() {
 
             <li className="hover:text-teal/90">
               {!currentUser ? (
-                <Login />
+                <Link to="/login">
+                  <button className="button-secondary">Entrar</button>
+                </Link>
               ) : (
                 <button className="button-secondary" onClick={handleLogout}>
                   {t('app.menu.logout')}
@@ -122,8 +124,12 @@ function Navbar() {
 
       {/* DRAWER */}
 
-      <div onClick={handleNav} className="block px-3 lg:hidden">
-        {!nav ? <AiOutlineMenu size={20} /> : <AiOutlineClose size={20} />}
+      <div className="block px-3 lg:hidden">
+        {!nav ? (
+          <AiOutlineMenu size={20} onClick={handleNav} />
+        ) : (
+          <AiOutlineClose size={20} onClick={handleNav} />
+        )}
         <div
           className={
             !nav
@@ -179,11 +185,15 @@ function Navbar() {
             )}
             <li>
               {currentUser ? (
-                <button className="button-secondary" onClick={logout}>
+                <button className="button-secondary" onClick={handleLogout}>
                   {t('app.menu.logout')}
                 </button>
               ) : (
-                <Login />
+                <Link to="/login">
+                  <button onClick={handleNav} className="button-secondary">
+                    Entrar
+                  </button>
+                </Link>
               )}
             </li>
           </ul>
@@ -217,4 +227,3 @@ function Navbar() {
 }
 
 export default Navbar
-

@@ -28,7 +28,7 @@
 
 @layer components {
   .button {
-    @apply rounded-full border-2 border-orange bg-yellow px-6 py-2 font-bold uppercase duration-200 ease-in-out cursor-pointer;
+    @apply rounded-full border-2 border-orange bg-yellow px-6 py-1 font-bold uppercase duration-200 ease-in-out cursor-pointer;
   }
 
   .button:hover {
@@ -37,7 +37,7 @@
   }
 
   .button-secondary {
-    @apply rounded-full border-2 border-black bg-none px-6 py-2 font-bold uppercase duration-200 ease-in-out cursor-pointer;
+    @apply rounded-full border-2 border-black bg-none px-6 py-1 font-bold uppercase duration-200 ease-in-out cursor-pointer;
   }
 
   .button-secondary:hover {
@@ -45,6 +45,10 @@
   }
 
   .button-warning {
-  @apply rounded-full border-2 border-white bg-red px-5 py-2 font-semibold uppercase text-white
+  @apply rounded-full border-2 border-white bg-red px-5 py-1 font-semibold uppercase text-white
+  }
+
+  .input {
+  @apply min-h-[56px] w-full py-4 px-5 border-teal400 border-2 rounded-lg
   }
 }

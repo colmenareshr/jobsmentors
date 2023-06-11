@@ -1,7 +1,7 @@
 import api from 'api'
 import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { AuthContext } from '../context/authContext'
+import { AuthContext } from '../context'
 import { AuthContextProps } from '../interfaces/autContextInterface'
 import { CompanyInfo } from 'interfaces/CompanyInterface'
 

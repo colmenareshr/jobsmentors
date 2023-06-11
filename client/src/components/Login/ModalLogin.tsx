@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { IoMdClose } from 'react-icons/io'
 import './modalLogin.css'
 import { AppContext, AppContextProps } from 'context/appContext'
-import { AuthContext } from 'context/authContext'
+import { AuthContext } from 'context'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 import { useTranslation } from 'react-i18next'
 

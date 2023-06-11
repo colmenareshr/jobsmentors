@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import 'tailwindcss/tailwind.css'
 import App from './App'
-import { AuthContextProvider } from 'context/authContext.tsx'
+import { AuthContextProvider } from 'context'
 import './i18n'
 
 const container = document.getElementById('root') as HTMLDivElement

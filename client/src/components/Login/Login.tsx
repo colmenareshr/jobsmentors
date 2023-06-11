@@ -1,7 +1,7 @@
 import { Fragment, useContext } from 'react'
 import { AppContext, AppContextProps } from '../../context/appContext'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../context/authContext'
+import { AuthContext } from '../../context'
 import { AuthContextProps } from '../../interfaces/autContextInterface'
 import ModalLogin from './ModalLogin'
 import { useTranslation } from 'react-i18next'
@@ -21,7 +21,7 @@ function Login() {
   const handleLogout = () => {
     logout()
     setIsOpenModalLogin(false)
-    navigate('/') 
+    navigate('/')
   }
 
   return (

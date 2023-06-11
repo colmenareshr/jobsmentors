@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios'
 import api from 'api'
 import { User } from 'interfaces/AuthInterfaces'
-interface FreelancerData {
+interface UserData {
   id: number
   email: string
   password: string
@@ -9,6 +9,8 @@ interface FreelancerData {
 }
 
 export interface FreelancerUpdateData {
+  id: number
+  user_id: number
   name: string
   email: string
   phone: string
@@ -24,10 +26,10 @@ export interface FreelancerUpdateData {
 }
 
 export const getFreelancers = async (): Promise<
-  AxiosResponse<FreelancerData[]>
+  AxiosResponse<FreelancerUpdateData[]>
 > => {
   try {
-    const res = await api.get<FreelancerData[]>('/freelancers')
+    const res = await api.get<FreelancerUpdateData[]>('/freelancer')
     return res
   } catch (error) {
     console.error('Error getting freelancers:', error)
@@ -36,11 +38,11 @@ export const getFreelancers = async (): Promise<
 }
 
 export const createFreelancer = async (
-  freelancerData: FreelancerData,
+  userData: UserData,
   id: string
 ): Promise<AxiosResponse<any>> => {
   try {
-    const res = await api.post(`/freelancer/${id}/information`, freelancerData)
+    const res = await api.post(`/freelancer/${id}/information`, userData)
     return res
   } catch (error) {
     console.error('Error creating freelancer:', error)
@@ -63,13 +65,10 @@ export const getFreelancerById = async (
 
 export const updateFreelancer = async (
   id: string,
-  freelancerData: FreelancerUpdateData
-): Promise<AxiosResponse<FreelancerData>> => {
+  userData: FreelancerUpdateData
+): Promise<AxiosResponse<UserData>> => {
   try {
-    const res = await api.put<FreelancerData>(
-      `/freelancer/${id}`,
-      freelancerData
-    )
+    const res = await api.put<UserData>(`/freelancer/${id}`, userData)
     return res
   } catch (error) {
     console.error(`Error updating freelancer with ID ${id}:`, error)

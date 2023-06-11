@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Job } from './Companies'
 import { FaEdit, FaTrash } from 'react-icons/fa'
-import { AuthContext } from '../../context/authContext'
+import { AuthContext } from '../../context'
 import { AuthContextProps } from '../../interfaces/autContextInterface'
 
 function ProjectCard({ title, description, hardSkill, amount, onDelete }: Job) {
