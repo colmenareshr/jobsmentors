@@ -12,7 +12,6 @@ class FreelancerController {
                     user_id: id
                 }
             })
-            console.info(resultFreelancer)
             if(resultFreelancer !== null){
                 return res.status(200).json(resultFreelancer)
             } else{
