@@ -5,15 +5,6 @@ import JobMentorsLogo from '../public/JobMentors-logo.png'
 import { AuthContext } from 'context'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 
-interface Error {
-  error: string
-  response?: {
-    data: {
-      message: string
-    }
-  }
-}
-
 const LoginPage = () => {
   const { login } = useContext(AuthContext) as AuthContextProps
   const [inputs, setInputs] = useState({
