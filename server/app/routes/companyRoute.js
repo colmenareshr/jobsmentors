@@ -6,9 +6,9 @@ const router = Router()
 
 router
     
+    .get('/company', CompanyController.searchCompanies)
+    .get('/company/random', authJwt.verifyToken, CompanyController.searchCompaniesRandom)
     .get('/company/:user_id', authJwt.verifyToken, CompanyController.searchCompanyById)
-    .get('/company/all', CompanyController.searchCompanies)
-    .get('/company/rand', authJwt.verifyToken, CompanyController.searchCompaniesRandom)
     .get('/company/:user_id/jobs',  CompanyController.searchJobsCompany)
     .put('/company/:user_id', authJwt.verifyToken, authJwt.isCompany,  CompanyController.updateCompany)
     .delete('/company/:user_id', authJwt.verifyToken, authJwt.isCompany, CompanyController.deleteCompany)
