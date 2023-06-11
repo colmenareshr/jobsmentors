@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react'
 import { IoMdArrowForward } from 'react-icons/io'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import JobMentorsLogo from '../public/JobMentors-logo.png'
 import { AuthContext } from 'context'
 import { AuthContextProps } from 'interfaces/autContextInterface.ts'
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const { login } = useContext(AuthContext) as AuthContextProps
   const [inputs, setInputs] = useState({
     email: '',
@@ -21,8 +22,10 @@ const LoginPage = () => {
     e.preventDefault()
     try {
       await login(inputs)
+      navigate('/')
     } catch (error: any) {
       setError(error || 'Error de inicio de sesión')
+      setTimeout(setError, 4000)
     }
   }
   return (
@@ -56,7 +59,7 @@ const LoginPage = () => {
               onChange={handleChange}
             />
             <div className="container flex flex-col items-center gap-2">
-              {err && <p className="py-3 text-center text-[red]"> {err} </p>}
+              {err && <p className="py-3 text-center text-[red]">{err}</p>}
               <span>¿Olvidaste tu contraseña?</span>
               <button
                 onClick={handleSubmit}
