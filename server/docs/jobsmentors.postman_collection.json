@@ -58,14 +58,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/register",
+							"raw": "http://localhost:3000/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"register"
+								"users"
 							]
 						}
 					},
@@ -199,15 +199,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/freelancer/all",
+							"raw": "http://localhost:3000/freelancer",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"freelancer",
-								"all"
+								"freelancer"
 							]
 						}
 					},
@@ -229,7 +228,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/freelancer/rand",
+							"raw": "http://localhost:3000/freelancer/random",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -237,7 +236,7 @@
 							"port": "3000",
 							"path": [
 								"freelancer",
-								"rand"
+								"random"
 							]
 						}
 					},
@@ -688,15 +687,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/company/all",
+							"raw": "http://localhost:3000/company",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"company",
-								"all"
+								"company"
 							]
 						}
 					},
@@ -718,7 +716,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/company/rand",
+							"raw": "http://localhost:3000/company/random",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -726,14 +724,14 @@
 							"port": "3000",
 							"path": [
 								"company",
-								"rand"
+								"random"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Search Jobs Company Copy",
+					"name": "Search Jobs Company",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1216,15 +1214,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/mentor/all",
+							"raw": "http://localhost:3000/mentor",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"mentor",
-								"all"
+								"mentor"
 							]
 						}
 					},
@@ -1246,7 +1243,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/mentor/rand",
+							"raw": "http://localhost:3000/mentor/random",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1254,7 +1251,7 @@
 							"port": "3000",
 							"path": [
 								"mentor",
-								"rand"
+								"random"
 							]
 						}
 					},
