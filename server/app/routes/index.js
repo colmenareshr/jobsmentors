@@ -4,6 +4,8 @@ const freelancer = require('./freelancerRoute')
 const company = require('./companyRoute')
 const mentor = require('./mentorRoute')
 const user = require('./userRoute')
+const oauth20 = require('./authGoogle')
+
 
 module.exports = app => {
     app.use(
@@ -12,6 +14,7 @@ module.exports = app => {
         company,
         mentor,
         auth,
-        user
+        user,
+        oauth20
     )
 }

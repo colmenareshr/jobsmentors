@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node app/server.js",
-    "dev": "nodemon app/server.js"
+    "dev": "nodemon app/server.js",
+    "debug": "nodemon --inspect app/server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,11 +15,15 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
+    "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
     "mysql2": "^3.3.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
     "sequelize": "^6.31.1",
     "uuid": "^9.0.0"
   },
