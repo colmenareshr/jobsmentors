@@ -8,7 +8,7 @@ import OurFreelancers from 'components/OurFreelancers/OurFreelancers'
 import TestimonialSection from 'components/TestimonialSection/TestimonialSection'
 function Main() {
   return (
-    <main className="container mx-auto max-w-full bg-canvas pt-16 text-center">
+    <main className="container mx-auto max-w-full bg-canvas pt-8 md:pt-16 text-center">
       <CtaJuniors />
       <FeaturesSection />
       <AboutSection />

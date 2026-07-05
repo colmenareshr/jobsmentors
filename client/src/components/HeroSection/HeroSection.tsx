@@ -8,7 +8,7 @@ const HeroSection = () => {
                         justify-center gap-6 px-4 py-16 text-center"
     >
       <div className="container mx-auto max-w-4xl">
-        <h1 className="pb-6 text-5xl font-bold tracking-tight text-charcoal md:text-7xl leading-tight">
+        <h1 className="pb-6 text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-charcoal leading-tight">
           {t('app.herosection.comment')}
         </h1>
       </div>
