@@ -4,8 +4,23 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
-      white: '#f4f4f4',
-      black: '#181818',
+      transparent: 'transparent',
+      current: 'currentColor',
+      white: '#ffffff',
+      black: '#000000',
+      
+      // design system colors
+      primary: '#005f73',
+      secondary: '#ee9b00',
+      tertiary: '#39347a',
+      canvas: '#fcf9f8',
+      mint: '#94d2bd',
+      burntOrange: '#ca6702',
+      charcoal: '#181818',
+      slatePurple: '#615e88',
+      bulletLilac: '#9a9ce0',
+
+      // legacy colors
       teal: '#001219',
       teal400: '#0A9396',
       emerald: '#005F73',

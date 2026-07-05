@@ -92,7 +92,7 @@ module.exports = (sequelize, DataTypes) => {
           'DevOps',
           'PM',
           'Tech Lead',
-          'UX Desing',
+          'UX Design',
         ],
       },
     },

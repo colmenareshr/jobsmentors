@@ -7,7 +7,7 @@ const AboutSection = () => {
   }
   return (
     <section
-      className="w-full items-center bg-sky 
+      className="w-full items-center bg-mint 
                  py-20 text-center md:justify-center md:gap-4 md:px-10"
     >
       <div

@@ -17,7 +17,7 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
     const res = await api.post('/login', inputs)
     const token = res.data.token
     try {
-      const decodedToken = jwtDecode(token)
+      const decodedToken = jwtDecode(token) as any
       setCurrentUser({ token, ...decodedToken } as User)
     } catch (error) {
       console.error('Error decoding token:', error)
@@ -34,7 +34,7 @@ export const AuthContextProvider: React.FC<{ children?: React.ReactNode }> = ({
   }, [currentUser])
 
   return (
-    <AuthContext.Provider value={{ currentUser, login, logout }}>
+    <AuthContext.Provider value={{ currentUser, login, logout, token: currentUser }}>
       {children}
     </AuthContext.Provider>
   )

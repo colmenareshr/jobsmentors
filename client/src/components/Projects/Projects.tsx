@@ -28,7 +28,7 @@ function Projects() {
   const [isSearchFreelancers, setIsSearchFreelancers] = useState(false)
   const [isAddFreelancers, setIsAddFreelancers] = useState(false)
   const [data, setData] = useState<JobData>(initialState as JobData)
-  const [freelaSkill, setFreelaSkill] = useState([])
+  const [freelaSkill, setFreelaSkill] = useState<any[]>([])
   const [jobId, setJobId] = useState('')
   const [freelancerIds, setFreelancerIds] = useState<string[]>([])
 
@@ -103,17 +103,17 @@ function Projects() {
   }
 
   return (
-    <div className="mt-24 w-full bg-teal400 p-4">
-      <div className="container mx-auto rounded-lg border-2 border-white bg-teal400">
+    <div className="mt-24 w-full bg-primary p-4">
+      <div className="container mx-auto rounded-md border-2 border-white/20 bg-primary">
         <section className="">
           <form className="px-4 pb-4">
             <main
-              className="bg-gray-300 grid h-[900px] grid-flow-col-dense 
+              className="bg-canvas grid h-[900px] grid-flow-col-dense 
                       grid-cols-12 grid-rows-6
-                      gap-4 rounded-lg text-center
+                      gap-4 rounded-md text-center
                       "
             >
-              <header className="col-span-12 row-span-1 flex w-full flex-wrap content-center justify-center border-b-2 border-white">
+              <header className="col-span-12 row-span-1 flex w-full flex-wrap content-center justify-center border-b-2 border-white/20">
                 <p className="p-title-Projects text-center text-5xl font-black text-white drop-shadow-lg">
                   {t('app.projects.title')}
                 </p>
@@ -189,8 +189,8 @@ function Projects() {
                 </div>
               </div>
               {isAddFreelancers ? (
-                <div className="col-span-12 row-span-2 flex w-full justify-center overflow-y-scroll rounded-lg bg-emerald  p-4">
-                  <table className="w-full table-auto">
+                <div className="col-span-12 row-span-2 flex w-full justify-center overflow-y-scroll rounded-md bg-primary p-4">
+                  <table className="w-full table-auto text-white">
                     <thead className="text-lg">
                       <tr>
                         <th>Nome</th>
@@ -204,10 +204,10 @@ function Projects() {
                           <td>{info.name}</td>
                           <td>{info.skill}</td>
                           <td className="flex  w-full justify-evenly">
-                            <button className="hover:dropshadow-lg rounded-full p-2 text-white hover:bg-teal400/90">
+                            <button className="hover:dropshadow-lg rounded-full p-2 text-white hover:bg-white/10">
                               <IoMailOutline size={25} />
                             </button>
-                            <button className="hover:dropshadow-lg rounded-full p-2 text-white hover:bg-orange/90">
+                            <button className="hover:dropshadow-lg rounded-full p-2 text-white hover:bg-burntOrange/90">
                               <CiTrash size={25} />
                             </button>
                           </td>
@@ -222,7 +222,7 @@ function Projects() {
         </section>
         {isSearchFreelancers ? (
           <section className="p-4">
-            <div className="rounded-lg bg-sky p-4">
+            <div className="rounded-md bg-mint p-4">
               <div className="flex w-full flex-wrap justify-center p-4">
                 <button className="button mb-4 flex rounded-full p-5 px-20 shadow-lg">
                   {t('app.projects.btnsearch')}

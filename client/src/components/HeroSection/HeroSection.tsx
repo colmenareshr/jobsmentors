@@ -4,15 +4,15 @@ const HeroSection = () => {
   const { t } = useTranslation()
   return (
     <section
-      className="mt-16 flex h-[50vh] w-full flex-col items-center 
-                        justify-center gap-4 p-4 text-center "
+      className="mt-28 flex min-h-[60vh] w-full flex-col items-center 
+                        justify-center gap-6 px-4 py-16 text-center"
     >
-      <div className="container-lg mx-auto">
-        <h1 className="max-w-4xl pb-4 md:text-6xl">
+      <div className="container mx-auto max-w-4xl">
+        <h1 className="pb-6 text-5xl font-bold tracking-tight text-charcoal md:text-7xl leading-tight">
           {t('app.herosection.comment')}
         </h1>
       </div>
-      <a href="#" className="button uppercase">
+      <a href="#" className="button">
         {t('app.herosection.button')}
       </a>
     </section>

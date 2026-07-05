@@ -10,7 +10,7 @@ function CompanyLandingPage() {
   const params = useParams<{ id: string }>()
   const navigate = useNavigate()
   const { currentUser } = useContext(AuthContext) as AuthContextProps
-  const [company, setCompany] = useState<CompanyInfo>({})
+  const [company, setCompany] = useState<CompanyInfo>({} as CompanyInfo)
   const fetchCompany = async () => {
     if (params.id) {
       const res = await api.get('/company/' + params.id, {

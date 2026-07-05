@@ -6,7 +6,7 @@ interface infoCard {
 
 function FreelancerSkillCards({ image, name, skill }: infoCard) {
   return (
-    <div className="flex h-[200px] w-full max-w-[400px] flex-nowrap items-center justify-center gap-3 rounded-md bg-white">
+    <div className="flex h-[200px] w-full max-w-[400px] flex-nowrap items-center justify-center gap-3 rounded-md bg-white border-2 border-transparent hover:border-burntOrange transition-all duration-200 shadow-sm hover:shadow-md">
       <div className="">
         <img
           src={image}

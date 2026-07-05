@@ -21,7 +21,7 @@ const JuniorMentor = () => {
           <ul className="py-4">
             {featuresJuniors.map((feature, index) => (
               <li key={index} className="flex items-start gap-2 py-1 text-left">
-                <MdCheckCircle className="text-lg text-lilac" size={27} />
+                <MdCheckCircle className="text-lg text-bulletLilac" size={27} />
                 {feature}
               </li>
             ))}

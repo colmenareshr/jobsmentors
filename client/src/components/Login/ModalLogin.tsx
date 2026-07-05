@@ -30,8 +30,8 @@ function ModalLogin() {
     e.preventDefault()
     try {
       await login(inputs)
-    } catch (err) {
-      setError(err.response.data.message)
+    } catch (err: any) {
+      setError(err.response?.data?.message || err.message)
     }
   }
 

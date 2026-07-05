@@ -2,8 +2,7 @@ import testimonialSara from '../../assets/images/testimonial-img-1.jpg'
 const TestimonialSection = () => {
   return (
     <section
-      className="container mx-auto max-w-full bg-[#fff]
-    py-14"
+      className="container mx-auto max-w-full bg-white py-14"
     >
       <a
         className="flex flex-col items-center justify-center gap-2 text-center md:mx-auto md:w-full md:max-w-[1000px] md:flex-row md:items-center md:justify-center md:text-left"

@@ -57,10 +57,7 @@ const FreelancersPage = () => {
             <h3 className="pb-6 text-center text-xl font-bold text-white md:text-2xl">
               {skill.speciality}
             </h3>
-            <FreelancerCard
-              title={skill.speciality}
-              color={skill.primaryColor}
-            />
+            <FreelancerCard />
           </div>
         ))}
         <div className="max-w-[900px] pb-9">

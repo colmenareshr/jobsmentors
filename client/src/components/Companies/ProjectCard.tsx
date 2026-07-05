@@ -10,9 +10,9 @@ function ProjectCard({ title, description, hardSkill, amount, onDelete }: Job) {
 
   return (
     <div
-      className="transition-all/300 scrollbar- relative flex w-80 cursor-pointer
-        flex-col items-center justify-center rounded-lg border-2 border-white
-        bg-purple/60 hover:shadow-lg hover:ring-2 hover:ring-teal400 hover:ring-offset-2"
+      className="transition-all duration-300 relative flex w-80 cursor-pointer
+        flex-col items-center justify-center rounded-md border-2 border-white/20
+        bg-tertiary/60 hover:shadow-lg hover:border-white/50 hover:scale-[1.02]"
     >
       <header className="w-full border-b-2 pb-1 pt-2 text-center text-2xl font-semibold text-white">
         {title}

@@ -56,7 +56,7 @@ export const freelancerInfo = [
 
 function FreelancerCard() {
   const { currentUser } = useContext(AuthContext) as AuthContextProps
-  const [freelancers, setFreelancers] = useState()
+  const [freelancers, setFreelancers] = useState<any[]>()
 
   const fetchFreelancers = async () => {
     const res = await api.get('/freelancers', {

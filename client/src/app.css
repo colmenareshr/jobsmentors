@@ -6,7 +6,7 @@
 
   html,
   body {
-    @apply bg-white;
+    @apply bg-canvas;
   }
 
   h1 {

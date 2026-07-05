@@ -20,7 +20,7 @@ export interface Job {
 function Companies() {
   const params = useParams<{ id: string }>()
   const { currentUser } = useContext(AuthContext) as AuthContextProps
-  const [jobs, setJobs] = useState<Job | []>([])
+  const [jobs, setJobs] = useState<any[]>([])
 
   const fetchProjects = async () => {
     try {
@@ -46,7 +46,7 @@ function Companies() {
           Authorization: `Bearer ${currentUser?.token}`
         }
       })
-      setJobs(jobs.filter((job) => job.id !== job.id))
+      setJobs(jobs.filter((job: any) => job.id !== jobId))
       fetchProjects()
     } catch (error) {
       console.error('Error al eliminar el proyecto', error)
@@ -71,7 +71,7 @@ function Companies() {
                   p-4
                   md:pb-20 md:pt-10"
       >
-        {jobs.map((job: Job) => (
+        {jobs.map((job: any) => (
           <ProjectCard
             key={job.id}
             id={job.id}

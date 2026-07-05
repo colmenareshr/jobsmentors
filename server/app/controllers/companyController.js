@@ -337,7 +337,7 @@ class CompanyController {
         include: [
           {
             model: database.Freelancer,
-            attributtes: ["name", "hard_skills", "img"],
+            attributes: ["name", "hard_skills", "img"],
           },
         ],
       });

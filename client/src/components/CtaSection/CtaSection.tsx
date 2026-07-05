@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 const CtaSection = () => {
   const { t } = useTranslation()
   return (
-    <section className="cta-section bg-sky py-14">
+    <section className="cta-section bg-mint py-14">
       <div className="container mx-auto">
         <div className="row">
           <div className="col-md-9 mx-auto text-center">
